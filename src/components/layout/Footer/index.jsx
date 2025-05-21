@@ -8,31 +8,62 @@ import { usePathname } from "next/navigation";
 const footerNav = [
   {
     href: "/",
-    title: "home",
+    title: "Design and technology",
   },
   {
     href: "/about",
-    title: "about",
+    title: "About Us",
   },
   {
     href: "/contact",
-    title: "contact",
+    title: "Contact",
   },
   {
-    href: "/faq",
-    title: "faq",
+    href: "/owners",
+    title: "Owners",
   },
   {
-    href: "/privacy-policy",
-    title: "privacy",
+    href: "/offers",
+    title: "Offers",
+  },
+];
+
+const modelsNav = [
+  {
+    href: "/",
+    title: "u9",
   },
   {
-    href: "/terms-conditions",
-    title: "Terms & conditions",
+    href: "/",
+    title: "u8",
+  },
+];
+
+const socialmedia = [
+  {
+    href: "#",
+    alt: "facebook",
+    image: "img_facebook.svg",
   },
   {
-    href: "/contact",
-    title: "help",
+    href: "#",
+    alt: "youtube",
+    image: "img_lock.svg",
+  },
+  {
+    href: "#",
+    alt: "info",
+    image: "img_info.svg",
+  },
+  {
+    href: "#",
+    alt: "inbox",
+    image: "img_inbox.svg",
+  },
+  {
+    href: "#",
+    alt: "close",
+    image: "img_close.svg",
   },
 ];
 
@@ -53,48 +84,74 @@ function DownloadButton({ href, image }) {
 export default function Footer() {
   const pathname = usePathname();
   return (
-    <footer className="w-full h-auto block bg-black backdrop-blur-[10px]">
+    <footer className="w-full h-auto block bg-black">
       <div className="container">
-        <div className="w-full h-auto py-[30px_20px] xl:py-[40px_30px] 3xl:py-[50px_40px] flex justify-center">
-          <Link href={"/"} className="w-auto mx-auto">
-            <Img
-              src="img_header_logo.svg"
-              alt="Headerlogo"
-              width={228}
-              height={66}
-              className="w-[100px] sm:w-[140px] xl:w-[180px] 3xl:w-[228px] h-auto object-contain block"
-            />
-          </Link>
-        </div>
-        <div className="flex items-center justify-between gap-[10px] self-stretch py-[10px] xl:py-[15px] 3xl:py-[20px]border border-y-[1px] border-solid border-base1/30 max-lg:flex-col max-lg:gap-[15px]">
-          <ul className="flex flex-wrap gap-[10px] sm:gap-[15px] lg:gap-[20px] xl:gap-[40px] 2xl:gap-[50px] 3xl:gap-[60px] max-lg:justify-center">
-            {footerNav.map((item, index) => (
-              <li key={`footeNav-${index}`}>
-                <Heading
-                  as="h6"
-                  className={`3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] leading-none font-medium capitalize  hover:text-base1 transition-all duration-300 ${
-                    pathname === item.href ? "text-base1" : "text-white"
-                  }`}
-                >
-                  <Link href={item.href}>{item.title}</Link>
-                </Heading>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-[15px] xl:gap-[20px] 3xl:gap-[30px]">
-            <Text
-              as="p"
-              className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] text-[12px] leading-none font-semibold capitalize text-white"
+        <div className="flex flex-wrap">
+          <div>
+            <Heading
+              as="h6"
+              className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-medium capitalize hover:text-base1 transition-color duration-300"
             >
-              download the app
-            </Text>
-            <ul className="flex gap-[2px] xl:gap-[4px] 3xl:gap-[6px]">
-              <li>
-                <DownloadButton href="#" image="footer-app-1.svg" />
-              </li>
-              <li>
-                <DownloadButton href="#" image="footer-play-1.svg" />
-              </li>
+              menu
+            </Heading>
+            <ul className="flex flex-wrap">
+              {footerNav.map((item, index) => (
+                <li key={`footeNav-${index}`}>
+                  <Heading
+                    as="h6"
+                    className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal hover:text-base1 transition-color duration-300 ${
+                      pathname === item.href ? "text-base1" : "text-white"
+                    }`}
+                  >
+                    <Link href={item.href}>{item.title}</Link>
+                  </Heading>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <Heading
+              as="h6"
+              className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-medium capitalize hover:text-base1 transition-color duration-300"
+            >
+              Models
+            </Heading>
+            <ul className="flex flex-wrap">
+              {modelsNav.map((item, index) => (
+                <li key={`modelsNav-${index}`}>
+                  <Heading
+                    as="h6"
+                    className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal hover:text-base1 transition-color duration-300 ${
+                      pathname === item.href ? "text-base1" : "text-white"
+                    }`}
+                  >
+                    <Link href={item.href}>{item.title}</Link>
+                  </Heading>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <ul className="flex gap-[10px]">
+              {socialmedia.map((item, index) => (
+                <li key={`socialmedia-${index}`}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="social"
+                    className="transition-transform duration-300 hover:scale-95"
+                  >
+                    <Img
+                      src={item.image}
+                      alt={item.alt}
+                      width={38}
+                      height={38}
+                      className="w-[22px] xl:w-[26px] 3xl:w-[38px] aspect-square rounded-full transition-all duration-300 hover:[filter:brightness(0)_saturate(100%)_invert(69%)_sepia(37%)_saturate(643%)_hue-rotate(62deg)_brightness(91%)_contrast(83%)]"
+                    />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -103,14 +160,15 @@ export default function Footer() {
             as="p"
             className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] sm:text-[10px] text-[8px] leading-none font-normal text-white"
           >
-            ©&nbsp;2025 ichargeON. All rights reserved.
+            Copyright © Shenzhen Yangwang Automobile Sales Co., Ltd. All Rights
+            Reserved.
           </Text>
           <div className="flex items-center">
             <Text
               as="p"
               className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] sm:text-[10px] text-[8px] leading-none font-normal text-white"
             >
-              Designed By&nbsp;
+              Crafted By&nbsp;
             </Text>
             <a
               href={"https://www.intersmartsolution.com/"}

@@ -10,56 +10,78 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { LinkButton } from "@/components/layout/Button";
-// import required modules
+
+const slide = [
+  {
+    background: "/videos/hero-1.mp4",
+    title: "u8",
+    description: "Pure Electric Performance Supercar",
+    href: "/",
+    button_title: "Explore Models",
+  },
+  {
+    background: "/videos/hero-1.mp4",
+    title: "u9",
+    description: "Pure Electric Performance Supercar",
+    href: "/",
+    button_title: "Explore Models",
+  },
+];
 
 export default function HeroSection() {
   return (
-    <section className="w-full h-auto block">
+    <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block">
       <Swiper
         navigation
         pagination={{ clickable: true }}
         modules={[Navigation, Pagination, A11y]}
+        className="h-full [--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:1] [--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:55px] 3xl:[--swiper-pagination-bottom:80px]"
       >
-        <SwiperSlide className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-center pt-[70px] lg:pt-[80px] xl:pt-[90px] 2xl:pt-[100px] 3xl:pt-[120px] relative z-0">
-          <Suspense fallback={<p>Loading video...</p>}>
-            <video
-              autoPlay
-              preload="auto"
-              width={1920}
-              height={1080}
-              muted
-              loop
-              className="w-full h-full absolute -z-1 inset-0 object-cover"
-              aria-label="Video player"
+        <Suspense fallback={<div>Loading feed...</div>}>
+          {slide?.map((item, index) => (
+            <SwiperSlide
+              key={"slide" + index}
+              className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
             >
-              <source src="/videos/hero-1.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </Suspense>
-          <div className="container">
-            <div className="w-full lg:max-w-[540px] 2xl:max-w-[620px] 3xl:max-w-[690px]">
-              <Heading
-                size="heading1"
-                as="h1"
-                className="uppercase text-white mb-[15px] 2xl:mb-[20px]"
+              <video
+                // autoPlay
+                preload="auto"
+                width={1920}
+                height={1080}
+                muted
+                loop
+                className="w-full h-full absolute -z-1 inset-0 object-cover"
+                aria-label="Video player"
               >
-                U9
-              </Heading>
-              <Text
-                as="p"
-                className="text-white font-medium w-full max-w-[80%] mb-[20px] xl:mb-[40px] 3xl:mb-[60px]"
-              >
-                Pure Electric Performance Supercar
-              </Text>
-              <LinkButton
-                href="/"
-                className="min-w-[100px] sm:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[204px]"
-              >
-                Explore Models
-              </LinkButton>
-            </div>
-          </div>
-        </SwiperSlide>
+                <source src={item.background} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="container">
+                <div className="w-full">
+                  <Heading
+                    size="heading1"
+                    as="h1"
+                    className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                  >
+                    {item.title}
+                  </Heading>
+                  <Text
+                    as="p"
+                    className="capitalize leading-tight text-white mb-[15px] xl:mb-[25px] 3xl:mb-[35px]"
+                  >
+                    {item.description}
+                  </Text>
+                  <LinkButton
+                    href={item.href}
+                    className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px]"
+                  >
+                    {item.button_title}
+                  </LinkButton>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Suspense>
       </Swiper>
     </section>
   );

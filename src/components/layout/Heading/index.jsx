@@ -21,15 +21,15 @@ const textVariants = {
 
 const sizes = {
   heading1:
-    "text-[24px] lg:text-[36px] xl:text-[43px] 2xl:text-[48px] 3xl:text-[65px] font-semibold leading-tight",
+    "text-[28px] lg:text-[48px] xl:text-[66px] 2xl:text-[72px] 3xl:text-[100px] font-medium leading-none",
   heading2:
-    "text-[20px] lg:text-[26px] xl:text-[32px] 2xl:text-[44px] 3xl:text-[54px] font-semibold leading-tight",
+    "text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[66px] 3xl:text-[80px] font-medium leading-none",
   heading3:
-    "text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[26px] 3xl:text-[30px] font-semibold leading-tight",
+    "text-[16px] lg:text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-medium leading-none",
   heading5:
-    "text-[13px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[25px] font-semibold leading-tight",
+    "text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] font-medium leading-none",
   heading6:
-    "text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[16px] 3xl:text-[20px] font-semibold leading-tight",
+    "text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[16px] 3xl:text-[20px] font-medium leading-none",
 };
 
 const Heading = ({

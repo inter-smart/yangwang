@@ -1,16 +1,29 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import localFont from "next/font/local";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const urwForm = localFont({
+  src: [
+    {
+      path: "../../public/fonts/URWForm-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/URWForm-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/URWForm-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-urwForm",
+  preload: true,
+  display: "swap",
 });
 
 export const metadata = {
@@ -21,10 +34,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <body
-        className={`${baiJamjuree.variable} antialiased min-h-screen flex flex-col`}
-      > */}
-      <body className={`antialiased min-h-screen flex flex-col`}>
+      <body
+        className={`${urwForm.variable} antialiased min-h-screen flex flex-col`}
+      >
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />

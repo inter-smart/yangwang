@@ -22,7 +22,7 @@ const buttonVariants = {
 
 const variants = {
   fill: {
-    white: "text-black bg-white border-base1 hover:bg-base1 hover:text-white",
+    white: "text-black bg-white border-white hover:bg-base1 hover:border-base1 hover:text-white",
     base1:
       "text-white bg-base1 border-base1 hover:bg-base1/90 hover:text-white",
   },
@@ -30,7 +30,7 @@ const variants = {
 
 const sizes = {
   button1:
-    "3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-medium leading-none text-center whitespace-nowrap w-full h-[30px] lg:h-[36px] xl:h-[42px] 3xl:h-[62px] flex flex-row items-center justify-center gap-[5px] lg:gap-[10px] 3xl:gap-[14px] p-[5px] cursor-pointer rounded-[8px] border border-solid",
+    "3xl:text-[14px] 2xl:text-[12px] xl:text-[9px] lg:text-[9px] text-[9px] font-medium leading-none text-center whitespace-nowrap w-full h-[30px] lg:h-[33px] xl:h-[42px] 3xl:h-[50px] flex flex-row items-center justify-center gap-[5px] lg:gap-[10px] 3xl:gap-[14px] p-[5px] cursor-pointer rounded-none border border-solid",
 };
 
 const Button = ({

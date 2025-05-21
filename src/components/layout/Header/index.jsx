@@ -23,6 +23,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 import { Menu } from "lucide-react";
 
 import { useEffect, useState } from "react";
@@ -44,33 +53,39 @@ function HeaderNavItem({ href, title }) {
 }
 
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      const isScrollingDown = currentScrollPos > prevScrollPos;
+    const isSticky = () => {
+      const scrollTop = window.scrollY;
+      const isScrollingUp = scrollTop < lastScrollTop;
 
-      // Show header at the top of the page or when scrolling up
-      setIsVisible(currentScrollPos < 10 || !isScrollingDown);
-      setPrevScrollPos(currentScrollPos);
+      if (scrollTop >= 250 && isScrollingUp) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+
+      setLastScrollTop(scrollTop);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos]);
+    window.addEventListener("scroll", isSticky);
+    return () => {
+      window.removeEventListener("scroll", isSticky);
+    };
+  }, [lastScrollTop]);
 
   return (
     <header
-      className={`w-full h-(--header-y) fixed z-10 top-0 left-0 right-0 block bg-linear-to-b from-black via-70% via-black/50 to-transparent [--header-y:70px] lg:[--header-y:80px] xl:[--header-y:90px] 2xl:[--header-y:100px] 3xl:[--header-y:120px] ${
-        prevScrollPos > 10
-          ? "bg-black/60 backdrop-blur-[50px]"
-          : "bg-transparent"
+      className={`w-full h-(--header-y) absolute z-10 top-0 left-0 right-0 block bg-linear-to-b from-black/40 to-transparent transition-all duration-300 ${
+        isVisible
+          ? "fixed animate-fadeDown bg-black/40 backdrop-blur-lg [--header-y:50px] lg:[--header-y:70px] 2xl:[--header-y:80px] 3xl:[--header-y:90px] "
+          : "absolute [--header-y:60px] lg:[--header-y:80px] 2xl:[--header-y:100px] 3xl:[--header-y:120px] "
       }`}
     >
       <div className="container">
-        <div className="w-full h-(--header-y) flex flex-wrap items-center justify-between gap-[10px] relative z-0 before:content-[''] before:block before:absolute before:z-0 before:bottom-0 before:left-0 before:right-0 before:w-full before:h-[1px] before:bg-white/20">
+        <div className="w-full h-(--header-y) flex flex-wrap items-center justify-between gap-[10px]">
           <Link href={"/"} className="w-auto">
             <Img
               src="header_logo.svg"
@@ -83,7 +98,11 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Models</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                    Models
+                  </div>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3">
@@ -141,7 +160,11 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Design & Technology</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                    Design & Technology
+                  </div>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     <li>
@@ -160,7 +183,11 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                    About Us
+                  </div>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     <li>
@@ -179,7 +206,11 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Contact</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                    Contact
+                  </div>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     <li>
@@ -198,7 +229,11 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Owners</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                    Owners
+                  </div>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     <li>
@@ -217,7 +252,11 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Offers</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                    Offers
+                  </div>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     <li>
@@ -237,7 +276,21 @@ export default function Header() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <div className="flex self-center gap-[4px] lg:gap-[6px] xl:gap-[8px] 3xl:gap-[13px] max-sm:hidden">
+          <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 3xl:gap-[40px] max-sm:hidden">
+            <div>
+              <Select>
+                <SelectTrigger className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[4px]">
+                  <SelectValue placeholder="en" />
+                </SelectTrigger>
+                <SelectContent className="bg-white max-w-[40px]">
+                  <SelectItem value="en">
+                    En
+                  </SelectItem>
+                  <SelectItem value="ar">Ar</SelectItem>
+                  <SelectItem value="us">Us</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             <div>
               <Link href={"/"} className="w-auto">
                 <Img
