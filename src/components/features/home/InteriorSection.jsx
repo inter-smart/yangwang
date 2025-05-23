@@ -1,9 +1,14 @@
+import { LinkButton } from "@/components/layout/Button";
+import { Heading } from "@/components/layout/Heading";
+import { Img } from "@/components/layout/Img";
+import { Text } from "@/components/layout/Text";
+
 export default function InteriorSection() {
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block bg-base1">
-      <div className="container">
-        <div className="flex flex-wrap">
-          <div>
+      <div className="h-full flex flex-wrap">
+        <div className="w-6/10 flex flex-col">
+          <div className="w-full h-auto block py-[40px_30px] xl:py-[75px_60px] 3xl:py-[110px_90px] lg:pl-[calc(((100vw-64rem)/2)+60px)] xl:pl-[calc(((100vw-80rem)/2)+65px)] 2xl:pl-[calc(((100vw-96rem)/2)+80px)] 3xl:pl-[calc(((100vw-120rem)/2)+100px)]">
             <Heading
               size="heading3"
               as="h3"
@@ -15,16 +20,36 @@ export default function InteriorSection() {
               as="p"
               className="3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-normal text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
             >
-              Reserve your test drive and experience Yangwang innovation from
-              the driver's seat.
+              Reserve your test drive and experience Yangwang <br /> innovation
+              from the driver's seat.
             </Text>
             <LinkButton
               href="#"
               aria-label="Book Test Drive"
-              className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px]"
+              className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px] hover:border-white"
             >
               Book Test Drive
             </LinkButton>
+          </div>
+          <div className="w-full h-auto flex-grow block overflow-hidden relative z-0">
+            <Img
+              src="interior-1.jpg"
+              alt="interior"
+              fill
+              sizes="1080px"
+              className="object-cover transition-transform duration-300 hover:scale-110"
+            />
+          </div>
+        </div>
+        <div className="w-4/10">
+          <div className="w-full h-full block overflow-hidden relative z-0">
+            <Img
+              src="interior-2.jpg"
+              alt="interior"
+              fill
+              sizes="820px"
+              className="object-cover transition-transform duration-300 hover:scale-110"
+            />
           </div>
         </div>
       </div>
