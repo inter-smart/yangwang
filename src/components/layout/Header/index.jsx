@@ -92,13 +92,13 @@ export default function Header() {
               alt="Headerlogo"
               width={45}
               height={60}
-              className="w-[120px] xl:w-[40px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300"
+              className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300"
             />
           </Link>
           <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList className="gap-0">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
                   <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
                     Models
                   </div>
@@ -160,7 +160,7 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
                   <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
                     Design & Technology
                   </div>
@@ -183,7 +183,7 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
                   <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
                     About Us
                   </div>
@@ -206,7 +206,7 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
                   <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
                     Contact
                   </div>
@@ -229,7 +229,7 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
                   <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
                     Owners
                   </div>
@@ -252,7 +252,7 @@ export default function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white">
+                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
                   <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
                     Offers
                   </div>
@@ -279,7 +279,7 @@ export default function Header() {
           <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 3xl:gap-[40px] max-sm:hidden">
             <div>
               <Select>
-                <SelectTrigger className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[4px]">
+                <SelectTrigger className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[3px]">
                   <SelectValue placeholder="en" />
                 </SelectTrigger>
                 <SelectContent className="bg-white max-w-[40px]">

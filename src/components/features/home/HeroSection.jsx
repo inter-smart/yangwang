@@ -35,7 +35,7 @@ export default function HeroSection() {
         navigation
         pagination={{ clickable: true }}
         modules={[Navigation, Pagination, A11y]}
-        className="h-full [--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:1] [--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:55px] 3xl:[--swiper-pagination-bottom:80px]"
+        className="h-full [--swiper-pagination-bullet-width:25px] xl:[--swiper-pagination-bullet-width:30px] 3xl:[--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:1] [--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:50px] 3xl:[--swiper-pagination-bottom:80px]"
       >
         <Suspense fallback={<div>Loading feed...</div>}>
           {slide?.map((item, index) => (
@@ -66,6 +66,7 @@ export default function HeroSection() {
                     {item.title}
                   </Heading>
                   <Text
+                    size="text1"
                     as="p"
                     className="capitalize leading-tight text-white mb-[15px] xl:mb-[25px] 3xl:mb-[35px]"
                   >
@@ -73,6 +74,7 @@ export default function HeroSection() {
                   </Text>
                   <LinkButton
                     href={item.href}
+                    aria-label="model"
                     className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px]"
                   >
                     {item.button_title}

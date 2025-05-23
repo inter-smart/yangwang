@@ -29,7 +29,7 @@ const Text = ({
   children,
   className = "",
   as,
-  size = "text1",
+  size,
   ...restProps
 }) => {
   const Component = as || "p";

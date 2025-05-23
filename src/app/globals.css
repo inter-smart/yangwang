@@ -54,12 +54,12 @@
 } */
 
 body {
-  font-family: var(--font-bai-jamjuree), Arial, sans-serif;
+  font-family: var(--font-urwForm), Arial, sans-serif;
 }
 
 @layer components {
   .container {
-    @apply mx-auto px-[15px] lg:px-[70px] xl:px-[90px] 2xl:px-[110px] 3xl:px-[140px];
+    @apply mx-auto px-[15px] lg:px-[60px] xl:px-[65px] 2xl:px-[80px] 3xl:px-[100px];
   }
 
   .btn {

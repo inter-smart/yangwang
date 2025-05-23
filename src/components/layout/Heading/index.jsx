@@ -35,7 +35,7 @@ const sizes = {
 const Heading = ({
   children,
   className = "",
-  size = "heading6",
+  size,
   as,
   ...restProps
 }) => {
