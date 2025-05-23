@@ -65,8 +65,6 @@ export default function SpecsSection() {
                   Where Art Meets Intelligence
                 </Heading>
                 <Text
-                  size="heading3"
-
                   as="p"
                   className="3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-normal text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
                 >

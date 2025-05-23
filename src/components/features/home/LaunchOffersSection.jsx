@@ -1,8 +1,8 @@
+"use client";
+import CountDown from "@/components/common/CountDown";
 import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
-import Countdown from "react-countdown";
-
 
 export default function LaunchOffersSection() {
   return (
@@ -44,7 +44,7 @@ export default function LaunchOffersSection() {
             >
               Complimentary premium upgrade package.
             </Text>
-
+            <CountDown date="2025-06-22T00:00:00" />
           </div>
         </div>
       </div>
