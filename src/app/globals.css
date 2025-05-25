@@ -7,7 +7,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-bai-jamjuree: var(--font-bai-jamjuree);
+  --font-urwForm: var(--font-urwForm);
 
   --color-base1: #1d0a44;
   --color-base2: #cdcdcd;
@@ -32,6 +32,16 @@
   /* 1536px */
   --breakpoint-3xl: 120rem;
   /* 1920px */
+  
+  --breakpoint-gap: 15px;
+  --breakpoint-gap-lg: 60px;
+  /* 1024px */
+  --breakpoint-gap-xl: 65px;
+  /* 1280px */
+  --breakpoint-gap-2xl: 80px;
+  /* 1536px */
+  --breakpoint-gap-3xl: 100px;
+
 
   --animate-fadeDown: fadeDown 0.6s ease-in-out both;
   @keyframes fadeDown {
@@ -59,7 +69,7 @@ body {
 
 @layer components {
   .container {
-    @apply mx-auto px-[15px] lg:px-[60px] xl:px-[65px] 2xl:px-[80px] 3xl:px-[100px];
+    @apply mx-auto px-[var(--breakpoint-gap)] lg:px-[var(--breakpoint-gap-lg)] xl:px-[var(--breakpoint-gap-xl)] 2xl:px-[var(--breakpoint-gap-2xl)] 3xl:px-[var(--breakpoint-gap-3xl)];
   }
 
   .btn {

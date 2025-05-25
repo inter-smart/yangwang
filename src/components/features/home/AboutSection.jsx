@@ -1,12 +1,52 @@
+"use client";
 
 import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
 
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Fix: Add 'text' parameter
+function splitTextToSpans(text) {
+  return text.split("").map((char, i) => (
+    <span key={i} className="inline-block text-[#2c2c2c] will-change-transform">
+      {char === " " ? "\u00A0" : char}
+    </span>
+  ));
+}
+
 export default function AboutSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const targets = gsap.utils.toArray(
+      sectionRef.current?.querySelectorAll("span")
+    );
+
+    gsap.to(targets, {
+      color: "#ff0",
+      stagger: 0.02,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+        markers: true,
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px]"
     >
       <div className="container">
@@ -14,30 +54,28 @@ export default function AboutSection() {
           <Heading
             size="heading6"
             as="h6"
-            className="capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
+            className="capitalize mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
           >
             Yangwang
           </Heading>
           <Heading
             size="heading3"
             as="h2"
-            className="uppercase text-[#2c2c2c] mb-[15px] xl:mb-[20px] 3xl:mb-[40px]"
+            className="uppercase mb-[15px] xl:mb-[20px] 3xl:mb-[40px]"
           >
             U8 & U9
           </Heading>
           <Text
             as="p"
-            className="3xl:text-[35px] 2xl:text-[28px] xl:text-[23px] lg:text-[20px] text-[16px] leading-normal font-bold text-[#2c2c2c]"
+            className="3xl:text-[35px] 2xl:text-[28px] xl:text-[23px] lg:text-[20px] text-[16px] leading-normal font-bold"
           >
-            At Yangwang, we redefine the boundaries of luxury and performance
-            with cutting-edge electric vehicles designed for the future. Born
-            from innovation and driven by excellence, our mission is to deliver
-            an unparalleled driving experience through advanced technology,
-            sustainable design, and uncompromising craftsmanship. Join us as we
-            shape a new era of intelligent mobility.
+            {splitTextToSpans(
+              "At Yangwang, we redefine the boundaries of luxury and performance with cutting-edge electric vehicles designed for the future. Born from innovation and driven by excellence, our mission is to deliver an unparalleled driving experience through advanced technology, sustainable design, and uncompromising craftsmanship. Join us as we shape a new era of intelligent mobility."
+            )}
           </Text>
         </div>
       </div>
+
       <div className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]">
         <Img
           src="about-bg-1.png"

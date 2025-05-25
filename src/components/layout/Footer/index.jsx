@@ -79,7 +79,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full h-auto block bg-black">
-      <div className="w-full lg:pl-[calc(((100vw-64rem)/2)+60px)] xl:pl-[calc(((100vw-80rem)/2)+65px)] 2xl:pl-[calc(((100vw-96rem)/2)+80px)] 3xl:pl-[calc(((100vw-120rem)/2)+100px)]">
+      <div className="w-full lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
       
       <div className="flex flex-wrap">
         <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-420px)] 3xl:w-[calc(100%-640px)] lg:pr-[40px] xl:pr-[50px] 2xl:pr-[75px] 3xl:pr-[80px]">
