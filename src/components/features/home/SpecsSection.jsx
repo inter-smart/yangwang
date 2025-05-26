@@ -38,7 +38,7 @@ export default function SpecsSection() {
   return (
     <section className="w-full h-auto block">
       <Tabs defaultValue="u8" className="gap-0 relative z-0">
-        <TabsList className="gap-[10px] xl:gap-[15px] 3xl:gap-[20px] mb-[15px] xl:mb-[20px] 3xl:mb-[30px] lg:absolute z-0 top-0 lg:top-[40px] xl:top-[90px] 3xl:top-[140px] right-0 lg:right-[calc(((100vw-64rem)/2)+60px)] xl:right-[calc(((100vw-80rem)/2)+65px)] 2xl:right-[calc(((100vw-96rem)/2)+80px)] 3xl:right-[calc(((100vw-120rem)/2)+100px)]">
+        <TabsList className="gap-[10px] xl:gap-[15px] 3xl:gap-[20px] mb-[15px] xl:mb-[20px] 3xl:mb-[30px] lg:absolute z-0 top-0 lg:top-[40px] xl:top-[90px] 3xl:top-[140px] right-0 lg:right-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:right-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:right-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:right-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
           <TabsTrigger value="u8" className={TabsTriggerStyle}>
             u8
           </TabsTrigger>
@@ -48,7 +48,7 @@ export default function SpecsSection() {
         </TabsList>
         <TabsContent value="u8" className="flex-auto">
           <div className="flex flex-wrap">
-            <div className="w-[320px] xl:w-[490px] 3xl:w-[740px] relative z-0 overflow-hidden lg:pl-[calc(((100vw-64rem)/2)+60px)] xl:pl-[calc(((100vw-80rem)/2)+65px)] 2xl:pl-[calc(((100vw-96rem)/2)+80px)] 3xl:pl-[calc(((100vw-120rem)/2)+100px)] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px] gap-0">
+            <div className="w-[320px] xl:w-[490px] 3xl:w-[740px] relative z-0 overflow-hidden lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px] gap-0">
               <Img
                 src="specs-bg-1.png"
                 alt="specs-bg-1"
@@ -65,8 +65,9 @@ export default function SpecsSection() {
                   Where Art Meets Intelligence
                 </Heading>
                 <Text
+                  size="text3"
                   as="p"
-                  className="3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-normal text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
+                  className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
                 >
                   Advanced Design. Revolutionary Technology. Uncompromised
                   Power.
@@ -100,7 +101,7 @@ export default function SpecsSection() {
                 </ul>
               </div>
             </div>
-            <div className="w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 3xl:w-[calc(100%-740px)] pl-[15px] xl:pl-[20px] 3xl:pl-[30px] lg:pr-[calc(((100vw-64rem)/2)+60px)] xl:pr-[calc(((100vw-80rem)/2)+65px)] 2xl:pr-[calc(((100vw-96rem)/2)+80px)] 3xl:pr-[calc(((100vw-120rem)/2)+100px)] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px]">
+            <div className="w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 3xl:w-[calc(100%-740px)] pl-[15px] xl:pl-[20px] 3xl:pl-[30px] lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px]">
               <div className="w-full h-auto aspect-[1040/588] block relative z-0 overflow-hidden lg:mt-[40px] xl:mt-[50px] 3xl:mt-[80px]">
                 <Img
                   src="specs-img-1.jpg"
@@ -115,7 +116,7 @@ export default function SpecsSection() {
         </TabsContent>
         <TabsContent value="u9">
           <div className="flex flex-wrap">
-            <div className="w-[320px] xl:w-[490px] 3xl:w-[740px] relative z-0 overflow-hidden lg:pl-[calc(((100vw-64rem)/2)+60px)] xl:pl-[calc(((100vw-80rem)/2)+65px)] 2xl:pl-[calc(((100vw-96rem)/2)+80px)] 3xl:pl-[calc(((100vw-120rem)/2)+100px)] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px] gap-0">
+            <div className="w-[320px] xl:w-[490px] 3xl:w-[740px] relative z-0 overflow-hidden lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px] gap-0">
               <Img
                 src="specs-bg-1.png"
                 alt="specs-bg-1"
@@ -132,8 +133,9 @@ export default function SpecsSection() {
                   Where Art Meets Intelligence
                 </Heading>
                 <Text
+                size="text3"
                   as="p"
-                  className="3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-normal text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
+                  className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
                 >
                   Advanced Design. Revolutionary Technology. Uncompromised
                   Power.
@@ -167,7 +169,7 @@ export default function SpecsSection() {
                 </ul>
               </div>
             </div>
-            <div className="w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 3xl:w-[calc(100%-740px)] pl-[15px] xl:pl-[20px] 3xl:pl-[30px] lg:pr-[calc(((100vw-64rem)/2)+60px)] xl:pr-[calc(((100vw-80rem)/2)+65px)] 2xl:pr-[calc(((100vw-96rem)/2)+80px)] 3xl:pr-[calc(((100vw-120rem)/2)+100px)] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px]">
+            <div className="w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 3xl:w-[calc(100%-740px)] pl-[15px] xl:pl-[20px] 3xl:pl-[30px] lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px]">
               <div className="w-full h-auto aspect-[1040/588] block relative z-0 overflow-hidden lg:mt-[40px] xl:mt-[50px] 3xl:mt-[80px]">
                 <Img
                   src="specs-img-1.jpg"

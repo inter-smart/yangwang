@@ -39,8 +39,9 @@ export default function LaunchOffersSection() {
               Drive the Future Today
             </Heading>
             <Text
+              size="text3"
               as="p"
-              className="3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-normal text-white mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
+              className="text-white mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
             >
               Complimentary premium upgrade package.
             </Text>
