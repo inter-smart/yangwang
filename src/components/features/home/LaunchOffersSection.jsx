@@ -1,22 +1,35 @@
-"use client";
 import CountDown from "@/components/common/CountDown";
 import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
+import Image from "next/image";
 
 export default function LaunchOffersSection() {
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-center relative z-0">
-      <Img
+      {/* <Img
         src="launchOffers-bg-1.jpg"
         alt="launchOffers-bg"
         fill
         sizes="1920px"
         className="-z-1 object-cover"
-      />
+      /> */}
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcSet="/images/icon-left-arrow.svg"
+        />
+        <Image
+          src="/images/launchOffers-bg-1.jpg"
+          alt="launchOffers-bg"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="-z-1 object-cover"
+        />
+      </picture>
 
       <div className="container">
-        <div className="flex justify-end">
+        <div className="flex ltr:justify-end">
           <div className="xl:max-w-[330px] 3xl:max-w-[500px]">
             <Heading
               as="h6"
@@ -28,7 +41,7 @@ export default function LaunchOffersSection() {
                 alt="icon-left-arrow"
                 width={22}
                 height={17}
-                className="w-[12px] xl:w-[14px] 3xl:w-[22px]"
+                className="w-[12px] xl:w-[14px] 3xl:w-[22px] rtl:-scale-x-100"
               />
             </Heading>
             <Heading

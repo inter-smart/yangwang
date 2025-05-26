@@ -10,7 +10,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Fix: Add 'text' parameter
 function splitTextToSpans(text) {
   return text.split("").map((char, i) => (
     <span key={i} className="inline-block text-[#aaaaaa] will-change-transform">
@@ -21,12 +20,15 @@ function splitTextToSpans(text) {
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
+  const carRef1 = useRef(null);
+  const carRef2 = useRef(null);
 
   useEffect(() => {
-    const targets = gsap.utils.toArray(
-      sectionRef.current?.querySelectorAll("span")
-    );
+    const targets = sectionRef.current?.querySelectorAll("span");
+    if (!targets || !carRef1.current) return;
+    if (!targets || !carRef2.current) return;
 
+    // Character animation
     gsap.to(targets, {
       color: "#000",
       stagger: 0.02,
@@ -35,12 +37,41 @@ export default function AboutSection() {
         start: "top center",
         end: "center center",
         scrub: true,
-        // markers: true,
       },
     });
 
+    // Vehicle animation: move from left to right
+    gsap.fromTo(
+      carRef1.current,
+      { xPercent: -100 },
+      {
+        xPercent: 0,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1,
+        },
+      }
+    );
+    gsap.fromTo(
+      carRef2.current,
+      { xPercent: -100 },
+      {
+        xPercent: 0,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top center",
+          end: "bottom center",
+          scrub: 4,
+        },
+      }
+    );
+
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -76,7 +107,7 @@ export default function AboutSection() {
         </div>
       </div>
 
-      <div className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]">
+      <div className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]" dir="ltr">
         <Img
           src="about-bg-1.png"
           alt="about-bg-1"
@@ -92,6 +123,7 @@ export default function AboutSection() {
           className="3xl:w-[700px] xl:w-[460px] lg:w-[320px]"
         />
         <Img
+          ref={carRef1}
           src="about-vehicle-1.png"
           alt="about-vehicle-1"
           width={207}
@@ -99,6 +131,7 @@ export default function AboutSection() {
           className="3xl:w-[309px] xl:w-[206px] lg:w-[120px] aspect-[207/89] object-contain absolute z-0 bottom-[4px] xl:bottom-[6px] 3xl:bottom-[10px] left-[30%]"
         />
         <Img
+          ref={carRef2}
           src="about-vehicle-2.png"
           alt="about-vehicle-2"
           width={219}

@@ -56,6 +56,8 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
+  const isEnglish = true;
+
   useEffect(() => {
     const isSticky = () => {
       const scrollTop = window.scrollY;
@@ -95,7 +97,7 @@ export default function Header() {
               className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300"
             />
           </Link>
-          <NavigationMenu>
+          <NavigationMenu dir={isEnglish ? "ltr" : "rtl"}>
             <NavigationMenuList className="gap-0">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">

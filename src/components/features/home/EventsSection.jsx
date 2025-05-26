@@ -71,7 +71,7 @@ export default function EventsSection() {
                     index === 0
                       ? "w-[320px] lg:w-[400px] xl:w-[540px] 2xl:w-[640px] 3xl:w-[780px]"
                       : "w-[calc(100%-320px)] lg:w-[calc(100%-400px)] xl:w-[calc(100%-540px)] 2xl:w-[calc(100%-640px)] 3xl:w-[calc(100%-780px)]"
-                  } float-left`}
+                  } ltr:float-left rtl:float-right`}
                 >
                   <Card className="w-full h-auto block rounded-none border-0 shadow-none p-0 overflow-hidden relative z-0">
                     <CardContent
@@ -89,7 +89,7 @@ export default function EventsSection() {
                     </CardContent>
                     <CardHeader className="p-0 gap-0">
                       <CardTitle>
-                        <h5 className="text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] leading-none capitalize font-medium truncate text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                        <h5 className="text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] leading-tight capitalize font-medium truncate text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
                           {item.title}
                         </h5>
                       </CardTitle>
