@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Fix: Add 'text' parameter
 function splitTextToSpans(text) {
   return text.split("").map((char, i) => (
-    <span key={i} className="inline-block text-[#2c2c2c] will-change-transform">
+    <span key={i} className="inline-block text-[#aaaaaa] will-change-transform">
       {char === " " ? "\u00A0" : char}
     </span>
   ));
@@ -28,14 +28,14 @@ export default function AboutSection() {
     );
 
     gsap.to(targets, {
-      color: "#ff0",
+      color: "#000",
       stagger: 0.02,
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top center",
-        end: "bottom center",
+        end: "center center",
         scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
 

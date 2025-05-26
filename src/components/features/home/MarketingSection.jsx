@@ -94,6 +94,7 @@ export default function MarketingSection() {
               spaceBetween: 10,
             },
             1920: {
+              slidesPerView: 4,
               spaceBetween: 20,
             },
           }}
