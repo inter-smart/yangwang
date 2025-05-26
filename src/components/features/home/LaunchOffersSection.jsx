@@ -7,14 +7,13 @@ import { Text } from "@/components/layout/Text";
 export default function LaunchOffersSection() {
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-center relative z-0">
-      <Img
+      <Img 
         src="launchOffers-bg-1.jpg"
         alt="launchOffers-bg"
         fill
         sizes="1920px"
         className="-z-1 object-cover"
       />
-
       <div className="container">
         <div className="flex justify-end">
           <div className="xl:max-w-[330px] 3xl:max-w-[500px]">

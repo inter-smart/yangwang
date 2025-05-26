@@ -8,12 +8,12 @@ const textVariants = {
     y: 50,
     opacity: 0,
   },
-  onscreen: {
-    y: 0,
+  onscreen: { 
+    y: 0,  
     opacity: 1,
     transition: {
       type: "easeOuteaseOut",
-      bounce: 0.4,
+      bounce: 0.4, 
       duration: 0.4,
     },
   },

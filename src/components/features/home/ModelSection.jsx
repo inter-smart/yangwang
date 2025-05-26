@@ -5,7 +5,7 @@ import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
 import Link from "next/link";
 import CountUp from "react-countup";
-
+ 
 export default function ModelSection() {
   return (
     <section className="w-full h-auto block">
