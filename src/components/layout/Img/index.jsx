@@ -19,7 +19,7 @@ const Img = ({
     setImgSrc(src);
   }, [src]);
 
-  return (
+  return ( 
     <Image
       className={className}
       src={isStatic ? imgSrc : BASE_URL + imgSrc}

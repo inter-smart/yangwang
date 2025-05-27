@@ -44,9 +44,9 @@ export default function HeroSection() {
               className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
             >
               <video
-                // autoPlay
+                // autoPlay 
                 preload="auto"
-                width={1920}
+                width={1920} 
                 height={1080}
                 muted
                 loop

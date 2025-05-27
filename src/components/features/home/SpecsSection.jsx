@@ -51,7 +51,7 @@ export default function SpecsSection() {
             <div className="w-[320px] xl:w-[490px] 3xl:w-[740px] relative z-0 overflow-hidden lg:pl-[calc(((100vw-64rem)/2)+60px)] xl:pl-[calc(((100vw-80rem)/2)+65px)] 2xl:pl-[calc(((100vw-96rem)/2)+80px)] 3xl:pl-[calc(((100vw-120rem)/2)+100px)] py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px] gap-0">
               <Img
                 src="specs-bg-1.png"
-                alt="specs-bg-1"
+                alt="specs-bg-1" 
                 fill
                 sizes="420px"
                 className="-z-1 object-cover opacity-[2%]"

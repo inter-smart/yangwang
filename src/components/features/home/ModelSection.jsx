@@ -3,7 +3,7 @@ import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
-import Link from "next/link";
+import Link from "next/link"; 
 import CountUp from "react-countup";
  
 export default function ModelSection() {
@@ -63,7 +63,7 @@ export default function ModelSection() {
                       end={1200}
                       duration={3}
                       enableScrollSpy={true}
-                      suffix=" ps"
+                      suffix=" ps" 
                     />
                   </Heading>
                 </div>

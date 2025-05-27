@@ -1,4 +1,7 @@
-import InovationSection from "@/components/features/home/about/InnovationSection";
+import AboutSection from "@/components/features/about/AboutSection";
+import YangwangSection from "@/components/features/about/YangwangSection";
+import InovationSection from "@/components/features/about/InnovationSection";
+import LookupSection from "@/components/features/about/LookupSection";
 
 export const metadata = {
     title: "yangwang | About",
@@ -9,7 +12,10 @@ export const metadata = {
 export default function page() {
     return (
         <>
-        <InovationSection />
+            <AboutSection />
+            <YangwangSection />
+            <LookupSection />
+            <InovationSection />
         </>
     );
 }
