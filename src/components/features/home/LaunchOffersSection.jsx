@@ -34,7 +34,7 @@ export default function LaunchOffersSection() {
                 alt="icon-left-arrow"
                 width={22}
                 height={17}
-                className="w-[12px] xl:w-[14px] 3xl:w-[22px] rtl:-scale-x-100"
+                className="w-[12px] xl:w-[14px] 3xl:w-[22px] rtl:-scale-x-100 animate-right"
               />
             </Heading>
             <Heading

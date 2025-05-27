@@ -65,10 +65,10 @@ export default function ModelSection() {
                   muted
                   loop
                   playsInline
-                  preload="meta"
+                  preload="metadata"
                   className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
                 >
-                  <source src="/videos/hero-1.mp4" type="video/mp4" />
+                  <source src="/videos/vdo-model-1.mp4" type="video/mp4" />
                 </video>
                 <div className="w-full h-full flex flex-col justify-between text-white">
                   <div>
@@ -140,10 +140,10 @@ export default function ModelSection() {
             </div>
           </div>
           <div className="w-full lg:w-[320px] xl:w-[490px] 3xl:w-[740px]">
-            <div className="w-full h-auto max-lg:aspect-[4/3] lg:h-full block relative z-0">
+            <div className="w-full h-auto max-lg:aspect-[4/3] lg:h-full bg-black block relative z-0">
               <video
                 ref={scrollVideo1}
-                preload="meta"
+                preload="metadata"
                 muted
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
@@ -174,7 +174,7 @@ export default function ModelSection() {
                   muted
                   loop
                   playsInline
-                  preload="meta"
+                  preload="metadata"
                   className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
                 >
                   <source src="/videos/vdo-model-2.mp4" type="video/mp4" />
@@ -249,10 +249,10 @@ export default function ModelSection() {
             </div>
           </div>
           <div className="w-full lg:w-[320px] xl:w-[490px] 3xl:w-[740px]">
-            <div className="w-full h-auto max-lg:aspect-[4/3] lg:h-full block relative z-0">
+            <div className="w-full h-auto max-lg:aspect-[4/3] lg:h-full block bg-black relative z-0">
               <video
                 ref={scrollVideo2}
-                preload="meta"
+                preload="metadata"
                 muted
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover"
@@ -277,7 +277,11 @@ export default function ModelSection() {
 function Stat({ label, value, suffix, decimals = 0 }) {
   return (
     <div>
-      <Text size="text2" as="p" className="max-sm:text-[8px] leading-none text-white">
+      <Text
+        size="text2"
+        as="p"
+        className="max-sm:text-[8px] leading-none text-white"
+      >
         {label}
       </Text>
       <Heading

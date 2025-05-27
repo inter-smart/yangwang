@@ -44,7 +44,7 @@ export default function SpecsSection() {
         defaultValue="u8"
         className="gap-0 relative z-0"
       >
-        <TabsList className="gap-[10px] xl:gap-[15px] 3xl:gap-[20px] mb-[15px] xl:mb-[20px] 3xl:mb-[30px] absolute z-0 top-[15px] sm:top-[40px] xl:top-[90px] 3xl:top-[140px] ltr:right-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] ltr:3xs:right-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] ltr:2xs:right-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] ltr:xs:right-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] ltr:sm:right-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] ltr:md:right-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:right-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:right-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:right-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:right-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:left-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] rtl:3xs:left-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] rtl:2xs:left-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] rtl:xs:left-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] rtl:sm:left-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] rtl:md:left-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:left-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:left-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:left-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:left-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
+        <TabsList className="gap-[10px] xl:gap-[15px] 3xl:gap-[20px] mb-[15px] xl:mb-[20px] 3xl:mb-[30px] absolute z-1 top-[15px] sm:top-[40px] xl:top-[90px] 3xl:top-[140px] ltr:right-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] ltr:3xs:right-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] ltr:2xs:right-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] ltr:xs:right-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] ltr:sm:right-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] ltr:md:right-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:right-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:right-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:right-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:right-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:left-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] rtl:3xs:left-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] rtl:2xs:left-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] rtl:xs:left-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] rtl:sm:left-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] rtl:md:left-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:left-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:left-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:left-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:left-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
           <TabsTrigger value="u8" className={TabsTriggerStyle}>
             u8
           </TabsTrigger>
@@ -93,13 +93,9 @@ export default function SpecsSection() {
                           className="w-[15px] sm:w-[20px] xl:w-[26px] 3xl:w-[40px]"
                         />
                         <div className="flex-1">
-                          <Heading
-                            size="heading6"
-                            as="h6"
-                            className="leading-tight capitalize font-medium text-black xl:max-w-[60px] 3xl:max-w-[100px]"
-                          >
+                          <h6 className="text-[10px] sm:text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[16px] 3xl:text-[20px] font-medium leading-tight capitalize text-black xl:max-w-[60px] 3xl:max-w-[100px]">
                             {item.title}
-                          </Heading>
+                          </h6>
                         </div>
                       </div>
                     </li>
@@ -161,13 +157,9 @@ export default function SpecsSection() {
                           className="w-[15px] sm:w-[20px] xl:w-[26px] 3xl:w-[40px]"
                         />
                         <div className="flex-1">
-                          <Heading
-                            size="heading6"
-                            as="h6"
-                            className="leading-tight capitalize font-medium text-black xl:max-w-[60px] 3xl:max-w-[100px]"
-                          >
+                          <h6 className="text-[10px] sm:text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[16px] 3xl:text-[20px] font-medium leading-tight capitalize text-black xl:max-w-[60px] 3xl:max-w-[100px]">
                             {item.title}
-                          </Heading>
+                          </h6>
                         </div>
                       </div>
                     </li>

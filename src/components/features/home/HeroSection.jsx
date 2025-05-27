@@ -23,7 +23,7 @@ const slide = [
   },
   {
     thumb: "hero-thumb-2.png",
-    background: "/videos/hero-1.mp4",
+    background: "/videos/hero-2.mp4",
     title: "u9",
     description: "Pure Electric Performance Supercar",
     href: "/",
@@ -91,7 +91,7 @@ export default function HeroSection() {
               className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
             >
               <video
-                // autoPlay
+                autoPlay
                 preload="auto"
                 width={1920}
                 height={1080}

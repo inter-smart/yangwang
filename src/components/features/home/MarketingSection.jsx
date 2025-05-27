@@ -37,7 +37,7 @@ const slide = [
   },
   {
     type: "video",
-    image: "/videos/hero-1.mp4",
+    image: "/videos/hero-2.mp4",
     alt: "u9",
   },
   {

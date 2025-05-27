@@ -137,7 +137,7 @@ export default function Footer() {
                   </ul>
                 </div>
                 <div>
-                  <ul className="flex gap-[10px] sm:gap-[15px] xl:gap-[20px] 3xl:gap-[30px]">
+                  <ul className="flex gap-[15px] sm:gap-[15px] xl:gap-[20px] 3xl:gap-[30px]">
                     {socialmedia.map((item, index) => (
                       <li key={`socialmedia-${index}`}>
                         <Link
