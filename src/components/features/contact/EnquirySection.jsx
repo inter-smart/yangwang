@@ -32,7 +32,7 @@ export default function EnquirySection() {
                     <div className="w-full 3xl:w-[calc(100%-510px)] 2xl:w-[calc(100%-410px)] xl:w-[calc(100%-350px)] lg:w-[calc(100%-300px)]">
 
                         <Tabs defaultValue="enquire" className="w-full">
-                            <TabsList className="flex justify-between items-center border-b border-gray-200 relative w-full h-[60px] rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
+                            <TabsList className="flex justify-between items-center mr-[25px] border-b border-gray-200 relative w-full h-[60px] rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
                                 <TabsTrigger
                                     value="enquire"
                                     className="relative text-black font-medium outline-none shadow-none
@@ -68,7 +68,7 @@ export default function EnquirySection() {
                                 <form className="w-full">
                                     <div className="w-full flex flex-wrap md:mx-[-25px] 3xl:my-[-36px] 2xl:my-[-25px] my-[-15px]">
 
-                                        <div className="w-full md:w-1/2   3xl:py-[36px] 2xl:py-[25px] py-[15px]">
+                                        <div className="w-full md:w-1/2  md:px-[25px] 3xl:py-[36px] 2xl:py-[25px] py-[15px]">
                                             <input
                                                 type="text"
                                                 placeholder="First Name"
