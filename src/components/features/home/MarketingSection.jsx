@@ -62,7 +62,7 @@ export default function MarketingSection() {
             as="h3"
             className="capitalize text-black mb-[5px]"
           >
-            Feel the Drive
+            Connect. Explore. Inspire.
           </Heading>
           <Link
             href="#"
