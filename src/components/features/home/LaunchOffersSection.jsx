@@ -6,18 +6,11 @@ import Image from "next/image";
 
 export default function LaunchOffersSection() {
   return (
-    <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-center relative z-0">
-      {/* <Img
-        src="launchOffers-bg-1.jpg"
-        alt="launchOffers-bg"
-        fill
-        sizes="1920px"
-        className="-z-1 object-cover"
-      /> */}
+    <section className="w-full h-[60dvh] md:h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] py-[40px] flex md:items-center relative z-0">
       <picture>
         <source
           media="(max-width: 768px)"
-          srcSet="/images/icon-left-arrow.svg"
+          srcSet="/images/mob-launchOffers-bg-1.jpg"
         />
         <Image
           src="/images/launchOffers-bg-1.jpg"
@@ -29,7 +22,7 @@ export default function LaunchOffersSection() {
       </picture>
 
       <div className="container">
-        <div className="flex ltr:justify-end">
+        <div className="flex ltr:md:justify-end">
           <div className="xl:max-w-[330px] 3xl:max-w-[500px]">
             <Heading
               as="h6"
