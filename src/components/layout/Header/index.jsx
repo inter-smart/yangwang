@@ -42,8 +42,8 @@ function HeaderNavItem({ href, title }) {
     <Link href={href} className="group relative z-0">
       <Heading
         as="h6"
-        className={`3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] sm:text-[12px] text-[20px] font-semibold tracking-[2px] uppercase hover:text-base1 transition-all duration-300 ${
-          pathname === href ? "text-base1" : "text-black sm:text-white"
+        className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
+          pathname === href ? "text-base1" : "text-black"
         }`}
       >
         {title}
@@ -102,7 +102,10 @@ export default function Header() {
               className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300"
             />
           </Link>
-          <NavigationMenu dir={isEnglish ? "ltr" : "rtl"}>
+          <NavigationMenu
+            dir={isEnglish ? "ltr" : "rtl"}
+            className="max-sm:hidden"
+          >
             <NavigationMenuList className="gap-0">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={triggerStyle}>
@@ -164,99 +167,6 @@ export default function Header() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              {/* <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className={triggerNavStyle}>
-                    Design & Technology
-                  </div>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                          <div className="text-sm font-medium leading-none">
-                            title 1
-                          </div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            p text
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className={triggerNavStyle}>
-                    About Us
-                  </div>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                          <div className="text-sm font-medium leading-none">
-                            title 1
-                          </div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            p text
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className={triggerNavStyle}>
-                    Contact
-                  </div>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                          <div className="text-sm font-medium leading-none">
-                            title 1
-                          </div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            p text
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className={triggerNavStyle}>
-                    Owners
-                  </div>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                          <div className="text-sm font-medium leading-none">
-                            title 1
-                          </div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            p text
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem> */}
-
               <NavigationMenuItem>
                 <NavigationMenuLink className={triggerStyle} asChild>
                   <Link href="#" className={triggerNavStyle}>
@@ -294,7 +204,7 @@ export default function Header() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 3xl:gap-[40px] max-sm:hidden">
+          <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 3xl:gap-[40px]">
             <div>
               <Select>
                 <SelectTrigger className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[3px]">
@@ -318,33 +228,41 @@ export default function Header() {
                 />
               </Link>
             </div>
-          </div>
-
-          <div className="sm:hidden">
-            <Sheet className="sm:hidden">
-              <SheetTrigger className="flex">
-                <Menu className="size-8 text-white m-auto" />
-              </SheetTrigger>
-              <SheetContent className="bg-white backdrop-blur-[30px]">
-                <SheetHeader>
-                  <SheetTitle className="sr-only">site navigation</SheetTitle>
-                  <SheetDescription className="sr-only">
-                    chose one to navigate
-                  </SheetDescription>
-                  <ul className="flex flex-col [&>li]:max-sm:m-[15px] my-[15px]">
-                    <li>
-                      <HeaderNavItem title={"Home"} href={"/"} />
-                    </li>
-                    <li>
-                      <HeaderNavItem title={"About"} href={"/about"} />
-                    </li>
-                    <li>
-                      <HeaderNavItem title={"Contact"} href={"/contact"} />
-                    </li>
-                  </ul>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
+            <div className="sm:hidden">
+              <Sheet className="sm:hidden">
+                <SheetTrigger className="flex">
+                  <Menu className="size-8 text-white m-auto" />
+                </SheetTrigger>
+                <SheetContent className="bg-white backdrop-blur-[30px]">
+                  <SheetHeader>
+                    <SheetTitle className="sr-only">site navigation</SheetTitle>
+                    <SheetDescription className="sr-only">
+                      chose one to navigate
+                    </SheetDescription>
+                    <ul className="flex flex-col [&>li]:max-sm:m-[15px] my-[15px]">
+                      <li>
+                        <HeaderNavItem title={"Models"} href={"/"} />
+                      </li>
+                      <li>
+                        <HeaderNavItem title={"About Us"} href={"#"} />
+                      </li>
+                      <li>
+                        <HeaderNavItem title={"Services"} href={"#"} />
+                      </li>
+                      <li>
+                        <HeaderNavItem title={"Contact"} href={"#"} />
+                      </li>
+                      <li>
+                        <HeaderNavItem title={"Owners"} href={"#"} />
+                      </li>
+                      <li>
+                        <HeaderNavItem title={"Offers"} href={"#"} />
+                      </li>
+                    </ul>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>

@@ -148,7 +148,7 @@ export default function ModelSection() {
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
               >
-                <source src="/videos/timer-2.mp4" type="video/mp4" />
+                <source src="/videos/vdo-model-scroll-1.mp4" type="video/mp4" />
               </video>
               <Img
                 src="icon-model-u8.svg"
@@ -177,7 +177,7 @@ export default function ModelSection() {
                   preload="meta"
                   className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
                 >
-                  <source src="/videos/hero-1.mp4" type="video/mp4" />
+                  <source src="/videos/vdo-model-2.mp4" type="video/mp4" />
                 </video>
                 <div className="w-full h-full flex flex-col justify-between">
                   <div>
@@ -257,7 +257,7 @@ export default function ModelSection() {
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover"
               >
-                <source src="/videos/timer.mp4" type="video/mp4" />
+                <source src="/videos/vdo-model-jumbing.mp4" type="video/mp4" />
               </video>
               <Img
                 src="icon-model-u9.svg"
