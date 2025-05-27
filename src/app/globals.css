@@ -71,6 +71,12 @@ body {
   .container {
     @apply mx-auto px-[var(--breakpoint-gap)] lg:px-[var(--breakpoint-gap-lg)] xl:px-[var(--breakpoint-gap-xl)] 2xl:px-[var(--breakpoint-gap-2xl)] 3xl:px-[var(--breakpoint-gap-3xl)];
   }
+  /* .spl-container {
+    @apply ml-auto pl-[var(--breakpoint-gap)] lg:pl-[var(--breakpoint-gap-lg)] xl:pl-[var(--breakpoint-gap-xl)] 2xl:pl-[var(--breakpoint-gap-2xl)] 3xl:pl-[var(--breakpoint-gap-3xl)];
+  }
+  .spr-container {
+    @apply mr-auto pr-[var(--breakpoint-gap)] lg:pr-[var(--breakpoint-gap-lg)] xl:pr-[var(--breakpoint-gap-xl)] 2xl:pr-[var(--breakpoint-gap-2xl)] 3xl:pr-[var(--breakpoint-gap-3xl)];
+  } */
 
   .btn {
     @apply text-[12px] lg:text-[14px] font-medium uppercase text-white w-full h-[35px] lg:h-[30px] xl:h-[34px] 2xl:h-[40px] flex items-center justify-center px-[10px] bg-none border-none rounded-[20px] cursor-pointer transition-all duration-400;

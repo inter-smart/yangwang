@@ -47,9 +47,8 @@ const Button = ({
 }) => {
   return (
     <motion.button
-      className={`${className} ${size && sizes[size]} ${
-        variant && variants[variant]?.[color]
-      } transition-background duration-300`}
+      className={`${className} ${size && sizes[size]} ${variant && variants[variant]?.[color]
+        } transition-background duration-300`}
       {...restProps}
       variants={buttonVariants}
       initial="offscreen"
@@ -86,9 +85,8 @@ const LinkButton = ({
       className="w-fit"
     >
       <Link
-        className={`${className} ${size && sizes[size]} ${
-          variant && variants[variant]?.[color]
-        } transition-background duration-300`}
+        className={`${className} ${size && sizes[size]} ${variant && variants[variant]?.[color]
+          } transition-background duration-300`}
         {...restProps}
         href={href}
       >
