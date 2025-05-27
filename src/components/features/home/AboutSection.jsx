@@ -39,19 +39,18 @@ export default function AboutSection() {
         scrub: true,
       },
     });
-
-    // Vehicle animation: move from left to right
     gsap.fromTo(
       carRef1.current,
       { xPercent: -100 },
       {
         xPercent: 0,
-        ease: "power1.out",
+        ease: "power2.out",
+        duration: 2,
+        delay: 0.2,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top center",
-          end: "bottom center",
-          scrub: 1,
+          start: "center center",
+          toggleActions: "play reset play none",
         },
       }
     );
@@ -61,11 +60,12 @@ export default function AboutSection() {
       {
         xPercent: 0,
         ease: "power1.out",
+        duration: 1,
+        delay: 0.2,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top center",
-          end: "bottom center",
-          scrub: 4,
+          start: "center center",
+          toggleActions: "play reset play none",
         },
       }
     );
@@ -78,10 +78,10 @@ export default function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px]"
+      className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px] overflow-hidden"
     >
       <div className="container">
-        <div className="3xl:max-w-[1320px] 2xl:max-w-[1080px] xl:max-w-[870px] lg:max-w-[768px] mx-auto">
+        <div className="3xl:max-w-[1320px] 2xl:max-w-[1080px] xl:max-w-[870px] lg:max-w-[768px] sm:max-w-[576px] mx-auto">
           <Heading
             size="heading6"
             as="h6"
@@ -107,20 +107,23 @@ export default function AboutSection() {
         </div>
       </div>
 
-      <div className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]" dir="ltr">
+      <div
+        className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]"
+        dir="ltr"
+      >
         <Img
           src="about-bg-1.png"
           alt="about-bg-1"
           width={603}
           height={295}
-          className="3xl:w-[680px] xl:w-[460px] lg:w-[320px]"
+          className="3xl:w-[680px] xl:w-[460px] lg:w-[320px] sm:w-[220px] w-[180px]"
         />
         <Img
           src="about-bg-2.png"
           alt="about-bg-2"
           width={494}
           height={266}
-          className="3xl:w-[700px] xl:w-[460px] lg:w-[320px]"
+          className="3xl:w-[700px] xl:w-[460px] lg:w-[320px] sm:w-[220px] w-[180px]"
         />
         <Img
           ref={carRef1}
@@ -128,7 +131,7 @@ export default function AboutSection() {
           alt="about-vehicle-1"
           width={207}
           height={89}
-          className="3xl:w-[309px] xl:w-[206px] lg:w-[120px] aspect-[207/89] object-contain absolute z-0 bottom-[4px] xl:bottom-[6px] 3xl:bottom-[10px] left-[30%]"
+          className="3xl:w-[309px] xl:w-[206px] lg:w-[120px] w-[80px] aspect-[207/89] object-contain absolute z-0 bottom-[4px] xl:bottom-[6px] 3xl:bottom-[10px] left-[26%] lg:left-[30%]"
         />
         <Img
           ref={carRef2}
@@ -136,7 +139,7 @@ export default function AboutSection() {
           alt="about-vehicle-2"
           width={219}
           height={60}
-          className="3xl:w-[330px] xl:w-[220px] lg:w-[140px] aspect-[219/60] object-contain absolute z-0 bottom-[4px] xl:bottom-[6px] 3xl:bottom-[10px] left-[52%]"
+          className="3xl:w-[330px] xl:w-[220px] lg:w-[140px] w-[80px] aspect-[219/60] object-contain absolute z-0 bottom-[4px] xl:bottom-[6px] 3xl:bottom-[10px] left-[56%] lg:left-[52%]"
         />
       </div>
     </section>

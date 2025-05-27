@@ -78,6 +78,11 @@ export default function Header() {
     };
   }, [lastScrollTop]);
 
+  const triggerStyle =
+    "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px]";
+  const triggerNavStyle =
+    "3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white";
+
   return (
     <header
       className={`w-full h-(--header-y) absolute z-10 top-0 left-0 right-0 block bg-linear-to-b from-black/40 to-transparent transition-all duration-300 ${
@@ -100,10 +105,8 @@ export default function Header() {
           <NavigationMenu dir={isEnglish ? "ltr" : "rtl"}>
             <NavigationMenuList className="gap-0">
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
-                    Models
-                  </div>
+                <NavigationMenuTrigger className={triggerStyle}>
+                  <div className={triggerNavStyle}>Models</div>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -161,9 +164,9 @@ export default function Header() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                  <div className={triggerNavStyle}>
                     Design & Technology
                   </div>
                 </NavigationMenuTrigger>
@@ -186,7 +189,7 @@ export default function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                  <div className={triggerNavStyle}>
                     About Us
                   </div>
                 </NavigationMenuTrigger>
@@ -209,7 +212,7 @@ export default function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                  <div className={triggerNavStyle}>
                     Contact
                   </div>
                 </NavigationMenuTrigger>
@@ -232,7 +235,7 @@ export default function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                  <div className={triggerNavStyle}>
                     Owners
                   </div>
                 </NavigationMenuTrigger>
@@ -252,29 +255,42 @@ export default function Header() {
                     </li>
                   </ul>
                 </NavigationMenuContent>
+              </NavigationMenuItem> */}
+
+              <NavigationMenuItem>
+                <NavigationMenuLink className={triggerStyle} asChild>
+                  <Link href="#" className={triggerNavStyle}>
+                    About Us
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px] 3xl:p-[12px]">
-                  <div className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white">
+                <NavigationMenuLink className={triggerStyle} asChild>
+                  <Link href="#" className={triggerNavStyle}>
+                    Services
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink className={triggerStyle} asChild>
+                  <Link href="#" className={triggerNavStyle}>
+                    Contact
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink className={triggerStyle} asChild>
+                  <Link href="#" className={triggerNavStyle}>
+                    Owners
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink className={triggerStyle} asChild>
+                  <Link href="#" className={triggerNavStyle}>
                     Offers
-                  </div>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                          <div className="text-sm font-medium leading-none">
-                            title 1
-                          </div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            p text
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -285,9 +301,7 @@ export default function Header() {
                   <SelectValue placeholder="en" />
                 </SelectTrigger>
                 <SelectContent className="bg-white max-w-[40px]">
-                  <SelectItem value="en">
-                    En
-                  </SelectItem>
+                  <SelectItem value="en">En</SelectItem>
                   <SelectItem value="ar">Ar</SelectItem>
                   <SelectItem value="us">Us</SelectItem>
                 </SelectContent>
