@@ -6,7 +6,7 @@ export default function OwnershipSection({ }) {
     return (
         <section className="w-full py-[30px_25px] lg:py-[60px_55px] xl:py-[80px_70px] 3xl:py-[100px_115px]">
             <div className="container">
-                <div className="h-full min-h-[335px] xl:min-h-[365px] 2xl:min-h-[535px] w-full flex items-center relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:left-0 before:inset-0 before:w-full before:h-full before:bg-gradient-to-t before:from-black/60 before:to-black/60 before:pointer-events-none after:content-[''] after:block after:absolute after:-z-1 after:left-0 after:inset-0 after:w-1/2 after:h-full after:bg-gradient-to-t after:from-[rgba(0,0,0,0.5)] after:to-[rgba(0,0,0,0.5)] after:pointer-events-none">
+                <div className="h-full min-h-[280px] md:min-h-[335px] xl:min-h-[365px] 2xl:min-h-[535px] w-full flex items-center relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:left-0 before:inset-0 before:w-full before:h-full before:bg-gradient-to-t before:from-black/60 before:to-black/60 before:pointer-events-none after:content-[''] after:block after:absolute after:-z-1 after:left-0 after:inset-0 after:w-1/2 after:h-full after:bg-gradient-to-t after:from-[rgba(0,0,0,0.5)] after:to-[rgba(0,0,0,0.5)] after:pointer-events-none">
                 <img
                     src="/images/withu.jpg"
                     autoPlay
