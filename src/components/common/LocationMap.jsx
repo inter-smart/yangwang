@@ -90,11 +90,11 @@ const CustomPopup = ({ branch }) => {
             </div>
             <div className="flex items-center mb-[15px] flex-wrap">
 
-                <span className='w-[calc(100%-16px)]  text-[16px] font-normal text-white '>{branch.email}</span>
+                <span className='w-[calc(100%-16px)]  text-[16px] font-normal text-white '>Email: {branch.email}</span>
             </div>
             <div className="flex items-center mb-[15px] flex-wrap">
 
-                <span className='w-[calc(100%-16px)]  text-[16px] font-normal text-white '>{branch.phone}</span>
+                <span className='w-[calc(100%-16px)]  text-[16px] font-normal text-white '>Phone: {branch.phone}</span>
             </div>
 
         </div>
@@ -185,15 +185,15 @@ export default function LocationMap() {
                     {branchLocations.map((branch) => (
                         <div
                             key={branch.id}
-                            className={`px-[35px] py-[30px] relative cursor-pointer group  ${selectedBranch.id === branch.id
+                            className={`3xl:px-[35px] 2xl:px-[30px] px-[20px] 3xl:py-[30px] 2xl:py-[25px] py-[20px] relative cursor-pointer group  ${selectedBranch.id === branch.id
                                 ? 'bg-[#5949A7] active'
-                                : 'hover:bg-[#5949A7]'
+                                : 'hover:bg-[#5949a7bd]'
                                 }`}
                             onClick={() => handleBranchClick(branch)}
 
                         >
                             <div
-                                className={`w-fit absolute top-[30px] right-[35px] flex items-center justify-end ml-auto mb-[30px] transition-opacity duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible ${selectedBranch.id === branch.id ? 'opacity-100 visible' : ''
+                                className={`w-fit absolute 3xl:top-[30px] 2xl:top-[20px] top-[15px] 3xl:right-[35px] 2xl:right-[25px] right-[20px] flex items-center justify-end ml-auto mb-[30px] transition-opacity duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible ${selectedBranch.id === branch.id ? 'opacity-100 visible' : ''
                                     }`}
                             >
                                 <div className="px-[5px]">
