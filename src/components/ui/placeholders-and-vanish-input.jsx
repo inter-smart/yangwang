@@ -176,7 +176,7 @@ export function PlaceholdersAndVanishInput({
       onSubmit={handleSubmit}>
       <canvas
         className={cn(
-          "absolute pointer-events-none text-base transform scale-50 top-[5%] left-[10px] xl:left-[15px] 3xl:left-[20px] origin-top-left filter invert dark:invert-0 pr-[20px] xl:pr-[30px] 3xl:pr-[40px]",
+          "absolute pointer-events-none text-base transform scale-50 top-[5%] ltr:left-[10px] ltr:xl:left-[15px] ltr:3xl:left-[20px] rtl:right-[10px] rtl:xl:right-[15px] rtl:3xl:right-[20px] ltr:origin-top-left rtl:origin-top-right filter invert dark:invert-0 ltr:pr-[20px] ltr:xl:pr-[30px] ltr:3xl:pr-[40px] rtl:pl-[20px] rtl:xl:pl-[30px] rtl:3xl:pl-[40px]",
           !animating ? "opacity-0" : "opacity-100"
         )}
         ref={canvasRef} />
@@ -192,13 +192,13 @@ export function PlaceholdersAndVanishInput({
         value={value}
         type="text"
         className={cn(
-          "3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-black w-full h-full relative z-50 border-none dark:text-white bg-transparent rounded-0 focus:outline-none focus:ring-0 pl-[10px] xl:pl-[15px] 3xl:pl-[20px] pr-[20px] xl:pr-[30px] 3xl:pr-[40px]",
+          "3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-black w-full h-full relative z-50 border-none dark:text-white bg-transparent rounded-0 focus:outline-none focus:ring-0 ltr:pl-[10px] ltr:xl:pl-[15px] ltr:3xl:pl-[20px] ltr:pr-[20px] ltr:xl:pr-[30px] ltr:3xl:pr-[40px] rtl:pr-[10px] rtl:xl:pr-[15px] rtl:3xl:pr-[20px] rtl:pl-[20px] rtl:xl:pl-[30px] rtl:3xl:pl-[40px]",
           animating && "text-transparent dark:text-transparent"
         )} />
       <button
         disabled={!value}
         type="submit"
-        className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-auto w-[22px] rounded-full disabled:bg-white disabled:opacity-20 bg-white dark:bg-zinc-900 dark:disabled:bg-zinc-800 transition duration-200 flex items-center justify-center">
+        className="absolute ltr:right-2 rtl:left-2 top-1/2 z-50 -translate-y-1/2 h-auto w-[22px] rounded-full disabled:bg-white disabled:opacity-20 bg-white dark:bg-zinc-900 dark:disabled:bg-zinc-800 transition duration-200 flex items-center justify-center rtl:-scale-x-100">
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -250,7 +250,7 @@ export function PlaceholdersAndVanishInput({
                 duration: 0.3,
                 ease: "linear",
               }}
-              className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-neutral-500 dark:text-zinc-500 pl-[10px] xl:pl-[15px] 3xl:pl-[20px] text-left w-[calc(100%-2rem)] truncate">
+              className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-neutral-500 dark:text-zinc-500 ltr:pl-[10px] ltr:xl:pl-[15px] ltr:3xl:pl-[20px] rtl:pr-[10px] rtl:xl:pr-[15px] rtl:3xl:pr-[20px] ltr:text-left rtl:text-right w-[calc(100%-2rem)] truncate">
               {placeholders[currentPlaceholder]}
             </motion.p>
           )}
