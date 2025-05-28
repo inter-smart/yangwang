@@ -152,7 +152,7 @@ export default function Footer() {
               </div>
               <div className="w-1/2 sm:w-[34%]">
                 <div className="mb-[20px] lg:mb-[30px] xl:mb-[14px] 2xl:mb-[55px]">
-                  <ul className="flex flex-col items-end [&>*]:my-[5px] sm:[&>*]:my-[10px] xl:[&>*]:my-[15px] 3xl:[&>*]:my-[25px]">
+                  <ul className="flex flex-col items-end [&>*]:my-[2px] sm:[&>*]:my-[5px] xl:[&>*]:my-[7px] 3xl:[&>*]:my-[12px]">
                     <li>
                       <Heading
                         as="h6"

@@ -1,16 +1,16 @@
-import BannerSection from "@/components/common/BannerSection";
+import InnerBanner from "@/components/common/InnerBanner";
 import PrivacyPolicy from "@/components/features/privacy-policy/PrivacyPolicy";
 
 export const metadata = {
-    title: "YANGWANG | Privacy policy",
-    description: "Understand how iChargeOn collects.",
+  title: "YANGWANG | Privacy policy",
+  description: "Understand how iChargeOn collects.",
 };
 
 export default function page() {
-    return (
-        <>
-            <BannerSection title="Privacy Policy" bannerImg="privacy-banner.jpg" />
-            <PrivacyPolicy />
-        </>
-    );
+  return (
+    <>
+      <InnerBanner title="Privacy Policy" image="privacy-banner.jpg" />
+      <PrivacyPolicy />
+    </>
+  );
 }
