@@ -19,11 +19,13 @@ const textVariants = {
 
 const sizes = {
   text1:
-  "3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal",
+    "3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal",
   text2:
-  "3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-normal",
+  "3xl:text-[16px] 2xl:text-[15px] xl:text-[14px] lg:text-[12px] text-[10px] font-normal leading-normal",
   text3:
     "3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-normal",
+  text4:
+    "3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-normal",
 };
 
 const Text = ({
