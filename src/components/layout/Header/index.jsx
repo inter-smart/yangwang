@@ -119,11 +119,10 @@ export default function Header() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          <div className="text-lg font-medium">
-                            U8
-                          </div>
+                          <div className="text-lg font-medium">U8</div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, fugiat?
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -134,11 +133,10 @@ export default function Header() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          <div className="text-lg font-medium">
-                            U8
-                          </div>
+                          <div className="text-lg font-medium">U8</div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, fugiat?
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -190,9 +188,24 @@ export default function Header() {
                   <SelectValue placeholder="en" />
                 </SelectTrigger>
                 <SelectContent className="bg-white max-w-[40px] border-base1/10">
-                  <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="en">En</SelectItem>
-                  <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="ar">Ar</SelectItem>
-                  <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="us">Us</SelectItem>
+                  <SelectItem
+                    className={`${triggerNavStyle} uppercase text-black`}
+                    value="en"
+                  >
+                    En
+                  </SelectItem>
+                  <SelectItem
+                    className={`${triggerNavStyle} uppercase text-black`}
+                    value="ar"
+                  >
+                    Ar
+                  </SelectItem>
+                  <SelectItem
+                    className={`${triggerNavStyle} uppercase text-black`}
+                    value="us"
+                  >
+                    Us
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>

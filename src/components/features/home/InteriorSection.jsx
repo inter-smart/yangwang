@@ -27,7 +27,7 @@ export default function InteriorSection() {
             <LinkButton
               href="#"
               aria-label="Book Test Drive"
-              className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px] hover:border-white"
+              className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
             >
               Book Test Drive
             </LinkButton>
