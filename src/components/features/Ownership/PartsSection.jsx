@@ -25,7 +25,7 @@ export default function PartsSection({ }) {
         <section className="w-full flex items-end relative z-0">
             <div className="lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] w-full h-full">
                 <div className="flex flex-wrap">
-                    <div className="w-[calc(100%-50vw)] 2xl:px-[50px_75px] xl:px-[20px_45px] px-[15px_25px] py-[40px]">
+                    <div className="w-[100vw] md:w-[calc(100%-50vw)] 2xl:px-[50px_75px] xl:px-[20px_45px] px-[15px_25px] py-[40px]">
                         <div className="h-full flex flex-wrap items-center">
                             <div className="h-fit w-full">
                                 <Heading
@@ -33,16 +33,25 @@ export default function PartsSection({ }) {
                                     as="h3"
                                     className="capitalize text-black 2xl:mb-[35px] mb-[20px]"
                                 >
-                                    Yangwang Service
+                                    Yangwang Parts
                                 </Heading>
                                 <Text
                                     size="text4"
                                     as="p"
+                                    className="capitalize text-black mb-[15px]">
+                                    No matter when and where, if your car needs emergency assistance, Yangwang will provide you with 7x24 hours rescue support. Our professionals will be on call at any time to provide you with timely and professional help.
+                                </Text>
+                                <Text
+                                    size="text4"
+                                    as="p"
                                     className="capitalize text-black">
-                                    bgfnb It is said in "The Book of Rites: The Doctrine of the Mean": "So a gentleman respects morality and studies the way of learning. He seeks to be broad-minded and meticulous. He is extremely wise and follows the doctrine of the mean." Yangwang Auto After-sales Service adheres to the original intention of sincerity, seeks to be broad-minded and meticulous, and is committed to bringing the ultimate service experience to users.
+                                    While you are enjoying the ultimate driving pleasure, if your car cannot continue
+                                    to drive safely due to wrong driving or traffic accidents, Yangwang will provide you with free towing rescue services
+                                    (applicable to non-commercial vehicles) within 200 kilometers (the actual towing distance from the vehicle breakdown
+                                    site to the Yangwang Center Store), providing worry-free protection for your travel safety.
                                 </Text>
                                 <div className="w-full flex flex-wrap justify-between -m-[5px] 2xl:mt-[60px] mt-[30px]">
-                                    <div className="p-[5px]">
+                                    <div className="p-[5px] flex items-end">
                                         <LinkButton
                                             href="#"
                                             aria-label="Book Test Drive"
@@ -83,7 +92,7 @@ export default function PartsSection({ }) {
 
                         </div>
                     </div>
-                    <div className="w-[50vw] group overflow-hidden relative z-0">
+                    <div className="w-[100vw] md:w-[50vw] max-md:min-h-[300px] group overflow-hidden relative z-0">
                         <Img
                             src="part.jpg"
                             alt="part_img"

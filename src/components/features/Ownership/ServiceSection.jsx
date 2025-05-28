@@ -24,8 +24,8 @@ export default function ServiceSection({ }) {
     return (
         <section className="w-full flex items-end relative z-0">
             <div className="lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
-                <div className="flex flex-wrap">
-                    <div className="w-[50vw] group overflow-hidden relative z-0">
+                <div className="flex flex-wrap max-md:flex-col-reverse">
+                    <div className="md:w-[50vw] w-[100vw] max-md:min-h-[300px] group overflow-hidden relative z-0">
                         <Img
                             src="ownerService.jpg"
                             alt="model-u9"
@@ -34,7 +34,7 @@ export default function ServiceSection({ }) {
                             className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                         />
                     </div>
-                    <div className="w-[calc(100%-50vw)] 3xl:pl-[75px] 2xl:pl-[65px] xl:pl-[45px] pl-[25px] py-[40px]">
+                    <div className="md:w-[calc(100%-50vw)] w-[100vw] 3xl:pl-[75px] 2xl:pl-[65px] xl:pl-[45px] pl-[25px] py-[40px]">
                         <div className="w-full h-full flex items-center">
                             <div className="">
                                 <Heading
