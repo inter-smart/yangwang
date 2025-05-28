@@ -57,7 +57,7 @@ export default function SpecsSection() {
             <div className="w-full sm:w-[300px] lg:w-[320px] xl:w-[490px] 3xl:w-[740px] relative z-0 overflow-hidden px-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] 3xs:px-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] 2xs:px-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] xs:px-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] ltr:sm:pr-[10px] ltr:sm:pl-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] ltr:md:pl-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:sm:pl-[10px] rtl:sm:pr-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] rtl:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[50px_10px] sm:py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px] gap-0">
               <Img
                 src="specs-bg-1.png"
-                alt="specs-bg-1"
+                alt="specs-bg-1" 
                 fill
                 sizes="420px"
                 className="-z-1 object-cover opacity-[2%]"
