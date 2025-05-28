@@ -1,4 +1,3 @@
-"use client";
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Img } from "@/components/layout/Img";
@@ -20,17 +19,17 @@ export default function YangwangSection({
                 priority
             />
             <div className="container">
-                <div className="w-full max-w-[1070px] h-full 3xl:pt-[125px] xl:pt-[80px] m-auto text-center text-white absolute z-1 inset-0 flex flex-col items-center justify-start">
+                <div className="w-full 3xl:max-w-[1070px] max-sm:px-[10px] md:max-w-[715px] max-w-full h-full 3xl:pt-[125px] xl:pt-[80px] pt-[50px] m-auto text-center text-white absolute z-1 inset-0 flex flex-col items-center justify-start">
                     <Heading
                         size="heading3"
                         as="h3"
-                        className="3xl:mb-[40px] xl:mb-[30px] max-w-3xl"
+                        className="3xl:mb-[40px] xl:mb-[30px] mb-[20px]"
                     >
                         {title}
                     </Heading>
                     <Text
                         as="p"
-                        className="3xl:text-[18px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal"
+                        className="3xl:text-[18px] 2xl:text-[16px] xl:text-[13px] md:text-[12px] text-[11px] font-normal leading-normal"
                     >
                         {description}
                     </Text>
