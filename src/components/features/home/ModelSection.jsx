@@ -86,83 +86,9 @@ export default function ModelSection() {
                   preload="metadata"
                   className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
                 >
-<<<<<<< HEAD
-                  U8
-                </Heading>
-                <Heading
-                  size="heading5"
-                  as="h5"
-                  className="font-normal text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
-                >
-                  Command the Elements
-                </Heading>
-                <LinkButton
-                  href="#"
-                  aria-label="Explore Models"
-                  className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px]"
-                >
-                  Explore Models
-                </LinkButton>
-              </div>
-              <div className="flex flex-wrap gap-[20px] xl:gap-[30px] 3xl:gap-[50px]">
-                <div>
-                  <Text size="text1" as="p" className="leading-none text-white">
-                    Quad-Motor System
-                  </Text>
-                  <Heading
-                    size="heading3"
-                    as="h3"
-                    className="font-medium text-white"
-                  >
-                    <CountUp
-                      end={1200}
-                      duration={3}
-                      enableScrollSpy={true}
-                      suffix=" ps" 
-                    />
-                  </Heading>
-                </div>
-                <div>
-                  <Text size="text1" as="p" className="leading-none text-white">
-                    0 to 100 Kmph
-                  </Text>
-                  <Heading
-                    size="heading3"
-                    as="h3"
-                    className="font-medium text-white"
-                  >
-                    <CountUp
-                      end={3.6}
-                      duration={3}
-                      enableScrollSpy={true}
-                      decimals={1}
-                      suffix=" Sec"
-                    />
-                  </Heading>
-                </div>
-                <div>
-                  <Text size="text1" as="p" className="leading-none text-white">
-                    Impressive Range
-                  </Text>
-                  <Heading
-                    size="heading3"
-                    as="h3"
-                    className="font-medium text-white"
-                  >
-                    <CountUp
-                      end={1000}
-                      duration={3}
-                      enableScrollSpy={true}
-                      suffix=" km"
-                    />
-                  </Heading>
-                </div>
-                <div className="flex gap-[10px] xl:gap-[15px] 3xl:gap-[20px] ml-auto">
-=======
                   <source src="/videos/vdo-model-1.mp4" type="video/mp4" />
                 </video>
                 <div className="w-full h-full flex flex-col justify-between text-white">
->>>>>>> d16b4ce60c3596eb6c9d39c555e8fea8f3bff2bc
                   <div>
                     <Heading
                       size="heading2"
