@@ -11,17 +11,17 @@ import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 const urwForm = localFont({
   src: [
     {
-      path: "../../public/fonts/URWForm-Regular.woff2",
+      path: "../../../public/fonts/URWForm-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../public/fonts/URWForm-Medium.woff2",
+      path: "../../../public/fonts/URWForm-Medium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../../public/fonts/URWForm-Bold.woff2",
+      path: "../../../public/fonts/URWForm-Bold.woff2",
       weight: "700",
       style: "normal",
     },
