@@ -67,9 +67,15 @@ export default function MarketingSection() {
           <Link
             href="#"
             aria-label="Instagram"
-            className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-none capitalize text-black flex items-center gap-[4px] xl:gap-[6px] 3xl:gap-[10px] min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px]"
+            className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-none capitalize text-black flex items-center gap-[4px] xl:gap-[6px] 3xl:gap-[10px] min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
           >
-            <Img src="icon-btn-insta.svg" alt="insta" width={12} height={12} />
+            <Img
+              src="icon-btn-insta.svg"
+              alt="insta"
+              width={12}
+              height={12}
+              className="w-[10px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] block"
+            />
             View on Instagram
           </Link>
         </div>

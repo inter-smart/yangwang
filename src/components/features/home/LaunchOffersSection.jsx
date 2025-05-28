@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function LaunchOffersSection() {
   return (
-    <section className="w-full h-[60dvh] md:h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] py-[40px] flex md:items-center relative z-0">
+    <section className="w-full h-[60dvh] md:h-auto min-h-[368px] py-[40px] md:py-[160px_140px] lg:py-[200px_280px] xl:py-[220px_190px] 2xl:py-[290px_260px] 3xl:py-[330px_290px] flex md:items-center relative z-0">
       <picture>
         <source
           media="(max-width: 768px)"
@@ -24,10 +24,10 @@ export default function LaunchOffersSection() {
 
       <div className="container">
         <div className="flex ltr:md:justify-end">
-          <div className="xl:max-w-[330px] 3xl:max-w-[500px]">
+          <div className="xl:max-w-[330px] 2xl:max-w-[440px] 3xl:max-w-[500px]">
             <Link
               href="/"
-              className="3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-none capitalize text-white mb-[10px] xl:mb-[15px] 3xl:mb-[20px] flex items-center gap-[3px] xl:gap-[5px] 3xl:gap-[7px]"
+              className="3xl:text-[25px] 2xl:text-[21px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-none capitalize text-white mb-[10px] xl:mb-[15px] 2xl:mb-[25px] flex items-center gap-[3px] xl:gap-[5px] 3xl:gap-[7px]"
             >
               Drive the Future Today
               <Img
@@ -48,7 +48,7 @@ export default function LaunchOffersSection() {
             <Text
               size="text3"
               as="p"
-              className="text-white mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
+              className="text-white mb-[15px] xl:mb-[30px] 2xl:mb-[50px] 3xl:mb-[60px]"
             >
               Complimentary premium upgrade package.
             </Text>

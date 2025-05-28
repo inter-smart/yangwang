@@ -8,12 +8,12 @@ import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-van
 
 const footerNav = [
   {
-    href: "/",
-    title: "Design and technology",
-  },
-  {
     href: "/about",
     title: "About Us",
+  },
+  {
+    href: "/services",
+    title: "Services",
   },
   {
     href: "/contact",
@@ -61,17 +61,10 @@ const socialmedia = [
     alt: "linkedin",
     image: "img_linkedin.svg",
   },
-  {
-    href: "#",
-    alt: "x",
-    image: "img_x.svg",
-  },
 ];
 
 export default function Footer() {
   const pathname = usePathname();
-
-  const isEnglish = true;
 
   const placeholders = [
     "Enter Your email address",
@@ -83,12 +76,12 @@ export default function Footer() {
     <footer className="w-full h-auto block bg-black">
       <div className="w-full ltr:lg:pr-0 ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] trl:lg:pl-0 rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
         <div className="flex flex-wrap max-lg:flex-col-reverse">
-          <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-420px)] 3xl:w-[calc(100%-640px)] max-3xs:px-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] max-2xs:px-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] max-xs:px-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] max-sm:px-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] max-md:px-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] max-lg:px-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pr-[40px] ltr:xl:pr-[50px] ltr:2xl:pr-[75px] ltr:3xl:pr-[80px] rtl:lg:pl-[40px] rtl:xl:pl-[50px] rtl:2xl:pl-[75px] rtl:3xl:pl-[80px]">
+          <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-420px)] 2xl:w-[calc(100%-560px)] 3xl:w-[calc(100%-640px)] max-3xs:px-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] max-2xs:px-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] max-xs:px-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] max-sm:px-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] max-md:px-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] max-lg:px-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pr-[40px] ltr:xl:pr-[50px] ltr:2xl:pr-[75px] ltr:3xl:pr-[80px] rtl:lg:pl-[40px] rtl:xl:pl-[50px] rtl:2xl:pl-[75px] rtl:3xl:pl-[80px] max-lg:pt-[20px]">
             <div className="flex flex-wrap -mx-[5px] xl:-mx-[10px] 3xl:-mx-[15px] [&>*]:p-[15px_5px_5px] sm:[&>*]:p-[30px_5px_20px] lg:[&>*]:p-[50px_5px_30px] xl:[&>*]:p-[70px_10px_40px] 3xl:[&>*]:p-[100px_15px_60px]">
               <div className="w-full sm:w-[32%]">
                 <Heading
                   as="h6"
-                  className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-medium uppercase text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
+                  className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-medium uppercase text-white mb-[15px] xl:mb-[20px] 2xl:mb-[30px]"
                 >
                   menu
                 </Heading>
@@ -96,11 +89,11 @@ export default function Footer() {
                   {footerNav.map((item, index) => (
                     <li
                       key={`footeNav-${index}`}
-                      className="w-full mb-[10px] xl:mb-[15px] 3xl:mb-[25px]"
+                      className="w-full mb-[10px] xl:mb-[15px] 2xl:mb-[25px]"
                     >
                       <Heading
                         as="h6"
-                        className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
+                        className={`3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
                           pathname === item.href ? "underline" : ""
                         }`}
                       >
@@ -114,7 +107,7 @@ export default function Footer() {
                 <div className="mb-[30px] lg:mb-[60px] xl:mb-[65px] 3xl:mb-[100px]">
                   <Heading
                     as="h6"
-                    className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-medium uppercase text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
+                    className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-medium uppercase text-white mb-[15px] xl:mb-[20px] 2xl:mb-[30px]"
                   >
                     Models
                   </Heading>
@@ -122,11 +115,11 @@ export default function Footer() {
                     {modelsNav.map((item, index) => (
                       <li
                         key={`modelsNav-${index}`}
-                        className="w-full mb-[10px] xl:mb-[15px] 3xl:mb-[25px]"
+                        className="w-full mb-[10px] xl:mb-[15px] 2xl:mb-[25px]"
                       >
                         <Heading
                           as="h6"
-                          className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
+                          className={`3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
                             pathname === item.href ? "underline" : ""
                           }`}
                         >
@@ -137,12 +130,12 @@ export default function Footer() {
                   </ul>
                 </div>
                 <div>
-                  <ul className="flex gap-[15px] sm:gap-[15px] xl:gap-[20px] 3xl:gap-[30px]">
+                  <ul className="flex gap-[15px] sm:gap-[15px] xl:gap-[20px] 2xl:gap-[30px]">
                     {socialmedia.map((item, index) => (
                       <li key={`socialmedia-${index}`}>
                         <Link
                           href={item.href}
-                          className="w-[12px] 2xl:w-[12px] 3xl:w-[20px] aspect-square block transition-transform duration-300 hover:scale-110"
+                          className="w-[12px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] aspect-square block transition-transform duration-300 hover:scale-110"
                         >
                           <Img
                             src={item.image}
@@ -158,12 +151,12 @@ export default function Footer() {
                 </div>
               </div>
               <div className="w-1/2 sm:w-[34%]">
-                <div className="mb-[20px] lg:mb-[30px] xl:mb-[14px] 3xl:mb-[55px]">
+                <div className="mb-[20px] lg:mb-[30px] xl:mb-[14px] 2xl:mb-[55px]">
                   <ul className="flex flex-col items-end [&>*]:my-[5px] sm:[&>*]:my-[10px] xl:[&>*]:my-[15px] 3xl:[&>*]:my-[25px]">
                     <li>
                       <Heading
                         as="h6"
-                        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 flex"
+                        className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 flex"
                       >
                         <Link href="#">Service Centers</Link>
                         <Img
@@ -178,7 +171,7 @@ export default function Footer() {
                     <li>
                       <Heading
                         as="h6"
-                        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 flex"
+                        className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 flex"
                       >
                         <Link href="#">Showroom</Link>
                         <Img
@@ -193,22 +186,22 @@ export default function Footer() {
                   </ul>
                 </div>
                 <div>
-                  <ul className="flex flex-col items-end">
-                    <li className="mb-[10px] xl:mb-[15px] 3xl:mb-[25px]">
+                  <ul className="flex flex-col items-end [&>*]:mb-[10px] [&>*]:xl:mb-[15px] [&>*]3xl:mb-[25px]">
+                    <li>
                       <Link href="/">
                         <Img
                           src="footer-logo-1.svg"
                           alt="logo"
                           width={25}
                           height={40}
-                          className="w-[14px] xl:w-[16px] 3xl:w-[40px]"
+                          className="w-[14px] xl:w-[16px] 2xl:w-[20px] 3xl:w-[40px]"
                         />
                       </Link>
                     </li>
-                    <li className="mb-[10px] xl:mb-[15px] 3xl:mb-[25px]">
+                    <li>
                       <Heading
                         as="h6"
-                        className="3xl:text-[14px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base3"
+                        className="3xl:text-[14px] 2xl:text-[16px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base1"
                       >
                         <a
                           href="mailto:yangwang@oman.in"
@@ -219,10 +212,10 @@ export default function Footer() {
                         </a>
                       </Heading>
                     </li>
-                    <li className="mb-[10px] xl:mb-[15px] 3xl:mb-[25px]">
+                    <li>
                       <Heading
                         as="h6"
-                        className="3xl:text-[14px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base3"
+                        className="3xl:text-[14px] 2xl:text-[16px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base1"
                       >
                         <a
                           href="tel:9633781549955"
@@ -240,7 +233,7 @@ export default function Footer() {
             <div className="flex items-center justify-between gap-[5px] py-[15px] xl:py-[30px] 3xl:py-[40px] border-t-[1px] border-[#2c2c2c] max-2xs:flex-col">
               <Text
                 as="p"
-                className="3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white"
+                className="3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white"
               >
                 Copyright © Shenzhen Yangwang Automobile Sales Co., Ltd. All
                 Rights Reserved.
@@ -249,7 +242,7 @@ export default function Footer() {
                 <li>
                   <Heading
                     as="h6"
-                    className={`3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
+                    className={`3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
@@ -259,7 +252,7 @@ export default function Footer() {
                 <li>
                   <Heading
                     as="h6"
-                    className={`3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
+                    className={`3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
@@ -270,7 +263,7 @@ export default function Footer() {
                   <div className="flex items-center pl-[10px] xl:pl-[20px] 3xl:pl-[28px]">
                     <Text
                       as="p"
-                      className="3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white"
+                      className="3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white"
                     >
                       Crafted By&nbsp;
                     </Text>
@@ -284,7 +277,7 @@ export default function Footer() {
                         alt="author"
                         width={11}
                         height={14}
-                        className="w-[8px] xl:w-[8px] 3xl:w-[11px] block"
+                        className="w-[8px] xl:w-[8px] 2xl:w-[10px] 3xl:w-[11px] block"
                       />
                     </a>
                   </div>
@@ -292,7 +285,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="w-full lg:w-[320px] xl:w-[420px] 3xl:w-[640px]">
+          <div className="w-full lg:w-[320px] xl:w-[420px] 2xl:w-[560px] 3xl:w-[640px]">
             <div className="w-full h-full flex items-center justify-center relative z-0 p-[20px_10px]">
               <Img
                 src="footer-bg.jpg"
@@ -308,7 +301,7 @@ export default function Footer() {
                   SUBCRIBE NEWSLETTER
                 </Heading>
                 <PlaceholdersAndVanishInput
-                  className="rounded-0 rtl:text-right"
+                  className="rounded-0 rtl:text-right bg-ba"
                   placeholders={placeholders}
                 />
               </div>
@@ -317,25 +310,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function ShowroomInfo({ link, title, image }) {
-  return (
-    <>
-      <Heading
-        as="h6"
-        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 flex"
-      >
-        <Link href={link}>{title}</Link>
-        <Img
-          src={image}
-          alt="location"
-          width={13}
-          height={18}
-          className="ltr:ml-[4px] ltr:xl:ml-[6px] ltr:3xl:ml-[8px] rtl:mr-[4px] rtl:xl:mr-[6px] rtl:3xl:mr-[8px]"
-        />
-      </Heading>
-    </>
   );
 }

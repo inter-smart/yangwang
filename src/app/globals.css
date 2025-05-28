@@ -9,9 +9,9 @@
 
   --font-urwForm: var(--font-urwForm);
 
-  --color-base1: #1d0a44;
+  --color-base1: #f1d1a8;
   --color-base2: #cdcdcd;
-  --color-base3: #8c5ceb;
+  --color-base3: #1d0a44;
 
   --breakpoint-4xs: 20rem;
   /* 320px */
@@ -35,13 +35,15 @@
   /* 1920px */
 
   --breakpoint-gap: 15px;
+  /* * */
   --breakpoint-gap-lg: 60px;
   /* 1024px */
   --breakpoint-gap-xl: 65px;
   /* 1280px */
-  --breakpoint-gap-2xl: 80px;
+  --breakpoint-gap-2xl: 86px;
   /* 1536px */
   --breakpoint-gap-3xl: 100px;
+  /* 1920px */
 
   --animate-fadeDown: fadeDown 0.6s ease-in-out both;
   @keyframes fadeDown {
@@ -54,7 +56,7 @@
       transform: translateY(0);
     }
   }
-  
+
   --animate-right: bounce 1s ease-in-out infinite;
 
   @keyframes bounce {
@@ -86,9 +88,9 @@ body {
     @apply mx-auto px-[var(--breakpoint-gap)] lg:px-[var(--breakpoint-gap-lg)] xl:px-[var(--breakpoint-gap-xl)] 2xl:px-[var(--breakpoint-gap-2xl)] 3xl:px-[var(--breakpoint-gap-3xl)];
   }
 
-  .btn {
+  /* .btn {
     @apply text-[12px] lg:text-[14px] font-medium uppercase text-white w-full h-[35px] lg:h-[30px] xl:h-[34px] 2xl:h-[40px] flex items-center justify-center px-[10px] bg-none border-none rounded-[20px] cursor-pointer transition-all duration-400;
-  }
+  } */
 
   .btn-base1 {
     @apply bg-base2 hover:bg-base1 hover:border-base1;

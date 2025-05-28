@@ -22,8 +22,8 @@ const buttonVariants = {
 
 const variants = {
   fill: {
-    white: "text-black bg-white border-white hover:bg-base1 hover:border-base1 hover:text-white",
-    black: "text-white bg-black border-black hover:bg-base1 hover:border-base1 hover:text-white",
+    white: "text-black bg-white border-white hover:bg-base1 hover:border-base1 hover:text-black",
+    black: "text-white bg-black border-black hover:bg-base1 hover:border-base1 hover:text-black",
     base1:
       "text-white bg-base1 border-base1 hover:bg-base1/90 hover:text-white",
   },
@@ -31,7 +31,7 @@ const variants = {
 
 const sizes = {
   button1:
-    "3xl:text-[14px] 2xl:text-[12px] xl:text-[9px] lg:text-[9px] text-[9px] font-medium leading-none text-center whitespace-nowrap w-full h-[25px] sm:h-[30px] lg:h-[33px] 2xl:h-[45px] 3xl:h-[50px] flex flex-row items-center justify-center gap-[5px] lg:gap-[10px] 3xl:gap-[14px] p-[5px] cursor-pointer rounded-none border border-solid",
+    "3xl:text-[14px] 2xl:text-[12px] xl:text-[9px] lg:text-[9px] text-[9px] font-medium leading-none text-center whitespace-nowrap w-full h-[25px] sm:h-[30px] lg:h-[33px] 2xl:h-[43px] 3xl:h-[50px] flex flex-row items-center justify-center gap-[5px] lg:gap-[10px] 3xl:gap-[14px] p-[5px] cursor-pointer rounded-none border border-solid",
 };
 
 const Button = ({
