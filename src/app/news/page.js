@@ -1,5 +1,6 @@
-import AutomotiveNewsSection from "@/components/features/news/NewSection";
-
+import BannerSection from "@/components/common/BannerSection";
+import NewSection from "@/components/features/news/NewSection";
+import FollowusSection from "@/components/features/news/FollowusSection";
 
 export const metadata = {
     title: "yangwang | News",
@@ -10,7 +11,9 @@ export const metadata = {
 export default function NewsPage() {
     return (
         <>
-            <AutomotiveNewsSection />
+            <BannerSection title="Latest News & Updates" />
+            <NewSection />
+            <FollowusSection />
         </>
     );
 }
