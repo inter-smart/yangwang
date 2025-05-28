@@ -7,7 +7,7 @@ import WithyouSection from "@/components/features/Ownership/WithyouSection";
 export default function ownership() {
     return (
         <>
-            <BannerSection title="Ownership Redefined" />
+            <BannerSection title="Ownership Redefined" bannerImg="owner-banner.jpg" />
             <OwnershipSection />
             <ServiceSection />
             <PartsSection />
