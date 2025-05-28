@@ -16,6 +16,7 @@ const slide = [
   {
     thumb: "hero-thumb-1.png",
     background: "/videos/hero-1.mp4",
+    poster: "images/poster-hero-1.jpg",
     title: "u8",
     description: "Pure Electric Performance Supercar",
     href: "/",
@@ -24,6 +25,7 @@ const slide = [
   {
     thumb: "hero-thumb-2.png",
     background: "/videos/hero-2.mp4",
+    poster: "images/poster-hero-1.jpg",
     title: "u9",
     description: "Pure Electric Performance Supercar",
     href: "/",
@@ -99,6 +101,7 @@ export default function HeroSection() {
                 loop
                 className="w-full h-full absolute -z-1 inset-0 object-cover"
                 aria-label="Video player"
+                poster={item.poster}
               >
                 <source src={item.background} type="video/mp4" />
                 Your browser does not support the video tag.

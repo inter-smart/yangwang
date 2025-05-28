@@ -186,13 +186,13 @@ export default function Header() {
           <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 2xl:gap-[30px] 3xl:gap-[40px]">
             <div>
               <Select>
-                <SelectTrigger className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] 3xl:[&>svg]:mt-[3px]">
+                <SelectTrigger className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] 3xl:[&>svg]:mt-[3px]">
                   <SelectValue placeholder="en" />
                 </SelectTrigger>
                 <SelectContent className="bg-white max-w-[40px] border-base1/10">
-                  <SelectItem className={`${triggerNavStyle} text-black`} value="en">En</SelectItem>
-                  <SelectItem className={`${triggerNavStyle} text-black`} value="ar">Ar</SelectItem>
-                  <SelectItem className={`${triggerNavStyle} text-black`} value="us">Us</SelectItem>
+                  <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="en">En</SelectItem>
+                  <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="ar">Ar</SelectItem>
+                  <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="us">Us</SelectItem>
                 </SelectContent>
               </Select>
             </div>

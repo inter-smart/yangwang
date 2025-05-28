@@ -50,17 +50,10 @@ export default function ModelSection() {
     };
 
     ScrollTrigger.matchMedia({
-      // Applies to all screen sizes
       all: () => {
         setupScrollVideo(scrollVideo1.current, containerRef1.current);
         setupScrollVideo(scrollVideo2.current, containerRef2.current);
       },
-
-      // Example for large screens only
-      // "(min-width: 1024px)": () => {
-      //   setupScrollVideo(scrollVideo1.current, containerRef1.current);
-      //   setupScrollVideo(scrollVideo2.current, containerRef2.current);
-      // },
     });
 
     return () => {
@@ -163,8 +156,10 @@ export default function ModelSection() {
                 ref={scrollVideo1}
                 preload="metadata"
                 muted
+                loop
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
+                poster="images/poster-model-1.jpg"
               >
                 <source src="/videos/vdo-model-scroll-1.mp4" type="video/mp4" />
               </video>
@@ -272,8 +267,10 @@ export default function ModelSection() {
                 ref={scrollVideo2}
                 preload="metadata"
                 muted
+                loop
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover"
+                poster="images/poster-model-2.jpg"
               >
                 <source src="/videos/vdo-model-jumbing.mp4" type="video/mp4" />
               </video>

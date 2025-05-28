@@ -76,7 +76,7 @@ export default function EventsSection() {
                   <Card className="w-full h-auto block rounded-none border-0 shadow-none p-0 overflow-hidden relative z-0">
                     <CardContent
                       className={`${
-                        index === 0 ? "h-[220px] sm:h-[320px] lg:h-[400px] xl:h-[490px] 2xl:h-[560px] 3xl:h-[740px]" : "h-[86px] sm:h-[220px] lg:h-[168px] xl:h-[202px] 2xl:h-[231px] 3xl:h-[311px]"
+                        index === 0 ? "h-[220px] sm:h-[320px] lg:h-[400px] xl:h-[490px] 2xl:h-[560px] 3xl:h-[740px]" : "h-[86px] sm:h-[220px] lg:h-[168px] xl:h-[200px] 2xl:h-[231px] 3xl:h-[306px]"
                       } "w-full block overflow-hidden relative z-0 mb-[5px] sm:mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"`}
                     >
                       <Img
