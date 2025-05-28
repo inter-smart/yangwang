@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <>
       <EnquirySection /> 
-      <LocationSection /> 
+      {/* <LocationSection />  */}
       <FaqSection /> 
     </>
   );
