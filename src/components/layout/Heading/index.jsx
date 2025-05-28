@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 const textVariants = {
   offscreen: {
-    y: 50,
+    y: 60,
     opacity: 0,
   },
   onscreen: {
@@ -14,7 +14,7 @@ const textVariants = {
     transition: {
       type: "easeOuteaseOut",
       bounce: 0.4,
-      duration: 0.4,
+      duration: 0.8,
     },
   },
 };
