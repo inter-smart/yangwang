@@ -42,7 +42,7 @@ function HeaderNavItem({ href, title }) {
     <Link href={href} className="group relative z-0">
       <Heading
         as="h6"
-        className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
+        className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base3 transition-all duration-300 ${
           pathname === href ? "text-base1" : "text-black"
         }`}
       >
@@ -81,7 +81,7 @@ export default function Header() {
   const triggerStyle =
     "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px]";
   const triggerNavStyle =
-    "3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white";
+    "3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white transition-color duration-300 hover:text-base3";
 
   return (
     <header
@@ -99,7 +99,7 @@ export default function Header() {
               alt="Headerlogo"
               width={45}
               height={60}
-              className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300"
+              className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300 hover:text-base3"
             />
           </Link>
           <NavigationMenu
@@ -111,55 +111,34 @@ export default function Header() {
                 <NavigationMenuTrigger className={triggerStyle}>
                   <div className={triggerNavStyle}>Models</div>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                    <li className="row-span-3">
+                <NavigationMenuContent className="bg-white border-base1/10">
+                  <ul className="grid p-[15px] md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                    <li className="row-span-2">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            shadcn/ui
+                          <div className="text-lg font-medium">
+                            U8
                           </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components that you can copy
-                            and paste into your apps. Accessible. Customizable.
-                            Open Source.
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <li className="row-span-3">
+                    <li className="row-span-2">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            title 2
+                          <div className="text-lg font-medium">
+                            U8
                           </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components that you can copy
-                            and paste into your apps. Accessible. Customizable.
-                            Open Source.
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li className="row-span-3">
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/"
-                        >
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            title 3
-                          </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            Beautifully designed components that you can copy
-                            and paste into your apps. Accessible. Customizable.
-                            Open Source.
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -207,13 +186,13 @@ export default function Header() {
           <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 3xl:gap-[40px]">
             <div>
               <Select>
-                <SelectTrigger className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[3px]">
+                <SelectTrigger className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] 3xl:[&>svg]:mt-[3px]">
                   <SelectValue placeholder="en" />
                 </SelectTrigger>
-                <SelectContent className="bg-white max-w-[40px]">
-                  <SelectItem value="en">En</SelectItem>
-                  <SelectItem value="ar">Ar</SelectItem>
-                  <SelectItem value="us">Us</SelectItem>
+                <SelectContent className="bg-white max-w-[40px] border-base1/10">
+                  <SelectItem className={`${triggerNavStyle} text-black`} value="en">En</SelectItem>
+                  <SelectItem className={`${triggerNavStyle} text-black`} value="ar">Ar</SelectItem>
+                  <SelectItem className={`${triggerNavStyle} text-black`} value="us">Us</SelectItem>
                 </SelectContent>
               </Select>
             </div>

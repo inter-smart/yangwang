@@ -100,7 +100,7 @@ export default function Footer() {
                     >
                       <Heading
                         as="h6"
-                        className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
+                        className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
                           pathname === item.href ? "underline" : ""
                         }`}
                       >
@@ -126,7 +126,7 @@ export default function Footer() {
                       >
                         <Heading
                           as="h6"
-                          className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
+                          className={`3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
                             pathname === item.href ? "underline" : ""
                           }`}
                         >
@@ -163,7 +163,7 @@ export default function Footer() {
                     <li>
                       <Heading
                         as="h6"
-                        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 flex"
+                        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 flex"
                       >
                         <Link href="#">Service Centers</Link>
                         <Img
@@ -178,7 +178,7 @@ export default function Footer() {
                     <li>
                       <Heading
                         as="h6"
-                        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 flex"
+                        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 flex"
                       >
                         <Link href="#">Showroom</Link>
                         <Img
@@ -208,7 +208,7 @@ export default function Footer() {
                     <li className="mb-[10px] xl:mb-[15px] 3xl:mb-[25px]">
                       <Heading
                         as="h6"
-                        className="3xl:text-[14px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base1"
+                        className="3xl:text-[14px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base3"
                       >
                         <a
                           href="mailto:yangwang@oman.in"
@@ -222,7 +222,7 @@ export default function Footer() {
                     <li className="mb-[10px] xl:mb-[15px] 3xl:mb-[25px]">
                       <Heading
                         as="h6"
-                        className="3xl:text-[14px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base1"
+                        className="3xl:text-[14px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base3"
                       >
                         <a
                           href="tel:9633781549955"
@@ -249,7 +249,7 @@ export default function Footer() {
                 <li>
                   <Heading
                     as="h6"
-                    className={`3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
+                    className={`3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
@@ -259,7 +259,7 @@ export default function Footer() {
                 <li>
                   <Heading
                     as="h6"
-                    className={`3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
+                    className={`3xl:text-[12px] 2xl:text-[10px] xl:text-[8px] text-[8px] leading-none font-normal text-white hover:text-base3 transition-color duration-300 ${
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
@@ -325,7 +325,7 @@ function ShowroomInfo({ link, title, image }) {
     <>
       <Heading
         as="h6"
-        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 flex"
+        className="3xl:text-[18px] 2xl:text-[14px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base3 flex"
       >
         <Link href={link}>{title}</Link>
         <Img

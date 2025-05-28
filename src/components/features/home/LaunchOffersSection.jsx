@@ -3,6 +3,7 @@ import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function LaunchOffersSection() {
   return (
@@ -24,8 +25,8 @@ export default function LaunchOffersSection() {
       <div className="container">
         <div className="flex ltr:md:justify-end">
           <div className="xl:max-w-[330px] 3xl:max-w-[500px]">
-            <Heading
-              as="h6"
+            <Link
+              href="/"
               className="3xl:text-[25px] 2xl:text-[20px] xl:text-[16px] lg:text-[14px] text-[12px] font-normal leading-none capitalize text-white mb-[10px] xl:mb-[15px] 3xl:mb-[20px] flex items-center gap-[3px] xl:gap-[5px] 3xl:gap-[7px]"
             >
               Drive the Future Today
@@ -36,7 +37,7 @@ export default function LaunchOffersSection() {
                 height={17}
                 className="w-[12px] xl:w-[14px] 3xl:w-[22px] rtl:-scale-x-100 animate-right"
               />
-            </Heading>
+            </Link>
             <Heading
               size="heading3"
               as="h3"
