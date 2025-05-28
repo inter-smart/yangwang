@@ -14,7 +14,7 @@ export default function OwnershipSection({ title, description }) {
                 className="absolute inset-0 w-full h-full object-cover -z-10"
             />
             <div className="container w-full h-full">
-                <div className="flex items-center justify-center flex-col w-full h-full m-auto max-w-[62%]">
+                <div className="flex items-center justify-center flex-col w-full h-full m-auto md:px-0 px-[15px] md:max-w-[62%]">
                     <Heading
                         size="heading3"
                         as="h3"

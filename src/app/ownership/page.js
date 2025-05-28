@@ -1,4 +1,4 @@
-import BannerSection from "@/components/features/Ownership/BannerSection";
+import BannerSection from "@/components/common/BannerSection";
 import OwnershipSection from "@/components/features/Ownership/OwnershipSection";
 import ServiceSection from "@/components/features/Ownership/ServiceSection";
 import PartsSection from "@/components/features/Ownership/PartsSection";
