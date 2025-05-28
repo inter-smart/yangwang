@@ -170,7 +170,7 @@ export function PlaceholdersAndVanishInput({
   return (
     (<form
       className={cn(
-        "w-full min-w-[200px] lg:min-w-[240px] xl:min-w-[270px] 3xl:min-w-[400px] relative max-w-xl mx-auto bg-white dark:bg-zinc-800 h-[30px] lg:h-[35px] 2xl:h-[45px] 3xl:h-[53px] rounded-0 overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+        "w-full min-w-[200px] lg:min-w-[240px] xl:min-w-[270px] 2xl:min-w-[340px] 3xl:min-w-[400px] relative max-w-xl mx-auto bg-white dark:bg-zinc-800 h-[30px] lg:h-[35px] 2xl:h-[45px] 3xl:h-[53px] rounded-0 overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
         value && "bg-gray-50"
       )}
       onSubmit={handleSubmit}>

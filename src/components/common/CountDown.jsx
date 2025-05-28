@@ -8,7 +8,7 @@ export default function CountDown({ date }) {
   const [clientReady, setClientReady] = useState(false);
 
   const countdownStyle =
-    "text-center w-[60px] xl:w-[80px] 3xl:w-[100px] aspect-square bg-white/10 border-[1px] border-[#5d5862] backdrop-blur-2xl flex items-center justify-center transition-background duration-300 hover:bg-white/20";
+    "text-center w-[60px] xl:w-[80px] 2xl:w-[100px] 2xl:w-[100px] 3xl:w-[115px] aspect-square bg-white/10 border-[1px] border-[#5d5862] backdrop-blur-2xl flex items-center justify-center transition-background duration-300 hover:bg-white/20";
 
   const completionist = (
     <span className="text-green-600 font-bold">You are good to go!</span>

@@ -8,7 +8,7 @@ export default function Contact() {
     <>
       <BannerSection title="Contact" bannerImg="contact.jpg" />
       <EnquirySection /> 
-      <LocationSection /> 
+      {/* <LocationSection />  */}
       <FaqSection /> 
     </>
   );

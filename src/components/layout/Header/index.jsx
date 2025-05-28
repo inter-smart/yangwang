@@ -42,7 +42,7 @@ function HeaderNavItem({ href, title }) {
     <Link href={href} className="group relative z-0">
       <Heading
         as="h6"
-        className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base3 transition-all duration-300 ${
+        className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-1 transition-all duration-300 ${
           pathname === href ? "text-base1" : "text-black"
         }`}
       >
@@ -81,7 +81,7 @@ export default function Header() {
   const triggerStyle =
     "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px]";
   const triggerNavStyle =
-    "3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white transition-color duration-300 hover:text-base3";
+    "3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white transition-color duration-300 hover:text-base1";
 
   return (
     <header
@@ -99,7 +99,7 @@ export default function Header() {
               alt="Headerlogo"
               width={45}
               height={60}
-              className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300 hover:text-base3"
+              className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[45px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300 hover:text-base1"
             />
           </Link>
           <NavigationMenu
@@ -119,11 +119,10 @@ export default function Header() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          <div className="text-lg font-medium">
-                            U8
-                          </div>
+                          <div className="text-lg font-medium">U8</div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, fugiat?
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -134,11 +133,10 @@ export default function Header() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          <div className="text-lg font-medium">
-                            U8
-                          </div>
+                          <div className="text-lg font-medium">U8</div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, fugiat?
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -183,16 +181,31 @@ export default function Header() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 3xl:gap-[40px]">
+          <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 2xl:gap-[30px] 3xl:gap-[40px]">
             <div>
               <Select>
-                <SelectTrigger className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal capitalize leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] 3xl:[&>svg]:mt-[3px]">
+                <SelectTrigger className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] 3xl:[&>svg]:mt-[3px]">
                   <SelectValue placeholder="en" />
                 </SelectTrigger>
                 <SelectContent className="bg-white max-w-[40px] border-base1/10">
-                  <SelectItem className={`${triggerNavStyle} text-black`} value="en">En</SelectItem>
-                  <SelectItem className={`${triggerNavStyle} text-black`} value="ar">Ar</SelectItem>
-                  <SelectItem className={`${triggerNavStyle} text-black`} value="us">Us</SelectItem>
+                  <SelectItem
+                    className={`${triggerNavStyle} uppercase text-black`}
+                    value="en"
+                  >
+                    En
+                  </SelectItem>
+                  <SelectItem
+                    className={`${triggerNavStyle} uppercase text-black`}
+                    value="ar"
+                  >
+                    Ar
+                  </SelectItem>
+                  <SelectItem
+                    className={`${triggerNavStyle} uppercase text-black`}
+                    value="us"
+                  >
+                    Us
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -203,7 +216,7 @@ export default function Header() {
                   alt="saudbhawan"
                   width={84}
                   height={44}
-                  className="w-[40px] xl:w-[56px] 3xl:w-[84px] h-auto object-contain block hover:scale-105 transition-transform duration-300"
+                  className="w-[40px] xl:w-[56px] 2xl:w-[74px] 3xl:w-[84px] h-auto object-contain block hover:scale-105 transition-transform duration-300"
                 />
               </Link>
             </div>
