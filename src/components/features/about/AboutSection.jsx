@@ -18,6 +18,7 @@ const slides = [
         alt: "about-banner-3"
     }
 ];
+
 export default function AboutSection() {
     return (
         <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
@@ -26,15 +27,16 @@ export default function AboutSection() {
                 slidesPerView={3}
                 className="innovationSlider h-full"
             >
-                {slides.map((slide, index) => (
+                {slides.map((item, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full h-full block">
                             <Img
-                                src={slide.src}
-                                alt={slide.alt}
+                                src={item.src}
+                                alt={item.alt}
                                 width={640}
                                 height={920}
                                 className="object-cover w-full h-full"
+                                priority
                             />
                         </div>
                     </SwiperSlide>

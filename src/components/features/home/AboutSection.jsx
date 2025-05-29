@@ -85,20 +85,20 @@ export default function AboutSection() {
           <Heading
             size="heading6"
             as="h6"
-            className="capitalize mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
+            className="font-normal capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
           >
             Yangwang
           </Heading>
           <Heading
             size="heading3"
             as="h2"
-            className="uppercase mb-[15px] xl:mb-[20px] 3xl:mb-[40px]"
+            className="uppercase text-black mb-[15px] xl:mb-[20px] 3xl:mb-[40px]"
           >
             U8 & U9
           </Heading>
           <Text
             as="p"
-            className="3xl:text-[35px] 2xl:text-[28px] xl:text-[23px] lg:text-[20px] sm:text-[16px] text-[14px] leading-normal font-bold"
+            className="3xl:text-[35px] 2xl:text-[30px] xl:text-[23px] lg:text-[20px] sm:text-[16px] text-[14px] leading-normal font-bold"
           >
             {splitTextToSpans(
               "At Yangwang, we redefine the boundaries of luxury and performance with cutting-edge electric vehicles designed for the future. Born from innovation and driven by excellence, our mission is to deliver an unparalleled driving experience through advanced technology, sustainable design, and uncompromising craftsmanship. Join us as we shape a new era of intelligent mobility."
@@ -116,14 +116,14 @@ export default function AboutSection() {
           alt="about-bg-1"
           width={603}
           height={295}
-          className="3xl:w-[680px] xl:w-[460px] lg:w-[320px] sm:w-[220px] w-[180px]"
+          className="3xl:w-[740px] xl:w-[560px] lg:w-[320px] sm:w-[220px] w-[180px]"
         />
         <Img
           src="about-bg-2.png"
           alt="about-bg-2"
           width={494}
           height={266}
-          className="3xl:w-[700px] xl:w-[460px] lg:w-[320px] sm:w-[220px] w-[180px]"
+          className="3xl:w-[790px] xl:w-[540px] lg:w-[320px] sm:w-[220px] w-[180px]"
         />
         <Img
           ref={carRef1}

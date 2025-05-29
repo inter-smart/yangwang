@@ -50,17 +50,10 @@ export default function ModelSection() {
     };
 
     ScrollTrigger.matchMedia({
-      // Applies to all screen sizes
       all: () => {
         setupScrollVideo(scrollVideo1.current, containerRef1.current);
         setupScrollVideo(scrollVideo2.current, containerRef2.current);
       },
-
-      // Example for large screens only
-      // "(min-width: 1024px)": () => {
-      //   setupScrollVideo(scrollVideo1.current, containerRef1.current);
-      //   setupScrollVideo(scrollVideo2.current, containerRef2.current);
-      // },
     });
 
     return () => {
@@ -75,8 +68,8 @@ export default function ModelSection() {
         className="w-full h-dvh lg:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block overflow-hidden"
       >
         <div className="h-full flex flex-wrap">
-          <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
-            <div className="w-full h-full relative bg-black z-0 p-[20px_25px] xl:p-[35px_45px] 3xl:p-[50px_70px] ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
+          <div className="w-full lg:w-[calc(100%-420px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
+            <div className="w-full h-full relative bg-black z-0 p-[20px_25px] xl:p-[35px_45px] 2xl:p-[45px_65px] 3xl:p-[50px_70px] ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
               <div className="h-full max-lg:container max-lg:mx-auto max-lg:px-[var(--breakpoint-gap)]">
                 <video
                   autoPlay
@@ -100,19 +93,19 @@ export default function ModelSection() {
                     <Heading
                       size="heading5"
                       as="h5"
-                      className="font-normal text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
+                      className="font-normal text-white mb-[15px] xl:mb-[20px] 2xl:mb-[30px]"
                     >
                       Command the Elements
                     </Heading>
                     <LinkButton
                       href="#"
                       aria-label="Explore Models"
-                      className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px]"
+                      className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
                     >
                       Explore Models
                     </LinkButton>
                   </div>
-                  <div className="flex flex-wrap gap-[15px] sm:gap-[20px] xl:gap-[30px] 3xl:gap-[50px]">
+                  <div className="flex flex-wrap gap-[15px] sm:gap-[20px] xl:gap-[30px] 2xl:gap-[50px]">
                     <Stat label="Quad-Motor System" value={1200} suffix=" ps" />
                     <Stat
                       label="0 to 100 Kmph"
@@ -121,12 +114,12 @@ export default function ModelSection() {
                       decimals={1}
                     />
                     <Stat label="Impressive Range" value={1000} suffix=" km" />
-                    <div className="flex gap-[5px] sm:gap-[10px] xl:gap-[15px] 3xl:gap-[20px] ltr:ml-auto rtl:mr-auto">
+                    <div className="flex gap-[5px] sm:gap-[10px] xl:gap-[15px] 2xl:gap-[20px] ltr:ml-auto rtl:mr-auto">
                       <div>
                         <Link
                           href={"#"}
                           aria-label="model-2"
-                          className="w-[25px] sm:w-[30px] xl:w-[40px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
+                          className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
                         >
                           <Img
                             src="icon-model-1.svg"
@@ -140,7 +133,7 @@ export default function ModelSection() {
                         <Link
                           href={"#"}
                           aria-label="model-2"
-                          className="w-[25px] sm:w-[30px] xl:w-[40px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
+                          className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
                         >
                           <Img
                             src="icon-model-2.svg"
@@ -157,14 +150,16 @@ export default function ModelSection() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[320px] xl:w-[490px] 3xl:w-[740px] max-lg:h-[60dvh]">
+          <div className="w-full lg:w-[420px] xl:w-[490px] 2xl:w-[650px] 3xl:w-[740px] max-lg:h-[60dvh]">
             <div className="w-full h-full bg-black block relative z-0">
               <video
                 ref={scrollVideo1}
                 preload="metadata"
                 muted
+                loop
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
+                poster="images/poster-model-1.jpg"
               >
                 <source src="/videos/vdo-model-scroll-1.mp4" type="video/mp4" />
               </video>
@@ -173,7 +168,7 @@ export default function ModelSection() {
                 alt="model-u8"
                 width={170}
                 height={100}
-                className="w-[80px] xl:w-[110px] 3xl:w-[170px] block absolute top-[70%] left-1/2 transform -translate-x-1/2"
+                className="w-[80px] xl:w-[110px] 2xl:w-[140px] 3xl:w-[170px] block absolute top-[70%] left-1/2 transform -translate-x-1/2"
               />
             </div>
           </div>
@@ -184,8 +179,8 @@ export default function ModelSection() {
         className="w-full h-dvh lg:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block overflow-hidden"
       >
         <div className="h-full flex flex-wrap flex-row-reverse">
-          <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
-            <div className="w-full h-full relative bg-black z-0 p-[20px_25px] xl:p-[35px_45px] 3xl:p-[50px_70px] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
+          <div className="w-full lg:w-[calc(100%-420px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
+            <div className="w-full h-full relative bg-black z-0 p-[20px_25px] xl:p-[35px_45px] 2xl:p-[45px_65px] 3xl:p-[50px_70px] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
               <div className="h-full max-lg:container max-lg:mx-auto max-lg:px-[var(--breakpoint-gap)]">
                 <video
                   autoPlay
@@ -209,19 +204,19 @@ export default function ModelSection() {
                     <Heading
                       size="heading5"
                       as="h5"
-                      className="font-normal text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
+                      className="font-normal text-white mb-[15px] xl:mb-[20px] 2xl:mb-[30px]"
                     >
-                      Command the Elements
+                      Born to Outpace the Future
                     </Heading>
                     <LinkButton
                       href="#"
                       aria-label="Explore Models"
-                      className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 3xl:min-w-[146px]"
+                      className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
                     >
                       Explore Models
                     </LinkButton>
                   </div>
-                  <div className="flex flex-wrap gap-[15px] sm:gap-[20px] xl:gap-[30px] 3xl:gap-[50px]">
+                  <div className="flex flex-wrap gap-[15px] sm:gap-[20px] xl:gap-[30px] 2xl:gap-[50px]">
                     <Stat label="Quad-Motor System" value={1200} suffix=" ps" />
                     <Stat
                       label="0 to 100 Kmph"
@@ -230,12 +225,12 @@ export default function ModelSection() {
                       decimals={1}
                     />
                     <Stat label="Impressive Range" value={1000} suffix=" km" />
-                    <div className="flex gap-[5px] sm:gap-[10px] xl:gap-[15px] 3xl:gap-[20px] ltr:ml-auto rtl:mr-auto">
+                    <div className="flex gap-[5px] sm:gap-[10px] xl:gap-[15px] 2xl:gap-[20px] ltr:ml-auto rtl:mr-auto">
                       <div>
                         <Link
                           href={"#"}
                           aria-label="model-2"
-                          className="w-[25px] sm:w-[30px] xl:w-[40px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
+                          className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
                         >
                           <Img
                             src="icon-model-1.svg"
@@ -249,7 +244,7 @@ export default function ModelSection() {
                         <Link
                           href={"#"}
                           aria-label="model-2"
-                          className="w-[25px] sm:w-[30px] xl:w-[40px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
+                          className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
                         >
                           <Img
                             src="icon-model-2.svg"
@@ -266,14 +261,16 @@ export default function ModelSection() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[320px] xl:w-[490px] 3xl:w-[740px] max-lg:h-[60dvh]">
+          <div className="w-full lg:w-[420px] xl:w-[490px] 2xl:w-[650px] 3xl:w-[740px] max-lg:h-[60dvh]">
             <div className="w-full h-full block bg-black relative z-0">
               <video
                 ref={scrollVideo2}
                 preload="metadata"
                 muted
+                loop
                 playsInline
                 className="w-full h-full absolute -z-1 inset-0 object-cover"
+                poster="images/poster-model-2.jpg"
               >
                 <source src="/videos/vdo-model-jumbing.mp4" type="video/mp4" />
               </video>
@@ -282,7 +279,7 @@ export default function ModelSection() {
                 alt="model-u9"
                 width={170}
                 height={100}
-                className="w-[80px] xl:w-[110px] 3xl:w-[170px] block absolute top-[70%] left-1/2 transform -translate-x-1/2"
+                className="w-[80px] xl:w-[110px] 2xl:w-[140px] 3xl:w-[170px] block absolute top-[70%] left-1/2 transform -translate-x-1/2"
               />
             </div>
           </div>
@@ -296,9 +293,9 @@ function Stat({ label, value, suffix, decimals = 0 }) {
   return (
     <div>
       <Text
-        size="text2"
+        size="text1"
         as="p"
-        className="max-sm:text-[8px] leading-none text-white"
+        className="max-sm:text-[8px] font-medium leading-none text-white"
       >
         {label}
       </Text>

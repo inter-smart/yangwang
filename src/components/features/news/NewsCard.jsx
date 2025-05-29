@@ -4,7 +4,7 @@ import { Text } from "@/components/layout/Text";
 
 export default function NewsCard({ item }) {
     return (
-        <div className="w-full h-auto block transition-all duration-500 transform hover:-translate-y-2 group">
+        <div className="w-full h-auto block transition-all duration-500 hover:-translate-y-2 group">
             <div className="w-full h-auto aspect-[540/400] block 2xl:mb-[30px] md:mb-[20px] mb-[15px] overflow-hidden">
                 <Image
                     src={item.image}
