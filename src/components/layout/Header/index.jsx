@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
-import { useTranslations } from 'next-intl';
-import { useEffect, useState, useMemo } from 'react';
-import { Heading } from '../Heading';
-import { Img } from '../Img';
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { useEffect, useState, useMemo } from "react";
+import { Heading } from "../Heading";
+import { Img } from "../Img";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,22 +12,10 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu';
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Menu } from 'lucide-react';
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Menu } from "lucide-react";
 
 function HeaderNavItem({ href, title }) {
   const pathname = usePathname();
@@ -36,7 +24,7 @@ function HeaderNavItem({ href, title }) {
       <Heading
         as="h6"
         className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
-          pathname === href ? 'text-base1' : 'text-white'
+          pathname === href ? "text-base1" : "text-white"
         }`}
       >
         {title}
@@ -46,7 +34,7 @@ function HeaderNavItem({ href, title }) {
 }
 
 export default function Header({ locale }) {
-  const t = useTranslations('header');
+  const t = useTranslations("header");
   const pathname = usePathname();
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
@@ -70,12 +58,12 @@ export default function Header({ locale }) {
       setLastScrollTop(scrollTop);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollTop]);
 
   const handleLocaleChange = (newLocale) => {
-    const cleanPath = pathname.replace(/^\/(en|ar)/, '') || '/';
+    const cleanPath = pathname.replace(/^\/(en|ar)/, "") || "/";
     console.log(`[2025-05-29T14:24:00.000Z] Switching locale to ${newLocale}, path: ${cleanPath}`);
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     router.replace(cleanPath, { locale: newLocale });
@@ -84,48 +72,48 @@ export default function Header({ locale }) {
   const menuItems = useMemo(
     () => [
       {
-        href: '/',
-        title: t('models'),
+        href: "/",
+        title: t("models"),
         dropdown: [
-          { href: '/u8', title: t('u8'), description: t('u8_description') },
-          { href: '/u9', title: t('u9'), description: t('u9_description') },
+          { href: "/u8", title: t("u8"), description: t("u8_description") },
+          { href: "/u9", title: t("u9"), description: t("u9_description") },
         ],
       },
-      { href: '/about', title: t('about') },
-      { href: '/services', title: t('services') },
-      { href: '/contact', title: t('contact') },
-      { href: '/ownership', title: t('owners') },
-      { href: '/offers', title: t('offers') },
+      { href: "/about", title: t("about") },
+      { href: "/services", title: t("services") },
+      { href: "/contact", title: t("contact") },
+      { href: "/ownership", title: t("owners") },
+      { href: "/offers", title: t("offers") },
     ],
     [t]
   );
 
   const triggerStyle =
-    '[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-2 focus:ring-base1 rounded';
+    "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-2 focus:ring-base1 rounded";
   const triggerNavStyle =
-    '3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1';
+    "3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1";
 
   return (
     <header
-      className={`w-full h-[var(--header-y)] z-50 top-0 left-0 right-0 transition-all duration-300 ${
+      className={`w-full h-(--header-y) absolute z-10 top-0 left-0 right-0 block bg-linear-to-b from-black/40 to-transparent transition-all duration-300 ${
         isVisible
-          ? 'fixed bg-black/40 backdrop-blur-lg [--header-y:50px] lg:[--header-y:70px] 2xl:[--header-y:80px] 3xl:[--header-y:90px] shadow-lg animate-fadeDown'
-          : 'absolute bg-gradient-to-b from-black/40 to-transparent [--header-y:60px] lg:[--header-y:80px] 2xl:[--header-y:100px] 3xl:[--header-y:120px]'
-      } ${locale === 'ar' ? 'font-arabic' : 'font-urwForm'}`}
+          ? "fixed animate-fadeDown bg-black/40 backdrop-blur-lg [--header-y:50px] lg:[--header-y:70px] 2xl:[--header-y:80px] 3xl:[--header-y:90px] "
+          : "absolute [--header-y:60px] lg:[--header-y:80px] 2xl:[--header-y:100px] 3xl:[--header-y:120px] "
+      }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-full h-[var(--header-y)] flex items-center justify-between gap-[10px]">
-          <Link href="/" className="flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-base1 rounded">
+      <div className="container">
+        <div className="w-full h-(--header-y) flex flex-wrap items-center justify-between gap-[10px]">
+          <Link href="/" className="w-auto">
             <Img
               src="/header_logo.svg"
               alt="Yangwang logo"
               width={45}
               height={60}
-              className="w-[30px] lg:w-[35px] xl:w-[40px] 2xl:w-[45px] h-auto object-contain hover:scale-105 transition-transform duration-300"
+              className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[45px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300 hover:text-base1"
             />
           </Link>
-          <NavigationMenu dir={locale === 'ar' ? 'rtl' : 'ltr'} className="hidden sm:flex">
-            <NavigationMenuList className="gap-2 lg:gap-4">
+          <NavigationMenu dir={locale === "ar" ? "rtl" : "ltr"} className="max-sm:hidden">
+            <NavigationMenuList className="gap-0">
               {menuItems.map((item, index) => (
                 <NavigationMenuItem key={index}>
                   {item.dropdown ? (
@@ -133,20 +121,17 @@ export default function Header({ locale }) {
                       <NavigationMenuList className={triggerStyle}>
                         <div className={triggerNavStyle}>{item.title}</div>
                       </NavigationMenuList>
-                      <NavigationMenuContent className="bg-white border-base1/10 shadow-lg rounded-lg">
-                        <ul
-                          className={`grid p-4 w-[280px] sm:w-[360px] lg:w-[480px] gap-2 ${
-                            locale === 'ar' ? 'grid-flow-hidden' : ''
-                          }`}
-                        >
+                      <NavigationMenuContent className="bg-white border-base1/10">
+                        <ul className={`grid p-[15px] md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]`}>
                           {item.dropdown.map((subItem, subIndex) => (
                             <li key={subIndex} className="row-span-2">
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={subItem.href}
-                                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-gray-50 to-gray-100 p-3 no-underline outline-none focus:shadow-md hover:bg-gray-200 transition-colors focus:ring-2 focus:ring-base1">
-                                  <div className="text-base font-semibold text-gray-800">{subItem.title}</div>
-                                  <p className="text-sm leading-tight text-gray-600">{subItem.description}</p>
+                                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
+                                >
+                                  <div className="text-lg font-medium">{subItem.title}</div>
+                                  <p className="text-sm leading-tight text-muted-foreground">{subItem.description}</p>
                                 </Link>
                               </NavigationMenuLink>
                             </li>
@@ -165,24 +150,22 @@ export default function Header({ locale }) {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-          <div className="flex items-center gap-[15px] lg:gap-[20px] 2xl:gap-[30px]">
-            <Select
-              onValueChange={handleLocaleChange}
-              value={locale}
-              defaultValue={locale}>
-                <SelectTrigger className="text-[10px] sm:text-[12px] lg:text-[14px] font-normal uppercase text-white p-0 focus:ring-0 border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] focus:outline-none focus:ring-2 focus:ring-base1 rounded">
+
+          <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 2xl:gap-[30px] 3xl:gap-[40px]">
+            <Select onValueChange={handleLocaleChange} value={locale} defaultValue={locale}>
+              <SelectTrigger className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] 3xl:[&>svg]:mt-[3px]">
                 <SelectValue placeholder={locale.toUpperCase()} />
               </SelectTrigger>
-              <SelectContent className="bg-white w-[50px] border-gray-200 rounded-lg shadow-lg">
-                <SelectItem className="text-[10px] sm:text-[12px] uppercase text-black hover:bg-gray-100" value="en">
+              <SelectContent className="bg-white max-w-[40px] border-base1/10">
+                <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="en">
                   En
                 </SelectItem>
-                <SelectItem className="text-[10px] sm:text-[12px] uppercase text-black hover:bg-gray-100" value="ar">
+                <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="ar">
                   Ar
                 </SelectItem>
               </SelectContent>
             </Select>
-            <Link href="/" className="flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-base1 rounded">
+            <Link href="/" className="w-auto">
               <Img
                 src="/saudbhawan-1.svg"
                 alt="Saud Bhawan"
@@ -192,17 +175,14 @@ export default function Header({ locale }) {
               />
             </Link>
             <div className="sm:hidden">
-              <Sheet>
-                <SheetTrigger className="flex items-center focus:outline-none focus:ring-2 focus:ring-base1 rounded">
-                  <Menu className="size-8 text-white" />
+              <Sheet className="sm:hidden">
+                <SheetTrigger className="flex">
+                  <Menu className="size-8 text-white m-auto" />
                 </SheetTrigger>
-                <SheetContent
-                  className="bg-white/95 backdrop-blur-lg"
-                  side={locale === 'ar' ? 'right' : 'left'}
-                >
+                <SheetContent className="bg-white backdrop-blur-[30px]" side={locale === "ar" ? "right" : "left"}>
                   <SheetHeader>
                     <SheetTitle className="sr-only">Site navigation</SheetTitle>
-                    <ul className="flex flex-col gap-4 mt-6">
+                    <ul className="flex flex-col [&>li]:max-sm:m-[15px] my-[15px]">
                       {menuItems.map((item, index) => (
                         <li key={index}>
                           <HeaderNavItem title={item.title} href={item.href} />

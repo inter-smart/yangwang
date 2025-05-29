@@ -13,7 +13,7 @@ export default async function Home({ params }) {
 
   return (
     <>
-      <HeroSection />
+      <HeroSection locale={locale} />
       <AboutSection />
       <ModelSection />
       <SpecsSection />
