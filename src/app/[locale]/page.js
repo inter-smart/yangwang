@@ -8,12 +8,12 @@ import MarketingSection from "@/components/features/home/MarketingSection";
 import EventsSection from "@/components/features/home/EventsSection";
 
 export default async function Home({ params }) {
-  const { lang } = await params;
-  console.log("from server lang", lang);
+  const { locale } = await params;
+  console.log(`from server lang: ${locale}`);
 
   return (
     <>
-      <HeroSection />
+      <HeroSection locale={locale} />
       <AboutSection />
       <ModelSection />
       <SpecsSection />

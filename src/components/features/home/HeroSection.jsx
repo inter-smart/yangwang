@@ -33,12 +33,15 @@ const slide = [
   },
 ];
 
-export default function HeroSection() {
+export default function HeroSection({locale}) {
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  console.log("locale: ", locale);
+  
 
   useEffect(() => {
     if (
@@ -62,9 +65,7 @@ export default function HeroSection() {
 
   const nextSlideThumb = slide[(activeIndex + 1) % slide.length].thumb;
   const nextSlideTitle = slide[(activeIndex + 1) % slide.length].title;
-
-  const isEnglish = true;
-
+  
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
       <Swiper
@@ -79,8 +80,8 @@ export default function HeroSection() {
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex);
         }}
-        dir={isEnglish ? "ltr" : "rtl"}
-        key={isEnglish}
+        dir={locale === "en" ? "ltr" : "rtl"}
+        key={locale}
         pagination={{ clickable: true }}
         rewind={true}
         modules={[Navigation, Pagination, A11y]}
