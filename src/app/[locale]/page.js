@@ -40,7 +40,7 @@ export default async function Home({ params }) {
 
   return (
     <>
-      <HeroSection data={homeData.home_banner || []} locale={locale} />
+      <HeroSection data={homeData?.home_banner || []} locale={locale} />
       <AboutSection data={homeData.about_company || {}} locale={locale} />
       <ModelSection data={homeData.models} locale={locale} />
       <SpecsSection data={homeData.specs} locale={locale} />
