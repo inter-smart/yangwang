@@ -13,7 +13,7 @@ const dealership = [
         imageAlt: "About Dealership",
     },
 ];
-export const metadata = {   
+export const metadata = {
     title: "yangwang | About",
     description:
         "Demo Text.",
