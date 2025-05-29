@@ -1,7 +1,6 @@
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import Image from "next/image";
-import Link from "next/link";
 
 const title = "Follow us to get updates";
 const description = "All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to add new products, so stay tuned.";
@@ -29,9 +28,9 @@ const socialLinks = [
     },
 ];
 
-export default function FollowusSection() {
+export default function SocialLinkSection() {
     return (
-        <section className="w-full h-auto block">
+        <section className="w-full h-auto block m-0">
             <div className="h-full min-h-[280px] md:min-h-[335px] xl:min-h-[365px] 2xl:min-h-[535px] w-full flex items-center relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:left-0 before:inset-0 before:w-full before:h-full before:bg-gradient-to-t before:from-black/60 before:to-black/60 before:pointer-events-none after:content-[''] after:block after:absolute after:-z-1 after:left-0 after:inset-0 after:w-1/2 after:h-full after:bg-gradient-to-t after:from-[rgba(0,0,0,0.5)] after:to-[rgba(0,0,0,0.5)] after:pointer-events-none">
                 <Image
                     src={backgroundImage}
@@ -58,7 +57,7 @@ export default function FollowusSection() {
                         </Text>
                         <div className="2xl:mt-[45px] md:mt-[30px] mt-[20px] gap-[15px] flex flex-wrap">
                             {socialLinks.map((link, index) => (
-                                <Link
+                                <a
                                     key={index}
                                     href={link.href}
                                     aria-label={link.alt}
@@ -72,7 +71,7 @@ export default function FollowusSection() {
                                         height={20}
                                         className="w-[40%] h-[40%] object-contain"
                                     />
-                                </Link>
+                                </a>
                             ))}
                         </div>
                     </div>

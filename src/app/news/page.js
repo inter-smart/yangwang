@@ -1,6 +1,6 @@
 import BannerSection from "@/components/common/BannerSection";
 import NewSection from "@/components/features/news/NewSection";
-import FollowusSection from "@/components/features/news/FollowusSection";
+import SocialLinkSection from "@/components/features/news/SocialLinkSection";
 
 export const metadata = {
     title: "yangwang | News",
@@ -13,7 +13,7 @@ export default function NewsPage() {
         <>
             <BannerSection title="Latest News & Updates" />
             <NewSection />
-            <FollowusSection />
+            <SocialLinkSection />
         </>
     );
 }
