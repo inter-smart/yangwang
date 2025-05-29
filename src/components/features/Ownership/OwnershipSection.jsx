@@ -4,7 +4,7 @@ import { Text } from "@/components/layout/Text";
 
 export default function OwnershipSection({ title, description }) {
     return (
-        <section className="w-full min-h-[355px] xl:min-h-[495px] 2xl:min-h-[650px] 3xl:min-h-800px] flex items-end py-[70px_15px] lg:py-[80px_35px] xl:py-[90px_45px] 3xl:py-[120px_75px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:left-0 before:inset-0 before:w-full before:h-full before:bg-gradient-to-t before:from-black/60 before:to-black/60 before:pointer-events-none after:content-[''] after:block after:absolute after:-z-1 after:left-0 after:inset-0 after:w-1/2 after:h-full after:bg-gradient-to-r after:from-black after:to-black/0 after:pointer-events-none">
+        <section className="w-full min-h-[355px] xl:min-h-[495px] 2xl:min-h-[650px] 3xl:min-h-800px] flex items-end py-[70px_15px] lg:py-[80px_35px] xl:py-[90px_45px] 3xl:py-[120px_75px] relative z-0 after:content-[''] after:block after:absolute after:-z-1 after:left-0 after:inset-0 after:w-full after:h-full after:bg-gradient-to-r after:from-black after:to-black/50 after:pointer-events-none">
             <video
                 src="/videos/owner.mp4"
                 autoPlay
@@ -32,7 +32,7 @@ export default function OwnershipSection({ title, description }) {
                     <LinkButton
                         href="#"
                         aria-label="Explore Ownership"
-                        className="min-w-[70px] sm:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[230px] mt-[35px] hover:!bg-[#F1D1A8]"
+                        className="min-w-[135px] xl:min-w-[180px] 2xl:min-w-[200px] 3xl:min-w-[230px] mt-[35px] hover:!bg-[#F1D1A8]"
                         color="black"
                     >
                         Explore Ownership Benefits
