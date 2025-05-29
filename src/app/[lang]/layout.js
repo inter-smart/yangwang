@@ -8,20 +8,21 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 
+
 const urwForm = localFont({
   src: [
     {
-      path: "../../public/fonts/URWForm-Regular.woff2",
+      path: "../../../public/fonts/URWForm-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../public/fonts/URWForm-Medium.woff2",
+      path: "../../../public/fonts/URWForm-Medium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../../public/fonts/URWForm-Bold.woff2",
+      path: "../../../public/fonts/URWForm-Bold.woff2",
       weight: "700",
       style: "normal",
     },
@@ -58,18 +59,15 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
+  const { lang } = await params;
+  console.log("lang root", lang);
+
   const isEnglish = true;
 
   return (
-    <html
-      lang={isEnglish ? "en" : "ar"}
-      dir={isEnglish ? "ltr" : "rtl"}
-      className=""
-    >
-      <body
-        className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}
-      >
+    <html lang={lang} dir={lang === "en" ? "ltr" : "rtl"} className="">
+      <body className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
