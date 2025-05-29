@@ -10,6 +10,7 @@ export default function InnerBanner({ title, image, alt = "image" }) {
         fill
         sizes="100vw"
         className="-z-1 object-cover"
+        priority
       />
       <div className="container w-full h-full">
         <div className="flex items-center justify-center flex-col w-full h-full">

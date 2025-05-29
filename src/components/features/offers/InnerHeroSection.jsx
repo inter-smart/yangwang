@@ -11,6 +11,7 @@ export default function InnerHeroSection() {
         fill
         sizes="100vw"
         className="object-cover -z-1"
+        priority
       />
       <div className="container">
         <div className="flex flex-col items-center">
