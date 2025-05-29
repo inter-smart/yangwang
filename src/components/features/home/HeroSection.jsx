@@ -40,8 +40,6 @@ export default function HeroSection({ data, locale }) {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  console.log("Data ===>", data);
-
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current && swiperInstance.params) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
@@ -147,15 +145,17 @@ export default function HeroSection({ data, locale }) {
             <div className="text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[66px] 3xl:text-[80px] font-medium leading-none text-center uppercase bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent absolute z-0 inset-0 top-[10%] ">
               {nextSlideTitle}
             </div>
-            <Img
-              src={nextSlideThumb}
-              alt="hero-thumb-1"
-              width={120}
-              height={80}
-              className={
-                "w-[50px] sm:w-[70px] xl:w-[90px] 3xl:w-[110px] absolute z-1 bottom-[10%] left-0 right-0 mx-auto transition-transform duration-300 group-hover:scale-110"
-              }
-            />
+            {nextSlideThumb && (
+              <Img
+                src={"hero-thumb-2.png"}
+                alt="hero-thumb-1"
+                width={120}
+                height={80}
+                className={
+                  "w-[50px] sm:w-[70px] xl:w-[90px] 3xl:w-[110px] absolute z-1 bottom-[10%] left-0 right-0 mx-auto transition-transform duration-300 group-hover:scale-110"
+                }
+              />
+            )}
           </div>
         </div>
         <div

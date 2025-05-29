@@ -23,7 +23,7 @@ export default async function Home({ params }) {
   };
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home?lang=${encodeURIComponent(locale)}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home/${encodeURIComponent(locale)}`, {
       cache: "force-cache",
       next: { revalidate: 60 },
     });
