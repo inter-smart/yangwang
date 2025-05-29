@@ -5,7 +5,6 @@ import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "../layout/Button";
 import {
     Select,
     SelectTrigger,
@@ -13,7 +12,17 @@ import {
     SelectContent,
     SelectItem,
 } from "@/components/ui/select";
-
+import { CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import { useState } from "react";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
+import { Button } from "../layout/Button";
 
 const formSchema = z
     .object({
@@ -32,7 +41,7 @@ const formSchema = z
 
 
 export default function TestdriveBookingForm() {
-
+    const [date, setDate] = useState();
     // Define form
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -179,7 +188,7 @@ export default function TestdriveBookingForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2  lg:w-1/4 p-[15px] lg:px-[5px_7px] md:py-[20px] py-[10px">
+                <div className="w-full md:w-1/2  lg:w-1/4 p-[15px] lg:px-[5px_25px] md:py-[20px] py-[10px]">
                     <FormField
                         control={form.control}
                         name="location"
@@ -263,7 +272,7 @@ export default function TestdriveBookingForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2  lg:w-1/4 p-[15px] lg:px-[25px_7px] md:py-[20px] py-[10px">
+                <div className="w-full md:w-1/2  lg:w-1/4 p-[15px] lg:px-[25px_7px] md:py-[20px] py-[10px]">
                     <FormField
                         control={form.control}
                         name="location"
@@ -311,14 +320,41 @@ export default function TestdriveBookingForm() {
                         )}
                     />
                 </div>
-                <div className="w-full md:w-1/2 lg:w-1/4 p-[15px] lg:px-[7px_25px] md:py-[20px] py-[10px">
+
+                <div className="w-full md:w-1/2 lg:w-1/4 p-[15px] lg:px-[7px_25px] md:py-[20px] py-[10px]">
                     <FormField
                         control={form.control}
                         name="date"
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <Button
+                                                variant="outline"
+                                                className={cn(
+                                                    "w-full h-[70px] border border-gray-300 rounded-none px-4 flex items-center text-[18px] font-medium text-black hover:bg-gray-50  ",
+                                                    !date && "text-muted-foreground"
+                                                )}
+                                            >
+                                                {date ? format(date, "PPP") : "Select Date"}
 
+                                                <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
+                                            </Button>
+                                        </PopoverTrigger>
+                                        <PopoverContent
+                                            className="w-full p-0 bg-black text-white"
+                                            align="start"
+                                        >
+                                            <Calendar
+                                                mode="single"
+                                                selected={date}
+                                                onSelect={setDate}
+                                                initialFocus
+                                                className="rounded-md border"
+                                            />
+                                        </PopoverContent>
+                                    </Popover>
                                 </FormControl>
                                 <FormMessage className={errorStyle} />
                             </FormItem>
@@ -357,15 +393,14 @@ export default function TestdriveBookingForm() {
                     />
                 </div>
 
-                <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
-
+                <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px flex justify-end">
                     <Button
+                        color="black"
                         type="submit"
-                        disabled={status === "submitting"}
-                        color="base1"
-                        className="max-w-[200px] h-[50px] ml-auto mt-[15px] xl:mt-[20px] 3xl:mt-[30px] bg-[#000000]"
+                        aria-label="View All"
+                        className="max-w-[70px] sm:max-w-[80px] xl:max-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
                     >
-                        {status === "submitting" ? "Sending..." : "Send Message"}
+                        Send Message
                     </Button>
                 </div>
             </form>

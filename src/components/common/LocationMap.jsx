@@ -52,7 +52,7 @@ const branchLocations = [
         name: "Salala Showroom",
         address: "PO Box 3168, Ruwi,Postal Code 112, Sultanate of Oman.",
         phone: "9072588911",
-        email: "info@Yangwang.com@indelmoney.in",
+        email: "info@Yangwang.com ",
         contactNumber: "+968 24578000",
         image: "locationImg.jpg",
         coordinates: [9.9412, 76.2773]
@@ -174,25 +174,23 @@ export default function LocationMap() {
 
     return (
         <div className="flex flex-wrap w-full h-[510px] 2xl:h-[670px] relative z-[1] overflow-hidden">
-
-
-
-            <div className="w-full md:w-[300px] xl:w-[350px] 2xl:w-[500px] 3xl:w-[585px] md:pr-[25px] 2xl:pr-[40px] max-md:max-h-[250px] overflow-y-auto max-md:mb-[20px] text-white">
-
-
-                <div className="realtive overflow-y-auto md:max-h-[calc(100%-65px)] ">
+            <div className="w-full md:w-[300px] xl:w-[350px] 2xl:w-[500px] 3xl:w-[585px] md:pr-[25px] 2xl:pr-[40px] max-md:max-h-[250px] 
+            overflow-y-auto max-md:mb-[20px] text-white">
+                <div className="realtive overflow-y-auto md:max-h-full text-left">
                     {branchLocations.map((branch) => (
                         <div
                             key={branch.id}
-                            className={`3xl:px-[35px] 2xl:px-[30px] lg:px-[20px] px-[15px] 3xl:py-[30px] 2xl:py-[25px] lg:py-[20px] py-[15px] relative cursor-pointer group  ${selectedBranch.id === branch.id
-                                ? 'bg-[#5949A7] active'
-                                : 'hover:bg-[#5949a7bd]'
+                            className={`3xl:px-[35px] 2xl:px-[30px] lg:px-[20px] px-[15px] 3xl:py-[30px] 2xl:py-[25px] lg:py-[20px] py-[15px] 
+                                relative cursor-pointer group  ${selectedBranch.id === branch.id
+                                    ? 'bg-[#5949A7] active'
+                                    : 'hover:bg-[#5949a7bd]'
                                 }`}
                             onClick={() => handleBranchClick(branch)}
-
                         >
                             <div
-                                className={`w-fit absolute 3xl:top-[30px] 2xl:top-[20px] top-[10px] 3xl:right-[35px] 2xl:right-[25px] right-[10px] flex items-center justify-end ml-auto mb-[30px] transition-opacity duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible ${selectedBranch.id === branch.id ? 'opacity-100 visible' : ''
+                                className={`w-fit absolute  3xl:top-[30px] 2xl:top-[20px] top-[10px]  3xl:right-[35px] 2xl:right-[25px]  right-[10px] 
+                                    flex items-center justify-end ml-auto mb-[30px] transition-opacity duration-300 
+                                    opacity-0 invisible group-hover:opacity-100 group-hover:visible ${selectedBranch.id === branch.id ? 'opacity-100 visible' : ''
                                     }`}
                             >
                                 <div className="px-[5px]">

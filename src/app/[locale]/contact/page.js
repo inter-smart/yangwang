@@ -9,7 +9,7 @@ export default function Contact() {
     <>
       <InnerBanner title="Contact" image="contact.jpg" />
       <EnquirySection /> 
-      {/* <LocationSection />  */}
+      <LocationSection variant="findshowroom"/> 
       <FaqSection />
     </>
   );

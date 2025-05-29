@@ -1,4 +1,4 @@
- 
+
 import LocationSection from "@/components/features/contact/LocationSection";
 import InnerBanner from "@/components/common/InnerBanner";
 import GlobalSection from "@/components/features/service/GlobalSection";
@@ -10,10 +10,10 @@ export default function Contact() {
     return (
         <>
             <InnerBanner title="After-Sales Service & Support" image="service-banner.jpg" />
-            <GlobalSection  />
+            <GlobalSection />
             <WarrantySection />
             <QuestionSection />
-            <LocationSection />
+            <LocationSection variant="service" />
             <FollowusSection />
         </>
     );

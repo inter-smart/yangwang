@@ -285,18 +285,20 @@ export default function ServiceEnquiryForm() {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button
-                        variant={"outline"}
+                        variant="outline"
                         className={cn(
-                          "w-[280px] justify-start text-left font-normal",
+                          "w-full h-[70px] border border-gray-300 rounded-none px-4 flex items-center text-[18px] font-medium text-black hover:bg-gray-50 justify-between ",
                           !date && "text-muted-foreground"
                         )}
                       >
-                        <CalendarIcon />
-                        {date ? format(date, "PPP") : <span>Pick a date</span>}
+                        <span className="whitespace-nowrap">
+                          {date ? format(date, "PPP") : "Select Date"}
+                        </span>
+                        <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent
-                      className="w-auto p-0 bg-black text-white"
+                      className="w-full p-0 bg-black text-white"
                       align="start"
                     >
                       <Calendar
@@ -314,7 +316,7 @@ export default function ServiceEnquiryForm() {
             )}
           />
         </div>
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="message"
@@ -350,11 +352,12 @@ export default function ServiceEnquiryForm() {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px flex justify-end">
           <Button
+            color="black"
             type="submit"
-            color="base1"
-            className="max-w-[200px] h-[50px] ml-auto mt-[15px] xl:mt-[20px] 3xl:mt-[30px] bg-[#000000]"
+            aria-label="View All"
+            className="max-w-[70px] sm:max-w-[80px] xl:max-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
           >
             Send Message
           </Button>

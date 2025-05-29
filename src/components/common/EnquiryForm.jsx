@@ -69,22 +69,22 @@ export default function EnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
+                              h-[50px]
+                              border-0
+                              border-b
+                              border-gray-300
+                              rounded-none
+                              px-0
+                              text-black font-normal
+                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                              placeholder:text-black
+                              placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                              focus:outline-none
+                              focus:ring-0
+                              focus:shadow-none
+                              focus-visible:ring-0
+                              focus-visible:shadow-none
+                              focus:border-b-[#5949A7]
                                             "
                     type="text"
                     placeholder="First Name"
@@ -97,7 +97,7 @@ export default function EnquiryForm() {
           />
         </div>
 
-        <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="sName"
@@ -106,23 +106,23 @@ export default function EnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                              h-[50px]
+                              border-0
+                              border-b
+                              border-gray-300
+                              rounded-none
+                              px-0
+                              text-black font-normal
+                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                              placeholder:text-black
+                              placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                              focus:outline-none
+                              focus:ring-0
+                              focus:shadow-none
+                              focus-visible:ring-0
+                              focus-visible:shadow-none
+                              focus:border-b-[#5949A7]
+                              "
                     type="text"
                     placeholder="Second Name"
                     {...field}
@@ -143,23 +143,23 @@ export default function EnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                              h-[50px]
+                              border-0
+                              border-b
+                              border-gray-300
+                              rounded-none
+                              px-0
+                              text-black font-normal
+                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                              placeholder:text-black
+                              placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                              focus:outline-none
+                              focus:ring-0
+                              focus:shadow-none
+                              focus-visible:ring-0
+                              focus-visible:shadow-none
+                              focus:border-b-[#5949A7]
+                          "
                     type="text"
                     placeholder="Email"
                     {...field}
@@ -179,23 +179,23 @@ export default function EnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                              h-[50px]
+                              border-0
+                              border-b
+                              border-gray-300
+                              rounded-none
+                              px-0
+                              text-black font-normal
+                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                              placeholder:text-black
+                              placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                              focus:outline-none
+                              focus:ring-0
+                              focus:shadow-none
+                              focus-visible:ring-0
+                              focus-visible:shadow-none
+                              focus:border-b-[#5949A7]
+                          "
                     type="text"
                     placeholder="Mobile Numer"
                     {...field}
@@ -215,23 +215,23 @@ export default function EnquiryForm() {
                 <FormControl>
                   <Textarea
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                              h-[50px]
+                              border-0
+                              border-b
+                              border-gray-300
+                              rounded-none
+                              px-0
+                              text-black font-normal
+                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                              placeholder:text-black
+                              placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                              focus:outline-none
+                              focus:ring-0
+                              focus:shadow-none
+                              focus-visible:ring-0
+                              focus-visible:shadow-none
+                              focus:border-b-[#5949A7]
+                          "
                     placeholder="Message"
                     {...field}
                   />
@@ -242,13 +242,14 @@ export default function EnquiryForm() {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px flex justify-end">
           <Button
+            color="black"
             type="submit"
-            color="base1"
-            className="max-w-[200px] h-[50px] ml-auto mt-[15px] xl:mt-[20px] 3xl:mt-[30px] bg-[#000000]"
+            aria-label="View All"
+            className="max-w-[70px] sm:max-w-[80px] xl:max-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
           >
-            {status === "submitting" ? "Sending..." : "Send Message"}
+            Send Message
           </Button>
         </div>
       </form>
