@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
-
+import { NextIntlClientProvider } from "next-intl";
 
 const urwForm = localFont({
   src: [
@@ -32,23 +32,23 @@ const urwForm = localFont({
   display: "swap",
 });
 
-// const arabicFont = localFont({
-//   src: [
-//     {
-//       path: "../../public/fonts/Tajawal-Regular.woff2",
-//       weight: "400",
-//       style: "normal",
-//     },
-//     {
-//       path: "../../public/fonts/Tajawal-Bold.woff2",
-//       weight: "700",
-//       style: "normal",
-//     },
-//   ],
-//   variable: "--font-arabic",
-//   preload: true,
-//   display: "swap",
-// });
+const arabicFont = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Tajawal-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/Tajawal-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-arabic",
+  preload: true,
+  display: "swap",
+});
 
 export const metadata = {
   title: "Yangwang",
@@ -59,18 +59,27 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 }
 
-export default async function RootLayout({ children, params }) {
-  const { lang } = await params;
-  console.log("lang root", lang);
+async function getMessages(locale) {
+  try {
+    return (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    console.error(`[2025-05-29T12:10:00.000Z] Failed to load messages for ${locale}:`, error.message);
+    notFound();
+  }
+}
 
-  const isEnglish = true;
+export default async function RootLayout({ children, params }) {
+  const { locale } = await params;
+  const messages = await getMessages(locale);
 
   return (
-    <html lang={lang} dir={lang === "en" ? "ltr" : "rtl"} className="">
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={`${urwForm.variable} ${arabicFont.variable}`}>
       <body className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}>
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header locale={locale} />
+          <main className="flex-grow">{children}</main>
+          <Footer locale={locale} />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
