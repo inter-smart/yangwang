@@ -3,7 +3,7 @@ import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
 
-export default function OwnerContact({ }) {
+export default function OwnerContactSection({ }) {
     return (
         <section className="w-full py-[30px_25px] lg:py-[60px_55px] xl:py-[80px_70px] 3xl:py-[100px_115px]">
             <div className="container">

@@ -31,7 +31,7 @@ export default function page() {
                     key={index}
                     title={section.title}
                     description={section.description}
-                    imageSrc={section.imageSrc} 
+                    imageSrc={section.imageSrc}
                     imageAlt={section.imageAlt}
                 />
             ))}
