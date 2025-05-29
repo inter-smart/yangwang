@@ -33,7 +33,7 @@ const slide = [
   },
 ];
 
-export default function HeroSection({locale}) {
+export default function HeroSection({data, locale}) {
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -43,7 +43,7 @@ export default function HeroSection({locale}) {
   console.log("locale: ", locale);
   
 
-  useEffect(({data}) => {
+  useEffect(() => {
     if (
       swiperInstance &&
       prevRef.current &&
