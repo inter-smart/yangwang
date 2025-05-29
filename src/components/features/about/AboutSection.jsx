@@ -21,7 +21,7 @@ const slides = [
 
 export default function AboutSection() {
     return (
-        <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
+        <section className="w-full max-md:h-[420px] md:h-dvh md:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
             <Swiper
                 spaceBetween={0}
                 slidesPerView={3}

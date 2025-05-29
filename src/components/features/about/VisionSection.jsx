@@ -30,7 +30,7 @@ const lookupInfo = [
         ]
     }
 ];
-export default function LookupSection() {
+export default function VisionSection() {
     return (
         <section className="w-full h-auto block p-[40px_0_50px] md:p-[50px_0_70px] xl:p-[75px_0_100px] 3xl:p-[110px_0_150px] bg-[#262626]">
             <div className="container">
@@ -93,11 +93,11 @@ export default function LookupSection() {
                                     spaceBetween: 120
                                 }
                             }}
-                            className="lookupsectionSlider"
+                            className="VisionSectionSlider"
                         >
                             {lookupInfo?.map((item, index) => (
                                 <SwiperSlide key={"lookupInfo" + index}>
-                                    <div className="w-full h-full block max-md:pl-[15px]">
+                                    <div className="w-full h-full block max-md:px-[15px]">
                                         <Heading
                                             size="heading3"
                                             as="h3"
@@ -105,9 +105,9 @@ export default function LookupSection() {
                                         >
                                             {item.title}
                                         </Heading>
-                                        <ul className="text-left text-white list-disc pl-5 mt-[20px] xl:mt-[30px] space-y-2">
+                                        <ul className="text-left text-white list-disc px-5 mt-[20px] xl:mt-[30px] space-y-2">
                                             {item.points.map((point, i) => (
-                                                <li key={i} className="3xl:text-[18px] 2xl:text-[14px] md:text-[12px] text-[12px] font-normal leading-normal">
+                                                <li key={i} className="3xl:text-[18px] 2xl:text-[14px] text-[12px] font-normal leading-normal ltr:text-left rtl:text-right">
                                                     {point}
                                                 </li>
                                             ))}
