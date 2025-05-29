@@ -8,8 +8,8 @@ const textVariants = {
     y: 60,
     opacity: 0,
   },
-  onscreen: {
-    y: 0,
+  onscreen: { 
+    y: 0,  
     opacity: 1,
     transition: {
       type: "easeOuteaseOut",

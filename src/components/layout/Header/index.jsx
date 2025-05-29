@@ -176,9 +176,10 @@ export default function Header() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href={`/${locale}/u8`}
                         >
-                          <div className="text-lg font-medium">{t('u8')}</div>
+                          <div className="text-lg font-medium">U8</div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            {t('u8_description')}
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -189,9 +190,10 @@ export default function Header() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-[15px] no-underline outline-none focus:shadow-md"
                           href={`/${locale}/u9`}
                         >
-                          <div className="text-lg font-medium">{t('u9')}</div>
+                          <div className="text-lg font-medium">U8</div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            {t('u9_description')}
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Quidem, fugiat?
                           </p>
                         </a>
                       </NavigationMenuLink>

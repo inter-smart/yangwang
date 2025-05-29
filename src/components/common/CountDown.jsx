@@ -15,7 +15,7 @@ export default function CountDown({ date }) {
   );
 
   useEffect(() => {
-    setClientReady(true);
+    setClientReady(true); 
   }, []);
 
   if (!clientReady) return null;
