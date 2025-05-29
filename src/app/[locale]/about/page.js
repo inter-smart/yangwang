@@ -13,14 +13,13 @@ const dealership = [
         imageAlt: "About Dealership",
     },
 ];
-
 export const metadata = {
     title: "yangwang | About",
     description:
         "Demo Text.",
 };
 
-export default function AboutPage() {
+export default function page() {
     return (
         <>
             <AboutSection />
