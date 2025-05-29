@@ -13,6 +13,7 @@ const dealership = [
         imageAlt: "About Dealership",
     },
 ];
+
 export const metadata = {
     title: "yangwang | About",
     description:
@@ -31,7 +32,7 @@ export default function AboutPage() {
                     key={index}
                     title={section.title}
                     description={section.description}
-                    imageSrc={section.imageSrc} 
+                    imageSrc={section.imageSrc}
                     imageAlt={section.imageAlt}
                 />
             ))}

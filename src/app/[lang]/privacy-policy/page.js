@@ -1,4 +1,5 @@
-import BannerSection from "@/components/common/InnerBanner";
+
+import InnerBanner from "@/components/common/InnerBanner";
 import PrivacyPolicy from "@/components/features/privacy-policy/PrivacyPolicy";
 
 export const metadata = {
@@ -9,7 +10,7 @@ export const metadata = {
 export default function page() {
     return (
         <>
-            <BannerSection title="Privacy Policy" bannerImg="privacy-banner.jpg" />
+            <InnerBanner title="Privacy Policy" image="privacy-banner.jpg" />
             <PrivacyPolicy />
         </>
     );

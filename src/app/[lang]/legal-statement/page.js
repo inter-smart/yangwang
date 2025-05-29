@@ -1,4 +1,4 @@
-import BannerSection from "@/components/common/InnerBanner";
+import InnerBanner from "@/components/common/InnerBanner";
 import LegalStatement from "@/components/features/legal-statement/LegalStatement";
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
 export default function page() {
     return (
         <>
-            <BannerSection title="Legal Statement of  Yangwang" bannerImg="privacy-banner.jpg" />
+            <InnerBanner title="Legal Statement of  Yangwang" image="privacy-banner.jpg" />
             <LegalStatement />
         </>
     );

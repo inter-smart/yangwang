@@ -9,9 +9,9 @@
 
   --font-urwForm: var(--font-urwForm);
 
-  --color-base1: #1d0a44;
+  --color-base1: #f1d1a8;
   --color-base2: #cdcdcd;
-  --color-base3: #8c5ceb;
+  --color-base3: #1d0a44;
 
   --breakpoint-4xs: 20rem;
   /* 320px */
@@ -35,34 +35,40 @@
   /* 1920px */
 
   --breakpoint-gap: 15px;
+  /* * */
   --breakpoint-gap-lg: 60px;
   /* 1024px */
   --breakpoint-gap-xl: 65px;
   /* 1280px */
-  --breakpoint-gap-2xl: 80px;
+  --breakpoint-gap-2xl: 86px;
   /* 1536px */
   --breakpoint-gap-3xl: 100px;
+  /* 1920px */
 
   --animate-fadeDown: fadeDown 0.6s ease-in-out both;
+
   @keyframes fadeDown {
     0% {
       opacity: 0;
       transform: translateY(-100%);
     }
+
     100% {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   --animate-right: bounce 1s ease-in-out infinite;
 
   @keyframes bounce {
+
     0%,
     100% {
       transform: translateX(25%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
+
     50% {
       transform: none;
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
@@ -85,6 +91,7 @@ body {
   .container {
     @apply mx-auto px-[var(--breakpoint-gap)] lg:px-[var(--breakpoint-gap-lg)] xl:px-[var(--breakpoint-gap-xl)] 2xl:px-[var(--breakpoint-gap-2xl)] 3xl:px-[var(--breakpoint-gap-3xl)];
   }
+
   /* .spl-container {
     @apply ml-auto pl-[var(--breakpoint-gap)] lg:pl-[var(--breakpoint-gap-lg)] xl:pl-[var(--breakpoint-gap-xl)] 2xl:pl-[var(--breakpoint-gap-2xl)] 3xl:pl-[var(--breakpoint-gap-3xl)];
   }
@@ -92,46 +99,55 @@ body {
     @apply mr-auto pr-[var(--breakpoint-gap)] lg:pr-[var(--breakpoint-gap-lg)] xl:pr-[var(--breakpoint-gap-xl)] 2xl:pr-[var(--breakpoint-gap-2xl)] 3xl:pr-[var(--breakpoint-gap-3xl)];
   } */
 
-  .btn {
+  /* .btn {
     @apply text-[12px] lg:text-[14px] font-medium uppercase text-white w-full h-[35px] lg:h-[30px] xl:h-[34px] 2xl:h-[40px] flex items-center justify-center px-[10px] bg-none border-none rounded-[20px] cursor-pointer transition-all duration-400;
-  }
+  } */
 
   .btn-base1 {
     @apply bg-base2 hover:bg-base1 hover:border-base1;
   }
 
   .typography {
-    & > * {
+    &>* {
       @apply my-[10px] lg:my-[15px];
     }
+
     p,
     & {
       @apply 3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal text-[#2d2929];
     }
+
     h1 {
       @apply text-[24px] lg:text-[36px] xl:text-[43px] 2xl:text-[48px] 3xl:text-[65px] font-semibold leading-tight text-black;
     }
+
     h2 {
       @apply text-[20px] lg:text-[26px] xl:text-[32px] 2xl:text-[44px] 3xl:text-[54px] font-semibold leading-tight text-black;
     }
+
     h3 {
       @apply text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[26px] 3xl:text-[30px] font-semibold leading-tight text-black;
     }
+
     h5 {
       @apply text-[13px] lg:text-[14px] xl:text-[16px] 2xl:text-[20px] 3xl:text-[25px] font-semibold leading-tight text-black;
     }
+
     h6 {
       @apply 3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-semibold leading-tight text-black;
     }
+
     ul,
     ol {
       @apply pl-[20px] lg:pl-[30px];
     }
-    ul > li,
-    ol > li {
+
+    ul>li,
+    ol>li {
       @apply 3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal text-[#2d2929] my-[10px] lg:my-[15px];
     }
-    ul > li {
+
+    ul>li {
       @apply list-disc;
     }
   }
@@ -139,14 +155,15 @@ body {
 
 
 @keyframes carMove {
-  0%{
+  0% {
     left: -100%;
   }
+
   100% {
     left: -12%;
   }
 }
 
 .animate-car-move {
-  animation: carMove 3s ease-in-out  ;
+  animation: carMove 3s ease-in-out;
 }
