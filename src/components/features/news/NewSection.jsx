@@ -71,12 +71,12 @@ const FilterButton = ({ activeFilter, setActiveFilter }) => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full h-auto gap-2 p-[10px] bg-black flex items-center justify-between"
             >
-                <div className="gap-2 flex items-center">
+                <span className="gap-2 flex items-center">
                     <Filter size={14} 
                     className='text-white'
                     />
                     <span className="text-[12px] font-medium text-white">{activeFilter}</span>
-                </div>
+                </span>
                 <ChevronDown
                     size={16}
                     className={`text-white transform transition-transform ${isOpen ? 'rotate-180' : ''}`}

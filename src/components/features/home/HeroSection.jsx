@@ -85,7 +85,7 @@ export default function HeroSection({locale}) {
         pagination={{ clickable: true }}
         rewind={true}
         modules={[Navigation, Pagination, A11y]}
-        className="h-full [--swiper-pagination-bullet-width:25px] xl:[--swiper-pagination-bullet-width:30px] 3xl:[--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:1] [--swiper-pagination-bottom:15px] sm:[--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:50px] 3xl:[--swiper-pagination-bottom:80px] overflow-hidden"
+        className="h-full [--swiper-pagination-bullet-width:25px] xl:[--swiper-pagination-bullet-width:30px] 3xl:[--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:40%] [--swiper-pagination-bottom:15px] sm:[--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:50px] 3xl:[--swiper-pagination-bottom:80px] overflow-hidden"
       >
         <Suspense fallback={<div>Loading feed...</div>}>
           {slide?.map((item, index) => (

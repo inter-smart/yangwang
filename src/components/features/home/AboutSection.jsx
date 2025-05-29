@@ -116,14 +116,14 @@ export default function AboutSection() {
           alt="about-bg-1"
           width={603}
           height={295}
-          className="3xl:w-[680px] xl:w-[460px] lg:w-[320px] sm:w-[220px] w-[180px]"
+          className="3xl:w-[740px] xl:w-[560px] lg:w-[320px] sm:w-[220px] w-[180px]"
         />
         <Img
           src="about-bg-2.png"
           alt="about-bg-2"
           width={494}
           height={266}
-          className="3xl:w-[700px] xl:w-[460px] lg:w-[320px] sm:w-[220px] w-[180px]"
+          className="3xl:w-[790px] xl:w-[540px] lg:w-[320px] sm:w-[220px] w-[180px]"
         />
         <Img
           ref={carRef1}
