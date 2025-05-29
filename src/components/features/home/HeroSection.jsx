@@ -33,23 +33,17 @@ const slide = [
   },
 ];
 
-export default function HeroSection({data, locale}) {
+export default function HeroSection({ data, locale }) {
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  console.log("locale: ", locale);
-  
+  console.log("Data ===>", data);
 
   useEffect(() => {
-    if (
-      swiperInstance &&
-      prevRef.current &&
-      nextRef.current &&
-      swiperInstance.params
-    ) {
+    if (swiperInstance && prevRef.current && nextRef.current && swiperInstance.params) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
       swiperInstance.params.navigation.nextEl = nextRef.current;
       swiperInstance.navigation.init();
@@ -63,9 +57,9 @@ export default function HeroSection({data, locale}) {
     }
   };
 
-  const nextSlideThumb = slide[(activeIndex + 1) % slide.length].thumb;
-  const nextSlideTitle = slide[(activeIndex + 1) % slide.length].title;
-  
+  const nextSlideThumb = data[(activeIndex + 1) % data.length].media.thumbnail;
+  const nextSlideTitle = data[(activeIndex + 1) % data.length].title;
+
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
       <Swiper
@@ -93,27 +87,35 @@ export default function HeroSection({data, locale}) {
               key={"slide" + index}
               className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
             >
-              <video
-                autoPlay
-                preload="auto"
-                width={1920} 
-                height={1080}
-                muted
-                loop
-                className="w-full h-full absolute -z-1 inset-0 object-cover"
-                aria-label="Video player"
-                poster={item.poster}
-              >
-                <source src={item.background} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {item.media.type === "image" ? (
+                <Img
+                  src={item.media.url}
+                  alt={item.title}
+                  width={1920}
+                  height={1080}
+                  className="w-full h-full absolute -z-1 inset-0 object-cover"
+                  aria-label="Image"
+                />
+              ) : (
+                <video
+                  autoPlay
+                  preload="auto"
+                  width={1920}
+                  height={1080}
+                  muted
+                  loop
+                  className="w-full h-full absolute -z-1 inset-0 object-cover"
+                  aria-label="Video player"
+                  poster={item.media.url}
+                >
+                  <source src={item.media.web_banner.url} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+
               <div className="container">
                 <div className="w-full">
-                  <Heading
-                    size="heading1"
-                    as="h1"
-                    className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
-                  >
+                  <Heading size="heading1" as="h1" className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
                     {item.title}
                   </Heading>
                   <Text
@@ -124,11 +126,11 @@ export default function HeroSection({data, locale}) {
                     {item.description}
                   </Text>
                   <LinkButton
-                    href={item.href}
+                    href={item.button.link}
                     aria-label="model"
                     className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
                   >
-                    {item.button_title}
+                    {item.button.text}
                   </LinkButton>
                 </div>
               </div>
@@ -164,24 +166,14 @@ export default function HeroSection({data, locale}) {
             ref={prevRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img
-              src="icon-arrow-left.svg"
-              alt="icon-arrow-left"
-              width={16}
-              height={16}
-            />
+            <Img src="icon-arrow-left.svg" alt="icon-arrow-left" width={16} height={16} />
             <span className="sr-only">left</span>
           </button>
           <button
             ref={nextRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img
-              src="icon-arrow-right.svg"
-              alt="icon-arrow-right"
-              width={16}
-              height={16}
-            />
+            <Img src="icon-arrow-right.svg" alt="icon-arrow-right" width={16} height={16} />
             <span className="sr-only">next</span>
           </button>
         </div>

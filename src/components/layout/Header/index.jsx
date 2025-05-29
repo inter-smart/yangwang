@@ -89,7 +89,7 @@ export default function Header({ locale }) {
   );
 
   const triggerStyle =
-    "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-2 focus:ring-base1 rounded";
+    "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0";
   const triggerNavStyle =
     "3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1";
 
@@ -153,7 +153,7 @@ export default function Header({ locale }) {
 
           <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 2xl:gap-[30px] 3xl:gap-[40px]">
             <Select onValueChange={handleLocaleChange} value={locale} defaultValue={locale}>
-              <SelectTrigger className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 [&>svg]:mt-[1px] 3xl:[&>svg]:mt-[3px]">
+              <SelectTrigger className="3xl:text-[15px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 2xl:[&>svg]:mt-[1px] 3xl:[&>svg]:mt-[2px]">
                 <SelectValue placeholder={locale.toUpperCase()} />
               </SelectTrigger>
               <SelectContent className="bg-white max-w-[40px] border-base1/10">
