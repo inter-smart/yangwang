@@ -58,18 +58,15 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
+  const { lang } = await params;
+  console.log("lang root", lang);
+
   const isEnglish = true;
 
   return (
-    <html
-      lang={isEnglish ? "en" : "ar"}
-      dir={isEnglish ? "ltr" : "rtl"}
-      className=""
-    >
-      <body
-        className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}
-      >
+    <html lang={lang} dir={lang === "en" ? "ltr" : "rtl"} className="">
+      <body className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
