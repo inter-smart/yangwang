@@ -85,8 +85,8 @@
     }
   }
 
-  --animate-move:  animation: carMove 3s ease-in-out;
-  
+  --animate-move: animation: carMove 3s ease-in-out;
+
 }
 
 
@@ -164,8 +164,11 @@ body {
     ul>li {
       @apply list-disc;
     }
-
   }
-
-
 }
+
+
+.rotateY-180 {
+  transform: rotateY(-180deg)
+}
+ 

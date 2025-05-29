@@ -192,7 +192,7 @@ export default function OfferInfoSection() {
               <Text
                 size="text4"
                 as="p"
-                className="text-white mt-[15px] xl:mt-[20px] 2xl:mt-[30px]"
+                className="text-white mt-[15px] xl:mt-[20px] 2xl:mt-[30px] transition-color duration-300 hover:text-base1"
               >
                 <Link href={"#"}>*Terms and Conditions Apply</Link>
               </Text>

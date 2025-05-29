@@ -147,7 +147,7 @@ export default function Header() {
           : 'absolute [--header-y:60px] lg:[--header-y:80px] 2xl:[--header-y:100px] 3xl:[--header-y:120px]'
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container">
         <div className="w-full h-[var(--header-y)] flex flex-wrap items-center justify-between gap-[10px]">
           <Link href={`/${locale}`} className="w-auto">
             <Img
