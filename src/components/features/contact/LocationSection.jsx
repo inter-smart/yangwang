@@ -98,7 +98,7 @@ export default function LocationSection({ variant }) {
                                             </svg>
                                         </div>
                                     </div>
-                                    <div className="pl-[15px] w-[calc(100%-33px)]">
+                                    <div className="ltr:pl-[15px] rtl:pr-[15px] w-[calc(100%-33px)]">
                                         <Text size="text2" as="p" className="text-[#5949A7] mb-1">
                                             Toll Free number
                                         </Text>
@@ -128,7 +128,7 @@ export default function LocationSection({ variant }) {
                                             </svg>
                                         </div>
                                     </div>
-                                    <div className="pl-[15px] w-[calc(100%-33px)]">
+                                    <div className="ltr:pl-[15px] rtl:pr-[15px]  w-[calc(100%-33px)]">
                                         <Text size="text2" as="p" className="text-[#5949A7] mb-1">
                                             Mail Us
                                         </Text>
@@ -156,7 +156,7 @@ export default function LocationSection({ variant }) {
                                             </svg>
                                         </div>
                                     </div>
-                                    <div className="pl-[15px] w-[calc(100%-33px)]">
+                                    <div className="ltr:pl-[15px] rtl:pr-[15px]  w-[calc(100%-33px)]">
                                         <Text size="text2" as="p" className="text-[#5949A7] mb-1">
                                             WhatsApp
                                         </Text>
