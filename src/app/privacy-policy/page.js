@@ -1,4 +1,4 @@
-import BannerSection from "@/components/common/BannerSection";
+import BannerSection from "@/components/common/InnerBanner";
 import PrivacyPolicy from "@/components/features/privacy-policy/PrivacyPolicy";
 
 export const metadata = {

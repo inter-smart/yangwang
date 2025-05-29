@@ -33,7 +33,7 @@ export default function ServiceSection({ }) {
                         className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                     />
                 </div>
-                <div className="w-full md:w-1/2 3xl:pl-[75px] 2xl:pl-[65px] xl:pl-[45px] pl-[25px] lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px]">
+                <div className="w-full md:w-1/2 3xl:pl-[75px] 2xl:pl-[65px] xl:pl-[45px] pl-[25px] lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] 3xl:py-[115px_120px] xl:py-[80px_100px] lg:py-[60px_80px] py-[35px_50px]">
                     <div className="w-full h-full flex items-center">
                         <div className="w-full">
                             <Heading
@@ -90,7 +90,7 @@ export default function ServiceSection({ }) {
                 </div>
             </div>
             <div className="flex flex-wrap">
-                <div className="w-full md:w-1/2 3xl:pr-[75px] 2xl:pr-[65px] xl:pr-[45px] pr-[25px] lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px]">
+                <div className="w-full md:w-1/2 3xl:pr-[75px] 2xl:pr-[65px] xl:pr-[45px] pr-[25px] lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] 3xl:py-[115px_120px] xl:py-[80px_100px] lg:py-[60px_80px] py-[35px_50px]">
                     <div className="h-full flex flex-wrap items-center 2xl:pl-[50px] xl:pl-[20px] md:pl-[15px]">
                         <div className="h-fit w-full">
                             <Heading

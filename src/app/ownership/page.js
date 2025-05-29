@@ -1,7 +1,7 @@
-import BannerSection from "@/components/common/BannerSection";
+import BannerSection from "@/components/common/InnerBanner";
 import OwnershipSection from "@/components/features/ownership/OwnershipSection";
 import ServiceSection from "@/components/features/ownership/ServiceSection";
-import OwnerContact from "@/components/features/ownership/OwnerContact";
+import OwnerContactSection from "@/components/features/ownership/OwnerContactSection";
 
 export default function ownership() {
     return (
@@ -9,7 +9,7 @@ export default function ownership() {
             <BannerSection title="Ownership Redefined" bannerImg="owner-banner.jpg" />
             <OwnershipSection />
             <ServiceSection />
-            <OwnerContact />
+            <OwnerContactSection />
 
         </>
     );
