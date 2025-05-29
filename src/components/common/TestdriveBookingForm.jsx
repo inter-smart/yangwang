@@ -6,6 +6,15 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../layout/Button";
+import {
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    SelectItem,
+} from "@/components/ui/select";
+
+
 const formSchema = z
     .object({
 
@@ -22,7 +31,7 @@ const formSchema = z
     })
 
 
-export default function EnquiryForm() {
+export default function TestdriveBookingForm() {
 
     // Define form
     const form = useForm({
@@ -134,7 +143,7 @@ export default function EnquiryForm() {
                     />
                 </div>
 
-                <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+                <div className="w-full lg:w-3/4 p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
                     <FormField
                         control={form.control}
                         name="email"
@@ -170,7 +179,55 @@ export default function EnquiryForm() {
                         )}
                     />
                 </div>
-                <div className="w-full  p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+                <div className="w-full md:w-1/2  lg:w-1/4 p-[15px] lg:px-[5px_7px] md:py-[20px] py-[10px">
+                    <FormField
+                        control={form.control}
+                        name="location"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Select>
+                                        <SelectTrigger
+                                            className="w-full min-h-[50px] px-6  border border-[#CCCCCC]
+                                            rounded-none bg-white text-[16px] text-[#000000] 
+                                            font-medium outline-none shadow-none transition-all cursor-pointer 
+                                            flex items-center justify-between relative"
+                                        >
+                                            <div className="flex items-center gap-2 flex-1 overflow-hidden ">
+                                                <SelectValue
+                                                    placeholder="Select Model"
+                                                    className="truncate text-[#999999] font-semibold"
+                                                />
+                                            </div>
+                                        </SelectTrigger>
+                                        <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
+                                            <SelectItem
+                                                value="warranty"
+                                                className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                                            >
+                                                Quatar
+                                            </SelectItem>
+                                            <SelectItem
+                                                value="maintenance"
+                                                className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                                            >
+                                                India
+                                            </SelectItem>
+                                            <SelectItem
+                                                value="insurance"
+                                                className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                                            >
+                                                USA
+                                            </SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage className={errorStyle} />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
                     <FormField
                         control={form.control}
                         name="phoneNumber"
@@ -205,7 +262,69 @@ export default function EnquiryForm() {
                             </FormItem>
                         )}
                     />
-                </div> 
+                </div>
+                <div className="w-full md:w-1/2  lg:w-1/4 p-[15px] lg:px-[25px_7px] md:py-[20px] py-[10px">
+                    <FormField
+                        control={form.control}
+                        name="location"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Select>
+                                        <SelectTrigger
+                                            className="w-full min-h-[50px] px-6  border border-[#CCCCCC]
+                                            rounded-none bg-white text-[16px] text-[#000000] 
+                                            font-medium outline-none shadow-none transition-all cursor-pointer 
+                                            flex items-center justify-between relative"
+                                        >
+                                            <div className="flex items-center gap-2 flex-1 overflow-hidden ">
+                                                <SelectValue
+                                                    placeholder="Select Location"
+                                                    className="truncate text-[#999999] font-semibold"
+                                                />
+                                            </div>
+                                        </SelectTrigger>
+                                        <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
+                                            <SelectItem
+                                                value="warranty"
+                                                className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                                            >
+                                                Quatar
+                                            </SelectItem>
+                                            <SelectItem
+                                                value="maintenance"
+                                                className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                                            >
+                                                India
+                                            </SelectItem>
+                                            <SelectItem
+                                                value="insurance"
+                                                className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                                            >
+                                                USA
+                                            </SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage className={errorStyle} />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                <div className="w-full md:w-1/2 lg:w-1/4 p-[15px] lg:px-[7px_25px] md:py-[20px] py-[10px">
+                    <FormField
+                        control={form.control}
+                        name="date"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+
+                                </FormControl>
+                                <FormMessage className={errorStyle} />
+                            </FormItem>
+                        )}
+                    />
+                </div>
                 <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
                     <FormField
                         control={form.control}

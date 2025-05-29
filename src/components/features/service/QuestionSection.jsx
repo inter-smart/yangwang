@@ -1,6 +1,7 @@
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Img } from "@/components/layout/Img";
+import ServiceEnquiryForm from "@/components/common/ServiceEnquiryForm";
 import {
     Select,
     SelectTrigger,
@@ -9,7 +10,6 @@ import {
     SelectItem,
 } from "@/components/ui/select";
  
-import EnquiryForm from "@/components/common/EnquiryForm";
 export default function FollowusSection() {
 
     return (
@@ -85,7 +85,7 @@ export default function FollowusSection() {
                                 </SelectContent>
                             </Select>
                         </div>
-                        <EnquiryForm />
+                        <ServiceEnquiryForm />
                     </div>
                 </div>
 

@@ -1,5 +1,4 @@
-import EnquirySection from "@/components/features/contact/EnquirySection";
-import FaqSection from "@/components/features/contact/FaqSection";
+ 
 import LocationSection from "@/components/features/contact/LocationSection";
 import InnerBanner from "@/components/common/InnerBanner";
 import GlobalSection from "@/components/features/service/GlobalSection";
@@ -14,6 +13,7 @@ export default function Contact() {
             <GlobalSection  />
             <WarrantySection />
             <QuestionSection />
+            <LocationSection />
             <FollowusSection />
         </>
     );
