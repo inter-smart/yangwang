@@ -141,7 +141,7 @@ export default function HeroSection() {
           className="group bg-white/10 rounded-full backdrop-blur-3xl p-[4px] xl:p-[6px] 3xl:p-[10px] overflow-hidden"
         >
           <div className="w-[50px] sm:w-[80px] xl:w-[100px] 2xl:w-[110px] 3xl:w-[155px] aspect-square bg-white/10 backdrop-blur-3xl rounded-full relative z-0">
-            <div className="text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[66px] 3xl:text-[80px] font-medium leading-none text-center uppercase bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent absolute z-0 inset-0 top-[10%] ">
+            <div className="text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[66px] 3xl:text-[80px] font-medium leading-none text-center uppercase bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent absolute z-0 inset-0 top-[15%] lg:top-[10%]">
               {nextSlideTitle}
             </div>
             <Img

@@ -68,7 +68,7 @@ export default function ModelSection() {
         className="w-full h-dvh lg:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block overflow-hidden"
       >
         <div className="h-full flex flex-wrap">
-          <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
+          <div className="w-full lg:w-[calc(100%-420px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
             <div className="w-full h-full relative bg-black z-0 p-[20px_25px] xl:p-[35px_45px] 2xl:p-[45px_65px] 3xl:p-[50px_70px] ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
               <div className="h-full max-lg:container max-lg:mx-auto max-lg:px-[var(--breakpoint-gap)]">
                 <video
@@ -150,7 +150,7 @@ export default function ModelSection() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[320px] xl:w-[490px] 2xl:w-[650px] 3xl:w-[740px] max-lg:h-[60dvh]">
+          <div className="w-full lg:w-[420px] xl:w-[490px] 2xl:w-[650px] 3xl:w-[740px] max-lg:h-[60dvh]">
             <div className="w-full h-full bg-black block relative z-0">
               <video
                 ref={scrollVideo1}
@@ -179,7 +179,7 @@ export default function ModelSection() {
         className="w-full h-dvh lg:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block overflow-hidden"
       >
         <div className="h-full flex flex-wrap flex-row-reverse">
-          <div className="w-full lg:w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
+          <div className="w-full lg:w-[calc(100%-420px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
             <div className="w-full h-full relative bg-black z-0 p-[20px_25px] xl:p-[35px_45px] 2xl:p-[45px_65px] 3xl:p-[50px_70px] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
               <div className="h-full max-lg:container max-lg:mx-auto max-lg:px-[var(--breakpoint-gap)]">
                 <video
@@ -261,7 +261,7 @@ export default function ModelSection() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[320px] xl:w-[490px] 2xl:w-[650px] 3xl:w-[740px] max-lg:h-[60dvh]">
+          <div className="w-full lg:w-[420px] xl:w-[490px] 2xl:w-[650px] 3xl:w-[740px] max-lg:h-[60dvh]">
             <div className="w-full h-full block bg-black relative z-0">
               <video
                 ref={scrollVideo2}
