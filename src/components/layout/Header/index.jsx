@@ -80,7 +80,7 @@ export default function Header({ locale }) {
         ],
       },
       { href: "/about", title: t("about") },
-      { href: "/services", title: t("services") },
+      { href: "/service", title: t("services") },
       { href: "/contact", title: t("contact") },
       { href: "/ownership", title: t("owners") },
       { href: "/offers", title: t("offers") },
