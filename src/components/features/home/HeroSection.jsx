@@ -43,7 +43,7 @@ export default function HeroSection({locale}) {
   console.log("locale: ", locale);
   
 
-  useEffect(() => {
+  useEffect(({data}) => {
     if (
       swiperInstance &&
       prevRef.current &&
@@ -88,7 +88,7 @@ export default function HeroSection({locale}) {
         className="h-full [--swiper-pagination-bullet-width:25px] xl:[--swiper-pagination-bullet-width:30px] 3xl:[--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:1] [--swiper-pagination-bottom:15px] sm:[--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:50px] 3xl:[--swiper-pagination-bottom:80px] overflow-hidden"
       >
         <Suspense fallback={<div>Loading feed...</div>}>
-          {slide?.map((item, index) => (
+          {data?.map((item, index) => (
             <SwiperSlide
               key={"slide" + index}
               className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
