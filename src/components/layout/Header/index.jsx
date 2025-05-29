@@ -146,7 +146,7 @@ export default function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink className={triggerStyle} asChild>
-                  <Link href="#" className={triggerNavStyle}>
+                  <Link href="/about" className={triggerNavStyle}>
                     About Us
                   </Link>
                 </NavigationMenuLink>
@@ -160,21 +160,21 @@ export default function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink className={triggerStyle} asChild>
-                  <Link href="#" className={triggerNavStyle}>
+                  <Link href="/contact" className={triggerNavStyle}>
                     Contact
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink className={triggerStyle} asChild>
-                  <Link href="#" className={triggerNavStyle}>
+                  <Link href="/ownership" className={triggerNavStyle}>
                     Owners
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink className={triggerStyle} asChild>
-                  <Link href="#" className={triggerNavStyle}>
+                  <Link href="/offers" className={triggerNavStyle}>
                     Offers
                   </Link>
                 </NavigationMenuLink>
@@ -236,19 +236,19 @@ export default function Header() {
                         <HeaderNavItem title={"Models"} href={"/"} />
                       </li>
                       <li>
-                        <HeaderNavItem title={"About Us"} href={"#"} />
+                        <HeaderNavItem title={"About Us"} href={"/about"} />
                       </li>
                       <li>
                         <HeaderNavItem title={"Services"} href={"#"} />
                       </li>
                       <li>
-                        <HeaderNavItem title={"Contact"} href={"#"} />
+                        <HeaderNavItem title={"Contact"} href={"/contact"} />
                       </li>
                       <li>
-                        <HeaderNavItem title={"Owners"} href={"#"} />
+                        <HeaderNavItem title={"Owners"} href={"/ownership"} />
                       </li>
                       <li>
-                        <HeaderNavItem title={"Offers"} href={"#"} />
+                        <HeaderNavItem title={"Offers"} href={"/offers"} />
                       </li>
                     </ul>
                   </SheetHeader>

@@ -106,7 +106,7 @@ export default function OfferInfoSection() {
             index % 2 === 0 ? "flex-row" : "flex-row-reverse"
           }`}
         >
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-45/100">
             <div className="w-full h-full overflow-hidden relative z-0">
               <Img
                 src={item.image}
@@ -117,7 +117,7 @@ export default function OfferInfoSection() {
               />
             </div>
           </div>
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-55/100">
             <div
               className={`w-full h-full p-[30px_40px] xl:p-[60px_80px] 2xl:p-[75px_100px] 3xl:p-[90px_120px] ${
                 index % 2 === 0
@@ -142,24 +142,24 @@ export default function OfferInfoSection() {
               <Text
                 size="text1"
                 as="p"
-                className="text-base1 mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                className="font-bold text-[#cb9576] mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
               >
                 <b> {item.warranty}</b>
               </Text>
               <Text
                 size="text1"
                 as="p"
-                className="font-medium text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                className="font-normal text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
               >
                 {item.description}
               </Text>
-              <ul className="mb-[20px] xl:mb-[30px] 3xl:mb-[40px]">
+              <ul className="mb-[20px] xl:mb-[30px] 2xl:mb-[40px]">
                 {item.offersList?.map((offer, index) => (
                   <li
                     key={`offersInfo-${index}`}
-                    className="my-[10px] xl:my-[15px] 3xl:my-[25px] ltr:pl-[20px] ltr:xl:pl-[30px] ltr:2xl:pl-[40px] ltr:3xl:pl-[50px] last:mb-0 relative z-0 before:content-[''] before:block before:w-[15px] before:xl:w-[20px] before:2xl:w-[25px] before:3xl:w-[30px] before:aspect-square before:absolute before:z-0 before:left-0 before:-top-[2px] before:xl:-top-[5px] before:3xl:-top-[7px] before:bg-[url(/images/offer-list-icon.svg)] before:bg-center before:bg-contain"
+                    className="my-[15px] xl:my-[20px] 2xl:my-[25px] ltr:pl-[20px] ltr:xl:pl-[30px] ltr:2xl:pl-[40px] ltr:3xl:pl-[50px] last:mb-0 relative z-0 before:content-[''] before:block before:w-[15px] before:xl:w-[20px] before:2xl:w-[25px] before:3xl:w-[30px] before:aspect-square before:absolute before:z-0 before:left-0 before:-top-[2px] before:xl:-top-[5px] before:3xl:-top-[7px] before:bg-[url(/images/offer-list-icon.svg)] before:bg-center before:bg-contain"
                   >
-                    <Heading size="heading6" as="h6" className="text-white">
+                    <Heading size="heading6" as="h6" className="font-normal text-white">
                       {offer.title}
                     </Heading>
                   </li>
