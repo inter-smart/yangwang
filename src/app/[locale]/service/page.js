@@ -15,7 +15,7 @@ export default function Contact() {
       <GlobalSection />
       <WarrantySection />
       <QuestionSection />
-      <LocationSection variant="service" />
+      {/* <LocationSection variant="service" /> */}
       <FollowusSection />
     </>
   );

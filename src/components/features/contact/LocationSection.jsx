@@ -60,7 +60,7 @@ export default function LocationSection({ variant }) {
                     </TabsList>
 
                     <TabsContent value="showroom" className="w-full">
-                        <LocationMap />
+                        {/* <LocationMap /> */}
                     </TabsContent>
                     <TabsContent value="service" className="w-full">
 
