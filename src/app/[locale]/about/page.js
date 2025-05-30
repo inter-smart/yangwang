@@ -49,11 +49,14 @@ export default async function AboutPage({ params }) {
   return (
     <>
       <AboutSection data={aboutData?.banner ?? []} locale={locale} />
-      <YangwangSection data={aboutData?.aboutSection ?? {}} locale={locale} />
+      {/* <YangwangSection data={aboutData?.aboutSection ?? {}} locale={locale} /> */}
+      <DealershipSection data={aboutData?.aboutSection ?? {}} locale={locale} showVideo={true} />
       <LookupSection data={aboutData?.lookUpSection ?? {}} locale={locale} />
       <BrandSection data={aboutData?.brandLogoSection ?? {}} locale={locale} />
       <YangwangSection data={aboutData?.dealershipSection} locale={locale} />
-      <FutureSection data={aboutData?.futureSection ?? {}} locale={locale} />
+      <DealershipSection data={aboutData?.futureSection ?? {}} locale={locale} showVideo={false} />
+      {/* <FutureSection data={aboutData?.futureSection ?? {}} locale={locale} /> */}
+
       <InnovationSection data={aboutData?.innovationSection ?? {}} locale={locale} />
     </>
   );

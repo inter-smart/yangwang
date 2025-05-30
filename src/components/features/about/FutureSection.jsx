@@ -5,7 +5,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 
-export default function FutureSection({ data }) {
+export default function FutureSection({ data, locale }) {
   const { title, items } = data;
 
   return (
@@ -30,6 +30,8 @@ export default function FutureSection({ data }) {
                 slidesPerView: 5,
               },
             }}
+            key={locale}
+            dir={locale === "en" ? "ltr" : "rtl"}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
