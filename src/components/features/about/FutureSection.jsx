@@ -27,7 +27,7 @@ const vehicleInfo = [
     }
 ];
 
-export default function FutureSection() {
+export default function FutureSection({ locale }) {
     return (
         <section className="w-full h-auto block p-[40px_0_50px] md:p-[60px_0_70px] xl:p-[90px_0_100px] 2xl:p-[100px_0_110px] 3xl:p-[135px_0_150px]">
             <div className="container">
@@ -40,6 +40,8 @@ export default function FutureSection() {
                 </Heading>
                 <div className="w-full h-auto">
                     <Swiper
+                        key={locale}
+                        dir={locale === "en" ? "ltr" : "rtl"}
                         modules={[Autoplay]}
                         spaceBetween={8}
                         slidesPerView={1.3}
