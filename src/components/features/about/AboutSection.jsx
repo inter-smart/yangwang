@@ -9,8 +9,6 @@ import { useEffect, useRef } from "react";
 export default function AboutSection({ data }) {
   const swiperRef = useRef(null);
 
-  console.log("[2025-05-30T13:29:00.000Z] About data:", JSON.stringify(data, null, 2));
-
   // Fallback images if data.images is not ready
   const images =
     Array.isArray(data?.images) && data.images.length >= 3

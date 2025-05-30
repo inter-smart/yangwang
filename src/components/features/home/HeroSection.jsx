@@ -13,27 +13,6 @@ import { LinkButton } from "@/components/layout/Button";
 import { Img } from "@/components/layout/Img";
 import Image from "next/image";
 
-const slide = [
-  {
-    thumb: "hero-thumb-1.png",
-    background: "/videos/hero-1.mp4",
-    poster: "images/poster-hero-1.jpg",
-    title: "u8",
-    description: "Pure Electric Performance Supercar",
-    href: "/",
-    button_title: "Explore Models",
-  },
-  {
-    thumb: "hero-thumb-2.png",
-    background: "/videos/hero-2.mp4",
-    poster: "images/poster-hero-1.jpg",
-    title: "u9",
-    description: "Pure Electric Performance Supercar",
-    href: "/",
-    button_title: "Explore Models",
-  },
-];
-
 export default function HeroSection({ data, locale }) {
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
