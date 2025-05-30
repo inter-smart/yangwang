@@ -10,63 +10,51 @@ export const metadata = {
   description: "Demo Text.",
 };
 
-export default async function page({ params }) {
+export default async function AboutPage({ params }) {
   const { locale } = await params;
+  const timestamp = "2025-05-30T09:47:00.000Z"; // 3:17 PM IST
 
   let aboutData = {};
 
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/about/${encodeURIComponent(
-        locale
-      )}`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 60 },
-      }
-    );
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/about?lang=${encodeURIComponent(locale)}`;
+    const response = await fetch(apiUrl, {
+      cache: "force-cache",
+      next: { revalidate: 3600 }, // 1-hour revalidation
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
     const result = await response.json();
-    if (result.success && result.status === 200) {
-      aboutData = result.data;
-      console.log(
-        `[2025-05-29T14:37:00.000Z] Fetched About data for ${locale}`,
-        aboutData
-      );
+    if (result.success && result.status === 200 && result.data) {
+      aboutData = {
+        banner: result.data.banner,
+        aboutSection: result.data.about_section,
+        lookUpSection: result.data.look_up_section,
+        brandLogoSection: result.data.brand_logo_section,
+        dealershipSection: result.data.dealership_section,
+        futureSection: result.data.future_section,
+        innovationSection: result.data.innovation_section,
+      };
+      console.log(`[${timestamp}] Fetched about data for ${locale}`, aboutData);
     } else {
-      console.error(
-        `[2025-05-29T14:37:00.000Z] API error: ${
-          result.message || "Unknown error"
-        }`
-      );
+      console.error(`[${timestamp}] API error: ${result.message || "Unknown error"}`);
     }
   } catch (error) {
-    console.error(
-      `[2025-05-29T14:37:00.000Z] Failed to fetch about data: ${error.message}`
-    );
+    console.error(`[${timestamp}] Failed to fetch about data: ${error instanceof Error ? error.message : "Unknown error"}`);
   }
+
   return (
     <>
-      <AboutSection locale={locale} />
-      <DealershipSection
-        title="About Yangwang"
-        description="Yangwang is BYD Auto's premier luxury electric vehicle (EV) brand, launched in January 2023 to compete with high-end automakers like Mercedes-Benz, BMW, and Audi. Positioned above BYD's other sub-brands, Denza and Fangchengbao, Yangwang introduces cutting-edge technologies and innovative designs to the luxury EV market."
-        deskImageSrc="/images/about-yangwang.jpg"
-        mobileImageSrc="/images/about-yangwang-mobile.jpg"
-        imageAlt="About Yangwang"
-        showVideo={true}
-      />
-      <VisionSection locale={locale} />
-      <BrandSection />
-      <DealershipSection
-        title="About Dealership"
-        description="Yangwang is a high-end new energy vehicle brand under BYD Group. Relying on BYD Group's innovative automotive technology, top industrial system strength, and forward-looking design, it provides users with high-end vehicle products beyond imagination."
-        deskImageSrc="/images/about-dealership.jpg"
-        mobileImageSrc="/images/about-dealership-mobile.jpg"
-        imageAlt="About Dealership"
-        showVideo={false}
-      />
-      <FutureSection locale={locale} />
-      <InovationSection locale={locale} />
+      <AboutSection data={aboutData?.banner ?? []} locale={locale} />
+      <DealershipSection data={aboutData?.aboutSection ?? {}} locale={locale} showVideo={true} />
+      <VisionSection data={aboutData?.lookUpSection ?? {}} locale={locale} />
+      <DealershipSection data={aboutData?.dealershipSection ?? {}} locale={locale} showVideo={false} />
+      <BrandSection data={aboutData?.brandLogoSection ?? {}} locale={locale} />
+      <FutureSection data={aboutData?.futureSection ?? {}} locale={locale} />
+      <InovationSection data={aboutData?.innovationSection ?? {}} locale={locale} />
     </>
   );
 }
