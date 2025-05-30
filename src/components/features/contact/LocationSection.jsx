@@ -41,7 +41,7 @@ export default function LocationSection({ variant }) {
                                         value={tab.key}
                                         className="relative text-white font-medium outline-none shadow-none
                                         text-[11px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full pb-[20px]
-                                        after:content-[''] after:absolute after:bottom-[-4px] after:left-[-1px] after:w-[350px] after:h-[5px] after:bg-transparent
+                                        after:content-[''] after:absolute after:bottom-[-4px] after:left-[-1px] after:md:w-[350px] after:w-full after:h-[5px] after:bg-transparent
                                         data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
                                     >
                                         <div className={`${tab.width} ${tab.height} flex relative`}>

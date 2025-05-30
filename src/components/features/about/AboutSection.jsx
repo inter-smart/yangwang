@@ -4,7 +4,7 @@ import { Img } from "@/components/layout/Img";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-const slides = [
+const slides = [ 
     {
         src: "about-banner-1.jpg",
         alt: "about-banner-1"
@@ -19,10 +19,12 @@ const slides = [
     }
 ];
 
-export default function AboutSection() {
+export default function AboutSection({ locale }) {
     return (
         <section className="w-full max-md:h-[420px] md:h-dvh md:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
             <Swiper
+                key={locale}
+                dir={locale === "en" ? "ltr" : "rtl"}
                 spaceBetween={0}
                 slidesPerView={3}
                 className="innovationSlider h-full"

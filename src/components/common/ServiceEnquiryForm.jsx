@@ -80,9 +80,9 @@ export default function ServiceEnquiryForm() {
           console.log("Form submit event triggered");
           form.handleSubmit(onSubmit)(e);
         }}
-        className="flex flex-wrap -mx-[15px] lg:-mx-[25px]"
+        className="flex flex-wrap -mx-[15px] 2xl:-mx-[25px]"
       >
-        <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full lg:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="fName"
@@ -91,21 +91,21 @@ export default function ServiceEnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
+                                border-0
+                                border-b
+                                border-gray-300
+                                rounded-none
+                                px-0
+                                text-black font-normal
+                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                                placeholder:text-black
+                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                                focus:outline-none
+                                focus:ring-0
+                                focus:shadow-none
+                                focus-visible:ring-0
+                                focus-visible:shadow-none
+                                focus:border-b-[#5949A7]
                                             "
                     type="text"
                     placeholder="First Name"
@@ -118,7 +118,7 @@ export default function ServiceEnquiryForm() {
           />
         </div>
 
-        <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full lg:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="sName"
@@ -127,22 +127,22 @@ export default function ServiceEnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
+                                h-[50px]
+                                border-0
+                                border-b
+                                border-gray-300
+                                rounded-none
+                                px-0
+                                text-black font-normal
+                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                                placeholder:text-black
+                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                                focus:outline-none
+                                focus:ring-0
+                                focus:shadow-none
+                                focus-visible:ring-0
+                                focus-visible:shadow-none
+                                focus:border-b-[#5949A7]
                                             "
                     type="text"
                     placeholder="Second Name"
@@ -155,7 +155,7 @@ export default function ServiceEnquiryForm() {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px">
           <FormField
             control={form.control}
             name="email"
@@ -164,22 +164,22 @@ export default function ServiceEnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
+                              h-[50px]
+                              border-0
+                              border-b
+                              border-gray-300
+                              rounded-none
+                              px-0
+                              text-black font-normal
+                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                              placeholder:text-black
+                              placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                              focus:outline-none
+                              focus:ring-0
+                              focus:shadow-none
+                              focus-visible:ring-0
+                              focus-visible:shadow-none
+                              focus:border-b-[#5949A7]
                                             "
                     type="text"
                     placeholder="Email"
@@ -191,7 +191,7 @@ export default function ServiceEnquiryForm() {
             )}
           />
         </div>
-        <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full xl:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px">
           <FormField
             control={form.control}
             name="phoneNumber"
@@ -200,22 +200,22 @@ export default function ServiceEnquiryForm() {
                 <FormControl>
                   <Input
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
+                                h-[50px]
+                                border-0
+                                border-b
+                                border-gray-300
+                                rounded-none
+                                px-0
+                                text-black font-normal
+                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                                placeholder:text-black
+                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                                focus:outline-none
+                                focus:ring-0
+                                focus:shadow-none
+                                focus-visible:ring-0
+                                focus-visible:shadow-none
+                                focus:border-b-[#5949A7]
                                             "
                     type="text"
                     placeholder="Mobile Numer"
@@ -227,7 +227,7 @@ export default function ServiceEnquiryForm() {
             )}
           />
         </div>
-        <div className="w-full md:w-1/2  lg:w-1/4 p-[15px] lg:px-[25px_7px] md:py-[20px] py-[10px">
+        <div className="w-full md:w-1/2  xl:w-1/4 p-[15px] 2xl:px-[25px_7px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="location"
@@ -236,8 +236,8 @@ export default function ServiceEnquiryForm() {
                 <FormControl>
                   <Select>
                     <SelectTrigger
-                      className="w-full min-h-[50px] px-6  border border-[#CCCCCC]
-                                            rounded-none bg-white text-[16px] text-[#000000] 
+                      className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6  border border-[#CCCCCC]
+                                            rounded-none bg-white  text-[#000000] 
                                             font-medium outline-none shadow-none transition-all cursor-pointer 
                                             flex items-center justify-between relative"
                     >
@@ -248,7 +248,7 @@ export default function ServiceEnquiryForm() {
                         />
                       </div>
                     </SelectTrigger>
-                    <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
+                    <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
                       <SelectItem
                         value="warranty"
                         className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
@@ -275,7 +275,8 @@ export default function ServiceEnquiryForm() {
             )}
           />
         </div>
-        <div className="w-full md:w-1/2 lg:w-1/4 p-[15px] lg:px-[7px_25px] md:py-[20px] py-[10px">
+
+        <div className="w-full md:w-1/2 xl:w-1/4 p-[15px] 2xl:px-[7px_25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="date"
@@ -284,18 +285,17 @@ export default function ServiceEnquiryForm() {
                 <FormControl>
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button
+                      <button
                         variant="outline"
                         className={cn(
-                          "w-full h-[70px] border border-gray-300 rounded-none px-4 flex items-center text-[18px] font-medium text-black hover:bg-gray-50 justify-between ",
+                          "!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full h-[50px] min-h-[50px] max-w-full border border-gray-300 rounded-none px-4 flex items-center justify-between  font-medium text-black hover:bg-gray-50  ",
                           !date && "text-muted-foreground"
                         )}
                       >
-                        <span className="whitespace-nowrap">
-                          {date ? format(date, "PPP") : "Select Date"}
-                        </span>
+                        {date ? format(date, "PPP") : "Select Date"}
+
                         <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
-                      </Button>
+                      </button>
                     </PopoverTrigger>
                     <PopoverContent
                       className="w-full p-0 bg-black text-white"
@@ -316,7 +316,7 @@ export default function ServiceEnquiryForm() {
             )}
           />
         </div>
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="message"
@@ -325,23 +325,23 @@ export default function ServiceEnquiryForm() {
                 <FormControl>
                   <Textarea
                     className="w-full
-                                                h-[50px]
-                                                border-0
-                                                border-b
-                                                border-gray-300
-                                                rounded-none
-                                                px-0
-                                                text-black font-normal
-                                                text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                                                placeholder:text-black
-                                                placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                                                focus:outline-none
-                                                focus:ring-0
-                                                focus:shadow-none
-                                                focus-visible:ring-0
-                                                focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                      h-[50px]
+                      border-0
+                      border-b
+                      border-gray-300
+                      rounded-none
+                      px-0
+                      text-black font-normal
+                      text-[14px] 2xl:text-[16px] 3xl:text-[18px]
+                      placeholder:text-black
+                      placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
+                      focus:outline-none
+                      focus:ring-0
+                      focus:shadow-none
+                      focus-visible:ring-0
+                      focus-visible:shadow-none
+                      focus:border-b-[#5949A7]
+                                    "
                     placeholder="Message"
                     {...field}
                   />

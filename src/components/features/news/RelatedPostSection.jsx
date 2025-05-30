@@ -52,7 +52,7 @@ const newsInfo = [
     }
 ];
 
-export default function RelatedPostSection() {
+export default function RelatedPostSection({ locale }) {
     return (
         <section className="w-full h-auto block p-[20px_0_50px] md:p-[20px_0_50px] 2xl:p-[50px_0_110px] 3xl:p-[60px_0_100px]">
             <div className="container">
@@ -65,6 +65,8 @@ export default function RelatedPostSection() {
                 </Heading>
                 <div className="w-full h-auto 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
                     <Swiper
+                        key={locale}
+                        dir={locale === "en" ? "ltr" : "rtl"}
                         modules={[Autoplay]}
                         spaceBetween={10}
                         slidesPerView={1.3}

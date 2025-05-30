@@ -75,7 +75,7 @@
   }
 
   --animate-move: carMove 3s ease-in-out;
-
+  
   @keyframes carMove {
     0% {
       left: -100%;
