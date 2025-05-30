@@ -147,7 +147,7 @@ export default function HeroSection({ data, locale }) {
             </div>
             {nextSlideThumb && (
               <Img
-                src={"hero-thumb-2.png"}
+              src={nextSlideThumb}
                 alt="hero-thumb-1"
                 width={120}
                 height={80}
