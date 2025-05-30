@@ -21,7 +21,12 @@ export default function HeroSection({ data, locale }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (swiperInstance && prevRef.current && nextRef.current && swiperInstance.params) {
+    if (
+      swiperInstance &&
+      prevRef.current &&
+      nextRef.current &&
+      swiperInstance.params
+    ) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
       swiperInstance.params.navigation.nextEl = nextRef.current;
       swiperInstance.navigation.init();
@@ -57,7 +62,7 @@ export default function HeroSection({ data, locale }) {
         pagination={{ clickable: true }}
         rewind={true}
         modules={[Navigation, Pagination, A11y]}
-        className="h-full [--swiper-pagination-bullet-width:25px] xl:[--swiper-pagination-bullet-width:30px] 3xl:[--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:1] [--swiper-pagination-bottom:15px] sm:[--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:50px] 3xl:[--swiper-pagination-bottom:80px] overflow-hidden"
+        className="h-full [--swiper-pagination-bullet-width:25px] xl:[--swiper-pagination-bullet-width:30px] 3xl:[--swiper-pagination-bullet-width:43px] [--swiper-pagination-bullet-height:3px] [--swiper-pagination-color:#fff] [--swiper-pagination-bullet-border-radius:0] [--swiper-pagination-bullet-inactive-color:#d9d9d9] [--swiper-pagination-bullet-inactive-opacity:40%] [--swiper-pagination-bottom:15px] sm:[--swiper-pagination-bottom:30px] xl:[--swiper-pagination-bottom:50px] 3xl:[--swiper-pagination-bottom:80px] overflow-hidden"
       >
         <Suspense fallback={<div>Loading feed...</div>}>
           {data?.map((item, index) => (
@@ -73,6 +78,7 @@ export default function HeroSection({ data, locale }) {
                   height={1080}
                   className="w-full h-full absolute -z-1 inset-0 object-cover"
                   aria-label="Image"
+                  priority
                 />
               ) : (
                 <video
@@ -85,6 +91,7 @@ export default function HeroSection({ data, locale }) {
                   className="w-full h-full absolute -z-1 inset-0 object-cover"
                   aria-label="Video player"
                   poster={item.media.url}
+                  priority="true"
                 >
                   <source src={item.media.web_banner.url} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -93,7 +100,11 @@ export default function HeroSection({ data, locale }) {
 
               <div className="container">
                 <div className="w-full">
-                  <Heading size="heading1" as="h1" className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                  <Heading
+                    size="heading1"
+                    as="h1"
+                    className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                  >
                     {item.title}
                   </Heading>
                   <Text
@@ -122,7 +133,7 @@ export default function HeroSection({ data, locale }) {
           className="group bg-white/10 rounded-full backdrop-blur-3xl p-[4px] xl:p-[6px] 3xl:p-[10px] overflow-hidden"
         >
           <div className="w-[50px] sm:w-[80px] xl:w-[100px] 2xl:w-[110px] 3xl:w-[155px] aspect-square bg-white/10 backdrop-blur-3xl rounded-full relative z-0">
-            <div className="text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[66px] 3xl:text-[80px] font-medium leading-none text-center uppercase bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent absolute z-0 inset-0 top-[10%] ">
+            <div className="text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[66px] 3xl:text-[80px] font-medium leading-none text-center uppercase bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent absolute z-0 inset-0 top-[15%] lg:top-[10%]">
               {nextSlideTitle}
             </div>
             {nextSlideThumb && (
@@ -158,14 +169,24 @@ export default function HeroSection({ data, locale }) {
             ref={prevRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img src="icon-arrow-left.svg" alt="icon-arrow-left" width={16} height={16} />
+            <Img
+              src="icon-arrow-left.svg"
+              alt="icon-arrow-left"
+              width={16}
+              height={16}
+            />
             <span className="sr-only">left</span>
           </button>
           <button
             ref={nextRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img src="icon-arrow-right.svg" alt="icon-arrow-right" width={16} height={16} />
+            <Img
+              src="icon-arrow-right.svg"
+              alt="icon-arrow-right"
+              width={16}
+              height={16}
+            />
             <span className="sr-only">next</span>
           </button>
         </div>

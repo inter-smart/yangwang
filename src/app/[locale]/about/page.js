@@ -1,10 +1,9 @@
 import AboutSection from "@/components/features/about/AboutSection";
+import DealershipSection from "@/components/features/about/DealershipSection";
+import InovationSection from "@/components/features/about/InnovationSection";
 import BrandSection from "@/components/features/about/BrandSection";
 import FutureSection from "@/components/features/about/FutureSection";
-import InnovationSection from "@/components/features/about/InnovationSection";
-import LookupSection from "@/components/features/about/LookupSection";
-import YangwangSection from "@/components/features/about/YangwangSection";
-import { getTranslator } from "next-intl/server";
+import VisionSection from "@/components/features/about/VisionSection";
 
 export const metadata = {
   title: "yangwang | About",

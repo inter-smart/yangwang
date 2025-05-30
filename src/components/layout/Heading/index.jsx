@@ -21,7 +21,7 @@ const textVariants = {
 
 const sizes = {
   heading1:
-    "text-[26px] sm:text-[28px] lg:text-[48px] xl:text-[66px] 2xl:text-[86px] 3xl:text-[100px] font-medium leading-none",
+    "text-[26px] sm:text-[28px] lg:text-[48px] xl:text-[66px] 2xl:text-[87px] 3xl:text-[100px] font-medium leading-none",
   heading2:
     "text-[22px] sm:text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[70px] 3xl:text-[80px] font-medium leading-none",
   heading3:
@@ -29,7 +29,7 @@ const sizes = {
   heading5:
     "text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[26px] 3xl:text-[30px] font-medium leading-none",
   heading6:
-    "text-[10px] sm:text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[17px] 3xl:text-[20px] font-medium leading-none",
+    "text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-medium leading-none",
 };
 
 const Heading = ({ children, className = "", size, as, ...restProps }) => {

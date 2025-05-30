@@ -12,7 +12,7 @@ const footerNav = [
     title: "About Us",
   },
   {
-    href: "/services",
+    href: "/service",
     title: "Services",
   },
   {
@@ -20,7 +20,7 @@ const footerNav = [
     title: "Contact",
   },
   {
-    href: "/owners",
+    href: "/ownership",
     title: "Owners",
   },
   {
@@ -158,7 +158,7 @@ export default function Footer() {
                         as="h6"
                         className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 flex"
                       >
-                        <Link href="#">Service Centers</Link>
+                        <Link href="/service">Service Centers</Link>
                         <Img
                           src="icon-location-1.svg"
                           alt="location"
@@ -173,7 +173,7 @@ export default function Footer() {
                         as="h6"
                         className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 flex"
                       >
-                        <Link href="#">Showroom</Link>
+                        <Link href="/service">Showroom</Link>
                         <Img
                           src="icon-location-2.svg"
                           alt="location"
@@ -246,7 +246,7 @@ export default function Footer() {
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
-                    <Link href="#">Terms & Conditions</Link>
+                    <Link href="/privacy-policy">Terms & Conditions</Link>
                   </Heading>
                 </li>
                 <li>
@@ -256,7 +256,7 @@ export default function Footer() {
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
-                    <Link href="#">Privacy Policy</Link>
+                    <Link href="/privacy-policy">Privacy Policy</Link>
                   </Heading>
                 </li>
                 <li>

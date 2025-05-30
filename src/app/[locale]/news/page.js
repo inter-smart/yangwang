@@ -1,18 +1,18 @@
 import InnerBanner from "@/components/common/InnerBanner";
 import NewSection from "@/components/features/news/NewSection";
-import FollowusSection from "@/components/features/news/FollowusSection";
+import SocialLinkSection from "@/components/features/news/SocialLinkSection";
 
 export const metadata = {
-  title: "yangwang | News",
-  description: "Demo Text.",
+    title: "yangwang | News",
+    description:
+        "Demo Text.",
 };
-
-export default function NewsPage() {
-  return (
-    <>
-      <InnerBanner title="Latest News & Updates" />
-      <NewSection />
-      <FollowusSection />
-    </>
-  );
+export default function page() {
+    return (
+        <>
+            <InnerBanner title="Latest News & Updates" image="news_banner.jpg"/>
+            <NewSection />
+            <SocialLinkSection />
+        </>
+    );
 }

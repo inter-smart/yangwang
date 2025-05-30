@@ -71,12 +71,12 @@ const FilterButton = ({ activeFilter, setActiveFilter }) => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full h-auto gap-2 p-[10px] bg-black flex items-center justify-between"
             >
-                <div className="gap-2 flex items-center">
-                    <Filter size={14} 
-                    className='text-white'
+                <span className="gap-2 flex items-center">
+                    <Filter size={14}
+                        className='text-white'
                     />
                     <span className="text-[12px] font-medium text-white">{activeFilter}</span>
-                </div>
+                </span>
                 <ChevronDown
                     size={16}
                     className={`text-white transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
@@ -137,12 +137,12 @@ export default function NewSection() {
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 3xl:gap-[60px] 2xl:gap-[50px] xl:gap-[35px] md:gap-[20px] gap-[15px] 3xl:mb-[100px] xl:mb-[70px] md:mb-[50px] mb-[35px]">
                     {filteredNews.map((item, index) => (
-                        <div className="w-full h-auto block">
-                            <NewsCard key={index} item={item} />
+                        <div key={index} className="w-full h-auto block">
+                            <NewsCard item={item} />
                         </div>
                     ))}
                 </div>
-                <div className='w-fit m-auto'>
+                <div className='flex items-center justify-center'>
                     <LinkButton
                         href="#"
                         aria-label="load More"

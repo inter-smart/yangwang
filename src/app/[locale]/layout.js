@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 
 const urwForm = localFont({

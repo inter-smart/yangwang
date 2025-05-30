@@ -33,7 +33,7 @@ export default function ServiceSection({ }) {
                         className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                     />
                 </div>
-                <div className="w-full md:w-1/2 3xl:pl-[75px] 2xl:pl-[65px] xl:pl-[45px] pl-[25px] lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px]">
+                <div className="w-full md:w-1/2 ltr:3xl:pl-[75px] ltr:2xl:pl-[65px] ltr:xl:pl-[45px] ltr:pl-[25px] ltr:pr-[15px] ltr:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:3xl:pl-[75px] rtl:2xl:pl-[65px] rtl:xl:pl-[45px] rtl:pl-[25px] rtl:pr-[15px] rtl:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] 3xl:py-[115px_120px] xl:py-[100px_90px] lg:py-[80px_70px] md:py-[65px_50px] py-[30px_35px]">
                     <div className="w-full h-full flex items-center">
                         <div className="w-full">
                             <Heading
@@ -65,8 +65,7 @@ export default function ServiceSection({ }) {
                                         href="#"
                                         aria-label="Book Test Drive"
                                         className="min-w-[70px] sm:min-w-[90px] xl:min-w-[120px] 3xl:min-w-[145px] hover:!bg-[#F1D1A8] hover:!border-none"
-                                        color="black"
-                                    >
+                                        color="black">
                                         Book Service
                                     </LinkButton>
                                 </div>
@@ -90,7 +89,8 @@ export default function ServiceSection({ }) {
                 </div>
             </div>
             <div className="flex flex-wrap">
-                <div className="w-full md:w-1/2 3xl:pr-[75px] 2xl:pr-[65px] xl:pr-[45px] pr-[25px] lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] 2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] 3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[40px]">
+                <div className="w-full md:w-1/2 ltr:3xl:pl-[75px] ltr:2xl:pl-[65px] ltr:xl:pl-[45px] ltr:pl-[25px] ltr:pr-[15px] ltr:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] 
+                rtl:3xl:pl-[75px] rtl:2xl:pl-[65px] rtl:xl:pl-[45px] rtl:pl-[25px] rtl:pr-[15px] rtl:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] 3xl:py-[115px_120px] xl:py-[100px_90px] lg:py-[80px_70px] md:py-[65px_50px] py-[30px_35px]">
                     <div className="h-full flex flex-wrap items-center 2xl:pl-[50px] xl:pl-[20px] md:pl-[15px]">
                         <div className="h-fit w-full">
                             <Heading
@@ -184,7 +184,7 @@ function ServiceBx({ item }) {
                         className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"
                     />
                 </div>
-                <div className="text-[10px] xl:text-[11px] 2xl:text-[13px] 3xl:text-[18px] leading-[1.4] 2xl:font-normal font-medium text-[#151515] 2xl:w-[calc(100%-50px)] xl:w-[calc(100%-30px)] w-[calc(100%-20px)] pl-[10px] 2xl:pl-[15px]">
+                <div className="text-[10px] xl:text-[11px] 2xl:text-[13px] 3xl:text-[18px] leading-[1.4] 2xl:font-normal font-medium text-[#151515] 2xl:w-[calc(100%-50px)] xl:w-[calc(100%-30px)] w-[calc(100%-20px)] ltr:pl-[10px] ltr:2xl:pl-[15px] rtl:pr-[10px] rtl:2xl:pr-[15px]">
                     {item.serviceTle}
                 </div>
             </div>

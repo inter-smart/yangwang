@@ -4,49 +4,46 @@ import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import ModalVideo from "react-modal-video";
+import "react-modal-video/css/modal-video.css";
 import "swiper/css";
 
 const videoReviews = [
   {
     thumbnail: "innovation-1.jpg",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/videos/lookupsection.mp4",
     title: "2024 BYD Yangwang U8 review",
     author: "MR. Ahamed Riyas, Azaiba, Oman",
   },
   {
     thumbnail: "innovation-2.jpg",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/videos/lookupsection.mp4",
     title: "2024 BYD Yangwang U8 review",
     author: "MR. Ahamed Riyas, Azaiba, Oman",
   },
   {
     thumbnail: "innovation-3.jpg",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+    videoUrl: "/videos/lookupsection.mp4",
     title: "2024 BYD Yangwang U8 review",
     author: "MR. Ahamed Riyas, Azaiba, Oman",
   },
 ];
 
-export default function InovationSection({ data }) {
-  const [selectedVideo, setSelectedVideo] = useState(null);
-
-  const openVideoModal = (video) => {
-    setSelectedVideo(video);
-  };
-
-  const closeVideoModal = () => {
-    setSelectedVideo(null);
-  };
-
-  console.log("data ====>", data);
-
+export default function InovationSection({ locale }) {
+  const [videoUrl, setVideoUrl] = useState(null);
   return (
     <section className="w-full h-auto block 2xl:p-[145px_0_190px] xl:p-[100px_0_110px] lg:p-[60px_0_70px] p-[40px_0_50px] bg-[#1D0A44]">
       <div className="container">
-        <Heading size="heading3" as="h3" className="text-white mb-[20px] md:mb-[30px] xl:mb-[50px] 2xl:mb-[70px]">
+        <Heading
+          size="heading3"
+          as="h3"
+          className="text-white mb-[20px] md:mb-[30px] xl:mb-[50px] 2xl:mb-[70px]"
+        >
           Innovation Across the Lineup
         </Heading>
         <Swiper
+          key={locale}
+          dir={locale === "en" ? "ltr" : "rtl"}
           modules={[Autoplay]}
           spaceBetween={15}
           slidesPerView={1}
@@ -64,19 +61,18 @@ export default function InovationSection({ data }) {
               spaceBetween: 30,
             },
           }}
-          className="innovationSlider"
         >
-          {videoReviews?.map((review, index) => (
+          {videoReviews.map((item, index) => (
             <SwiperSlide key={index}>
               <div
                 className="w-full h-full block overflow-hidden relative z-0 before:content-[''] before:absolute before:z-1 before:bottom-0 before:w-full before:h-[50%] before:bg-gradient-to-b before:from-[rgba(34,34,34,0)] before:to-[rgba(21,20,20,0.9)] group"
-                onClick={() => openVideoModal(review)}
+                onClick={() => setVideoUrl(item.videoUrl)}
                 role="button"
-                aria-label={`Play video: ${review.title}`}
+                aria-label={`Play video: ${item.title}`}
               >
                 <Img
-                  src={review.thumbnail}
-                  alt={review.title}
+                  src={item.thumbnail}
+                  alt={item.title}
                   width={550}
                   height={415}
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -92,14 +88,11 @@ export default function InovationSection({ data }) {
                     />
                   </div>
                   <div className="lg:w-[calc(100%-45px)] w-[calc(100%-25px)]">
-                    <Heading
-                      as="h4"
-                      className="text-white text-[14px] xl:text-[16px] 3xl:text-[26px] font-medium mb-[5px] xl:mb-[8px]"
-                    >
-                      {review.title}
-                    </Heading>
+                    <h4 className="text-white text-[14px] xl:text-[16px] 3xl:text-[26px] font-medium mb-[5px] xl:mb-[8px]">
+                      {item.title}
+                    </h4>
                     <p className="3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal text-white">
-                      {review.author}
+                      {item.author}
                     </p>
                   </div>
                 </div>
@@ -108,40 +101,18 @@ export default function InovationSection({ data }) {
           ))}
         </Swiper>
       </div>
-
-      {selectedVideo && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-          onClick={closeVideoModal}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Video player modal"
-        >
-          <div
-            className="relative w-full max-w-4xl mx-4 bg-black rounded-lg overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors duration-200"
-              onClick={closeVideoModal}
-              aria-label="Close video modal"
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <div className="relative aspect-video">
-              <video
-                className="w-full h-full object-contain"
-                src={selectedVideo.videoUrl}
-                controls
-                autoPlay
-                aria-label={selectedVideo.title}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      <ModalVideo
+        channel="custom"
+        url={videoUrl}
+        isOpen={!!videoUrl}
+        onClose={() => setVideoUrl(null)}
+        autoplay
+        allowFullScreen
+        aria={{
+          openMessage: `Video player opened`,
+          closeMessage: "Video player closed",
+        }}
+      />
     </section>
   );
 }

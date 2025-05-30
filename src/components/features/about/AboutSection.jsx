@@ -6,7 +6,7 @@ import "swiper/css";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-export default function AboutSection({ data }) {
+export default function AboutSection({ data, locale }) {
   const swiperRef = useRef(null);
 
   // Fallback images if data.images is not ready
@@ -26,8 +26,10 @@ export default function AboutSection({ data }) {
   }, []);
 
   return (
-    <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
+    <section className="w-full max-md:h-[420px] md:h-dvh md:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
       <Swiper
+        key={locale}
+        dir={locale === "en" ? "ltr" : "rtl"}
         spaceBetween={0}
         slidesPerView={3}
         watchSlidesProgress={true}
@@ -37,7 +39,7 @@ export default function AboutSection({ data }) {
           swiper.update();
         }}
         suppressHydrationWarning
-        className="innovationSlider h-full"
+        className="h-full"
       >
         {images.map((slide, index) => (
           <SwiperSlide key={`slide-${index}`} style={{ width: "33.333%" }}>
