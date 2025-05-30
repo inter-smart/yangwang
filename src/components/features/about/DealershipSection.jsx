@@ -2,14 +2,9 @@ import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Img } from "@/components/layout/Img";
 
-export default function YangwangSection({
-    title = "About Yangwang",
-    description = "Yangwang is BYD Auto's premier luxury electric vehicle (EV) brand, launched in January 2023 to compete with high-end automakers like Mercedes-Benz, BMW, and Audi. Positioned above BYD's other sub-brands, Denza and Fangchengbao, Yangwang introduces cutting-edge technologies and innovative designs to the luxury EV market.",
-    imageSrc = "about-yangwang.jpg",
-    imageAlt = "About Yangwang"
-}) {
+export default function DealershipSection({ imageSrc, imageAlt, title, description }){
     return (
-        <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
+        <section className="w-full max-md:h-[420px] md:h-dvh md:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">
             <Img
                 src={imageSrc}
                 alt={imageAlt}
