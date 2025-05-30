@@ -21,8 +21,8 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
+import { cn } from "@/lib/utils"; 
+import { Button } from "../layout/Button";
 
 const formSchema = z
     .object({
@@ -197,8 +197,8 @@ export default function TestdriveBookingForm() {
                                 <FormControl>
                                     <Select>
                                         <SelectTrigger
-                                            className="w-full min-h-[50px] px-6  border border-[#CCCCCC]
-                                            rounded-none bg-white text-[16px] text-[#000000] 
+                                            className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full min-h-[50px] px-6  border border-[#CCCCCC]
+                                            rounded-none bg-white  text-[#000000] 
                                             font-medium outline-none shadow-none transition-all cursor-pointer 
                                             flex items-center justify-between relative"
                                         >
@@ -281,8 +281,8 @@ export default function TestdriveBookingForm() {
                                 <FormControl>
                                     <Select>
                                         <SelectTrigger
-                                            className="w-full max-w-full min-h-[50px] px-6  border border-[#CCCCCC]
-                                            rounded-none bg-white text-[16px] text-[#000000] 
+                                            className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6  border border-[#CCCCCC]
+                                            rounded-none bg-white text-[#000000] 
                                             font-medium outline-none shadow-none transition-all cursor-pointer 
                                             flex items-center justify-between relative"
                                         >
@@ -333,7 +333,7 @@ export default function TestdriveBookingForm() {
                                             <button
                                                 variant="outline"
                                                 className={cn(
-                                                    "w-full h-[50px] min-h-[50px] max-w-full border border-gray-300 rounded-none px-4 flex items-center justify-between text-[18px] font-medium text-black hover:bg-gray-50  ",
+                                                    "!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] font-medium text-black w-full h-[50px] min-h-[50px] max-w-full border border-gray-300 rounded-none px-4 flex items-center justify-between  hover:bg-gray-50  ",
                                                     !date && "text-muted-foreground"
                                                 )}
                                             >
