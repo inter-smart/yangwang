@@ -11,6 +11,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 
+
 const urwForm = localFont({
   src: [
     {

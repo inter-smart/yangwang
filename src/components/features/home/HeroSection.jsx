@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { LinkButton } from "@/components/layout/Button";
 import { Img } from "@/components/layout/Img";
+import Image from "next/image";
 
 const slide = [
   {
@@ -39,8 +40,6 @@ export default function HeroSection({ data, locale }) {
   const nextRef = useRef(null);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  console.log("Data ===>", data);
 
   useEffect(() => {
     if (
@@ -93,7 +92,7 @@ export default function HeroSection({ data, locale }) {
               className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
             >
               {item.media.type === "image" ? (
-                <Img
+                <Image
                   src={item.media.url}
                   alt={item.title}
                   width={1920}
@@ -158,15 +157,29 @@ export default function HeroSection({ data, locale }) {
             <div className="text-[24px] lg:text-[32px] xl:text-[53px] 2xl:text-[66px] 3xl:text-[80px] font-medium leading-none text-center uppercase bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent absolute z-0 inset-0 top-[15%] lg:top-[10%]">
               {nextSlideTitle}
             </div>
-            <Img
-              src={nextSlideThumb}
-              alt="hero-thumb-1"
-              width={120}
-              height={80}
-              className={
-                "w-[50px] sm:w-[70px] xl:w-[90px] 3xl:w-[110px] absolute z-1 bottom-[10%] left-0 right-0 mx-auto transition-transform duration-300 group-hover:scale-110"
-              }
-            />
+            {nextSlideThumb && (
+              // <Img
+              //   src={nextSlideThumb}
+              //   alt="hero-thumb-1"
+              //   width={120}
+              //   height={80}
+              //   className={
+              //     "w-[50px] sm:w-[70px] xl:w-[90px] 3xl:w-[110px] absolute z-1 bottom-[10%] left-0 right-0 mx-auto transition-transform duration-300 group-hover:scale-110"
+              //   }
+              //   aria-label="Image"
+              // />
+
+              <Image
+                src={nextSlideThumb}
+                alt="hero-thumb-1"
+                width={120}
+                height={80}
+                className={
+                  "w-[50px] sm:w-[70px] xl:w-[90px] 3xl:w-[110px] absolute z-1 bottom-[10%] left-0 right-0 mx-auto transition-transform duration-300 group-hover:scale-110"
+                }
+                aria-label="Image"
+              />
+            )}
           </div>
         </div>
         <div

@@ -18,7 +18,9 @@ function splitTextToSpans(text) {
   ));
 }
 
-export default function AboutSection() {
+export default function AboutSection({ data }) {
+  console.log("about", data);
+
   const sectionRef = useRef(null);
   const carRef1 = useRef(null);
   const carRef2 = useRef(null);
@@ -76,41 +78,25 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px] overflow-hidden"
-    >
+    <section ref={sectionRef} className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px] overflow-hidden">
       <div className="container">
         <div className="3xl:max-w-[1320px] 2xl:max-w-[1080px] xl:max-w-[870px] lg:max-w-[768px] sm:max-w-[576px] mx-auto">
-          <Heading
-            size="heading6"
-            as="h6"
-            className="font-normal capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
-          >
-            Yangwang
+          <Heading size="heading6" as="h6" className="font-normal capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]">
+            {data?.name}
           </Heading>
-          <Heading
-            size="heading3"
-            as="h2"
-            className="uppercase text-black mb-[15px] xl:mb-[20px] 3xl:mb-[40px]"
-          >
-            U8 & U9
+          <Heading size="heading3" as="h2" className="uppercase text-black mb-[15px] xl:mb-[20px] 3xl:mb-[40px]">
+            {data?.modal}
           </Heading>
           <Text
             as="p"
             className="3xl:text-[35px] 2xl:text-[30px] xl:text-[23px] lg:text-[20px] sm:text-[16px] text-[14px] leading-normal font-bold"
           >
-            {splitTextToSpans(
-              "At Yangwang, we redefine the boundaries of luxury and performance with cutting-edge electric vehicles designed for the future. Born from innovation and driven by excellence, our mission is to deliver an unparalleled driving experience through advanced technology, sustainable design, and uncompromising craftsmanship. Join us as we shape a new era of intelligent mobility."
-            )}
+            {splitTextToSpans(data?.description)}
           </Text>
         </div>
       </div>
 
-      <div
-        className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]"
-        dir="ltr"
-      >
+      <div className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]" dir="ltr">
         <Img
           src="about-bg-1.png"
           alt="about-bg-1"

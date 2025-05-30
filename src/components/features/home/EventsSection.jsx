@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 const slide = [
   {
@@ -32,7 +33,7 @@ const slide = [
   },
 ];
 
-export default function EventsSection() {
+export default function EventsSection({data}) {
   return (
     <section className="w-full h-auto block bg-[#f6f6f6] py-[30px] sm:py-[40px_30px] lg:py-[60px_40px] xl:py-[80px_60px] 3xl:py-[120px_80px]">
       <div className="container">
@@ -43,28 +44,27 @@ export default function EventsSection() {
               as="h3"
               className="leading-tight capitalize font-medium mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"
             >
-              Shaping the Future One Story at a Time
+              {data?.header?.title}
             </Heading>
             <Text
               size="text3"
               as="p"
               className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
             >
-              Yangwang is a high-end new energy vehicle brand under BYD Group.
-              Relying on BYD Group's innovative automotive technology,
+              {data?.header?.description}
             </Text>
             <LinkButton
-              href="#"
+              href={data?.header?.button?.link}
               color="black"
               aria-label="View All"
               className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
             >
-              View All
+              {data?.header?.button?.text}
             </LinkButton>
           </div>
           <div className="w-full lg:w-[calc(100%-280px)] xl:w-[calc(100%-300px)] 2xl:w-[calc(100%-380px)] 3xl:w-[calc(100%-440px)]">
             <div className="-m-[5px] sm:-m-[10px] xl:-m-[15px] 3xl:-m-[20px] [&>*]:p-[5px] sm:[&>*]:p-[10px] xl:[&>*]:p-[15px] 3xl:[&>*]:p-[20px]">
-              {slide?.map((item, index) => (
+              {data?.news_and_events?.map((item, index) => (
                 <div
                   key={"slide" + index}
                   className={`${
@@ -79,9 +79,9 @@ export default function EventsSection() {
                         index === 0 ? "h-[220px] sm:h-[320px] lg:h-[400px] xl:h-[490px] 2xl:h-[560px] 3xl:h-[740px]" : "h-[86px] sm:h-[220px] lg:h-[168px] xl:h-[200px] 2xl:h-[231px] 3xl:h-[306px]"
                       } "w-full block overflow-hidden relative z-0 mb-[5px] sm:mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"`}
                     >
-                      <Img
-                        src={item.image}
-                        alt={item.alt}
+                      <Image
+                        src={item.thumbnail}
+                        alt={item.thumbnail_alt}
                         fill
                         sizes="460px"
                         className="object-cover transition-transform duration-300 hover:scale-105"
@@ -95,7 +95,7 @@ export default function EventsSection() {
                       </CardTitle>
                       <CardDescription>
                         <p className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-normal text-base3">
-                          {item.date}
+                          {item.published_date}
                         </p>
                       </CardDescription>
                     </CardHeader>

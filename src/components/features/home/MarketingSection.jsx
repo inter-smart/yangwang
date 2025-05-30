@@ -18,6 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 const slide = [
   {
@@ -52,7 +53,7 @@ const slide = [
   },
 ];
 
-export default function MarketingSection() {
+export default function MarketingSection({data}) {
   return (
     <section className="w-full h-auto block py-[30px] lg:py-[60px_50px] xl:py-[80px_100px] 3xl:py-[120px_140px]">
       <div className="container">
@@ -62,21 +63,22 @@ export default function MarketingSection() {
             as="h3"
             className="capitalize text-black mb-[5px]"
           >
-            Connect. Explore. Inspire.
+            {data?.header?.title}
           </Heading>
           <Link
-            href="#"
+            href={data?.header?.button?.link}
             aria-label="Instagram"
             className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-none capitalize text-black flex items-center gap-[4px] xl:gap-[6px] 3xl:gap-[10px] min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
           >
-            <Img
-              src="icon-btn-insta.svg"
+            <Image
+              // src="icon-btn-insta.svg"
+              src={data?.header?.icon?.url}
               alt="insta"
               width={12}
               height={12}
               className="w-[10px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] block"
             />
-            View on Instagram
+           {data?.header?.button?.text}
           </Link>
         </div>
         <Swiper
@@ -106,7 +108,7 @@ export default function MarketingSection() {
           }}
         >
           <Suspense fallback={<div>Loading feed...</div>}>
-            {slide?.map((item, index) => (
+            {data?.feeds?.map((item, index) => (
               <SwiperSlide key={"slide" + index}>
                 <Card className="w-full h-auto aspect-[420/520] lg:aspect-[420/580] block rounded-none border-[#ccc] overflow-hidden relative z-0">
                   <CardHeader className="sr-only">
@@ -114,10 +116,10 @@ export default function MarketingSection() {
                     <CardDescription>Card Description</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    {item.type === "image" ? (
-                      <Img
-                        src={item.image}
-                        alt={item.alt}
+                    {item.media.type === "image" ? (
+                      <Image
+                        src={item?.media?.web_banner?.url}
+                        alt={item?.media?.web_banner?.alt_text}
                         fill
                         sizes="420px"
                         className="transition-transform duration-300 hover:scale-105"
@@ -137,7 +139,7 @@ export default function MarketingSection() {
                           // e.target.currentTime = 0;
                         }}
                       >
-                        <source src={item.image} type="video/mp4" />
+                        <source src={item?.media?.web_banner?.url} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
                     )}

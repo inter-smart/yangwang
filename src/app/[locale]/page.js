@@ -9,21 +9,11 @@ import EventsSection from "@/components/features/home/EventsSection";
 
 export default async function Home({ params }) {
   const { locale } = await params;
-  console.log(`[2025-05-29T14:37:00.000Z] Server locale: ${locale}`);
 
-  let homeData = {
-    hero: null,
-    about: null,
-    models: null,
-    specs: null,
-    launchOffers: null,
-    interior: null,
-    marketing: null,
-    events: null,
-  };
+  let homeData = {};
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home?lang=${encodeURIComponent(locale)}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home/${encodeURIComponent(locale)}`, {
       cache: "force-cache",
       next: { revalidate: 60 },
     });
@@ -51,30 +41,3 @@ export default async function Home({ params }) {
     </>
   );
 }
-
-// import HeroSection from "@/components/features/home/HeroSection";
-// import AboutSection from "@/components/features/home/AboutSection";
-// import ModelSection from "@/components/features/home/ModelSection";
-// import SpecsSection from "@/components/features/home/SpecsSection";
-// import LaunchOffersSection from "@/components/features/home/LaunchOffersSection";
-// import InteriorSection from "@/components/features/home/InteriorSection";
-// import MarketingSection from "@/components/features/home/MarketingSection";
-// import EventsSection from "@/components/features/home/EventsSection";
-
-// export default async function Home({ params }) {
-//   const { locale } = await params;
-//   console.log(`from server lang: ${locale}`);
-
-//   return (
-//     <>
-//       <HeroSection locale={locale} />
-//       <AboutSection />
-//       <ModelSection />
-//       <SpecsSection />
-//       <LaunchOffersSection />
-//       <InteriorSection />
-//       <MarketingSection />
-//       <EventsSection />
-//     </>
-//   );
-// }
