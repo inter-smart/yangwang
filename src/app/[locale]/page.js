@@ -10,16 +10,7 @@ import EventsSection from "@/components/features/home/EventsSection";
 export default async function Home({ params }) {
   const { locale } = await params;
 
-  let homeData = {
-    hero: null,
-    about: null,
-    models: null,
-    specs: null,
-    launchOffers: null,
-    interior: null,
-    marketing: null,
-    events: null,
-  };
+  let homeData = {};
 
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home/${encodeURIComponent(locale)}`, {

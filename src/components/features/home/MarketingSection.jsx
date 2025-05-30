@@ -18,6 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 const slide = [
   {
@@ -69,7 +70,7 @@ export default function MarketingSection({data}) {
             aria-label="Instagram"
             className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-none capitalize text-black flex items-center gap-[4px] xl:gap-[6px] 3xl:gap-[10px] min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
           >
-            <Img
+            <Image
               // src="icon-btn-insta.svg"
               src={data?.header?.icon?.url}
               alt="insta"
@@ -116,7 +117,7 @@ export default function MarketingSection({data}) {
                   </CardHeader>
                   <CardContent>
                     {item.media.type === "image" ? (
-                      <Img
+                      <Image
                         src={item?.media?.web_banner?.url}
                         alt={item?.media?.web_banner?.alt_text}
                         fill

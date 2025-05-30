@@ -2,6 +2,7 @@ import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
+import Image from "next/image";
 
 export default function InteriorSection({ data }) {
   return (
@@ -24,7 +25,7 @@ export default function InteriorSection({ data }) {
             </LinkButton>
           </div>
           <div className="w-full h-auto flex-grow block overflow-hidden relative z-0">
-            <Img
+            <Image
               src={data?.image_one}
               alt={data?.image_one_alt_text}
               fill
@@ -35,7 +36,7 @@ export default function InteriorSection({ data }) {
         </div>
         <div className="w-full lg:w-4/10">
           <div className="w-full h-auto max-md:aspect-[4/2] md:h-full block overflow-hidden relative z-0">
-            <Img
+            <Image
               src={data?.image_two}
               alt={data?.image_two_alt_text}
               fill

@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { LinkButton } from "@/components/layout/Button";
 import { Img } from "@/components/layout/Img";
+import Image from "next/image";
 
 const slide = [
   {
@@ -86,7 +87,7 @@ export default function HeroSection({ data, locale }) {
               className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
             >
               {item.media.type === "image" ? (
-                <Img
+                <Image
                   src={item.media.url}
                   alt={item.title}
                   width={1920}
@@ -146,14 +147,26 @@ export default function HeroSection({ data, locale }) {
               {nextSlideTitle}
             </div>
             {nextSlideThumb && (
-              <Img
-              src={nextSlideThumb}
+              // <Img
+              //   src={nextSlideThumb}
+              //   alt="hero-thumb-1"
+              //   width={120}
+              //   height={80}
+              //   className={
+              //     "w-[50px] sm:w-[70px] xl:w-[90px] 3xl:w-[110px] absolute z-1 bottom-[10%] left-0 right-0 mx-auto transition-transform duration-300 group-hover:scale-110"
+              //   }
+              //   aria-label="Image"
+              // />
+
+              <Image
+                src={nextSlideThumb}
                 alt="hero-thumb-1"
                 width={120}
                 height={80}
                 className={
                   "w-[50px] sm:w-[70px] xl:w-[90px] 3xl:w-[110px] absolute z-1 bottom-[10%] left-0 right-0 mx-auto transition-transform duration-300 group-hover:scale-110"
                 }
+                aria-label="Image"
               />
             )}
           </div>
