@@ -35,23 +35,23 @@ const urwForm = localFont({
   display: "swap",
 });
 
-const arabicFont = localFont({
-  src: [
-    {
-      path: "../../../public/fonts/Tajawal-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/Tajawal-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-arabic",
-  preload: true,
-  display: "swap",
-});
+// const arabicFont = localFont({
+//   src: [
+//     {
+//       path: "../../../public/fonts/Tajawal-Regular.ttf",
+//       weight: "400",
+//       style: "normal",
+//     },
+//     {
+//       path: "../../../public/fonts/Tajawal-Bold.ttf",
+//       weight: "700",
+//       style: "normal",
+//     },
+//   ],
+//   variable: "--font-arabic",
+//   preload: true,
+//   display: "swap",
+// });
 
 export const metadata = {
   title: "Yangwang",
@@ -76,7 +76,8 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages(locale);
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={`${urwForm.variable} ${arabicFont.variable}`}>
+    // <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={`${urwForm.variable} ${arabicFont.variable}`}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header locale={locale} />
