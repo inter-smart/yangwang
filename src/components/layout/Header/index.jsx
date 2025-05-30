@@ -97,7 +97,7 @@ export default function Header({ locale }) {
     <header
       className={`w-full h-(--header-y) absolute z-10 top-0 left-0 right-0 block bg-linear-to-b from-black/40 to-transparent transition-all duration-300 ${
         isVisible
-          ? "fixed animate-fadeDown bg-black/40 backdrop-blur-lg [--header-y:50px] lg:[--header-y:70px] 2xl:[--header-y:80px] 3xl:[--header-y:90px] "
+          ? "fixed animate-fadeDown bg-black/80 backdrop-blur-lg [--header-y:50px] lg:[--header-y:70px] 2xl:[--header-y:80px] 3xl:[--header-y:90px] "
           : "absolute [--header-y:60px] lg:[--header-y:80px] 2xl:[--header-y:100px] 3xl:[--header-y:120px] "
       }`}
     >
