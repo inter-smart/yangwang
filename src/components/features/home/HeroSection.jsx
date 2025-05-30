@@ -43,7 +43,12 @@ export default function HeroSection({ data, locale }) {
   console.log("Data ===>", data);
 
   useEffect(() => {
-    if (swiperInstance && prevRef.current && nextRef.current && swiperInstance.params) {
+    if (
+      swiperInstance &&
+      prevRef.current &&
+      nextRef.current &&
+      swiperInstance.params
+    ) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
       swiperInstance.params.navigation.nextEl = nextRef.current;
       swiperInstance.navigation.init();
@@ -95,6 +100,7 @@ export default function HeroSection({ data, locale }) {
                   height={1080}
                   className="w-full h-full absolute -z-1 inset-0 object-cover"
                   aria-label="Image"
+                  priority
                 />
               ) : (
                 <video
@@ -107,6 +113,7 @@ export default function HeroSection({ data, locale }) {
                   className="w-full h-full absolute -z-1 inset-0 object-cover"
                   aria-label="Video player"
                   poster={item.media.url}
+                  priority="true"
                 >
                   <source src={item.media.web_banner.url} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -115,7 +122,11 @@ export default function HeroSection({ data, locale }) {
 
               <div className="container">
                 <div className="w-full">
-                  <Heading size="heading1" as="h1" className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                  <Heading
+                    size="heading1"
+                    as="h1"
+                    className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                  >
                     {item.title}
                   </Heading>
                   <Text
@@ -166,14 +177,24 @@ export default function HeroSection({ data, locale }) {
             ref={prevRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img src="icon-arrow-left.svg" alt="icon-arrow-left" width={16} height={16} />
+            <Img
+              src="icon-arrow-left.svg"
+              alt="icon-arrow-left"
+              width={16}
+              height={16}
+            />
             <span className="sr-only">left</span>
           </button>
           <button
             ref={nextRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img src="icon-arrow-right.svg" alt="icon-arrow-right" width={16} height={16} />
+            <Img
+              src="icon-arrow-right.svg"
+              alt="icon-arrow-right"
+              width={16}
+              height={16}
+            />
             <span className="sr-only">next</span>
           </button>
         </div>

@@ -62,7 +62,6 @@
   --animate-right: bounce 1s ease-in-out infinite;
 
   @keyframes bounce {
-
     0%,
     100% {
       transform: translateX(25%);
@@ -75,6 +74,8 @@
     }
   }
 
+  --animate-move: carMove 3s ease-in-out;
+
   @keyframes carMove {
     0% {
       left: -100%;
@@ -84,11 +85,7 @@
       left: -12%;
     }
   }
-
-  --animate-move: animation: carMove 3s ease-in-out;
-
 }
-
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -122,8 +119,8 @@ body {
   }
 
   .typography {
-    &>* {
-      @apply my-[10px] lg:my-[15px]; 
+    & > * {
+      @apply my-[10px] lg:my-[15px];
     }
 
     p,
@@ -156,19 +153,17 @@ body {
       @apply pl-[20px] lg:pl-[30px];
     }
 
-    ul>li,
-    ol>li {
+    ul > li,
+    ol > li {
       @apply 3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal text-[#2d2929] my-[10px] lg:my-[15px];
     }
 
-    ul>li {
+    ul > li {
       @apply list-disc;
     }
   }
 }
 
-
 .rotateY-180 {
-  transform: rotateY(-180deg)
+  transform: rotateY(-180deg);
 }
- 
