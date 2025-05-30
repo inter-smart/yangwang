@@ -10,6 +10,7 @@ import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 
+
 const urwForm = localFont({
   src: [
     {
