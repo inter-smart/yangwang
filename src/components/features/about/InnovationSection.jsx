@@ -29,7 +29,9 @@ const videoReviews = [
   },
 ];
 
-export default function InovationSection({ locale }) {
+export default function InovationSection({ locale, data }) {
+  console.log("data inovation =====>", data);
+  
   const [videoUrl, setVideoUrl] = useState(null);
   return (
     <section className="w-full h-auto block 2xl:p-[145px_0_190px] xl:p-[100px_0_110px] lg:p-[60px_0_70px] p-[40px_0_50px] bg-[#1D0A44]">
