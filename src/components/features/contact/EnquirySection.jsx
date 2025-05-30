@@ -11,7 +11,8 @@ export default function EnquirySection() {
 
     return (
         <section className="w-full pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[130px] lg:pb-[40px] pb-[110px] relative min-h-[400px] md:min-h-[600px]">
-            <div className="w-full 3xl:max-w-[900px] 2xl:max-w-[750] xl:max-w-[600] lg:max-w-[550] max-w-[250px] 3xl:h-[420px] 2xl:h-[350px] lg:h-[280px] h-[90px] absolute bottom-0 ltr:left-[-12%] rtl:right-[-12%] rtl:rotateY-180 z-0 transition-transform duration-300 animate-car-move">
+            <div className="w-full 3xl:max-w-[900px] 2xl:max-w-[750px] xl:max-w-[600px] lg:max-w-[450px] max-w-[250px] 3xl:h-[420px] 2xl:h-[350px] lg:h-[280px] h-[90px] absolute
+             bottom-0 ltr:left-[-12%] rtl:right-[-12%] rtl:rotateY-180 z-0 transition-transform duration-300 animate-move">
                 <Img
                     src="car.png"
                     alt="car"

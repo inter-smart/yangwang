@@ -74,7 +74,8 @@
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
   }
-
+  
+  --animate-move: carMove 3s ease-in-out;
   @keyframes carMove {
     0% {
       left: -100%;
@@ -85,7 +86,6 @@
     }
   }
 
-  --animate-move: animation: carMove 3s ease-in-out;
 
 }
 
