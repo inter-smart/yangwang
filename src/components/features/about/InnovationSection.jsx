@@ -30,7 +30,7 @@ const videoReviews = [
     }
 ];
 
-export default function InovationSection() {
+export default function InovationSection({ locale }) {
     const [videoUrl, setVideoUrl] = useState(null);
     return (
         <section className="w-full h-auto block 2xl:p-[145px_0_190px] xl:p-[100px_0_110px] lg:p-[60px_0_70px] p-[40px_0_50px] bg-[#1D0A44]">
@@ -43,6 +43,8 @@ export default function InovationSection() {
                     Innovation Across the Lineup
                 </Heading>
                 <Swiper
+                    key={locale}
+                    dir={locale === "en" ? "ltr" : "rtl"}
                     modules={[Autoplay]}
                     spaceBetween={15}
                     slidesPerView={1}

@@ -30,7 +30,7 @@ const lookupInfo = [
         ]
     }
 ];
-export default function VisionSection() {
+export default function VisionSection({ locale }) {
     return (
         <section className="w-full h-auto block p-[40px_0_50px] md:p-[50px_0_70px] xl:p-[75px_0_100px] 3xl:p-[110px_0_150px] bg-[#262626]">
             <div className="container">
@@ -69,6 +69,8 @@ export default function VisionSection() {
                     </div>
                     <div className="w-full h-full flex items-center justify-center">
                         <Swiper
+                            key={locale}
+                            dir={locale === "en" ? "ltr" : "rtl"}
                             modules={[Autoplay, Pagination]}
                             spaceBetween={120}
                             slidesPerView={3}
