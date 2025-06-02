@@ -3,16 +3,35 @@ import NewSection from "@/components/features/news/NewSection";
 import SocialLinkSection from "@/components/features/news/SocialLinkSection";
 
 export const metadata = {
-    title: "yangwang | News",
-    description:
-        "Demo Text.",
+  title: "yangwang | News",
+  description: "Demo Text.",
 };
-export default function page() {
-    return (
-        <>
-            <InnerBanner title="Latest News & Updates" image="news_banner.jpg"/>
-            <NewSection />
-            <SocialLinkSection />
-        </>
-    );
+export default async function page({ params }) {
+  const { locale } = await params;
+
+  let newsData = {};
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/news-and-events?lang=${encodeURIComponent(locale)}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
+
+    const result = await response.json();
+    if (result.success && result.status === 200) {
+      newsData = result.data;
+      console.log(`[2025-05-29T14:37:00.000Z] Fetched news  data for ${locale}`, newsData);
+    } else {
+      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+    }
+  } catch (error) {
+    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch news data: ${error.message}`);
+  }
+  return (
+    <>
+      <InnerBanner title="Latest News & Updates" image="news_banner.jpg" />
+      <NewSection newsData={newsData?.news_list} categoryList={newsData?.category_list} />
+      <SocialLinkSection />
+    </>
+  );
 }
