@@ -1,7 +1,8 @@
-import OwnershipSection from "@/components/features/ownership/OwnershipSection";
-import ServiceSection from "@/components/features/ownership/ServiceSection";
-import OwnerContactSection from "@/components/features/ownership/OwnerContactSection";
 import InnerBanner from "@/components/common/InnerBanner";
+import OwnerContactSection from "@/components/features/temp/OwnerContactSection";
+import OwnershipSection from "@/components/features/temp/OwnershipSection";
+import ServiceSection from "@/components/features/temp/ServiceSection";
+
 
 export default async function page({ params }) {
   const { locale } = params;
