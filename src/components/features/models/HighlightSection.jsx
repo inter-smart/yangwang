@@ -1,6 +1,7 @@
 "use client";
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -167,9 +168,9 @@ export default function HighlightSection() {
         return (
           <div
             key={`highlight-section-${sectionIndex}`}
-            className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-end py-[40px] lg:py-[60px] xl:py-[90px] 2xl:py-[140px] 3xl:py-[160px] relative z-0"
+            className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-end py-[40px] lg:py-[60px] xl:py-[90px] 2xl:py-[140px] 3xl:py-[160px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/40 before:pointer-events-none"
           >
-            {activeItem.media.type === "video" ? (
+            {/* {activeItem.media.type === "video" ? (
               <video
                 key={activeItem.media.web_banner.url}
                 autoPlay
@@ -203,7 +204,52 @@ export default function HighlightSection() {
                   className="-z-2 object-cover"
                 />
               </picture>
-            )}
+            )} */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeItem.media.web_banner.url}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 w-full h-full -z-2"
+              >
+                {activeItem.media.type === "video" ? (
+                  <video
+                    autoPlay
+                    preload="auto"
+                    width={1920}
+                    height={1080}
+                    muted
+                    loop
+                    className="w-full h-full object-cover"
+                    aria-label="Video player"
+                    poster={activeItem.media.web_banner.thumbnail}
+                  >
+                    <source
+                      src={activeItem.media.web_banner.url}
+                      type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <picture>
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet={activeItem.media.mobile_banner.url}
+                    />
+                    <Image
+                      src={activeItem.media.web_banner.url}
+                      alt={activeItem.media.web_banner.alt_text}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </picture>
+                )}
+              </motion.div>
+            </AnimatePresence>
+
             <div className="container">
               <div>
                 <Heading
@@ -218,7 +264,7 @@ export default function HighlightSection() {
                   {section.description.map((desc, descIndex) => (
                     <div
                       key={`highlight-${descIndex}`}
-                      className={`cursor-pointer mb-[15px] lg:mb-[20px] xl:mb-[25px] 2xl:mb-[30px] 3xl:mb-[45px] last:m-0 relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:top-[10px] before:lg:top-[6px] before:2xl:top-[10px] before:left-0 before:-translate-x-1/2 before:w-[5px] before:lg:w-[7px] before:2xl:w-[9px] before:h-auto before:aspect-square before:rounded-full before:shadow-[0_0_0_10px_rgba(217,217,217,0.2)] before:pointer-events-none ${
+                      className={`cursor-pointer mb-[15px] lg:mb-[20px] xl:mb-[25px] 2xl:mb-[30px] 3xl:mb-[45px] last:m-0 pl-[15px] lg:pl-[20px] 2xl:pl-[30px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:top-[6px] before:lg:top-[6px] before:2xl:top-[10px] before:left-0 before:-translate-x-1/2 before:w-[5px] before:lg:w-[7px] before:2xl:w-[9px] before:h-auto before:aspect-square before:rounded-full before:shadow-[0_0_0_4px_rgba(217,217,217,0.2)] before:lg:shadow-[0_0_0_6px_rgba(217,217,217,0.2)] before:2xl:shadow-[0_0_0_10px_rgba(217,217,217,0.2)] before:pointer-events-none ${
                         activeItemIndexes[sectionIndex] === descIndex
                           ? "font-bold text-base1 before:bg-white"
                           : "before:bg-[#d9d9d9]"
