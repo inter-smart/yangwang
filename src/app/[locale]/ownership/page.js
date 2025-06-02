@@ -1,11 +1,11 @@
 import InnerBanner from "@/components/common/InnerBanner";
-import OwnerContactSection from "@/components/features/temp/OwnerContactSection";
-import OwnershipSection from "@/components/features/temp/OwnershipSection";
-import ServiceSection from "@/components/features/temp/ServiceSection";
-
+import OwnerContactSection from "@/components/features/ownership/OwnerContactSection";
+import OwnershipSection from "@/components/features/ownership/OwnershipSection";
+import PartsSection from "@/components/features/ownership/PartsSection";
+import ServiceSection from "@/components/features/ownership/ServiceSection";
 
 export default async function page({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   let ownerShipData = {};
 
@@ -27,10 +27,15 @@ export default async function page({ params }) {
   }
   return (
     <>
-      <InnerBanner data={ownerShipData?.banner_section}  />
+      <InnerBanner
+        title={ownerShipData?.banner_section?.title}
+        banner_image={ownerShipData?.banner_section?.web_banner}
+        banner_alt={ownerShipData?.banner_section?.web_banner_alt}
+      />
       <OwnershipSection data={ownerShipData?.section_two} />
       <ServiceSection data={ownerShipData?.section_three} />
-      <OwnerContactSection data={ownerShipData?.section_four} />
+      <PartsSection data={ownerShipData?.section_four} />
+      <OwnerContactSection data={ownerShipData?.section_five} />
     </>
   );
 }
