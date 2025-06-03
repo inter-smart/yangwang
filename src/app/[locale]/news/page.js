@@ -29,7 +29,11 @@ export default async function page({ params }) {
   }
   return (
     <>
-      <InnerBanner title="Latest News & Updates" image="news_banner.jpg" />
+      <InnerBanner
+        title={newsData?.banner_section?.title}
+        banner_image={newsData?.banner_section?.web_banner}
+        banner_alt={newsData?.banner_section?.web_banner_alt}
+      />
       <NewSection newsData={newsData?.news_list} categoryList={newsData?.category_list} />
       <SocialLinkSection />
     </>

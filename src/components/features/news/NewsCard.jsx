@@ -30,7 +30,7 @@ export default function NewsCard({ item }) {
           <span>{item?.published_on}</span>
         </div>
         <Link
-          href={`/news/${item?.category?.slug}`}
+          href={`/news/${item?.slug}`}
           aria-label="news"
           className="3xl:text-[16px] 2xl:text-[15px] xl:text-[14px] lg:text-[12px] text-[10px] font-normal leading-normal underline transition-colors duration-300 hover:text-[#CB9576]"
         >
