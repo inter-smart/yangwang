@@ -31,7 +31,6 @@ const videoReviews = [
 ];
 
 export default function InovationSection({ locale, data }) {
-  console.log("data inovation =====>", data);
   const { items, title } = data;
 
   const [videoUrl, setVideoUrl] = useState(null);

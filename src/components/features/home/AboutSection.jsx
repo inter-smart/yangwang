@@ -19,7 +19,6 @@ function splitTextToSpans(text) {
 }
 
 export default function AboutSection({ data }) {
-  console.log("about", data);
 
   const sectionRef = useRef(null);
   const carRef1 = useRef(null);

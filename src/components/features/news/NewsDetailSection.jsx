@@ -3,8 +3,6 @@ import Image from "next/image";
 import parse from "html-react-parser";
 
 export default function NewsDetailSection({ data, locale }) {
-  console.log("details data", data.images);
-
   return (
     <section className="w-full h-auto block 2xl:py-[120px_20px] xl:py-[80px_20px] md:py-[60px_20px] py-[40px_10px]">
       <div className="container">
