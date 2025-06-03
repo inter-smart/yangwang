@@ -170,41 +170,6 @@ export default function HighlightSection() {
             key={`highlight-section-${sectionIndex}`}
             className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-end py-[40px] lg:py-[60px] xl:py-[90px] 2xl:py-[140px] 3xl:py-[160px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/40 before:pointer-events-none"
           >
-            {/* {activeItem.media.type === "video" ? (
-              <video
-                key={activeItem.media.web_banner.url}
-                autoPlay
-                preload="auto"
-                width={1920}
-                height={1080}
-                muted
-                loop
-                className="w-full h-full absolute -z-2 inset-0 object-cover"
-                aria-label="Video player"
-                poster={activeItem.media.web_banner.thumbnail}
-                priority="true"
-              >
-                <source
-                  src={activeItem.media.web_banner.url}
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <picture>
-                <source
-                  media="(max-width: 768px)"
-                  srcSet={activeItem.media.mobile_banner.url}
-                />
-                <Image
-                  src={activeItem.media.web_banner.url}
-                  alt={activeItem.media.web_banner.alt_text}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="-z-2 object-cover"
-                />
-              </picture>
-            )} */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.media.web_banner.url}

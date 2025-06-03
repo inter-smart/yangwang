@@ -231,42 +231,38 @@ export default function Footer() {
               </div>
             </div>
             <div className="flex items-center justify-between gap-[5px] py-[15px] xl:py-[30px] 3xl:py-[40px] border-t-[1px] border-[#2c2c2c] max-2xs:flex-col">
-              <Text
-                as="p"
+              <p
                 className="3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white"
               >
                 Copyright © Shenzhen Yangwang Automobile Sales Co., Ltd. All
                 Rights Reserved.
-              </Text>
+              </p>
               <ul className="flex items-center gap-[10px] xl:gap-[20px] 3xl:gap-[28px]">
                 <li>
-                  <Heading
-                    as="h6"
+                  <h6
                     className={`3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
                     <Link href="/privacy-policy">Terms & Conditions</Link>
-                  </Heading>
+                  </h6>
                 </li>
                 <li>
-                  <Heading
-                    as="h6"
+                  <h6
                     className={`3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
                       pathname === "#" ? "underline" : ""
                     }`}
                   >
                     <Link href="/privacy-policy">Privacy Policy</Link>
-                  </Heading>
+                  </h6>
                 </li>
                 <li>
                   <div className="flex items-center pl-[10px] xl:pl-[20px] 3xl:pl-[28px]">
-                    <Text
-                      as="p"
+                    <p
                       className="3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white"
                     >
                       Crafted By&nbsp;
-                    </Text>
+                    </p>
                     <a
                       href={"https://www.intersmartsolution.com/"}
                       target="_blank"
