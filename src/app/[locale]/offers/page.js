@@ -27,8 +27,8 @@ export default async function page({params}) {
   return (
     <>
       <InnerHeroSection data={offersData?.banner_section} />
-      <OfferInfoSection />
-      <QuestionSection />
+      <OfferInfoSection data={offersData?.main_section} offersInfo={offersData?.offer_section?.offers} />
+      <QuestionSection data={offersData?.enquiry_section} />
       <SocialLinkSection />
     </>
   );
