@@ -31,26 +31,6 @@ export default function LocationSection({ variant, showRooms, serviceCentres }) 
       show: hasVariantService,
     },
   ];
-
-  // const hasVariantService = variant === "findshowroom";
-  // const tabs = [
-  //   {
-  //     key: "showroom",
-  //     label: "Find a showroom",
-  //     icon: "carIcon.svg",
-  //     width: "w-[35px] md:w-[50px]",
-  //     height: "h-[35px] md:h-[50px]",
-  //     show: true,
-  //   },
-  //   {
-  //     key: "service",
-  //     label: "Find a service centre",
-  //     icon: "serviceIcon.svg",
-  //     width: "w-[20px] md:w-[30px]",
-  //     height: "h-[20px] md:h-[30px]",
-  //     show: hasVariantService, // conditionally render this
-  //   },
-  // ];
   return (
     <section className="w-full block bg-[#1D0A44] 3xl:py-[100px] 2xl:py-[80px] py-[40px]">
       <div className="container">
@@ -84,10 +64,10 @@ export default function LocationSection({ variant, showRooms, serviceCentres }) 
           </TabsList>
 
           <TabsContent value="showroom" className="w-full">
-            <LocationMap data={showRooms?.showroom || []} key="showroom" />
+            <LocationMap data={showRooms?.showroom || showRooms} key="showroom" />
           </TabsContent>
           <TabsContent value="service" className="w-full">
-            <LocationMap data={serviceCentres?.service_centres || []} key="service" />
+            <LocationMap data={serviceCentres?.service_centres || serviceCentres} key="service" />
           </TabsContent>
         </Tabs>
         {!hasVariantService && (

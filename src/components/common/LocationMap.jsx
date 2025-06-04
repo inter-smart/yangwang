@@ -4,6 +4,7 @@ import { Text } from "@/components/layout/Text";
 import { Img } from "@/components/layout/Img";
 import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
+import parse from "html-react-parser";
 
 // Dynamically import react-leaflet components
 const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { ssr: false });
@@ -23,39 +24,6 @@ const mapPinIcon = L.icon({
   iconSize: [41, 41],
   iconAnchor: [13, 36],
 });
-
-// const data = [
-//   {
-//     id: 1,
-//     name: "Muscat Showroom",
-//     address: "PO Box 3168, Ruwi,Postal Code 112, Sultanate of Oman.",
-//     phone: "9072588911",
-//     email: "info@Yangwang.com",
-//     contactNumber: "+968 24578000",
-//     image: "locationImg.jpg",
-//     coordinates: [9.9312, 76.2673],
-//   },
-//   {
-//     id: 2,
-//     name: "Salala Showroom",
-//     address: "PO Box 3168, Ruwi,Postal Code 112, Sultanate of Oman.",
-//     phone: "9072588911",
-//     email: "info@Yangwang.com ",
-//     contactNumber: "+968 24578000",
-//     image: "locationImg.jpg",
-//     coordinates: [9.9412, 76.2773],
-//   },
-//   {
-//     id: 3,
-//     name: "Muscat Showroom",
-//     address: "PO Box 3168, Ruwi,Postal Code 112, Sultanate of Oman.",
-//     phone: "9072588911",
-//     email: "info@Yangwang.com",
-//     contactNumber: "+968 24578000",
-//     image: "locationImg.jpg",
-//     coordinates: [9.9312, 76.2673],
-//   },
-// ];
 
 // Custom popup content component
 const CustomPopup = ({ branch }) => {
@@ -77,7 +45,7 @@ const CustomPopup = ({ branch }) => {
         {branch?.title}
       </h3>
       <Text size="text2" as="p" className="max-w-full text-white mb-2">
-        {branch?.address}
+        {parse(branch?.address)}
       </Text>
       <Text size="text2" as="p" className="max-w-full text-white mb-2">
         Email: {branch?.email}
@@ -242,7 +210,7 @@ export default function LocationMap({ data }) {
                   <svg
                     viewBox="0 0 18 25"
                     className={`transition-colors duration-300 ${
-                      selectedBranch.id === branch.id ? "fill-[#1D0A44]" : "fill-[#5949A7] group-hover:fill-[#1D0A44]"
+                      selectedBranch.id === branch?.id ? "fill-[#1D0A44]" : "fill-[#5949A7] group-hover:fill-[#1D0A44]"
                     }`}
                   >
                     <path d="M8.90664 0.0385742C13.3955 0.0385742 17.0348 3.79914 17.0348 8.43885C17.0348 11.0575 13.61 16.5273 11.0266 20.7317C10.1793 22.1109 9.42227 23.354 8.90664 24.3155C8.40801 23.3867 7.65449 22.14 6.8043 20.7414C4.23438 16.5158 0.777344 10.8983 0.777344 8.43885C0.777344 3.79914 4.4166 0.0385742 8.90664 0.0385742ZM12.5383 8.12219C12.5383 6.05391 10.907 4.36768 8.90664 4.36768C6.90508 4.36768 5.27383 6.05391 5.27383 8.12219C5.27383 10.1893 6.90508 11.8749 8.90664 11.8749C10.907 11.8749 12.5383 10.1893 12.5383 8.12219Z" />
@@ -250,16 +218,16 @@ export default function LocationMap({ data }) {
                 </div>
                 <div className="xl:w-[calc(100% - 30px)] w-[calc(100% - 25px)] px-[15px]">
                   <Heading size="heading6" as="h6" className="capitalize text-white mb-[15px]">
-                    {branch.title}
+                    {branch?.title}
                   </Heading>
                   <Text size="text2" as="p" className="max-w-full text-white mb-2">
-                    <span>{branch.address}</span>
+                    <span>{parse(branch?.address)}</span>
                   </Text>
                   <Text size="text2" as="p" className="max-w-full text-white mb-2">
-                    Phone: <span>{branch.phone}</span>
+                    Phone: <span>{branch?.phone}</span>
                   </Text>
                   <Text size="text2" as="p" className="max-w-full text-white mb-2">
-                    Email: <span>{branch.email}</span>
+                    Email: <span>{branch?.email}</span>
                   </Text>
                 </div>
               </div>

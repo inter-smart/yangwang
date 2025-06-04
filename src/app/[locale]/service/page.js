@@ -41,7 +41,7 @@ export default async function Contact({ params }) {
         serviceCentres={serviceData?.service_centre_section?.service_centres}
         showRooms={serviceData?.showroom_section?.showroom}
       />
-      {/* <FollowusSection /> */}
+      <FollowusSection data={serviceData?.social_media_section} />
     </>
   );
 }
