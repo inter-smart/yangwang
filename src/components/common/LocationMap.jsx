@@ -62,13 +62,15 @@ const CustomPopup = ({ branch }) => {
   return (
     <div className="popup-content w-64 group">
       <div className="w-full aspect-[255/110] overflow-hidden relative mb-[10px]">
-        <Image
-          src={branch.image}
-          alt="faq"
-          fill
-          sizes="(max-width: 250px)"
-          className="object-contain transition-transform duration-300 group-hover:scale-110"
-        />
+        {branch.image && (
+          <Image
+            src={branch.image}
+            alt="faq"
+            fill
+            sizes="(max-width: 250px)"
+            className="object-contain transition-transform duration-300 group-hover:scale-110"
+          />
+        )}
       </div>
       <h3 className="font-bold 3xl:text-[20px] 2xl:text-[18px] text-[16px] text-white mb-[20px] pb-[15px] relative after:content-[''] after:absolute after:bottom-0 after:left-[-1px] after:max-w-[350px] after:w-full after:h-[5px] after:bg-[#5949A7]">
         {" "}
@@ -154,8 +156,6 @@ function MapController({ selectedBranch, data }) {
 export default function LocationMap({ data }) {
   const [selectedBranch, setSelectedBranch] = useState(data[0]);
   const [mapCenter] = useState([9.9312, 76.2673]);
-
-  console.log("selectedBranch ===>", selectedBranch);
 
   const handleBranchClick = (branch) => {
     setSelectedBranch(branch);

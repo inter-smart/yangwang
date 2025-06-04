@@ -33,8 +33,12 @@ export default async function Contact({ params }) {
         description={contactData?.banner_section?.description}
       />
       <EnquirySection data={contactData?.enquiry_section} />
-      <LocationSection variant="findshowroom" showRooms={contactData?.showroom_section} serviceCentres={contactData?.service_centre_section} />
-      <FaqSection />
+      <LocationSection
+        variant="findshowroom"
+        showRooms={contactData?.showroom_section}
+        serviceCentres={contactData?.service_centre_section}
+      />
+      <FaqSection faqData={contactData?.faq_section} socialData={contactData?.social_link_section} />
     </>
   );
 }
