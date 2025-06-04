@@ -27,7 +27,7 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
-export default function ServiceEnquiryForm() {
+export default function ServiceEnquiryForm({ locationData }) {
   const [date, setDate] = useState();
   // Define form
   const form = useForm({
@@ -229,7 +229,16 @@ export default function ServiceEnquiryForm() {
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
-                      <SelectItem
+                      {locationData?.map((item, index) => (
+                        <SelectItem
+                          key={index}
+                          value={item?.id}
+                          className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                        >
+                          {item?.name}
+                        </SelectItem>
+                      ))}
+                      {/* <SelectItem
                         value="warranty"
                         className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
                       >
@@ -246,7 +255,7 @@ export default function ServiceEnquiryForm() {
                         className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
                       >
                         USA
-                      </SelectItem>
+                      </SelectItem> */}
                     </SelectContent>
                   </Select>
                 </FormControl>

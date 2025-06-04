@@ -1,9 +1,12 @@
-
+'use client'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Img } from "@/components/layout/Img";
-import LocationMap from "../../common/LocationMap";
+import dynamic from "next/dynamic";
+const LocationMap = dynamic(() => import('../../common/LocationMap'), {
+  ssr: false, // This ensures the component only loads on the client
+});
 
 export default function LocationSection({ variant }) {
     const hasVariantService = variant === "findshowroom";
@@ -60,7 +63,7 @@ export default function LocationSection({ variant }) {
                     </TabsList>
 
                     <TabsContent value="showroom" className="w-full">
-                        {/* <LocationMap /> */}
+                        <LocationMap />
                     </TabsContent>
                     <TabsContent value="service" className="w-full">
 
