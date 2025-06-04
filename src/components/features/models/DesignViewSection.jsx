@@ -1,6 +1,6 @@
 "use client";
 import { Heading } from "@/components/layout/Heading";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -23,7 +23,7 @@ const colorVariants = {
         },
         images: [
           {
-            url: "/images/interior-1.jpg",
+            url: "/images/404.jpg",
             alt_text: "Ebony Black interior color thumbnail",
           },
           {
@@ -144,7 +144,27 @@ const colorVariants = {
 export default function DesignViewSection() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [interiorView, setInteriorView] = useState(false);
+  const [wheelsView, setWheelsView] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (
+      swiperRef.current &&
+      prevRef.current &&
+      nextRef.current &&
+      swiperRef.current.params?.navigation
+    ) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.destroy();
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, [interiorView]);
 
   // Swiper onSlideChange handler
   const handleSlideChange = (swiper) => {
@@ -154,229 +174,366 @@ export default function DesignViewSection() {
   const handleInteriorViewClick = () => {
     setInteriorView((prev) => !prev);
   };
+  const handleWheelsViewClick = () => {
+    setWheelsView((prev) => !prev);
+  };
 
   return (
     <section className="w-full h-auto lg:h-dvh lg:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block py-[40px] lg:py-[50px_70px] xl:py-[60px_80px] 2xl:py-[80px_100px] 3xl:py-[90px_120px] overflow-hidden relative z-0">
-      <div className="3xl:text-[220px] 2xl:text-[200px] xl:text-[150px] lg:text-[130px] sm:text-[92px] text-[72px] leading-none uppercase font-medium bg-gradient-to-b from-[#cfcece] to-transparent bg-clip-text text-transparent absolute z-2 top-[15px] xl:top-[20px] 2xl:top-[30px] 3xl:top-[40px] ltr:right-[15%] rtl:left-[15%] mix-blend-darken">
-        u8
-      </div>
-      <div className="w-full h-full absolute inset-0 z-1">
-        {!interiorView ? (
-          <Swiper
-            spaceBetween={0}
-            navigation={false}
-            thumbs={{
-              swiper:
-                thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
-            }}
-            modules={[Thumbs]}
-            className="w-full h-full"
-            onSlideChange={handleSlideChange}
-          >
-            {colorVariants.exterior.colors.map((colorItem, colorIndex) => (
-              <SwiperSlide key={`main-slide-${colorIndex}`}>
-                <Swiper
-                  effect={"fade"}
-                  spaceBetween={10}
-                  navigation={true}
-                  modules={[EffectFade, Navigation]}
-                  className="w-full h-full"
-                >
-                  {colorItem.images.map((imgItem, imgIndex) => (
-                    <SwiperSlide
-                      key={`sub-slide-${imgIndex}`}
-                      className="bg-white"
-                    >
-                      <picture>
-                        <source
-                          media="(max-width: 768px)"
-                          srcSet="/images/models-u8-bodyFeatures-bg.jpg"
-                        />
-                        <Image
-                          src={imgItem.url}
-                          alt={imgItem.alt_text}
-                          fill
-                          sizes="100vw"
-                          className="object-cover"
-                        />
-                      </picture>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
-          <Swiper
-            spaceBetween={0}
-            navigation={false}
-            thumbs={{
-              swiper:
-                thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
-            }}
-            modules={[Thumbs]}
-            className="w-full h-full"
-            onSlideChange={handleSlideChange}
-          >
-            {colorVariants.interior.colors.map((colorItem, colorIndex) => (
-              <SwiperSlide key={`main-slide-${colorIndex}`}>
-                <Swiper
-                  effect={"fade"}
-                  spaceBetween={10}
-                  navigation={true}
-                  modules={[EffectFade, Navigation]}
-                  className="w-full h-full"
-                >
-                  {colorItem.images.map((imgItem, imgIndex) => (
-                    <SwiperSlide
-                      key={`sub-slide-${imgIndex}`}
-                      className="bg-white"
-                    >
-                      <picture>
-                        <source
-                          media="(max-width: 768px)"
-                          srcSet="/images/models-u8-bodyFeatures-bg.jpg"
-                        />
-                        <Image
-                          src={imgItem.url}
-                          alt={imgItem.alt_text}
-                          fill
-                          sizes="100vw"
-                          className="object-cover"
-                        />
-                      </picture>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-      </div>
-      <div className="container h-full">
-        <div className="h-full flex flex-col justify-between">
-          <div className="flex justify-between gap-[20px] relative z-1">
-            <div>
-              <Heading size="heading3" as="h3" className="text-black">
-                Design and Dimensions
-              </Heading>
-            </div>
-            <div>
-              <button
-                onClick={handleInteriorViewClick}
-                className="bg-black/20 cursor-pointer"
+      {!wheelsView ? (
+        <>
+          <div className="3xl:text-[220px] 2xl:text-[200px] xl:text-[150px] lg:text-[130px] sm:text-[92px] text-[72px] leading-none uppercase font-medium bg-gradient-to-b from-[#cfcece] to-transparent bg-clip-text text-transparent absolute z-2 top-[15px] xl:top-[20px] 2xl:top-[30px] 3xl:top-[40px] ltr:right-[15%] rtl:left-[15%] mix-blend-darken">
+            u8
+          </div>
+          <div className="w-full h-full absolute inset-0 z-1">
+            {!interiorView ? (
+              <Swiper
+                spaceBetween={0}
+                navigation={false}
+                thumbs={{
+                  swiper:
+                    thumbsSwiper && !thumbsSwiper.destroyed
+                      ? thumbsSwiper
+                      : null,
+                }}
+                modules={[Thumbs]}
+                className="w-full h-full"
+                onSlideChange={handleSlideChange}
               >
-                {interiorView ? (
-                  <Image
-                    src="/images/models-view-1.svg"
-                    alt="models-view-1"
-                    width={100}
-                    height={64}
-                  />
-                ) : (
-                  <Image
-                    src="/images/models-view-2.svg"
-                    alt="models-view-2"
-                    width={100}
-                    height={64}
-                  />
-                )}
-              </button>
-            </div>
+                {colorVariants.exterior.colors.map((colorItem, colorIndex) => (
+                  <SwiperSlide key={`main-slide-${colorIndex}`}>
+                    <Swiper
+                      effect={"fade"}
+                      spaceBetween={10}
+                      // navigation={true}
+                      navigation={{
+                        prevEl: prevRef.current,
+                        nextEl: nextRef.current,
+                      }}
+                      ref={swiperRef}
+                      modules={[EffectFade, Navigation]}
+                      className="w-full h-full"
+                    >
+                      {colorItem.images.map((imgItem, imgIndex) => (
+                        <SwiperSlide
+                          key={`sub-slide-${imgIndex}`}
+                          className="bg-white"
+                        >
+                          <picture>
+                            <source
+                              media="(max-width: 768px)"
+                              srcSet="/images/models-u8-bodyFeatures-bg.jpg"
+                            />
+                            <Image
+                              src={imgItem.url}
+                              alt={imgItem.alt_text}
+                              fill
+                              sizes="100vw"
+                              className="object-cover"
+                            />
+                          </picture>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <Swiper
+                spaceBetween={0}
+                navigation={false}
+                thumbs={{
+                  swiper:
+                    thumbsSwiper && !thumbsSwiper.destroyed
+                      ? thumbsSwiper
+                      : null,
+                }}
+                modules={[Thumbs]}
+                className="w-full h-full"
+                onSlideChange={handleSlideChange}
+              >
+                {colorVariants.interior.colors.map((colorItem, colorIndex) => (
+                  <SwiperSlide key={`main-slide-${colorIndex}`}>
+                    <Swiper
+                      effect={"fade"}
+                      spaceBetween={10}
+                      navigation={{
+                        prevEl: prevRef.current,
+                        nextEl: nextRef.current,
+                      }}
+                      modules={[EffectFade, Navigation]}
+                      className="w-full h-full"
+                    >
+                      {colorItem.images.map((imgItem, imgIndex) => (
+                        <SwiperSlide
+                          key={`sub-slide-${imgIndex}`}
+                          className="bg-white"
+                        >
+                          <picture>
+                            <source
+                              media="(max-width: 768px)"
+                              srcSet="/images/models-u8-bodyFeatures-bg.jpg"
+                            />
+                            <Image
+                              src={imgItem.url}
+                              alt={imgItem.alt_text}
+                              fill
+                              sizes="100vw"
+                              className="object-cover"
+                            />
+                          </picture>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
           </div>
-          <div>
-            <div className="flex justify-between items-end gap-[20px] relative z-1">
+          <div className="container h-full">
+            <div className="h-full flex flex-col justify-between">
+              <div className="flex justify-between gap-[20px] relative z-1">
+                <div>
+                  <Heading
+                    size="heading3"
+                    as="h3"
+                    className={`
+                ${!interiorView ? "text-black" : "text-white"}`}
+                  >
+                    Design and Dimensions
+                  </Heading>
+                </div>
+                <div>
+                  <button
+                    onClick={handleInteriorViewClick}
+                    className="cursor-pointer"
+                  >
+                    {interiorView ? (
+                      <Image
+                        src="/images/models-view-1.svg"
+                        alt="models-view-1"
+                        width={100}
+                        height={64}
+                      />
+                    ) : (
+                      <Image
+                        src="/images/models-view-2.svg"
+                        alt="models-view-2"
+                        width={100}
+                        height={64}
+                      />
+                    )}
+                  </button>
+                </div>
+              </div>
               <div>
-                <Heading
-                  size="heading6"
-                  as="h6"
-                  className="capitalize text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
-                >
-                  {colorVariants.exterior.colors[activeIndex]?.color_name}
-                </Heading>
-                {!interiorView ? (
-                  <Swiper
-                    onSwiper={setThumbsSwiper}
-                    onSlideChange={handleSlideChange}
-                    spaceBetween={10}
-                    slidesPerView={"auto"}
-                    freeMode={true}
-                    watchSlidesProgress={true}
-                    modules={[FreeMode, Thumbs]}
-                    className="w-full h-full"
-                  >
-                    {colorVariants.exterior.colors.map((item, index) => (
-                      <SwiperSlide
-                        key={`thumb-${index}`}
-                        className={`${
-                          index === activeIndex ? "scale-100" : "scale-80"
-                        } !w-[50px] transition-transform`}
+                <div className="flex justify-between items-end gap-[20px] relative z-1">
+                  {!interiorView ? (
+                    <div>
+                      <Heading
+                        size="heading6"
+                        as="h6"
+                        className="capitalize text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
                       >
-                        <div className="w-[50px] rounded aspect-square cursor-pointer relative z-0">
-                          <Image
-                            src={item.color_thumb.url}
-                            alt={item.color_thumb.alt_text}
-                            fill
-                            sizes="50px"
-                            title={item.color_name}
-                          />
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                ) : (
-                  <Swiper
-                    onSwiper={setThumbsSwiper}
-                    onSlideChange={handleSlideChange}
-                    spaceBetween={10}
-                    slidesPerView={"auto"}
-                    freeMode={true}
-                    watchSlidesProgress={true}
-                    modules={[FreeMode, Thumbs]}
-                    className="w-full h-full"
-                  >
-                    {colorVariants.interior.colors.map((item, index) => (
-                      <SwiperSlide
-                        key={`thumb-${index}`}
-                        className={`${
-                          index === activeIndex ? "scale-100" : "scale-80"
-                        } !w-[50px] transition-transform`}
+                        {colorVariants.exterior.colors[activeIndex]?.color_name}
+                      </Heading>
+                      <Swiper
+                        onSwiper={setThumbsSwiper}
+                        onSlideChange={handleSlideChange}
+                        spaceBetween={10}
+                        slidesPerView={"auto"}
+                        freeMode={true}
+                        watchSlidesProgress={true}
+                        modules={[FreeMode, Thumbs]}
+                        className="w-full h-full"
                       >
-                        <div className="w-[50px] rounded aspect-square cursor-pointer relative z-0">
-                          <Image
-                            src={item.color_thumb.url}
-                            alt={item.color_thumb.alt_text}
-                            fill
-                            sizes="50px"
-                            title={item.color_name}
-                          />
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                )}
-              </div>
-              <div className="flex gap-[4px] xl:gap-[6px] 3xl:gap-[10px]">
-                <Button
-                  color="white"
-                  aria-label="View Interior"
-                  className="min-w-[90px] sm:min-w-[100px] xl:min-w-[110px] 2xl:min-w-[150px] 3xl:min-w-[170px] !border-[#cecece]"
-                  onClick={handleInteriorViewClick}
-                >
-                  {!interiorView ? "View Interior" : "View Exterior"}
-                </Button>
-                <Button
-                  color="black"
-                  aria-label="View Wheels"
-                  className="min-w-[90px] sm:min-w-[100px] xl:min-w-[110px] 2xl:min-w-[150px] 3xl:min-w-[170px]"
-                >
-                  View Wheels
-                </Button>
+                        {colorVariants.exterior.colors.map((item, index) => (
+                          <SwiperSlide
+                            key={`thumb-${index}`}
+                            className={`${
+                              index === activeIndex ? "scale-100" : "scale-80"
+                            } !w-[50px] transition-transform`}
+                          >
+                            <div className="w-[50px] rounded aspect-square cursor-pointer relative z-0">
+                              <Image
+                                src={item.color_thumb.url}
+                                alt={item.color_thumb.alt_text}
+                                fill
+                                sizes="50px"
+                                title={item.color_name}
+                              />
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  ) : (
+                    <div>
+                      <Heading
+                        size="heading6"
+                        as="h6"
+                        className="capitalize text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                      >
+                        {colorVariants.exterior.colors[activeIndex]?.color_name}
+                      </Heading>
+                      <Swiper
+                        onSwiper={setThumbsSwiper}
+                        onSlideChange={handleSlideChange}
+                        spaceBetween={10}
+                        slidesPerView={"auto"}
+                        freeMode={true}
+                        watchSlidesProgress={true}
+                        modules={[FreeMode, Thumbs]}
+                        className="w-full h-full"
+                      >
+                        {colorVariants.interior.colors.map((item, index) => (
+                          <SwiperSlide
+                            key={`thumb-${index}`}
+                            className={`${
+                              index === activeIndex ? "scale-100" : "scale-80"
+                            } !w-[50px] transition-transform`}
+                          >
+                            <div className="w-[50px] rounded aspect-square cursor-pointer relative z-0">
+                              <Image
+                                src={item.color_thumb.url}
+                                alt={item.color_thumb.alt_text}
+                                fill
+                                sizes="50px"
+                                title={item.color_name}
+                              />
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  )}
+                  <div className="flex gap-[4px] xl:gap-[6px] 3xl:gap-[10px]">
+                    <div className="flex gap-x-[15px] xl:gap-x-[20px] 2xl:gap-x-[30px] 3xl:gap-x-[40px] px-[10px]">
+                      <button
+                        ref={prevRef}
+                        className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer [&.swiper-button-disabled]:opacity-50 [&.swiper-button-disabled]:cursor-not-allowed transition-transform duration-300 scale-110"
+                      >
+                        <Image
+                          src="/images/icon-arrow-left.svg"
+                          alt="icon-arrow-left"
+                          width={16}
+                          height={16}
+                          className={
+                            !interiorView
+                              ? "filter-[brightness(0)_saturate(100%)]"
+                              : ""
+                          }
+                        />
+                        <span className="sr-only">left</span>
+                      </button>
+                      <button
+                        ref={nextRef}
+                        className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer [&.swiper-button-disabled]:opacity-50 [&.swiper-button-disabled]:cursor-not-allowed transition-transform duration-300 scale-110"
+                      >
+                        <Image
+                          src="/images/icon-arrow-right.svg"
+                          alt="icon-arrow-right"
+                          width={16}
+                          height={16}
+                          className={
+                            !interiorView
+                              ? "filter-[brightness(0)_saturate(100%)]"
+                              : ""
+                          }
+                        />
+                        <span className="sr-only">next</span>
+                      </button>
+                    </div>
+                    <Button
+                      color="white"
+                      aria-label="View Interior"
+                      className="min-w-[90px] sm:min-w-[100px] xl:min-w-[110px] 2xl:min-w-[150px] 3xl:min-w-[170px] !border-[#cecece]"
+                      onClick={handleInteriorViewClick}
+                    >
+                      {!interiorView ? "View Interior" : "View Exterior"}
+                    </Button>
+                    <Button
+                      color="black"
+                      aria-label="View Wheels"
+                      className="min-w-[90px] sm:min-w-[100px] xl:min-w-[110px] 2xl:min-w-[150px] 3xl:min-w-[170px]"
+                      onClick={handleWheelsViewClick}
+                    >
+                      View Wheels
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        <>
+          <div className="w-full h-full absolute inset-0 z-1">
+            <Swiper
+              spaceBetween={0}
+              navigation={false}
+              thumbs={{
+                swiper:
+                  thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+              }}
+              modules={[Thumbs]}
+              className="w-full h-full"
+              onSlideChange={handleSlideChange}
+            >
+              {colorVariants.exterior.colors.map((colorItem, colorIndex) => (
+                <SwiperSlide key={`main-slide-${colorIndex}`}>
+                  <picture>
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet="/images/models-u8-bodyFeatures-bg.jpg"
+                    />
+                    <Image
+                      src={imgItem.url}
+                      alt={imgItem.alt_text}
+                      fill
+                      sizes="100vw"
+                      className="object-cover"
+                    />
+                  </picture>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+          <div className="container h-full">
+            <div className="h-full flex flex-col justify-between">
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                onSlideChange={handleSlideChange}
+                spaceBetween={10}
+                slidesPerView={"auto"}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Thumbs]}
+                className="w-full h-full"
+              >
+                {colorVariants.interior.colors.map((item, index) => (
+                  <SwiperSlide
+                    key={`thumb-${index}`}
+                    className={`${
+                      index === activeIndex ? "scale-100" : "scale-80"
+                    } !w-[50px] transition-transform`}
+                  >
+                    <div className="w-[50px] rounded aspect-square cursor-pointer relative z-0">
+                      <Image
+                        src={item.color_thumb.url}
+                        alt={item.color_thumb.alt_text}
+                        fill
+                        sizes="50px"
+                        title={item.color_name}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }
