@@ -22,12 +22,15 @@ const formSchema = z.object({
     .string()
     .min(10, { message: "Phone number must be at least 10 digits." })
     .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
-
+  model: z.string().min(1, { message: "Please select a model." }),
+  location: z.string().min(1, { message: "Please select a location." }),
+  date: z.date({ required_error: "Please select a date." }),
   message: z.string().optional(),
 });
 
 export default function TestdriveBookingForm({ locationData, modelData }) {
   const [date, setDate] = useState();
+
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -36,14 +39,19 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       sName: "",
       email: "",
       phoneNumber: "",
+      model: "",
+      location: "",
       message: "",
     },
   });
 
   function onSubmit(values) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    // Include the date in the form values
+    const formData = {
+      ...values,
+      date: date,
+    };
+    console.log(formData);
   }
 
   // Log form errors for debugging
@@ -86,8 +94,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                                                 focus:shadow-none
                                                 focus-visible:ring-0
                                                 focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                                                focus:border-b-[#5949A7]"
                     type="text"
                     placeholder="First Name"
                     {...field}
@@ -99,7 +106,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
           />
         </div>
 
-        <div className="w-full lg:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px">
+        <div className="w-full lg:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="sName"
@@ -123,8 +130,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                                                 focus:shadow-none
                                                 focus-visible:ring-0
                                                 focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                                                focus:border-b-[#5949A7]"
                     type="text"
                     placeholder="Second Name"
                     {...field}
@@ -160,8 +166,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                                                 focus:shadow-none
                                                 focus-visible:ring-0
                                                 focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                                                focus:border-b-[#5949A7]"
                     type="text"
                     placeholder="Email"
                     {...field}
@@ -172,14 +177,15 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             )}
           />
         </div>
+
         <div className="w-full md:w-1/2 xl:w-1/4 p-[15px] 2xl:px-[5px_25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
-            name="location"
+            name="model"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select>
+                  <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger
                       className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full min-h-[50px] px-6  border border-[#CCCCCC]
                                             rounded-none bg-white  text-[#000000] 
@@ -194,7 +200,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                       {modelData?.map((item, index) => (
                         <SelectItem
                           key={index}
-                          value={item?.id}
+                          value={item?.id?.toString()}
                           className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
                         >
                           {item?.name}
@@ -208,7 +214,8 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             )}
           />
         </div>
-        <div className="w-full xl:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px">
+
+        <div className="w-full xl:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="phoneNumber"
@@ -232,10 +239,9 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                                                 focus:shadow-none
                                                 focus-visible:ring-0
                                                 focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                                                focus:border-b-[#5949A7]"
                     type="text"
-                    placeholder="Mobile Numer"
+                    placeholder="Mobile Number"
                     {...field}
                   />
                 </FormControl>
@@ -244,6 +250,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             )}
           />
         </div>
+
         <div className="w-full md:w-1/2  xl:w-1/4 p-[15px] 2xl:px-[25px_7px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
@@ -251,7 +258,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select>
+                  <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger
                       className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6  border border-[#CCCCCC]
                                             rounded-none bg-white text-[#000000] 
@@ -266,7 +273,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                       {locationData?.map((item, index) => (
                         <SelectItem
                           key={index}
-                          value={item?.id}
+                          value={item?.id?.toString()}
                           className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
                         >
                           {item?.name}
@@ -291,14 +298,13 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                   <Popover>
                     <PopoverTrigger asChild>
                       <button
-                        variant="outline"
+                        type="button"
                         className={cn(
-                          "!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] font-medium text-black w-full h-[50px] min-h-[50px] max-w-full border border-gray-300 rounded-none px-4 flex items-center justify-between  hover:bg-gray-50  ",
+                          "!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] font-medium text-black w-full h-[50px] min-h-[50px] max-w-full border border-gray-300 rounded-none px-4 flex items-center justify-between  hover:bg-gray-50",
                           !date && "text-muted-foreground"
                         )}
                       >
                         {date ? format(date, "PPP") : "Select Date"}
-
                         <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
@@ -312,7 +318,8 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             )}
           />
         </div>
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px">
+
+        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="message"
@@ -336,8 +343,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                                                 focus:shadow-none
                                                 focus-visible:ring-0
                                                 focus-visible:shadow-none
-                                                focus:border-b-[#5949A7]
-                                            "
+                                                focus:border-b-[#5949A7]"
                     placeholder="Message"
                     {...field}
                   />
@@ -348,7 +354,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
           />
         </div>
 
-        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px flex justify-end">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px] flex justify-end">
           <Button
             color="black"
             type="submit"
