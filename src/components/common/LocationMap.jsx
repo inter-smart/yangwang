@@ -62,9 +62,9 @@ const CustomPopup = ({ branch }) => {
   return (
     <div className="popup-content w-64 group">
       <div className="w-full aspect-[255/110] overflow-hidden relative mb-[10px]">
-        {branch.image && (
+        {branch?.image && (
           <Image
-            src={branch.image}
+            src={branch?.image}
             alt="faq"
             fill
             sizes="(max-width: 250px)"
@@ -74,16 +74,16 @@ const CustomPopup = ({ branch }) => {
       </div>
       <h3 className="font-bold 3xl:text-[20px] 2xl:text-[18px] text-[16px] text-white mb-[20px] pb-[15px] relative after:content-[''] after:absolute after:bottom-0 after:left-[-1px] after:max-w-[350px] after:w-full after:h-[5px] after:bg-[#5949A7]">
         {" "}
-        {branch.title}
+        {branch?.title}
       </h3>
       <Text size="text2" as="p" className="max-w-full text-white mb-2">
-        {branch.address}
+        {branch?.address}
       </Text>
       <Text size="text2" as="p" className="max-w-full text-white mb-2">
-        Email: {branch.email}
+        Email: {branch?.email}
       </Text>
       <Text size="text2" as="p" className="max-w-full text-white mb-2">
-        Phone: {branch.phone}
+        Phone: {branch?.phone}
       </Text>
     </div>
   );
@@ -93,16 +93,17 @@ const CustomPopup = ({ branch }) => {
 function MapController({ selectedBranch, data }) {
   const map = useMap();
   const markerRefs = useRef({});
+  console.log("selectedBranch  ===>", selectedBranch);
 
   useEffect(() => {
     // Pan to the selected branch LocationMap
-    map.setView([selectedBranch.latitude, selectedBranch.longitude], 13);
+    map.setView([selectedBranch?.latitude, selectedBranch?.longitude], 13);
 
     // Open the popup for the selected branch
-    if (markerRefs.current[selectedBranch.id]) {
-      markerRefs.current[selectedBranch.id].openPopup();
+    if (markerRefs.current[selectedBranch?.id]) {
+      markerRefs.current[selectedBranch?.id].openPopup();
     }
-  }, [selectedBranch, map]);
+  }, [selectedBranch, map, data]);
   // Add custom popup styles to document head
   useEffect(() => {
     const style = document.createElement("style");

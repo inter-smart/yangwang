@@ -19,7 +19,7 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
-export default function OffersEnquiryForm() {
+export default function OffersEnquiryForm({ title }) {
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -63,7 +63,7 @@ export default function OffersEnquiryForm() {
                                     flex items-center justify-between relative"
             >
               <div className="flex items-center gap-2 flex-1 overflow-hidden ">
-                <span className="font-semibold text-black  ">Select Service Offer:</span>
+                <span className="font-semibold text-black  ">{title}</span>
                 <SelectValue
                   placeholder="Yangwang U9 Electric Supercar Powertrain Warranty"
                   className="truncate text-[#999999] font-semibold"

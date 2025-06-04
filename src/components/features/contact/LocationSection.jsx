@@ -10,6 +10,8 @@ const LocationMap = dynamic(() => import("../../common/LocationMap"), {
 });
 
 export default function LocationSection({ variant, showRooms, serviceCentres }) {
+  console.log("showRooms, serviceCentres", showRooms, serviceCentres);
+
   const hasVariantService = variant === "findshowroom";
   const tabs = [
     {
@@ -55,7 +57,7 @@ export default function LocationSection({ variant, showRooms, serviceCentres }) 
         {/* <LocationMap /> */}
         <Tabs defaultValue="showroom" className="w-full">
           <TabsList className="md:w-[calc(100%-300px)] xl:w-[calc(100%-350px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-580px)] flex justify-between items-center ml-auto border-b border-gray-200 relative w-full p-[0] rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
-            {tabs.map(
+            {tabs?.map(
               (tab) =>
                 tab.show && (
                   <TabsTrigger
@@ -137,7 +139,7 @@ export default function LocationSection({ variant, showRooms, serviceCentres }) 
                   <div className="w-[33px] h-[33px] flex items-center justify-center rounded-full bg-[#6958B9]">
                     <div className="w-[15px] h-[15px] flex items-center justify-center">
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_538_6967)">
+                        <g clipPath="url(#clip0_538_6967)">
                           <path
                             d="M11.6632 9.74707L10.1556 11.2597C9.5443 11.8732 8.46866 11.8864 7.84411 11.2597L6.3365 9.74707L0.921875 15.1793C1.12343 15.2725 1.34565 15.3281 1.5819 15.3281H16.4178C16.6541 15.3281 16.8762 15.2725 17.0777 15.1793L11.6632 9.74707Z"
                             fill="white"
@@ -182,7 +184,7 @@ export default function LocationSection({ variant, showRooms, serviceCentres }) 
                   <div className="w-[33px] h-[33px] flex items-center justify-center rounded-full bg-[#6958B9]">
                     <div className="w-[15px] h-[15px] flex items-center justify-center">
                       <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_538_6994)">
+                        <g clipPath="url(#clip0_538_6994)">
                           <path
                             d="M10.5026 0H10.4974C4.70794 0 0 4.70925 0 10.5C0 12.7969 0.74025 14.9257 1.99894 16.6543L0.690375 20.5551L4.72631 19.2649C6.38663 20.3647 8.36719 21 10.5026 21C16.2921 21 21 16.2894 21 10.5C21 4.71056 16.2921 0 10.5026 0Z"
                             fill="white"
