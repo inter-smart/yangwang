@@ -59,8 +59,6 @@ const mapPinIcon = L.icon({
 
 // Custom popup content component
 const CustomPopup = ({ branch }) => {
-  console.log("branch ===>", branch);
-
   return (
     <div className="popup-content w-64 group">
       <div className="w-full aspect-[255/110] overflow-hidden relative mb-[10px]">
@@ -158,7 +156,6 @@ export default function LocationMap({ data }) {
   const [mapCenter] = useState([9.9312, 76.2673]);
 
   console.log("selectedBranch ===>", selectedBranch);
-  
 
   const handleBranchClick = (branch) => {
     setSelectedBranch(branch);
