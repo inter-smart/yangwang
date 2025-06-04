@@ -51,7 +51,7 @@ export default function EnquiryForm() {
     };
 
     try {
-      const response = await fetch("https://www.yangwang.dev20.intersmarthosting.in/api/enquiry-now", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/enquiry-now`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -4,30 +4,51 @@ import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Img } from "@/components/layout/Img";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 const LocationMap = dynamic(() => import("../../common/LocationMap"), {
   ssr: false, // This ensures the component only loads on the client
 });
 
-export default function LocationSection({ variant }) {
+export default function LocationSection({ variant, showRooms, serviceCentres }) {
   const hasVariantService = variant === "findshowroom";
   const tabs = [
     {
       key: "showroom",
-      label: "Find a showroom",
-      icon: "carIcon.svg",
+      label: showRooms?.header?.find_a_showroom_title || "Find a Showroom",
+      icon: showRooms?.header?.showroom_image || "carIcon.svg",
       width: "w-[35px] md:w-[50px]",
       height: "h-[35px] md:h-[50px]",
       show: true,
     },
     {
       key: "service",
-      label: "Find a service centre",
-      icon: "serviceIcon.svg",
+      label: serviceCentres?.header?.find_a_service_centre_title || "Find a Service Centre",
+      icon: serviceCentres?.header?.service_centre_image || "serviceIcon.svg",
       width: "w-[20px] md:w-[30px]",
       height: "h-[20px] md:h-[30px]",
-      show: hasVariantService, // conditionally render this
+      show: hasVariantService,
     },
   ];
+
+  // const hasVariantService = variant === "findshowroom";
+  // const tabs = [
+  //   {
+  //     key: "showroom",
+  //     label: "Find a showroom",
+  //     icon: "carIcon.svg",
+  //     width: "w-[35px] md:w-[50px]",
+  //     height: "h-[35px] md:h-[50px]",
+  //     show: true,
+  //   },
+  //   {
+  //     key: "service",
+  //     label: "Find a service centre",
+  //     icon: "serviceIcon.svg",
+  //     width: "w-[20px] md:w-[30px]",
+  //     height: "h-[20px] md:h-[30px]",
+  //     show: hasVariantService, // conditionally render this
+  //   },
+  // ];
   return (
     <section className="w-full block bg-[#1D0A44] 3xl:py-[100px] 2xl:py-[80px] py-[40px]">
       <div className="container">
@@ -46,7 +67,7 @@ export default function LocationSection({ variant }) {
                                         data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
                   >
                     <div className={`${tab.width} ${tab.height} flex relative`}>
-                      <Img
+                      <Image
                         src={tab.icon}
                         alt={tab.label}
                         fill
@@ -61,10 +82,10 @@ export default function LocationSection({ variant }) {
           </TabsList>
 
           <TabsContent value="showroom" className="w-full">
-            <LocationMap />
+            <LocationMap data={showRooms?.showroom || []} key="showroom" />
           </TabsContent>
           <TabsContent value="service" className="w-full">
-            <LocationMap />
+            <LocationMap data={serviceCentres?.service_centres || []} key="service" />
           </TabsContent>
         </Tabs>
         {!hasVariantService && (

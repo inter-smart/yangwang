@@ -68,8 +68,6 @@ export default function ServiceEnquiryForm({ locationData }) {
         body: JSON.stringify(payload),
       });
 
-      console.log("API response:", response);
-
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
       }
