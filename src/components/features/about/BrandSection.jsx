@@ -3,7 +3,6 @@ import { Img } from "@/components/layout/Img";
 import Image from "next/image";
 
 export default function BrandSection({ data }) {
-  console.log("data =====>", data);
   const { images, description } = data;
 
   return (

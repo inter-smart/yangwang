@@ -68,15 +68,15 @@ export default function HeroSection({ data, locale }) {
           {data?.map((item, index) => (
             <SwiperSlide
               key={"slide" + index}
-              className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px]"
+              className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/20 before:pointer-events-none"
             >
               {item.media.type === "image" ? (
                 <Image
-                  src={item.media.url}
-                  alt={item.title}
+                  src={item.media?.web_banner?.url}
+                  alt={item.media?.web_banner?.alt_text}
                   width={1920}
                   height={1080}
-                  className="w-full h-full absolute -z-1 inset-0 object-cover"
+                  className="w-full h-full absolute -z-2 inset-0 object-cover"
                   aria-label="Image"
                   priority
                 />
@@ -88,7 +88,7 @@ export default function HeroSection({ data, locale }) {
                   height={1080}
                   muted
                   loop
-                  className="w-full h-full absolute -z-1 inset-0 object-cover"
+                  className="w-full h-full absolute -z-2 inset-0 object-cover"
                   aria-label="Video player"
                   poster={item.media.url}
                   priority="true"

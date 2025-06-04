@@ -1,4 +1,5 @@
 import BodyFeaturesSection from "@/components/features/models/BodyFeaturesSection";
+import DesignViewSection from "@/components/features/models/DesignViewSection";
 import DownloadSection from "@/components/features/models/DownloadSection";
 import EnquirySection from "@/components/features/models/EnquirySection";
 import HighlightSection from "@/components/features/models/HighlightSection";
@@ -12,7 +13,8 @@ export default async function page({ params }) {
   return (
     <>
       <ModelsHeroSection />
-      <HighlightSection />
+      {/* <HighlightSection /> */}
+      <DesignViewSection />
       <RangeSection />
       <PerformanceSection />
       <PlatformSection />

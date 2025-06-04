@@ -31,11 +31,11 @@ const footerNav = [
 
 const modelsNav = [
   {
-    href: "#",
+    href: "/models/u9",
     title: "U9",
   },
   {
-    href: "#",
+    href: "/models/u8",
     title: "U8",
   },
 ];

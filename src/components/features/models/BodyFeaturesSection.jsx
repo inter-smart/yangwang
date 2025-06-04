@@ -108,7 +108,7 @@ export default function BodyFeaturesSection({ locale }) {
                       className="transition-transform duration-300 hover:scale-105"
                     />
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="max-lg:px-2">
                     <CardTitle className="text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-normal leading-tight text-center text-white lg:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[240px] mx-auto">
                       {item.title}
                     </CardTitle>

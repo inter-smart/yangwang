@@ -24,7 +24,7 @@ function HeaderNavItem({ href, title }) {
       <Heading
         as="h6"
         className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
-          pathname === href ? "text-base1" : "text-white"
+          pathname === href ? "text-base1" : "text-black"
         }`}
       >
         {title}
@@ -177,7 +177,7 @@ export default function Header({ locale }) {
             <div className="sm:hidden">
               <Sheet className="sm:hidden">
                 <SheetTrigger className="flex">
-                  <Menu className="size-8 text-white m-auto" />
+                  <Menu className="size-6 text-white m-auto" />
                 </SheetTrigger>
                 <SheetContent className="bg-white backdrop-blur-[30px]" side={locale === "ar" ? "right" : "left"}>
                   <SheetHeader>

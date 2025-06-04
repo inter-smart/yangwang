@@ -11,58 +11,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Suspense } from "react";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 
-const slide = [
-  {
-    type: "image",
-    image: "insta-img-1.jpg",
-    alt: "u8",
-  },
-  {
-    type: "video",
-    image: "/videos/vdo-model-2.mp4",
-    alt: "u9",
-  },
-  {
-    type: "image",
-    image: "insta-img-3.jpg",
-    alt: "u8",
-  },
-  {
-    type: "video",
-    image: "/videos/hero-2.mp4",
-    alt: "u9",
-  },
-  {
-    type: "image",
-    image: "insta-img-1.jpg",
-    alt: "u8",
-  },
-  {
-    type: "video",
-    image: "/videos/hero-1.mp4",
-    alt: "u9",
-  },
-];
+export default function MarketingSection({ data }) {
 
-export default function MarketingSection({data}) {
   return (
     <section className="w-full h-auto block py-[30px] lg:py-[60px_50px] xl:py-[80px_100px] 3xl:py-[120px_140px]">
       <div className="container">
         <div className="flex justify-between mb-[10px] sm:mb-[15px] xl:mb-[20px] 3xl:mb-[30px]">
-          <Heading
-            size="heading3"
-            as="h3"
-            className="capitalize text-black mb-[5px]"
-          >
+          <Heading size="heading3" as="h3" className="capitalize text-black mb-[5px]">
             {data?.header?.title}
           </Heading>
           <Link
@@ -73,12 +31,12 @@ export default function MarketingSection({data}) {
             <Image
               // src="icon-btn-insta.svg"
               src={data?.header?.icon?.url}
-              alt="insta"
+              alt={data?.header?.icon?.alt_text}
               width={12}
               height={12}
               className="w-[10px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] block"
             />
-           {data?.header?.button?.text}
+            {data?.header?.button?.text}
           </Link>
         </div>
         <Swiper
@@ -111,10 +69,10 @@ export default function MarketingSection({data}) {
             {data?.feeds?.map((item, index) => (
               <SwiperSlide key={"slide" + index}>
                 <Card className="w-full h-auto aspect-[420/520] lg:aspect-[420/580] block rounded-none border-[#ccc] overflow-hidden relative z-0">
-                  <CardHeader className="sr-only">
+                  {/* <CardHeader className="sr-only">
                     <CardTitle>Card Title</CardTitle>
                     <CardDescription>Card Description</CardDescription>
-                  </CardHeader>
+                  </CardHeader> */}
                   <CardContent>
                     {item.media.type === "image" ? (
                       <Image

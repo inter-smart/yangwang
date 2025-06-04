@@ -42,7 +42,7 @@ export default function PlatformSection() {
         Your browser does not support the video tag.
       </video>
       <div className="container">
-        <div className="3xl:max-w-[1080px] mx-auto">
+        <div className="max-w-[640px] xl:max-w-[768px] 2xl:max-w-[992px] 3xl:max-w-[1080px] mx-auto">
           <Heading
             size="heading3"
             as="h3"
@@ -60,7 +60,7 @@ export default function PlatformSection() {
             extreme safety
           </Heading>
         </div>
-        <div className="3xl:max-w-[1300px] mx-auto flex flex-wrap [&>*]:p-[10px] xl:[&>*]:p-[15px] 3xl:[&>*]:p-[20px]">
+        <div className="max-w-[768px] xl:max-w-[992px] 2xl:max-w-[1200px] 3xl:max-w-[1300px] mx-auto flex flex-wrap [&>*]:p-[10px] xl:[&>*]:p-[15px] 3xl:[&>*]:p-[20px]">
           {platformData.map((item, index) => (
             <div key={index} className="w-1/2 lg:w-1/4">
               <Image

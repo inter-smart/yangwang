@@ -111,7 +111,7 @@ export default function PerformanceSection() {
                 src={activeItem.media.web_banner.url}
                 alt={activeItem.media.web_banner.alt_text}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="100vw"
                 className="object-cover"
               />
             </picture>
@@ -119,15 +119,14 @@ export default function PerformanceSection() {
         </motion.div>
       </AnimatePresence>
       <div className="container h-full">
-        <div className="h-full flex flex-col justify-between gap-[20px]">
+        <div className="h-full flex flex-col justify-between">
           <Heading
             size="heading3"
             as="h3"
-            className="text-center capitalize text-white"
+            className="text-center capitalize text-white mb-[60px] xl:mb-[40px] 3xl:mb-[60px]"
           >
             {activeItem.title}
           </Heading>
-
           <Accordion
             type="single"
             collapsible
@@ -142,7 +141,7 @@ export default function PerformanceSection() {
               >
                 <AccordionTrigger
                   onClick={() => handleItemClick(index)}
-                  className="3xl:text-[30px] 2xl:text-[26px] xl:text-[20px] lg:text-[16px] sm:text-[14px] text-[12px] font-medium leading-none capitalize text-white [&[data-state=open]]:text-base1 max-w-[200px] lg:max-w-[220px] xl:max-w-[240px] 2xl:max-w-[310px] 3xl:max-w-[376px] flex items-center [&>span]:before:content-[''] [&>span]:before:w-[10px] [&>span]:before:h-[18px] [&>span]:before:block [&>span]:before:bg-[url(/images/acco-down.svg)] [&>span]:before:bg-center [&>span]:before:bg-contain [&[data-state=open]>span]:before:rotate-90 [&[data-state=open]>span]:before:filter-[brightness(0)_saturate(100%)_invert(91%)_sepia(12%)_saturate(1115%)_hue-rotate(330deg)_brightness(99%)_contrast(91%)] [&>span]:transition-all duration-300"
+                  className="3xl:text-[30px] 2xl:text-[26px] xl:text-[20px] lg:text-[16px] sm:text-[14px] text-[12px] font-medium leading-none capitalize text-white [&[data-state=open]]:text-base1 max-w-[200px] lg:max-w-[220px] xl:max-w-[240px] 2xl:max-w-[310px] 3xl:max-w-[376px] max-lg:py-2 flex items-center [&>span]:before:content-[''] [&>span]:before:w-[10px] [&>span]:before:h-[18px] [&>span]:before:block [&>span]:before:bg-[url(/images/acco-down.svg)] [&>span]:before:bg-center [&>span]:before:bg-contain [&[data-state=open]>span]:before:rotate-90 [&[data-state=open]>span]:before:filter-[brightness(0)_saturate(100%)_invert(91%)_sepia(12%)_saturate(1115%)_hue-rotate(330deg)_brightness(99%)_contrast(91%)] [&>span]:transition-all duration-300"
                 >
                   {item.title}
                 </AccordionTrigger>

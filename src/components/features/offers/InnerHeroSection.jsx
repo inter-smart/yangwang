@@ -1,18 +1,13 @@
 import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
+import Image from "next/image";
 
-export default function InnerHeroSection() {
+export default function InnerHeroSection({ data }) {
+  const { title, web_banner, web_banner_alt, mobile_banner, mobile_banner_alt } = data;
   return (
     <section className="w-full h-[320px] lg:h-[340px] xl:h-[460px] 2xl:h-[600px] 3xl:h-[700px] flex items-center relative z-0 pt-[50px] lg:pt-[70px] 2xl:pt-[80px] 3xl:pt-[90px]">
-      <Img
-        src="banner-offers-1.jpg"
-        alt="banner-offers"
-        fill
-        sizes="100vw"
-        className="object-cover -z-1"
-        priority
-      />
+      <Image src={web_banner} alt={web_banner_alt} fill sizes="100vw" className="object-cover -z-1" priority />
       <div className="container">
         <div className="flex flex-col items-center">
           <Heading
@@ -20,8 +15,10 @@ export default function InnerHeroSection() {
             as="h1"
             className="leading-none font-medium text-center text-white mb-[15px] xl:mb-[20px] 2xl:mb-[30px]"
           >
-            Yangwang offers
+            {title}
           </Heading>
+
+          {/* Not provided in api */}
           <LinkButton
             href="#"
             color="black"

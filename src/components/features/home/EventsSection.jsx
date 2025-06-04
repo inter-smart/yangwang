@@ -2,38 +2,11 @@ import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
-const slide = [
-  {
-    title:
-      "Yangwang Tells Key Suppliers It Is ‘Open for Business’ Yangwang Tells Key Suppliers It Is ‘Open for Business’",
-    date: "14 Mar 2024",
-    image: "events-1.jpg",
-    alt: "u8",
-  },
-  {
-    title: "Delivers 100 12-Meter Fully",
-    date: "14 Mar 2024",
-    image: "events-2.jpg",
-    alt: "u8",
-  },
-  {
-    title: "Singing Machine and Stingray",
-    date: "14 Mar 2024",
-    image: "events-3.jpg",
-    alt: "u8",
-  },
-];
-
-export default function EventsSection({data}) {
+export default function EventsSection({ data }) {
   return (
     <section className="w-full h-auto block bg-[#f6f6f6] py-[30px] sm:py-[40px_30px] lg:py-[60px_40px] xl:py-[80px_60px] 3xl:py-[120px_80px]">
       <div className="container">
@@ -46,11 +19,7 @@ export default function EventsSection({data}) {
             >
               {data?.header?.title}
             </Heading>
-            <Text
-              size="text3"
-              as="p"
-              className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
-            >
+            <Text size="text3" as="p" className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]">
               {data?.header?.description}
             </Text>
             <LinkButton
@@ -73,33 +42,37 @@ export default function EventsSection({data}) {
                       : "w-[calc(100%-180px)] 3xs:w-[calc(100%-220px)] sm:w-[calc(100%-320px)] lg:w-[calc(100%-400px)] xl:w-[calc(100%-540px)] 2xl:w-[calc(100%-640px)] 3xl:w-[calc(100%-780px)]"
                   } ltr:float-left rtl:float-right`}
                 >
-                  <Card className="w-full h-auto block rounded-none border-0 shadow-none p-0 overflow-hidden relative z-0">
-                    <CardContent
-                      className={`${
-                        index === 0 ? "h-[220px] sm:h-[320px] lg:h-[400px] xl:h-[490px] 2xl:h-[560px] 3xl:h-[740px]" : "h-[86px] sm:h-[220px] lg:h-[168px] xl:h-[200px] 2xl:h-[231px] 3xl:h-[306px]"
-                      } "w-full block overflow-hidden relative z-0 mb-[5px] sm:mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"`}
-                    >
-                      <Image
-                        src={item.thumbnail}
-                        alt={item.thumbnail_alt}
-                        fill
-                        sizes="460px"
-                        className="object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                    </CardContent>
-                    <CardHeader className="p-0 gap-0">
-                      <CardTitle>
-                        <h5 className="text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] leading-tight capitalize font-medium truncate text-black mb-[2px] sm:mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
-                          {item.title}
-                        </h5>
-                      </CardTitle>
-                      <CardDescription>
-                        <p className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-normal text-base3">
-                          {item.published_date}
-                        </p>
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
+                  <Link href={`/news/${item.slug}`}>
+                    <Card className="w-full h-auto block rounded-none border-0 shadow-none p-0 overflow-hidden relative z-0">
+                      <CardContent
+                        className={`${
+                          index === 0
+                            ? "h-[220px] sm:h-[320px] lg:h-[400px] xl:h-[490px] 2xl:h-[560px] 3xl:h-[740px]"
+                            : "h-[86px] sm:h-[220px] lg:h-[168px] xl:h-[200px] 2xl:h-[231px] 3xl:h-[306px]"
+                        } "w-full block overflow-hidden relative z-0 mb-[5px] sm:mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"`}
+                      >
+                        <Image
+                          src={item.thumbnail}
+                          alt={item.thumbnail_alt}
+                          fill
+                          sizes="460px"
+                          className="object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                      </CardContent>
+                      <CardHeader className="p-0 gap-0">
+                        <CardTitle>
+                          <h5 className="text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] leading-tight capitalize font-medium truncate text-black mb-[2px] sm:mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                            {item.title}
+                          </h5>
+                        </CardTitle>
+                        <CardDescription>
+                          <p className="3xl:text-[16px] 2xl:text-[12px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-normal text-base3">
+                            {item.published_date}
+                          </p>
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
                 </div>
               ))}
             </div>
