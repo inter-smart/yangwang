@@ -21,7 +21,7 @@ export default function ModelsHeroSection() {
       <div className="container">
         <div className="flex flex-wrap items-end justify-between gap-[10px]">
           <div className="relative z-0">
-            <div className="3xl:text-[220px] 2xl:text-[200px] xl:text-[150px] lg:text-[130px] sm:text-[92px] text-[72px] leading-none uppercase font-medium bg-gradient-to-b from-white via-80% via-white/10 to-transparent bg-clip-text text-transparent absolute -z-1 bottom-[20%] right-[-5%]">
+            <div className="3xl:text-[220px] 2xl:text-[200px] xl:text-[150px] lg:text-[130px] sm:text-[92px] text-[72px] leading-none uppercase font-medium bg-gradient-to-b from-white via-80% via-white/10 to-transparent bg-clip-text text-transparent absolute -z-1 bottom-[20%] ltr:right-[-5%] rtl:left-[-5%]">
               u8
             </div>
             <Image
@@ -46,7 +46,7 @@ export default function ModelsHeroSection() {
               href="#"
               color="white"
               aria-label="Book attest drive"
-              className="min-w-[80px] sm:min-w-[90px] xl:min-w-[100px] 2xl:min-w-[140px] 3xl:min-w-[155px]"
+              className="min-w-[90px] sm:min-w-[100px] xl:min-w-[100px] 2xl:min-w-[140px] 3xl:min-w-[155px]"
             >
               Book attest drive
             </LinkButton>
@@ -54,7 +54,7 @@ export default function ModelsHeroSection() {
               href="#"
               color="black"
               aria-label="Download spec sheet"
-              className="min-w-[100px] sm:min-w-[120px] xl:min-w-[155px] 2xl:min-w-[200px] 3xl:min-w-[230px]"
+              className="min-w-[120px] sm:min-w-[130px] xl:min-w-[155px] 2xl:min-w-[200px] 3xl:min-w-[230px]"
             >
               Download spec sheet
             </LinkButton>

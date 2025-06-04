@@ -41,7 +41,7 @@ const slide = [
   },
 ];
 
-export default function BodyFeaturesSection() {
+export default function BodyFeaturesSection({ locale }) {
   return (
     <section className="w-full h-auto block py-[30px] lg:py-[40px_50px] xl:py-[50px_70px] 2xl:py-[60px_90px] 3xl:py-[70px_100px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/70 before:pointer-events-none">
       <picture>
@@ -66,6 +66,8 @@ export default function BodyFeaturesSection() {
           Body Features
         </Heading>
         <Swiper
+          key={locale}
+          dir={locale === "en" ? "ltr" : "rtl"}
           modules={[A11y]}
           slidesPerView={2}
           spaceBetween={15}

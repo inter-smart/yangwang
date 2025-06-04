@@ -7,7 +7,8 @@ import PerformanceSection from "@/components/features/models/PerformanceSection"
 import PlatformSection from "@/components/features/models/PlatformSection";
 import RangeSection from "@/components/features/models/RangeSection";
 
-export default function page() {
+export default async function page({ params }) {
+  const { locale } = await params;
   return (
     <>
       <ModelsHeroSection />
@@ -15,7 +16,7 @@ export default function page() {
       <RangeSection />
       <PerformanceSection />
       <PlatformSection />
-      <BodyFeaturesSection />
+      <BodyFeaturesSection locale={locale} />
       <EnquirySection />
       <DownloadSection />
     </>

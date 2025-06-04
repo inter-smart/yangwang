@@ -70,7 +70,7 @@ export default function FollowusSection() {
                 sizes="(max-width: 1920px) 100vw, 1050px"
                 className="object-cover transition-transform duration-300 pointer-events-none"
             />
-            <div className="container mx-auto relative z-10 h-full">
+            <div className="container mx-auto relative z-0 h-full">
                 <div className="w-full xl:mb-[45px] mb-[30px]">
                     <Heading
                         size="heading3"

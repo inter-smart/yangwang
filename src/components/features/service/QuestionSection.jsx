@@ -15,7 +15,7 @@ export default function FollowusSection() {
     return (
         <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative"  >
 
-            <div className="container mx-auto relative z-10 h-full lg:mb-0 mb-[35px]">
+            <div className="container mx-auto relative z-0 h-full lg:mb-0 mb-[35px]">
                 <div className="w-full flex flex-wrap">
                     {/* Left Column */}
                     <div className="w-full lg:w-[350px] xl:w-[400px] 2xl:w-[500px] ltr:pr-[50px] rtl:pl-[50px]">

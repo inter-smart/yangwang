@@ -15,7 +15,7 @@ export default function EnquirySection() {
     <section className="w-full h-auto block py-[30px] lg:py-[40px] xl:py-[60px_50px] 2xl:py-[80px_70px] 3xl:py-[100px_75px] relative z-0">
       <div className="container">
         <div className="flex flex-wrap items-center justify-between">
-          <div className="3xl:w-[510px] 2xl:w-[410px] xl:w-[350px] lg:w-[250px] w-full">
+          <div className="3xl:w-[510px] 2xl:w-[410px] xl:w-[350px] lg:w-[240px] w-full">
             <Heading
               size="heading3"
               as="h3"
@@ -38,10 +38,10 @@ export default function EnquirySection() {
               height={346}
             />
           </div>
-          <div className="w-full 3xl:w-[calc(100%-510px)] 2xl:w-[calc(100%-410px)] xl:w-[calc(100%-350px)] lg:w-[calc(100%-250px)]">
+          <div className="w-full 3xl:w-[calc(100%-510px)] 2xl:w-[calc(100%-410px)] xl:w-[calc(100%-350px)] lg:w-[calc(100%-240px)]">
             <Tabs
               defaultValue="enquire"
-              className="w-full xl:max-w-[660px] 2xl:max-w-[860px] 3xl:max-w-[960px] ltr:ml-auto rtl:mr-auto"
+              className="w-full lg:max-w-[540px] xl:max-w-[660px] 2xl:max-w-[840px] 3xl:max-w-[960px] ltr:ml-auto rtl:mr-auto"
             >
               <TabsList className="flex justify-start items-center mr-[25px] relative w-full h-[60px] rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
                 <TabsTrigger value="enquire" className={TabsTriggerStyle}>
