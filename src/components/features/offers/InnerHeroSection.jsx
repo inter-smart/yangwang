@@ -24,7 +24,7 @@ export default function InnerHeroSection({ data }) {
             color="black"
             className="min-w-[100px] sm:min-w-[120px] xl:min-w-[155px] 2xl:min-w-[200px] 3xl:min-w-[230px] mx-auto"
           >
-            Explore Latest Offers
+            Explore latest offers
           </LinkButton>
         </div>
       </div>

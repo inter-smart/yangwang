@@ -501,7 +501,7 @@ export default function DesignViewSection({ locale }) {
                             !interiorView
                               ? "filter-[brightness(0)_saturate(100%)]"
                               : ""
-                          } ltr:scale-x-100 rtl:-scale-x-100`}
+                          } ltr:scale-x-100 rtl:-scale-x-100 select-none`}
                         />
                         <span className="sr-only">left</span>
                       </button>
@@ -518,7 +518,7 @@ export default function DesignViewSection({ locale }) {
                             !interiorView
                               ? "filter-[brightness(0)_saturate(100%)]"
                               : ""
-                          } ltr:scale-x-100 rtl:-scale-x-100`}
+                          } ltr:scale-x-100 rtl:-scale-x-100 select-none`}
                         />
                         <span className="sr-only">next</span>
                       </button>
