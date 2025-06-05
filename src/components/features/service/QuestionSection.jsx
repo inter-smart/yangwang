@@ -1,8 +1,5 @@
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
-import { Img } from "@/components/layout/Img";
-import ServiceEnquiryForm from "@/components/common/ServiceEnquiryForm";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import Image from "next/image";
 import OffersEnquiryForm from "./EnquiryForm";
 
@@ -16,7 +13,11 @@ export default function FollowusSection({ data }) {
             <Heading size="heading3" as="h3" className="text-black font-medium xl:mb-[60px] mb-[40px]">
               {data?.enquiry_section_title || data?.title}
             </Heading>
-            <Text size="text4" as="p" className="capitalize text-black font-medium mb-[25px]">
+            <Text
+              size="text4"
+              as="p"
+              className="capitalize text-black font-medium mb-[25px]"
+            >
               {data?.enquiry_title}
             </Text>
             <div className="relative w-full max-w-[700px] aspect-[740/375] mb-[15px]">

@@ -19,7 +19,6 @@ function splitTextToSpans(text) {
 }
 
 export default function AboutSection({ data }) {
-
   const sectionRef = useRef(null);
   const carRef1 = useRef(null);
   const carRef2 = useRef(null);
@@ -42,7 +41,7 @@ export default function AboutSection({ data }) {
     });
     gsap.fromTo(
       carRef1.current,
-      { xPercent: -100 },
+      { xPercent: -300 },
       {
         xPercent: 0,
         ease: "power2.out",
@@ -50,23 +49,40 @@ export default function AboutSection({ data }) {
         delay: 0.2,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "center center",
+          start: "center 70%",
           toggleActions: "play reset play none",
         },
       }
     );
     gsap.fromTo(
       carRef2.current,
-      { xPercent: -100 },
+      { xPercent: -200, },
       {
         xPercent: 0,
         ease: "power1.out",
-        duration: 1,
+        duration: 2,
         delay: 0.2,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "center center",
+          start: "center 70%",
           toggleActions: "play reset play none",
+          // markers: true,
+        },
+        onStart: function () {
+          gsap.fromTo(
+            carRef2.current,
+            {
+              y: 0,
+            },
+            {
+              y: -20,
+              duration: 0.6,
+              delay: 0.4,
+              ease: "power2.inOut",
+              yoyo: true,
+              repeat: 1,
+            }
+          );
         },
       }
     );
@@ -77,13 +93,24 @@ export default function AboutSection({ data }) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px] overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px] overflow-hidden"
+    >
       <div className="container">
         <div className="3xl:max-w-[1320px] 2xl:max-w-[1080px] xl:max-w-[870px] lg:max-w-[768px] sm:max-w-[576px] mx-auto">
-          <Heading size="heading6" as="h6" className="font-normal capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]">
+          <Heading
+            size="heading6"
+            as="h6"
+            className="font-normal capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
+          >
             {data?.name}
           </Heading>
-          <Heading size="heading3" as="h2" className="uppercase text-black mb-[15px] xl:mb-[20px] 3xl:mb-[40px]">
+          <Heading
+            size="heading3"
+            as="h2"
+            className="uppercase text-black mb-[15px] xl:mb-[20px] 3xl:mb-[40px]"
+          >
             {data?.modal}
           </Heading>
           <Text
@@ -95,7 +122,10 @@ export default function AboutSection({ data }) {
         </div>
       </div>
 
-      <div className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]" dir="ltr">
+      <div
+        className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]"
+        dir="ltr"
+      >
         <Img
           src="about-bg-1.png"
           alt="about-bg-1"

@@ -14,11 +14,10 @@ export default function LaunchOffersSection({ data }) {
           src={data?.web_banner}
           alt={data?.web_banner_alt_text}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="100vw"
           className="-z-1 object-cover"
         />
       </picture>
-
       <div className="container">
         <div className="flex ltr:md:justify-end">
           <div className="xl:max-w-[330px] 2xl:max-w-[440px] 3xl:max-w-[500px]">
