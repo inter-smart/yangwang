@@ -40,8 +40,8 @@ export default function HeroSection({ data, locale }) {
     }
   };
 
-  const nextSlideThumb = data[(activeIndex + 1) % data.length].media.thumbnail;
-  const nextSlideTitle = data[(activeIndex + 1) % data.length].title;
+  const nextSlideThumb = data[(activeIndex + 1) % data?.length]?.media?.thumbnail;
+  const nextSlideTitle = data[(activeIndex + 1) % data?.length]?.title;
 
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0">

@@ -5,18 +5,43 @@ import WarrantySection from "@/components/features/service/WarrantySection";
 import FollowusSection from "@/components/features/service/FollowusSection";
 import QuestionSection from "@/components/features/service/QuestionSection";
 
-export default function Contact() {
+export default async function Contact({ params }) {
+  const { locale } = await params;
+
+  let serviceData = {};
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service?lang=${encodeURIComponent(locale)}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
+
+    const result = await response.json();
+    if (result.success && result.status === 200) {
+      serviceData = result.data;
+      console.log(`[2025-05-29T14:37:00.000Z] Fetched service  data for ${locale}`, serviceData);
+    } else {
+      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+    }
+  } catch (error) {
+    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch service data: ${error.message}`);
+  }
   return (
     <>
       <InnerBanner
-        title="After-Sales Service & Support"
-        image="service-banner.jpg"
+        title={serviceData?.banner_section?.title}
+        banner_image={serviceData?.banner_section?.web_banner}
+        banner_alt={serviceData?.banner_section?.web_banner_alt}
       />
-      <GlobalSection />
-      <WarrantySection />
-      <QuestionSection />
-      {/* <LocationSection variant="service" /> */}
-      <FollowusSection />
+      <GlobalSection data={serviceData?.first_section} />
+      <WarrantySection data={serviceData?.service_section} featuresData={serviceData?.features} />
+      <QuestionSection data={serviceData?.enquiry_section} />
+      <LocationSection
+        variant="service"
+        serviceCentres={serviceData?.service_centre_section?.service_centres}
+        showRooms={serviceData?.showroom_section?.showroom}
+      />
+      <FollowusSection data={serviceData?.social_media_section} />
     </>
   );
 }

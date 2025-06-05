@@ -64,7 +64,7 @@ export default async function page({ params }) {
         banner_image={privacyPolicyData?.banner_section?.web_banner}
         banner_alt={privacyPolicyData?.banner_section?.web_banner_alt}
       />
-      <PrivacyPolicy data={privacyPolicyData?.['privacy-policy']} />
+      <PrivacyPolicy data={privacyPolicyData?.['privacy-policy']} titles={privacyPolicyData?.title_listing} />
     </>
   );
 }

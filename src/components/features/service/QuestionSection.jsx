@@ -10,12 +10,8 @@ export default function FollowusSection({ data }) {
         <div className="w-full flex flex-wrap">
           {/* Left Column */}
           <div className="w-full lg:w-[350px] xl:w-[400px] 2xl:w-[500px] ltr:pr-[50px] rtl:pl-[50px]">
-            <Heading
-              size="heading3"
-              as="h3"
-              className="text-black font-medium xl:mb-[60px] mb-[40px]"
-            >
-              {data?.enquiry_section_title}
+            <Heading size="heading3" as="h3" className="text-black font-medium xl:mb-[60px] mb-[40px]">
+              {data?.enquiry_section_title || data?.title}
             </Heading>
             <Text
               size="text4"
@@ -38,7 +34,7 @@ export default function FollowusSection({ data }) {
           {/* Right Column */}
 
           <div className="w-full lg:w-[calc(100%-350px)] xl:w-[calc(100%-400px)] 2xl:w-[calc(100%-500px)]">
-            <OffersEnquiryForm />
+            <OffersEnquiryForm title={data?.service_offer_selection_title} />
           </div>
         </div>
       </div>

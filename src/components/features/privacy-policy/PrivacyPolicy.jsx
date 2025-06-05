@@ -1,7 +1,6 @@
 import parse from "html-react-parser";
 import Link from "next/link";
-export default function PrivacyPolicy({data}) {
-
+export default function PrivacyPolicy({ data, titles }) {
   const active = "md:text-[#5949A7] text-white max-md:duration-300 max-md:!bg-[#5949A7] underline !font-bold";
 
   return (
@@ -30,7 +29,7 @@ export default function PrivacyPolicy({data}) {
           </div>
           <div className="2xl:w-[77%] lg:w-[75%] md:w-[70%] w-full 2xl:px-[30px] lg:px-[20px] px-[15px] md:mt-[0] mt-[30px]">
             <div className="typography [&>p]:text-[#201E1E] [&>p]:xl:mb-[25px] [&>p]:md:mb-[20px] [&>p]:mb-[15px] mb-[20px] lg:mb-[30px] xl:mb-[40px] 2xl:mb-[60px]">
-             {parse(data?.description)}
+              {parse(data?.description)}
             </div>
           </div>
         </div>
