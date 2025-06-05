@@ -51,6 +51,7 @@ export default async function page({ params }) {
         categoryList={newsData?.category_list || []}
         pagination={pagination}
         locale={locale}
+        title={newsData?.title || "Discover the latest innovations, launches & stories"}
       />
       <SocialLinkSection />
     </>

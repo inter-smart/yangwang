@@ -44,7 +44,7 @@ const FilterButton = ({ activeFilter, setActiveFilter, filters }) => {
   );
 };
 
-export default function NewSection({ newsData, categoryList, pagination, locale }) {
+export default function NewSection({ newsData, categoryList, pagination, locale, title }) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(pagination?.currentPage || 1);
   const [allNews, setAllNews] = useState(newsData || []);
@@ -94,8 +94,8 @@ export default function NewSection({ newsData, categoryList, pagination, locale 
     <section className="w-full h-auto block 3xl:py-[100px_145px] 2xl:py-[80px_110px] xl:py-[60px_90px] md:py-[50px_60px] py-[40px_40px]">
       <div className="container">
         <div className="3xl:mb-[75px] xl:mb-[50px] md:mb-[30px] mb-[20px] flex flex-wrap items-center">
-          <Heading size="heading3" as="h3" className="text-black w-[70%] max-sm:mb-[15px]">
-            Discover the latest innovations, launches & stories
+          <Heading size="heading3" as="h3" className="text-black w-[100%] max-sm:mb-[15px]">
+            {title}
           </Heading>
           {/* Desktop Filter Tabs */}
           <div className="hidden 3xl:gap-[40px] xl:gap-[30px] md:gap-[20px] ml-auto md:flex flex-wrap">
