@@ -109,7 +109,7 @@ export default function ModelSection({ data, locale }) {
                           key={specIndex}
                           label={spec?.title || "Quad-Motor System"}
                           value={parseInt(spec?.value) || 10}
-                          suffix={spec?.suffix || " ps"}
+                          suffix={spec?.sufix || " ps"}
                           // decimals={spec?.decimals || 0}
                         />
                       ))}
