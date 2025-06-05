@@ -282,8 +282,10 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                           width={16}
                           height={16}
                           className={`${
-                            !interiorView ? "filter-[brightness(0)_saturate(100%)]" : ""
-                          } ltr:scale-x-100 rtl:-scale-x-100`}
+                            !interiorView
+                              ? "filter-[brightness(0)_saturate(100%)]"
+                              : ""
+                          } ltr:scale-x-100 rtl:-scale-x-100 select-none`}
                         />
                         <span className="sr-only">left</span>
                       </button>
@@ -297,8 +299,10 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                           width={16}
                           height={16}
                           className={`${
-                            !interiorView ? "filter-[brightness(0)_saturate(100%)]" : ""
-                          } ltr:scale-x-100 rtl:-scale-x-100`}
+                            !interiorView
+                              ? "filter-[brightness(0)_saturate(100%)]"
+                              : ""
+                          } ltr:scale-x-100 rtl:-scale-x-100 select-none`}
                         />
                         <span className="sr-only">next</span>
                       </button>

@@ -94,7 +94,7 @@ export default function NewSection({ newsData, categoryList, pagination, locale,
     <section className="w-full h-auto block 3xl:py-[100px_145px] 2xl:py-[80px_110px] xl:py-[60px_90px] md:py-[50px_60px] py-[40px_40px]">
       <div className="container">
         <div className="3xl:mb-[75px] xl:mb-[50px] md:mb-[30px] mb-[20px] flex flex-wrap items-center">
-          <Heading size="heading3" as="h3" className="text-black w-[100%] max-sm:mb-[15px]">
+          <Heading size="heading3" as="h3" className="text-black 3xl:max-w-[600px] 2xl:max-w-[520px] xl:max-w-[400px] lg:max-w-[320px] max-w-[268px] max-sm:mb-[15px]">
             {title}
           </Heading>
           {/* Desktop Filter Tabs */}

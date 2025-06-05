@@ -8,13 +8,27 @@ import { Img } from "../Img";
 import {
   NavigationMenu,
   NavigationMenuContent,
+  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 
@@ -42,7 +56,9 @@ export default function Header({ locale, data }) {
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
   useEffect(() => {
-    console.log(`[2025-05-29T14:24:00.000Z] Header locale: ${locale}, pathname: ${pathname}`);
+    console.log(
+      `[2025-05-29T14:24:00.000Z] Header locale: ${locale}, pathname: ${pathname}`
+    );
   }, [locale, pathname]);
 
   useEffect(() => {
@@ -65,7 +81,9 @@ export default function Header({ locale, data }) {
 
   const handleLocaleChange = (newLocale) => {
     const cleanPath = pathname.replace(/^\/(en|ar)/, "") || "/";
-    console.log(`[2025-05-29T14:24:00.000Z] Switching locale to ${newLocale}, path: ${cleanPath}`);
+    console.log(
+      `[2025-05-29T14:24:00.000Z] Switching locale to ${newLocale}, path: ${cleanPath}`
+    );
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     router.replace(cleanPath, { locale: newLocale });
   };
@@ -76,8 +94,8 @@ export default function Header({ locale, data }) {
         href: "/",
         title: t("models"),
         dropdown: [
-          { href: "/u8", title: t("u8"), description: t("u8_description") },
-          { href: "/u9", title: t("u9"), description: t("u9_description") },
+          { href: "/models/u8", title: t("u8"), description: t("u8_description") },
+          { href: "/models/u9", title: t("u9"), description: t("u9_description") },
         ],
       },
       { href: "/about", title: t("about") },
@@ -89,8 +107,8 @@ export default function Header({ locale, data }) {
     [t]
   );
 
-  const triggerStyle =
-    "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0";
+  // const triggerStyle =
+  //   "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0";
   const triggerNavStyle =
     "3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1";
 
@@ -113,7 +131,7 @@ export default function Header({ locale, data }) {
               className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[45px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300 hover:text-base1"
             />
           </Link>
-          <NavigationMenu dir={locale === "ar" ? "rtl" : "ltr"} className="max-sm:hidden">
+          {/* <NavigationMenu dir={locale === "ar" ? "rtl" : "ltr"} className="max-sm:hidden">
             <NavigationMenuList className="gap-0">
               {menuItems?.map((item, index) => (
                 <NavigationMenuItem key={index}>
@@ -150,18 +168,80 @@ export default function Header({ locale, data }) {
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
+          </NavigationMenu> */}
+          <NavigationMenu
+            viewport={false}
+            dir={locale === "ar" ? "rtl" : "ltr"}
+            className="max-sm:hidden"
+          >
+            <NavigationMenuList className="gap-0">
+              {menuItems.map((item, index) => (
+                <NavigationMenuItem key={index}>
+                  {item.dropdown ? (
+                    <>
+                      <NavigationMenuTrigger className="[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0">
+                        <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1">
+                          {item.title}
+                        </div>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="bg-black/40 backdrop-blur-lg border-base1/10 sm:absolute">
+                        <ul className="grid w-full min-w-[80px] lg:min-w-[120px]">
+                          {item.dropdown.map((subItem, subIndex) => (
+                            <li key={subIndex}>
+                              <NavigationMenuLink
+                                asChild
+                                className="hover:bg-black/40 p-1 lg:p-2 transition-background duration-300"
+                              >
+                                <Link
+                                  href={subItem.href}
+                                  className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1"
+                                >
+                                  {subItem.title}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <NavigationMenuLink
+                      asChild
+                      className="p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0"
+                    >
+                      <Link
+                        href={item.href}
+                        className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1"
+                      >
+                        {item.title}
+                      </Link>
+                    </NavigationMenuLink>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
           </NavigationMenu>
 
           <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 2xl:gap-[30px] 3xl:gap-[40px]">
-            <Select onValueChange={handleLocaleChange} value={locale} defaultValue={locale}>
+            <Select
+              onValueChange={handleLocaleChange}
+              value={locale}
+              defaultValue={locale}
+            >
               <SelectTrigger className="3xl:text-[15px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 2xl:[&>svg]:mt-[1px] 3xl:[&>svg]:mt-[2px]">
                 <SelectValue placeholder={locale.toUpperCase()} />
               </SelectTrigger>
               <SelectContent className="bg-white max-w-[40px] border-base1/10">
-                <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="en">
+                <SelectItem
+                  className={`${triggerNavStyle} uppercase text-black`}
+                  value="en"
+                >
                   En
                 </SelectItem>
-                <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="ar">
+                <SelectItem
+                  className={`${triggerNavStyle} uppercase text-black`}
+                  value="ar"
+                >
                   Ar
                 </SelectItem>
               </SelectContent>
@@ -180,7 +260,10 @@ export default function Header({ locale, data }) {
                 <SheetTrigger className="flex">
                   <Menu className="size-6 text-white m-auto" />
                 </SheetTrigger>
-                <SheetContent className="bg-white backdrop-blur-[30px]" side={locale === "ar" ? "right" : "left"}>
+                <SheetContent
+                  className="bg-white backdrop-blur-[30px]"
+                  side={locale === "ar" ? "right" : "left"}
+                >
                   <SheetHeader>
                     <SheetTitle className="sr-only">Site navigation</SheetTitle>
                     <ul className="flex flex-col [&>li]:max-sm:m-[15px] my-[15px]">
@@ -191,7 +274,10 @@ export default function Header({ locale, data }) {
                             <ul className="mt-2 ml-4 flex flex-col gap-2">
                               {item.dropdown.map((subItem, subIndex) => (
                                 <li key={subIndex}>
-                                  <HeaderNavItem title={subItem.title} href={subItem.href} />
+                                  <HeaderNavItem
+                                    title={subItem.title}
+                                    href={subItem.href}
+                                  />
                                 </li>
                               ))}
                             </ul>

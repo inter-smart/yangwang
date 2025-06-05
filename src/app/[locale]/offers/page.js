@@ -1,5 +1,6 @@
 import SocialLinkSection from "@/components/features/news/SocialLinkSection";
 import InnerHeroSection from "@/components/features/offers/InnerHeroSection";
+import OfferEnquirySection from "@/components/features/offers/OfferEnquirySection";
 import OfferInfoSection from "@/components/features/offers/OfferInfoSection";
 import QuestionSection from "@/components/features/service/QuestionSection";
 
@@ -28,7 +29,8 @@ export default async function page({params}) {
     <>
       <InnerHeroSection data={offersData?.banner_section} />
       <OfferInfoSection data={offersData?.main_section} offersInfo={offersData?.offer_section?.offers} />
-      <QuestionSection data={offersData?.enquiry_section} />
+      {/* <QuestionSection data={offersData?.enquiry_section} /> */}
+      <OfferEnquirySection />
       <SocialLinkSection />
     </>
   );

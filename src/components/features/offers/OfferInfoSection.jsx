@@ -1,6 +1,5 @@
 import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
-import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
 import Link from "next/link";
 import parse from "html-react-parser";
@@ -10,11 +9,11 @@ export default function OfferInfoSection({ data, offersInfo }) {
   return (
     <section className="w-full h-auto block py-[30px] sm:py-[40px_30px] lg:py-[60px_40px] xl:py-[110px_0] 2xl:py-[130px_0]">
       <div className="container">
-        <div className="text-center lg:max-w-[768px] xl:max-w-[880px] 2xl:max-w-[1160px] 3xl:max-w-[1330px] mx-auto mb-[30px] lg:mb-[40px] xl:mb-[70px] 2xl:mb-[90px] 3xl:mb-[120px]">
+        <div className="text-center lg:max-w-[768px] xl:max-w-[880px] 2xl:max-w-[1140px] 3xl:max-w-[1330px] mx-auto mb-[30px] lg:mb-[40px] xl:mb-[70px] 2xl:mb-[90px] 3xl:mb-[120px]">
           <Heading
             size="heading3"
             as="h3"
-            className="leading-tight !font-bold text-center text-black mb-[20px] xl:mb-[30px] 2xl:mb-[50px] 3xl:mb-[60px]"
+            className="leading-tight !font-bold text-center text-black mb-[20px] xl:mb-[30px] 2xl:mb-[50px] 3xl:mb-[60px] lg:max-w-[90%] mx-auto"
           >
             {data?.title}
           </Heading>
@@ -61,7 +60,7 @@ export default function OfferInfoSection({ data, offersInfo }) {
                 {item?.offer_points?.map((offer, index) => (
                   <li
                     key={`offersInfo-${index}`}
-                    className="my-[15px] xl:my-[20px] 2xl:my-[25px] ltr:pl-[20px] ltr:xl:pl-[30px] ltr:2xl:pl-[40px] ltr:3xl:pl-[50px] rtl:pr-[20px] rtl:xl:pr-[30px] rtl:2xl:pr-[40px] rtl:3xl:pr-[50px] last:mb-0 relative z-0 before:content-[''] before:block before:w-[15px] before:xl:w-[20px] before:2xl:w-[25px] before:3xl:w-[30px] before:aspect-square before:absolute before:z-0 ltr:before:left-0 rtl:before:right-0 before:-top-[2px] before:xl:-top-[4px] before:3xl:-top-[6px] before:bg-[url(/images/offer-list-icon.svg)] before:bg-center before:bg-contain"
+                    className="my-[15px] xl:my-[20px] 2xl:my-[25px] ltr:pl-[20px] ltr:xl:pl-[30px] ltr:2xl:pl-[40px] ltr:3xl:pl-[50px] rtl:pr-[20px] rtl:xl:pr-[30px] rtl:2xl:pr-[40px] rtl:3xl:pr-[50px] last:mb-0 relative z-0 before:content-[''] before:block before:w-[15px] before:xl:w-[20px] before:2xl:w-[25px] before:3xl:w-[30px] before:aspect-square before:absolute before:z-0 ltr:before:left-0 rtl:before:right-0 before:-top-[2px] before:xl:-top-[2px] before:3xl:-top-[5px] before:bg-[url(/images/offer-list-icon.svg)] before:bg-center before:bg-contain"
                   >
                     <Heading size="heading6" as="h6" className="font-normal text-white">
                       {offer.point}

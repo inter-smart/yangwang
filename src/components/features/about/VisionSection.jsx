@@ -70,6 +70,7 @@ export default function VisionSection({ locale, data }) {
               modules={[Autoplay, Pagination]}
               spaceBetween={120}
               slidesPerView={3}
+              centeredSlides={true}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
@@ -91,7 +92,6 @@ export default function VisionSection({ locale, data }) {
                   spaceBetween: 120,
                 },
               }}
-              className="VisionSectionSlider"
             >
               {items?.map((item, index) => (
                 <SwiperSlide key={"lookupInfo" + index}>

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function InnerHeroSection({ data }) {
   const { title, web_banner, web_banner_alt, mobile_banner, mobile_banner_alt } = data;
   return (
-    <section className="w-full h-[320px] lg:h-[340px] xl:h-[460px] 2xl:h-[600px] 3xl:h-[700px] flex items-center relative z-0 pt-[50px] lg:pt-[70px] 2xl:pt-[80px] 3xl:pt-[90px]">
+    <section className="w-full h-[268px] sm:h-[320px] lg:h-[340px] xl:h-[460px] 2xl:h-[600px] 3xl:h-[700px] flex items-center relative z-0 pt-[50px] lg:pt-[70px] 2xl:pt-[80px] 3xl:pt-[90px]">
       <Image src={web_banner} alt={web_banner_alt} fill sizes="100vw" className="object-cover -z-1" priority />
       <div className="container">
         <div className="flex flex-col items-center">
@@ -24,7 +24,7 @@ export default function InnerHeroSection({ data }) {
             color="black"
             className="min-w-[100px] sm:min-w-[120px] xl:min-w-[155px] 2xl:min-w-[200px] 3xl:min-w-[230px] mx-auto"
           >
-            Explore Latest Offers
+            Explore latest offers
           </LinkButton>
         </div>
       </div>

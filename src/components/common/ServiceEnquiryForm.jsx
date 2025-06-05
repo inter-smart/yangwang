@@ -2,15 +2,31 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../layout/Button";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 
@@ -60,13 +76,16 @@ export default function ServiceEnquiryForm({ locationData }) {
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service-contact-enquiry`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/service-contact-enquiry`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
@@ -188,7 +207,10 @@ export default function ServiceEnquiryForm({ locationData }) {
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder="Select Location" className="truncate text-[#999999] font-semibold" />
+                        <SelectValue
+                          placeholder="Select Location"
+                          className="truncate text-[#999999] font-semibold"
+                        />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
@@ -230,7 +252,10 @@ export default function ServiceEnquiryForm({ locationData }) {
                         <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-full p-0 bg-black text-white" align="start">
+                    <PopoverContent
+                      className="w-full p-0 bg-black text-white"
+                      align="start"
+                    >
                       <Calendar
                         mode="single"
                         selected={date}
@@ -283,7 +308,15 @@ export default function ServiceEnquiryForm({ locationData }) {
 
         {submitStatus && (
           <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] text-center">
-            <p className={submitStatus.type === "success" ? "text-green-500" : "text-red-500"}>{submitStatus.message}</p>
+            <p
+              className={
+                submitStatus.type === "success"
+                  ? "text-green-500"
+                  : "text-red-500"
+              }
+            >
+              {submitStatus.message}
+            </p>
           </div>
         )}
       </form>
