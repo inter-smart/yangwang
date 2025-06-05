@@ -36,7 +36,7 @@ export default function PlatformSection() {
         loop
         className="w-full h-full object-cover absolute -z-2 inset-0"
         aria-label="Video player"
-        poster="images/models-poster-platform-bg.jpg"
+        poster="/images/models-poster-platform-bg.jpg"
       >
         <source src="/videos/models-platform-bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.

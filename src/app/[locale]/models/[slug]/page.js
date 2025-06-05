@@ -14,7 +14,7 @@ export default async function page({ params }) {
     <>
       <ModelsHeroSection />
       {/* <HighlightSection /> */}
-      <DesignViewSection />
+      <DesignViewSection locale={locale} />
       <RangeSection />
       <PerformanceSection />
       <PlatformSection />

@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function ModelsHeroSection() {
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-end py-[40px] lg:py-[60px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/50 before:pointer-events-none">
-      <picture>
+      <picture className="absolute -z-2 inset-0">
         <source
           media="(max-width: 768px)"
           srcSet="/images/mob-models-u8-1.jpg"
