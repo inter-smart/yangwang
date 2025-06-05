@@ -5,9 +5,32 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import parse, { domToReact } from "html-react-parser";
+
+const options = {
+  replace: (node) => {
+    if (node.name === "li") {
+      return (
+        <li className="3xl:text-[18px] 2xl:text-[14px] text-[12px] font-normal leading-normal ltr:text-left rtl:text-right">
+          {domToReact(node.children, options)}
+        </li>
+      );
+    }
+    // Optional: strip <ul> class and use your own outside
+    if (node.name === "ul") {
+      return (
+        <ul className="text-left text-white list-disc px-5 mt-[20px] xl:mt-[30px] space-y-2">
+          {domToReact(node.children, options)}
+        </ul>
+      );
+    }
+  },
+};
 
 export default function VisionSection({ locale, data }) {
   const { title, description, items, video } = data;
+  console.log("items ==>", items);
+
   return (
     <section className="w-full h-auto block p-[40px_0_50px] md:p-[50px_0_70px] xl:p-[75px_0_100px] 3xl:p-[110px_0_150px] bg-[#262626]">
       <div className="container">
@@ -19,7 +42,7 @@ export default function VisionSection({ locale, data }) {
             as="p"
             className="3xl:text-[18px] 2xl:text-[14px] xl:text-[13px] md:text-[12px] text-[11px] font-normal leading-normal text-white"
           >
-            {description}
+            {parse(description)}
           </Text>
         </div>
         <div className="w-full h-auto block aspect-[1460/675] max-md:h-[320px] relative z-0">
@@ -76,15 +99,19 @@ export default function VisionSection({ locale, data }) {
                     <Heading size="heading3" as="h3" className="text-white">
                       {item.title}
                     </Heading>
+                    {/* <ul className="text-left text-white list-disc px-5 mt-[20px] xl:mt-[30px] space-y-2 [&>li]:3xl:text-[18px] [&>li]:2xl:text-[14px] [&>li]:text-[12px] [&>li]:font-normal [&>li]:leading-normal [&>li]:ltr:text-left [&>li]:rtl:text-right"> */}
                     <ul className="text-left text-white list-disc px-5 mt-[20px] xl:mt-[30px] space-y-2">
-                      {item?.description?.split(",")?.map((point, i) => (
+                      {/* {item?.description?.split(",")?.map((point, i) => (
                         <li
                           key={i}
                           className="3xl:text-[18px] 2xl:text-[14px] text-[12px] font-normal leading-normal ltr:text-left rtl:text-right"
                         >
                           {point}
                         </li>
-                      ))}
+                      ))} */}
+                      {item?.description && parse(item?.description, options)}
+
+                      {/* {parse(item?.description)} */}
                     </ul>
                   </div>
                 </SwiperSlide>

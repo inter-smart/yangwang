@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
+import parse from "html-react-parser";
 
 export default function DealershipSection({ data, showVideo }) {
   const { title, description, images } = data;
@@ -49,7 +50,7 @@ export default function DealershipSection({ data, showVideo }) {
               as="p"
               className="3xl:text-[18px] 2xl:text-[16px] xl:text-[13px] md:text-[12px] text-[11px] font-normal leading-normal"
             >
-              {description}
+              {parse(description)}
             </Text>
           )}
         </div>
