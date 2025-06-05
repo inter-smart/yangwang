@@ -13,7 +13,7 @@ export default async function page({ params }) {
   return (
     <>
       <ModelsHeroSection />
-      {/* <HighlightSection /> */}
+      <HighlightSection />
       <DesignViewSection locale={locale} />
       <RangeSection />
       <PerformanceSection />
