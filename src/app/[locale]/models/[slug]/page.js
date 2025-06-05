@@ -29,7 +29,7 @@ export default async function page({ params }) {
   }
   return (
     <>
-      <ModelsHeroSection data={productData?.banner_section} />
+      <ModelsHeroSection data={productData?.banner_section} model={slug}/>
       <HighlightSection />
       <DesignViewSection locale={locale} />
       <RangeSection />
