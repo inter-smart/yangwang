@@ -37,7 +37,7 @@ export default async function page({ params }) {
       />
       <NewsDetailSection data={newsData} locale={locale} />
       {newsData?.related_list?.length > 0 && <RelatedPostSection data={newsData?.related_list} locale={locale} />}
-      {/* <SocialLinkSection /> */}
+      <SocialLinkSection data={newsData?.social_media_section} />
     </>
   );
 }

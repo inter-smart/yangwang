@@ -53,7 +53,7 @@ export default async function page({ params }) {
         locale={locale}
         title={newsData?.title || "Discover the latest innovations, launches & stories"}
       />
-      <SocialLinkSection />
+      <SocialLinkSection data={newsData?.social_media_section} />
     </>
   );
 }
