@@ -113,8 +113,8 @@ export default function OfferEnquiryForm() {
         <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
           <Select>
             <SelectTrigger
-              className="w-full h-[70px] min-h-[70px] px-6  border border-[#CCCCCC]
-                              rounded-none bg-white text-[16px] text-[#B3B3B3] 
+              className="w-full min-h-[50px] xl:min-h-[60px] 3xl:min-h-[70px] px-4 xl:px-6  border border-[#CCCCCC]
+                              rounded-none bg-white text-[14px] 2xl:text-[16px] 3xl:text-[18px] text-[#B3B3B3] 
                              font-medium outline-none shadow-none transition-all cursor-pointer 
                              flex items-center justify-between relative"
             >
@@ -355,7 +355,7 @@ export default function OfferEnquiryForm() {
             color="black"
             type="submit"
             aria-label="Send Message"
-            className="max-w-[70px] sm:max-w-[80px] xl:max-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
+            className="max-w-[80px] sm:max-w-[85px] xl:max-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
             disabled={isLoading}
           >
             {isLoading ? "Sending..." : "Send Message"}
