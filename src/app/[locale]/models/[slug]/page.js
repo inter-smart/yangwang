@@ -13,10 +13,13 @@ export default async function page({ params }) {
 
   let productData = {};
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/product-detail/${encodeURIComponent(slug)}/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/product-detail/${encodeURIComponent(slug)}/${encodeURIComponent(locale)}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
     const result = await response.json();
     if (result.success && result.status === 200) {
       productData = result.data;
@@ -29,11 +32,16 @@ export default async function page({ params }) {
   }
   return (
     <>
-      <ModelsHeroSection data={productData?.banner_section} model={slug}/>
-      <HighlightSection />
-      <DesignViewSection locale={locale} />
-      <RangeSection />
-      <PerformanceSection />
+      <ModelsHeroSection data={productData?.banner_section} model={slug} />
+      {/* <HighlightSection interiorData={productData?.interior_highlights} exteriorHighlights={productData?.exterior_highlights} /> */}
+      <DesignViewSection
+        locale={locale}
+        exteriorData={productData?.exterior}
+        interiorData={productData?.interior}
+        alloyWheelData={productData?.alloy_wheel}
+      />
+      <RangeSection data={productData?.distance_section} />
+      <PerformanceSection performanceData={productData?.performance_section?.performance} />
       <PlatformSection />
       <BodyFeaturesSection locale={locale} />
       <EnquirySection />
