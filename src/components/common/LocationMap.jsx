@@ -220,8 +220,8 @@ export default function LocationMap({ data }) {
                   <Heading size="heading6" as="h6" className="capitalize text-white mb-[15px]">
                     {branch?.title}
                   </Heading>
-                  <Text size="text2" as="p" className="max-w-full text-white mb-2">
-                    <span>{parse(branch?.address)}</span>
+                  <Text size="text2" as="div" className="max-w-full text-white mb-2">
+                    {parse(branch?.address)}
                   </Text>
                   <Text size="text2" as="p" className="max-w-full text-white mb-2">
                     Phone: <span>{branch?.phone}</span>
