@@ -6,8 +6,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PerformanceSection({ performanceData }) {
-  console.log("PerformanceSection rendered with data:", performanceData);
-  
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = performanceData[activeIndex];
 

@@ -33,7 +33,7 @@ export default async function page({ params }) {
   return (
     <>
       <ModelsHeroSection data={productData?.banner_section} model={slug} />
-      {/* <HighlightSection interiorData={productData?.interior_highlights} exteriorHighlights={productData?.exterior_highlights} /> */}
+      <HighlightSection interiorData={productData?.interior_highlights} exteriorHighlights={productData?.exterior_highlights} />
       <DesignViewSection
         locale={locale}
         exteriorData={productData?.exterior}
@@ -42,10 +42,10 @@ export default async function page({ params }) {
       />
       <RangeSection data={productData?.distance_section} />
       <PerformanceSection performanceData={productData?.performance_section?.performance} />
-      <PlatformSection />
-      <BodyFeaturesSection locale={locale} />
-      <EnquirySection />
-      <DownloadSection />
+      <PlatformSection data={productData?.platform_section} />
+      <BodyFeaturesSection locale={locale} data={productData?.body_feature_section} />
+      <EnquirySection data={productData?.enquiry_section} />
+      <DownloadSection data={productData?.footer_section} />
     </>
   );
 }
