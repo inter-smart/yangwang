@@ -11,7 +11,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 
-
 const urwForm = localFont({
   src: [
     {
@@ -75,14 +74,32 @@ export default async function RootLayout({ children, params }) {
   const { locale } = await params;
   const messages = await getMessages(locale);
 
+  let brandData = {};
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/header-footer`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
+    const result = await response.json();
+    if (result.success && result.status === 200) {
+      brandData = result.data;
+      console.log(`[2025-05-29T14:37:00.000Z] Fetched brand for ${locale}`, brandData);
+    } else {
+      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+    }
+  } catch (error) {
+    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch brand: ${error.message}`);
+  }
+
   return (
     // <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={`${urwForm.variable} ${arabicFont.variable}`}>
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header locale={locale} />
+          <Header locale={locale} data={brandData} />
           <main className="flex-grow">{children}</main>
-          <Footer locale={locale} />
+          <Footer locale={locale} data={brandData} />
         </NextIntlClientProvider>
       </body>
     </html>

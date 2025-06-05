@@ -33,7 +33,7 @@ export default async function Home({ params }) {
       <HeroSection data={homeData?.home_banner || []} locale={locale} />
       <AboutSection data={homeData?.about_company || {}} locale={locale} />
       <ModelSection data={homeData?.vehicle_spec} locale={locale} />
-      <SpecsSection data={homeData?.specs} locale={locale} />
+      <SpecsSection data={homeData?.platform_section} locale={locale} />
       <LaunchOffersSection data={homeData?.offer || {}} locale={locale} />
       <InteriorSection data={homeData?.feel_the_drive || {}} locale={locale} />
       <MarketingSection data={homeData?.feeds_section || {}} locale={locale} />

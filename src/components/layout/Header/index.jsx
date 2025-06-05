@@ -16,6 +16,7 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 
 function HeaderNavItem({ href, title }) {
   const pathname = usePathname();
@@ -33,7 +34,7 @@ function HeaderNavItem({ href, title }) {
   );
 }
 
-export default function Header({ locale }) {
+export default function Header({ locale, data }) {
   const t = useTranslations("header");
   const pathname = usePathname();
   const router = useRouter();
@@ -104,9 +105,9 @@ export default function Header({ locale }) {
       <div className="container">
         <div className="w-full h-(--header-y) flex flex-wrap items-center justify-between gap-[10px]">
           <Link href="/" className="w-auto">
-            <Img
-              src="/header_logo.svg"
-              alt="Yangwang logo"
+            <Image
+              src={data?.yang_wang_logo || "/yangwang-logo.svg"}
+              alt={data?.yang_wang_logo_alt || "Yangwang Logo"}
               width={45}
               height={60}
               className="w-[30px] lg:w-[25px] xl:w-[30px] 2xl:w-[45px] 3xl:w-[45px] h-auto object-contain block hover:scale-105 transition-transform duration-300 hover:text-base1"
@@ -114,7 +115,7 @@ export default function Header({ locale }) {
           </Link>
           <NavigationMenu dir={locale === "ar" ? "rtl" : "ltr"} className="max-sm:hidden">
             <NavigationMenuList className="gap-0">
-              {menuItems.map((item, index) => (
+              {menuItems?.map((item, index) => (
                 <NavigationMenuItem key={index}>
                   {item.dropdown ? (
                     <>
@@ -166,9 +167,9 @@ export default function Header({ locale }) {
               </SelectContent>
             </Select>
             <Link href="/" className="w-auto">
-              <Img
-                src="/saudbhawan-1.svg"
-                alt="Saud Bhawan"
+              <Image
+                src={data?.saud_bahhwan_logo || "/saud-bhawan-logo.svg"}
+                alt={data?.saud_bahhwan_logo_alt || "Saud Bahwan Logo"}
                 width={84}
                 height={44}
                 className="w-[40px] lg:w-[56px] 2xl:w-[84px] h-auto object-contain hover:scale-105 transition-transform duration-300"
@@ -183,7 +184,7 @@ export default function Header({ locale }) {
                   <SheetHeader>
                     <SheetTitle className="sr-only">Site navigation</SheetTitle>
                     <ul className="flex flex-col [&>li]:max-sm:m-[15px] my-[15px]">
-                      {menuItems.map((item, index) => (
+                      {menuItems?.map((item, index) => (
                         <li key={index}>
                           <HeaderNavItem title={item.title} href={item.href} />
                           {item.dropdown && (
