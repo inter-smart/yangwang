@@ -1,37 +1,45 @@
-import { Img } from "@/components/layout/Img";
-import Link from "next/link";
-
+import { LinkButton } from "@/components/layout/Button";
+import { Heading } from "@/components/layout/Heading";
+import Image from "next/image";
 export default function NotFound() {
   return (
-    <div className="w-full">
-      <div className="w-full h-[50px] lg:h-[70px] 2xl:h-[80px] 3xl:h-[90px] block bg-black transition-all duration-300 "></div>
-      <section className="w-full min-h-screen flex items-center justify-center overflow-hidden text-white text-center 3xl:py-[100px] xl:py-[60px] py-[30px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0, .1)] before:backdrop-blur-[10px] before:pointer-events-none">
-        <Img
-          src="404.jpg"
+    <>
+      <div className="w-full h-[60px] lg:h-[80px] 2xl:h-[100px] 3xl:h-[120px] block bg-black transition-all duration-300 "></div>
+      <section className="w-full h-[calc(100vh-60px)] lg:h-[calc(100vh-80px)] 2xl:h-[calc(100vh-100px)] 3xl:h-[calc(100vh-120px)] flex items-center justify-center overflow-hidden text-white text-center 3xl:py-[100px] xl:py-[60px] py-[30px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/10 before:backdrop-blur-[10px] before:pointer-events-none">
+        <Image
+          src="/images/404.jpg"
           alt="404 Background"
           fill
           sizes="100vw"
-          className="-z-2 object-cover"
+          className="object-cover -z-2"
         />
         <div className="container flex flex-col items-center justify-center px-4">
-          <Img
-            src="404Ttle.png"
+          <Image
+            src="/images/404Ttle.png"
             alt="404 Title"
             width={400}
             height={100}
-            className="object-contain mb-8 2xl:max-w-[500px] xl:max-w-[345px] md:max-w-[245px] max-w-[180px] w-full"
+            className="w-full max-w-[180px] md:max-w-[245px] xl:max-w-[340px] 2xl:max-w-[468px] object-contain mb-8"
           />
-          <div className="typography">
-            <h6 className="text-white">Page Not Found</h6>
-            <Link
+          <div>
+            <Heading
+              size="heading6"
+              as="h6"
+              className="text-white mb-[20px] xl:mb-[30px] 3xl:mb-[40px]"
+            >
+              Page Not Found
+            </Heading>
+            <LinkButton
               href="/"
-              className="mt-6 inline-block text-sm text-white backdrop-blur-sm transition bg-black duration-500 ease-in-out hover:bg-[#F1D1A8] hover:text-[#060606] 3xl:px-[45px] 2xl:px-[35px] xl:px-[25px] px-[15px] 2xl:py-[15px] xl:py-[10px] py-[8px]"
+              color="black"
+              aria-label="Back home"
+              className="min-w-[120px] sm:min-w-[140px] xl:min-w-[160px] 2xl:min-w-[180px] 3xl:min-w-[190px]"
             >
               Go Back home
-            </Link>
+            </LinkButton>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

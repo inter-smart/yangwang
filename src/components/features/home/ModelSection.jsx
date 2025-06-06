@@ -230,7 +230,7 @@ export default function ModelSection({ data, locale }) {
                                             sizes="50px"
                                           />
                                         </div>
-                                        <div className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none capitalize text-white">
+                                        <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] text-[10px] font-normal leading-none capitalize text-white">
                                           {colorItem.color_name}
                                         </div>
                                       </DropdownMenuItem>

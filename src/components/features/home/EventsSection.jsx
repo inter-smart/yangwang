@@ -59,7 +59,7 @@ export default function EventsSection({ data }) {
                           className="object-cover transition-transform duration-300 hover:scale-105"
                         />
                       </CardContent>
-                      <CardHeader className="p-0 gap-0">
+                      <CardHeader className="max-w-full block p-0 gap-0">
                         <CardTitle>
                           <h5 className="text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[30px] leading-tight capitalize font-medium truncate text-black mb-[2px] sm:mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
                             {item.title}

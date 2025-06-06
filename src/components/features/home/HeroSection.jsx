@@ -40,7 +40,8 @@ export default function HeroSection({ data, locale }) {
     }
   };
 
-  const nextSlideThumb = data[(activeIndex + 1) % data?.length]?.media?.thumbnail;
+  const nextSlideThumb =
+    data[(activeIndex + 1) % data?.length]?.media?.thumbnail;
   const nextSlideTitle = data[(activeIndex + 1) % data?.length]?.title;
 
   return (

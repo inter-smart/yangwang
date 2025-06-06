@@ -29,23 +29,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Menu } from "lucide-react";
-
-function HeaderNavItem({ href, title }) {
-  const pathname = usePathname();
-  return (
-    <Link href={href} className="group relative">
-      <Heading
-        as="h6"
-        className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
-          pathname === href ? "text-base1" : "text-black"
-        }`}
-      >
-        {title}
-      </Heading>
-    </Link>
-  );
-}
+import Image from "next/image";
 
 export default function Header({ locale }) {
   const t = useTranslations("header");
@@ -53,6 +37,10 @@ export default function Header({ locale }) {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+
+  const [open, setOpen] = useState(false);
+  console.log(`header open: ${open}`);
+  
 
   useEffect(() => {
     console.log(
@@ -93,8 +81,16 @@ export default function Header({ locale }) {
         href: "/",
         title: t("models"),
         dropdown: [
-          { href: "/models/u8", title: t("u8"), description: t("u8_description") },
-          { href: "/models/u9", title: t("u9"), description: t("u9_description") },
+          {
+            href: "/models/u8",
+            title: t("u8"),
+            description: t("u8_description"),
+          },
+          {
+            href: "/models/u9",
+            title: t("u9"),
+            description: t("u9_description"),
+          },
         ],
       },
       { href: "/about", title: t("about") },
@@ -106,8 +102,6 @@ export default function Header({ locale }) {
     [t]
   );
 
-  // const triggerStyle =
-  //   "[&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0";
   const triggerNavStyle =
     "3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1";
 
@@ -116,7 +110,7 @@ export default function Header({ locale }) {
       className={`w-full h-(--header-y) absolute z-10 top-0 left-0 right-0 block bg-linear-to-b from-black/60 to-transparent transition-all duration-300 ${
         isVisible
           ? "fixed animate-fadeDown bg-black/80 backdrop-blur-lg [--header-y:50px] lg:[--header-y:70px] 2xl:[--header-y:80px] 3xl:[--header-y:90px] "
-          : "absolute [--header-y:60px] lg:[--header-y:80px] 2xl:[--header-y:100px] 3xl:[--header-y:120px] "
+          : "absolute [--header-y:60px] lg:[--header-y:80px] 2xl:[--header-y:100px] 3xl:[--header-y:120px]"
       }`}
     >
       <div className="container">
@@ -193,7 +187,11 @@ export default function Header({ locale }) {
                               >
                                 <Link
                                   href={subItem.href}
-                                  className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1"
+                                  className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
+                                    pathname === subItem.href
+                                      ? "text-base1"
+                                      : "text-white"
+                                  }`}
                                 >
                                   {subItem.title}
                                 </Link>
@@ -210,7 +208,9 @@ export default function Header({ locale }) {
                     >
                       <Link
                         href={item.href}
-                        className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1"
+                        className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
+                          pathname === item.href ? "text-base1" : "text-white"
+                        }`}
                       >
                         {item.title}
                       </Link>
@@ -255,9 +255,15 @@ export default function Header({ locale }) {
               />
             </Link>
             <div className="sm:hidden">
-              <Sheet className="sm:hidden">
-                <SheetTrigger className="flex">
-                  <Menu className="size-6 text-white m-auto" />
+              <Sheet open={open} onOpenChange={setOpen} className="sm:hidden">
+                <SheetTrigger className="w-[20px] flex">
+                  <Image
+                    src="/images/icon-humburger.svg"
+                    alt="humburger"
+                    width={25}
+                    height={25}
+                    className="block"
+                  />
                 </SheetTrigger>
                 <SheetContent
                   className="bg-white backdrop-blur-[30px]"
@@ -268,15 +274,40 @@ export default function Header({ locale }) {
                     <ul className="flex flex-col [&>li]:max-sm:m-[15px] my-[15px]">
                       {menuItems.map((item, index) => (
                         <li key={index}>
-                          <HeaderNavItem title={item.title} href={item.href} />
+                          <Heading
+                            as="h6"
+                            className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
+                              pathname === item.href
+                                ? "text-base1"
+                                : "text-black"
+                            }`}
+                          >
+                            <Link
+                              href={item.href}
+                              onClick={() => setOpen(false)}
+                            >
+                              {item.title}
+                            </Link>
+                          </Heading>
                           {item.dropdown && (
                             <ul className="mt-2 ml-4 flex flex-col gap-2">
                               {item.dropdown.map((subItem, subIndex) => (
                                 <li key={subIndex}>
-                                  <HeaderNavItem
-                                    title={subItem.title}
-                                    href={subItem.href}
-                                  />
+                                  <Heading
+                                    as="h6"
+                                    className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
+                                      pathname === subItem.href
+                                        ? "text-base1"
+                                        : "text-black"
+                                    }`}
+                                  >
+                                    <Link
+                                      href={subItem.href}
+                                      onClick={() => setOpen(false)}
+                                    >
+                                      {subItem.title}
+                                    </Link>
+                                  </Heading>
                                 </li>
                               ))}
                             </ul>
