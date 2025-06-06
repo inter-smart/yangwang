@@ -38,13 +38,7 @@ const customerSupport = [
   },
 ];
 
-export default function LocationSection({
-  variant,
-  showRooms,
-  serviceCentres,
-}) {
-  console.log("showRooms, serviceCentres", showRooms, serviceCentres);
-
+export default function LocationSection({ variant, showRooms, serviceCentres, customerSupportData }) {
   const hasVariantService = variant === "findshowroom";
   const tabs = [
     {
@@ -57,9 +51,7 @@ export default function LocationSection({
     },
     {
       key: "service",
-      label:
-        serviceCentres?.header?.find_a_service_centre_title ||
-        "Find a Service Centre",
+      label: serviceCentres?.header?.find_a_service_centre_title || "Find a Service Centre",
       icon: serviceCentres?.header?.service_centre_image || "/images/serviceIcon.svg",
       width: "w-[20px] md:w-[30px]",
       height: "h-[20px] md:h-[30px]",
@@ -96,46 +88,25 @@ export default function LocationSection({
           </TabsList>
 
           <TabsContent value="showroom" className="w-full">
-            <LocationMap
-              data={showRooms?.showroom || showRooms}
-              key="showroom"
-            />
+            <LocationMap data={showRooms?.showroom || showRooms} key="showroom" />
           </TabsContent>
           <TabsContent value="service" className="w-full">
-            <LocationMap
-              data={serviceCentres?.service_centres || serviceCentres}
-              key="service"
-            />
+            <LocationMap data={serviceCentres?.service_centres || serviceCentres} key="service" />
           </TabsContent>
         </Tabs>
         {!hasVariantService && (
           <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-350px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-580px)] ml-auto mt-[15px] lg:mt-[50px]">
             <div className="flex flex-wrap justify-between">
-              {customerSupport.map((item, index) => (
-                <div
-                  key={index}
-                  className="w-full sm:w-1/2 lg:w-auto lg:max-w-[1/4] p-[8px]"
-                >
+              {customerSupportData?.map((item, index) => (
+                <div key={index} className="w-full sm:w-1/2 lg:w-auto lg:max-w-[1/4] p-[8px]">
                   <div className="w-full h-auto flex flex-wrap">
-                    {item.image && (
+                    {item?.image && (
                       <div className="3xl:w-[30px] w-[25px] aspect-square block transition-transform hover:scale-105">
-                        {item.type === "phone" ? (
-                          <Image
-                            src="/images/icon-csupport-phone.svg"
-                            alt="phone"
-                            width={30}
-                            height={30}
-                            className="block"
-                          />
-                        ) : item.type === "mail" ? (
-                          <Image
-                            src="/images/icon-csupport-mail.svg"
-                            alt="mail"
-                            width={30}
-                            height={30}
-                            className="block"
-                          />
-                        ) : item.type === "whatsapp" ? (
+                        {item?.type === "phone" ? (
+                          <Image src="/images/icon-csupport-phone.svg" alt="phone" width={30} height={30} className="block" />
+                        ) : item?.type === "mail" ? (
+                          <Image src="/images/icon-csupport-mail.svg" alt="mail" width={30} height={30} className="block" />
+                        ) : item?.type === "whatsapp" ? (
                           <Image
                             src="/images/icon-csupport-whatsapp.svg"
                             alt="whatsapp"
@@ -143,43 +114,49 @@ export default function LocationSection({
                             height={30}
                             className="block"
                           />
-                        ) : null}
+                        ) : <Image
+                          src={item?.image}
+                          alt={item?.image_alt || "support icon"}
+                          width={30}
+                          height={30}
+                          className="block"
+                        />}
                       </div>
                     )}
 
                     <div
                       className={
-                        item.image &&
+                        item?.image &&
                         "w-[calc(100%-25px)] 3xl:w-[calc(100%-30px)] ltr:pl-[10px] ltr:3xl:pl-[15px] rtl:pr-[10px] rtl:3xl:pr-[15px]"
                       }
                     >
                       <div className="3xl:text-[20px] 2xl:text-[17px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal capitalize leading-tight text-[#5949A7] mb-[4px] xl:mb-[6px]">
-                        {item.title}
+                        {item?.title}
                       </div>
-                      {item.type === "phone" ? (
+                      {item?.type === "phone" ? (
                         <a
-                          href={`tel:${item.value}`}
+                          href={`tel:${item?.value}`}
                           className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none text-white transition-color block hover:text-base3"
                         >
-                          {item.value}
+                          {item?.value}
                         </a>
-                      ) : item.type === "mail" ? (
+                      ) : item?.type === "mail" ? (
                         <a
-                          href={`mailto:${item.value}`}
+                          href={`mailto:${item?.value}`}
                           className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none text-white transition-color block hover:text-base3"
                         >
-                          {item.value}
+                          {item?.value}
                         </a>
-                      ) : item.type === "whatsapp" ? (
+                      ) : item?.type === "whatsapp" ? (
                         <a
-                          href={`https://wa.me/${item.value}`}
+                          href={`https://wa.me/${item?.value}`}
                           className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none text-white transition-color block hover:text-base3"
                         >
-                          {item.value}
+                          {item?.value}
                         </a>
                       ) : (
                         <div className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none text-white">
-                          {item.value}
+                          {item?.value}
                         </div>
                       )}
                     </div>
