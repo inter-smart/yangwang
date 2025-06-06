@@ -9,7 +9,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 import { NextIntlClientProvider, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 
 const urwForm = localFont({
   src: [
@@ -70,8 +69,8 @@ async function getMessages(locale) {
   }
 }
 
-export default async function RootLayout({ children }) {
-  const locale = useLocale();
+export default async function RootLayout({ children, params }) {
+  const { locale } = params;
   const messages = await getMessages(locale);
 
   let brandData = {};
