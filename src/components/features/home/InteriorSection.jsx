@@ -2,6 +2,7 @@ import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import Image from "next/image";
+import parse from "html-react-parser";
 
 export default function InteriorSection({ data }) {
   const delmtStyle =
@@ -12,19 +13,11 @@ export default function InteriorSection({ data }) {
       <div className="h-full flex flex-wrap">
         <div className="w-full lg:w-6/10 flex md:flex-col">
           <div className="w-full h-auto block py-[30px] md:py-[40px_30px] xl:py-[75px_60px] 3xl:py-[110px_90px] ltr:pl-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] ltr:3xs:pl-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] ltr:2xs:pl-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] ltr:xs:pl-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] ltr:sm:pl-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] ltr:md:pl-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] ltr:pr-[10px] rtl:pr-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] rtl:3xs:pr-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] rtl:2xs:pr-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] rtl:xs:pr-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] rtl:sm:pr-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] rtl:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:pl-[10px]">
-            <Heading
-              size="heading3"
-              as="h3"
-              className="capitalize text-white mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
-            >
+            <Heading size="heading3" as="h3" className="capitalize text-white mb-[6px] xl:mb-[8px] 3xl:mb-[10px]">
               {data?.title}
             </Heading>
-            <Text
-              size="text3"
-              as="p"
-              className="text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
-            >
-              {data?.description}
+            <Text size="text3" as="div" className="text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]">
+              {parse(data?.description)}
             </Text>
             <LinkButton
               href="#"
