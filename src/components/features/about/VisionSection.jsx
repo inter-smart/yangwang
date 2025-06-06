@@ -39,7 +39,7 @@ export default function VisionSection({ locale, data }) {
             {title}
           </Heading>
           <Text
-            as="p"
+            as="div"
             className="3xl:text-[18px] 2xl:text-[14px] xl:text-[13px] md:text-[12px] text-[11px] font-normal leading-normal text-white"
           >
             {parse(description)}

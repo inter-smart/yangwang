@@ -2,6 +2,7 @@ import { Heading } from "@/components/layout/Heading";
 import { Img } from "@/components/layout/Img";
 import Image from "next/image";
 import { Text } from "../layout/Text";
+import parse from "html-react-parser";
 
 export default function InnerBanner({ title, banner_image, banner_alt, description }) {
   return (
@@ -13,8 +14,8 @@ export default function InnerBanner({ title, banner_image, banner_alt, descripti
             {title}
           </Heading>
           {description && (
-            <Text as="p" size="text4" className="capitalize text-center text-white">
-              {description}
+            <Text as="div" size="text4" className="capitalize text-center text-white">
+              {parse(description)}
             </Text>
           )}
         </div>

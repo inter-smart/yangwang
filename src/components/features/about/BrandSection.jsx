@@ -20,7 +20,7 @@ export default function BrandSection({ data }) {
           />
         </div>
         <div className="w-full 2xl:max-w-[1560px] xl:max-w-[1040px] md:max-w-[740px] h-full 2xl:pt-[50px] md:pt-[30px] pt-[20px] m-auto text-center text-white">
-          <Text size="text1" as="p">
+          <Text size="text1" as="div">
             {parse(description)}
           </Text>
         </div>

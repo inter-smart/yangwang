@@ -43,8 +43,8 @@ export default function FutureSection({ data, locale }) {
                 <div className="w-full h-full aspect-[340/540] block overflow-hidden relative z-0 before:content-[''] before:absolute before:z-1 before:bottom-0 before:left-0 before:w-full before:h-[50%] before:bg-gradient-to-b before:from-transparent before:to-black group">
                   <Image
                     fill
-                    src={item?.image}
-                    alt={item?.alt}
+                    src={item?.image || "/images/future-vehicle-placeholder.jpg"}
+                    alt={item?.alt || "Future Vehicle Image"}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="w-full h-full 2xl:p-[30px] xl:p-[20px] md:p-[15px] p-[10px] absolute z-1 bottom-0 flex items-end">

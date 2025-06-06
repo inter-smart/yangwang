@@ -1,34 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Heading } from "@/components/layout/Heading";
-import { Img } from "@/components/layout/Img";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
 import "swiper/css";
 import Image from "next/image";
-
-const videoReviews = [
-  {
-    thumbnail: "innovation-1.jpg",
-    videoUrl: "/videos/lookupsection.mp4",
-    title: "2024 BYD Yangwang U8 review",
-    author: "MR. Ahamed Riyas, Azaiba, Oman",
-  },
-  {
-    thumbnail: "innovation-2.jpg",
-    videoUrl: "/videos/lookupsection.mp4",
-    title: "2024 BYD Yangwang U8 review",
-    author: "MR. Ahamed Riyas, Azaiba, Oman",
-  },
-  {
-    thumbnail: "innovation-3.jpg",
-    videoUrl: "/videos/lookupsection.mp4",
-    title: "2024 BYD Yangwang U8 review",
-    author: "MR. Ahamed Riyas, Azaiba, Oman",
-  },
-];
 
 export default function InovationSection({ locale, data }) {
   const { items, title } = data;
