@@ -70,7 +70,7 @@ async function getMessages(locale) {
 }
 
 export default async function RootLayout({ children, params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const messages = await getMessages(locale);
 
   let brandData = {};
