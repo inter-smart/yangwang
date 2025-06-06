@@ -44,6 +44,7 @@ export default async function Contact({ params }) {
         variant="service"
         serviceCentres={serviceData?.service_centre_section?.service_centres}
         showRooms={serviceData?.showroom_section?.showroom}
+        customerSupportData={serviceData?.customer_support}
       />
       <FollowusSection data={serviceData?.social_media_section} />
     </>

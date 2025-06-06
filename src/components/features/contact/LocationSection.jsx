@@ -9,7 +9,7 @@ const LocationMap = dynamic(() => import("../../common/LocationMap"), {
   ssr: false, // This ensures the component only loads on the client
 });
 
-export default function LocationSection({ variant, showRooms, serviceCentres }) {
+export default function LocationSection({ variant, showRooms, serviceCentres, customerSupportData }) {
   console.log("showRooms, serviceCentres", showRooms, serviceCentres);
 
   const hasVariantService = variant === "findshowroom";
