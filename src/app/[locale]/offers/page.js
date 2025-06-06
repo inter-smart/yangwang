@@ -4,7 +4,7 @@ import OfferEnquirySection from "@/components/features/offers/OfferEnquirySectio
 import OfferInfoSection from "@/components/features/offers/OfferInfoSection";
 import QuestionSection from "@/components/features/service/QuestionSection";
 
-export default async function page({params}) {
+export default async function page({ params }) {
   const { locale } = await params;
 
   let offersData = {};
@@ -30,8 +30,8 @@ export default async function page({params}) {
       <InnerHeroSection data={offersData?.banner_section} />
       <OfferInfoSection data={offersData?.main_section} offersInfo={offersData?.offer_section?.offers} />
       {/* <QuestionSection data={offersData?.enquiry_section} /> */}
-      <OfferEnquirySection />
-      <SocialLinkSection />
+      <OfferEnquirySection data={offersData?.enquiry_section} offerData={offersData?.Offer_list_enquiry} />
+      <SocialLinkSection data={offersData?.social_link_section} />
     </>
   );
 }

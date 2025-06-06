@@ -27,7 +27,7 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
-export default function ServiceEnquiryForm({ locationData }) {
+export default function ServiceEnquiryForm({ offerData, locationData }) {
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -291,7 +291,6 @@ export default function ServiceEnquiryForm({ locationData }) {
   );
 }
 
-
 // "use client";
 // import { zodResolver } from "@hookform/resolvers/zod";
 // import { Button } from "@/components/layout/Button";
@@ -360,8 +359,8 @@ export default function ServiceEnquiryForm({ locationData }) {
 //           <Select>
 //             <SelectTrigger
 //               className="w-full h-[70px] min-h-[70px] px-6  border border-[#CCCCCC]
-//                                      rounded-none bg-white text-[16px] text-[#B3B3B3] 
-//                                     font-medium outline-none shadow-none transition-all cursor-pointer 
+//                                      rounded-none bg-white text-[16px] text-[#B3B3B3]
+//                                     font-medium outline-none shadow-none transition-all cursor-pointer
 //                                     flex items-center justify-between relative"
 //             >
 //               <div className="flex items-center gap-2 flex-1 overflow-hidden ">

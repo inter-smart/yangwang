@@ -35,7 +35,11 @@ export default async function Contact({ params }) {
       />
       <GlobalSection data={serviceData?.first_section} />
       <WarrantySection data={serviceData?.service_section} featuresData={serviceData?.features} />
-      <QuestionSection data={serviceData?.enquiry_section} />
+      <QuestionSection
+        data={serviceData?.enquiry_section}
+        offerData={serviceData?.offer_types}
+        locationData={serviceData?.location}
+      />
       <LocationSection
         variant="service"
         serviceCentres={serviceData?.service_centre_section?.service_centres}
