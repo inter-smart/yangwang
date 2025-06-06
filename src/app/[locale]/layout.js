@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
-import { NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 
@@ -70,8 +70,8 @@ async function getMessages(locale) {
   }
 }
 
-export default async function RootLayout({ children, params }) {
-  const { locale } = await params;
+export default async function RootLayout({ children }) {
+  const locale = useLocale();
   const messages = await getMessages(locale);
 
   let brandData = {};
