@@ -2,11 +2,11 @@ import InnerBanner from "@/components/common/InnerBanner";
 import LegalStatement from "@/components/features/legal-statement/LegalStatement";
 
 export async function generateMetadata({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition?lang=${encodeURIComponent(locale)}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition/${encodeURIComponent(locale)}`,
       {
         cache: "force-cache",
         next: { revalidate: 60 },
@@ -43,7 +43,7 @@ export default async function page({ params }) {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition?lang=${encodeURIComponent(locale)}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition/${encodeURIComponent(locale)}`,
       {
         cache: "force-cache",
         next: { revalidate: 60 },

@@ -5,10 +5,37 @@ import BrandSection from "@/components/features/about/BrandSection";
 import FutureSection from "@/components/features/about/FutureSection";
 import VisionSection from "@/components/features/about/VisionSection";
 
-export const metadata = {
-  title: "yangwang | About",
-  description: "Demo Text.",
-};
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/about/${encodeURIComponent(locale)}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
+    const result = await response.json();
+
+    if (result.success && result.status === 200) {
+      const seoData = result.data?.meta?.seo;
+      return {
+        title: seoData?.title,
+        description: seoData?.description,
+        keywords: seoData?.keywords,
+        openGraph: {
+          title: seoData?.og_title,
+          description: seoData?.og_description,
+          images: seoData?.og_image ? [seoData.og_image] : [],
+          url: seoData?.canonical_url,
+        },
+        alternates: {
+          canonical: seoData?.canonical_url,
+        },
+      };
+    }
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+  }
+}
 
 export default async function AboutPage({ params }) {
   const { locale } = await params;
@@ -17,7 +44,7 @@ export default async function AboutPage({ params }) {
   let aboutData = {};
 
   try {
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/about?lang=${encodeURIComponent(locale)}`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/about/${encodeURIComponent(locale)}`;
     const response = await fetch(apiUrl, {
       cache: "force-cache",
       next: { revalidate: 3600 }, // 1-hour revalidation

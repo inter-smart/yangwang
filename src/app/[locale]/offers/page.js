@@ -2,7 +2,38 @@ import SocialLinkSection from "@/components/features/news/SocialLinkSection";
 import InnerHeroSection from "@/components/features/offers/InnerHeroSection";
 import OfferEnquirySection from "@/components/features/offers/OfferEnquirySection";
 import OfferInfoSection from "@/components/features/offers/OfferInfoSection";
-import QuestionSection from "@/components/features/service/QuestionSection";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/offers/${encodeURIComponent(locale)}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
+    const result = await response.json();
+
+    if (result.success && result.status === 200) {
+      const seoData = result.data?.meta?.seo;
+      return {
+        title: seoData?.title,
+        description: seoData?.description,
+        keywords: seoData?.keywords,
+        openGraph: {
+          title: seoData?.og_title,
+          description: seoData?.og_description,
+          images: seoData?.og_image ? [seoData.og_image] : [],
+          url: seoData?.canonical_url,
+        },
+        alternates: {
+          canonical: seoData?.canonical_url,
+        },
+      };
+    }
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+  }
+}
 
 export default async function page({ params }) {
   const { locale } = await params;
@@ -10,7 +41,7 @@ export default async function page({ params }) {
   let offersData = {};
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/offers?lang=${encodeURIComponent(locale)}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/offers/${encodeURIComponent(locale)}`, {
       cache: "force-cache",
       next: { revalidate: 60 },
     });

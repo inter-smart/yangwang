@@ -4,13 +4,45 @@ import OwnershipSection from "@/components/features/ownership/OwnershipSection";
 import PartsSection from "@/components/features/ownership/PartsSection";
 import ServiceSection from "@/components/features/ownership/ServiceSection";
 
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ownership/${encodeURIComponent(locale)}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
+    const result = await response.json();
+
+    if (result.success && result.status === 200) {
+      const seoData = result.data?.meta?.seo;
+      return {
+        title: seoData?.title,
+        description: seoData?.description,
+        keywords: seoData?.keywords,
+        openGraph: {
+          title: seoData?.og_title,
+          description: seoData?.og_description,
+          images: seoData?.og_image ? [seoData.og_image] : [],
+          url: seoData?.canonical_url,
+        },
+        alternates: {
+          canonical: seoData?.canonical_url,
+        },
+      };
+    }
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+  }
+}
+
 export default async function page({ params }) {
   const { locale } = await params;
 
   let ownerShipData = {};
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ownership?lang=${encodeURIComponent(locale)}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ownership/${encodeURIComponent(locale)}`, {
       cache: "force-cache",
       next: { revalidate: 60 },
     });
