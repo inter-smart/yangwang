@@ -60,7 +60,7 @@ export default function AboutSection({ data, locale }) {
         ))}
       </Swiper>
       <div className="container">
-        <div className="absolute z-10 inset-0 flex items-center justify-center">
+        <div className="absolute z-1 inset-0 flex items-center justify-center">
           <Heading size="heading3" as="h3" className="text-white">
             {data?.title || "About Us"}
           </Heading>

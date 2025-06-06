@@ -9,6 +9,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 import { NextIntlClientProvider, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import Script from "next/script";
+import PageTransition from "@/components/common/PageTransition";
 
 const urwForm = localFont({
   src: [
@@ -64,7 +66,10 @@ async function getMessages(locale) {
   try {
     return (await import(`../../../messages/${locale}.json`)).default;
   } catch (error) {
-    console.error(`[2025-05-29T12:10:00.000Z] Failed to load messages for ${locale}:`, error.message);
+    console.error(
+      `[2025-05-29T12:10:00.000Z] Failed to load messages for ${locale}:`,
+      error.message
+    );
     notFound();
   }
 }
@@ -94,11 +99,14 @@ export default async function RootLayout({ children, params }) {
   return (
     // <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={`${urwForm.variable} ${arabicFont.variable}`}>
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}>
+      <body
+        className={`${urwForm.variable} antialiased min-h-screen flex flex-col rtl:text-right rtl:[direction:rtl;]`}
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header locale={locale} data={brandData} />
-          <main className="flex-grow">{children}</main>
-          <Footer locale={locale} data={brandData} />
+          <Header locale={locale} />
+          {/* <main className="flex-grow">{children}</main> */}
+          <PageTransition>{children}</PageTransition>
+          <Footer locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

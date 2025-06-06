@@ -37,7 +37,7 @@ export default function SocialLinkSection({ data }) {
           src={backgroundImage}
           alt="Background image for Follow Us section"
           fill
-          className="absolute inset-0 w-full h-full object-cover -z-10"
+          className="absolute -z-2 inset-0 w-full h-full object-cover"
           priority
         />
         <div className="w-full h-full">

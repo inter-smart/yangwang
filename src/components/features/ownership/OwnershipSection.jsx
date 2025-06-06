@@ -15,7 +15,7 @@ export default function OwnershipSection({ data }) {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover -z-10"
+        className="absolute -z-2 inset-0 w-full h-full object-cover"
       />
       <div className="container w-full h-full">
         <div className="flex items-center justify-center flex-col w-full h-full m-auto md:px-0 px-[15px] md:max-w-[62%]">

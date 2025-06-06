@@ -1,6 +1,5 @@
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
-import { Img } from "@/components/layout/Img";
 import { LinkButton } from "@/components/layout/Button";
 import Image from "next/image";
 import parse from "html-react-parser";
@@ -19,15 +18,15 @@ export default function GlobalSection({ data, featuresData }) {
     offer_button_link,
   } = data;
   return (
-    <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative after:content-[''] after:top-0 after:absolute after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,0.5)]  ">
+    <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative z-0 after:content-[''] after:absolute after:-z-1 after:top-0 after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,0.5)]  ">
       <Image
         src={web_banner}
         alt={web_banner_alt}
         fill
         sizes="(max-width: 1920px) 100vw, 1050px"
-        className="object-cover transition-transform duration-300 pointer-events-none"
+        className="-z-2 object-cover transition-transform duration-300 pointer-events-none"
       />
-      <div className="container mx-auto relative z-10 h-full">
+      <div className="container h-full">
         <Heading
           size="heading3"
           as="h3"
