@@ -7,10 +7,78 @@ import CountUp from "react-countup";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
 import Image from "next/image";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const colorVariants = {
+  exterior: {
+    thumb: {
+      url: "/images/icon-model-1.svg",
+      alt_text: "thumb white color",
+    },
+    colors: [
+      {
+        color_name: "white",
+        color_thumb: {
+          url: "/images/u8-color-white.png",
+          alt_text: "thumb white color",
+        },
+      },
+      {
+        color_name: "black",
+        color_thumb: {
+          url: "/images/u8-color-black.png",
+          alt_text: "Pearl White exterior color thumbnail",
+        },
+      },
+      {
+        color_name: "blackish green",
+        color_thumb: {
+          url: "/images/u8-color-blackishGreen.png",
+          alt_text: "Pearl White exterior color thumbnail",
+        },
+      },
+    ],
+  },
+  interior: {
+    thumb: {
+      url: "/images/icon-model-2.svg",
+      alt_text: "thumb white color",
+    },
+    colors: [
+      {
+        color_name: "white",
+        color_thumb: {
+          url: "/images/u8-color-white.png",
+          alt_text: "thumb white color",
+        },
+      },
+      {
+        color_name: "black",
+        color_thumb: {
+          url: "/images/u8-color-black.png",
+          alt_text: "Pearl White exterior color thumbnail",
+        },
+      },
+      {
+        color_name: "blackish green",
+        color_thumb: {
+          url: "/images/u8-color-blackishGreen.png",
+          alt_text: "Pearl White exterior color thumbnail",
+        },
+      },
+    ],
+  },
+};
 
 export default function ModelSection({ data, locale }) {
   console.log("model data : ", data);
@@ -72,7 +140,11 @@ export default function ModelSection({ data, locale }) {
           className="w-full h-dvh lg:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block overflow-hidden"
         >
           {/* <div className="h-full flex flex-wrap flex-row-reverse"> */}
-          <div className={`h-full flex flex-wrap ${index % 2 === 1 ? "flex-row-reverse" : "flex-row"}`}>
+          <div
+            className={`h-full flex flex-wrap ${
+              index % 2 === 1 ? "flex-row-reverse" : "flex-row"
+            }`}
+          >
             <div className="w-full lg:w-[calc(100%-420px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] max-lg:h-[40dvh]">
               <div className="w-full h-full relative bg-black z-0 p-[20px_25px] xl:p-[35px_45px] 2xl:p-[45px_65px] 3xl:p-[50px_70px] ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]">
                 <div className="h-full max-lg:container max-lg:mx-auto max-lg:px-[var(--breakpoint-gap)]">
@@ -85,14 +157,25 @@ export default function ModelSection({ data, locale }) {
                     poster={item?.home_vid_left_vid_thumb}
                     className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
                   >
-                    <source src={item?.home_vid_left_vid || "/videos/vdo-model-1.mp4"} type="video/mp4" />
+                    <source
+                      src={item?.home_vid_left_vid || "/videos/vdo-model-1.mp4"}
+                      type="video/mp4"
+                    />
                   </video>
                   <div className="w-full h-full flex flex-col justify-between text-white">
                     <div>
-                      <Heading size="heading2" as="h2" className="text-white mb-[6px] xl:mb-[8px] 3xl:mb-[10px]">
+                      <Heading
+                        size="heading2"
+                        as="h2"
+                        className="text-white mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
+                      >
                         {item?.name}
                       </Heading>
-                      <Heading size="heading5" as="h5" className="font-normal text-white mb-[15px] xl:mb-[20px] 2xl:mb-[30px]">
+                      <Heading
+                        size="heading5"
+                        as="h5"
+                        className="font-normal text-white mb-[15px] xl:mb-[20px] 2xl:mb-[30px]"
+                      >
                         {item?.title}
                       </Heading>
                       <LinkButton
@@ -117,24 +200,62 @@ export default function ModelSection({ data, locale }) {
                       <Stat label="0 to 100 Kmph" value={3.6} suffix=" Sec" decimals={1} />
                       <Stat label="Impressive Range" value={1000} suffix=" km" /> */}
                       <div className="flex gap-[5px] sm:gap-[10px] xl:gap-[15px] 2xl:gap-[20px] ltr:ml-auto rtl:mr-auto">
-                        <div>
-                          <Link
-                            href={"#"}
+                        {Object.entries(colorVariants).map(
+                          (
+                            [variantType, colorVariantsItem],
+                            colorVariantsIndex
+                          ) => (
+                            <div key={colorVariantsIndex}>
+                              <DropdownMenu>
+                                <DropdownMenuTrigger className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 ring-0 focus:outline-none focus:ring-0 transition-background duration-300 data-[state=open]:bg-base1/40">
+                                  <Image
+                                    src={colorVariantsItem?.thumb.url}
+                                    alt={colorVariantsItem?.thumb.alt_text}
+                                    width={60}
+                                    height={60}
+                                  />
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="bg-black/80">
+                                  {colorVariantsItem?.colors?.map(
+                                    (colorItem, colorIndex) => (
+                                      <DropdownMenuItem
+                                        key={colorIndex}
+                                        className="hover:bg-black/80"
+                                      >
+                                        <div className="w-[20px] xl:w-[25px] 2xl:w-[30px] 3xl:w-[40px] rounded aspect-square cursor-pointer relative z-0">
+                                          <Image
+                                            src={colorItem.color_thumb.url}
+                                            alt={colorItem.color_thumb.alt_text}
+                                            fill
+                                            sizes="50px"
+                                          />
+                                        </div>
+                                        <div className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none capitalize text-white">
+                                          {colorItem.color_name}
+                                        </div>
+                                      </DropdownMenuItem>
+                                    )
+                                  )}
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                            </div>
+                          )
+                        )}
+
+                        {/* <div>
+                          <button
                             aria-label="model-2"
                             className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
                           >
-                            <Img src="icon-model-1.svg" alt="model-1" width={60} height={60} />
-                          </Link>
-                        </div>
-                        <div>
-                          <Link
-                            href={"#"}
-                            aria-label="model-2"
-                            className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 transition-background duration-300"
-                          >
-                            <Img src="icon-model-2.svg" alt="model-2" width={60} height={60} className="block" />
-                          </Link>
-                        </div>
+                            <Img
+                              src="icon-model-2.svg"
+                              alt="model-2"
+                              width={60}
+                              height={60}
+                              className="block"
+                            />
+                          </button>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -149,10 +270,16 @@ export default function ModelSection({ data, locale }) {
                   muted
                   loop
                   playsInline
-                  poster={item?.home_vid_right_vid_thumb || "images/poster-model-1.jpg"}
+                  poster={
+                    item?.home_vid_right_vid_thumb ||
+                    "images/poster-model-1.jpg"
+                  }
                   className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
                 >
-                  <source src={data?.home_vid_right_vid || "/videos/vdo-model-1.mp4"} type="video/mp4" />
+                  <source
+                    src={data?.home_vid_right_vid || "/videos/vdo-model-1.mp4"}
+                    type="video/mp4"
+                  />
                 </video>
                 <Image
                   src={item?.home_vid_right_icon || "icon-model-u8.svg"}
@@ -285,11 +412,26 @@ export default function ModelSection({ data, locale }) {
 function Stat({ label, value, suffix, decimals = 0 }) {
   return (
     <div>
-      <Text size="text1" as="p" className="max-sm:text-[8px] font-medium leading-none text-white">
+      <Text
+        size="text1"
+        as="p"
+        className="max-sm:text-[8px] font-medium leading-none text-white"
+      >
         {label}
       </Text>
-      <Heading size="heading3" as="h3" className="max-sm:text-[14px] font-medium text-white" dir="ltr">
-        <CountUp end={value} duration={3} decimals={decimals} suffix={` ${suffix}`} enableScrollSpy />
+      <Heading
+        size="heading3"
+        as="h3"
+        className="max-sm:text-[14px] font-medium text-white"
+        dir="ltr"
+      >
+        <CountUp
+          end={value}
+          duration={3}
+          decimals={decimals}
+          suffix={` ${suffix}`}
+          enableScrollSpy
+        />
       </Heading>
     </div>
   );
