@@ -5,10 +5,6 @@ import Image from "next/image";
 import OfferEnquiryForm from "./OfferEnquiryForm";
 
 export default function OfferEnquirySection({ data, offerData }) {
-  console.log("data ===> ", data);
-  console.log("offerData ===> ", offerData);
-  
-  
   return (
     <section className="w-full h-auto block py-[30px] lg:py-[40px] xl:py-[60px_50px] 2xl:py-[80px_70px] 3xl:py-[100px_75px] relative z-0">
       <div className="container">

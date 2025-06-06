@@ -27,8 +27,8 @@ export default function OfferInfoSection({ data, offersInfo }) {
           <div className={`w-full ${index % 2 === 0 ? "sm:w-50/100 md:w-48/100" : "sm:w-50/100 md:w-52/100"}`}>
             <div className="w-full h-auto sm:h-full overflow-hidden relative z-0 max-sm:aspect-video">
               <Image
-                src={item.image}
-                alt={item.image_alt}
+                src={item?.image}
+                alt={item?.image_alt}
                 fill
                 sizes="900px"
                 className="object-cover -z-1 transition-transform duration-300 hover:scale-105"
@@ -43,18 +43,18 @@ export default function OfferInfoSection({ data, offersInfo }) {
                   : "bg-[#262626] max-3xs:px-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] max-2xs:px-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] max-xs:px-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] max-sm:px-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] ltr:sm:pl-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] ltr:md:pl-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:sm:pr-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] rtl:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))]"
               }`}
             >
-              <Heading size="heading3" as="h3" className="text-white mb-[2px] xl:mb-[4px] 2xl:mb-[6px] 3xl:mb-[10px]">
-                {item?.model}
+              <Heading size="heading3" as="h3" className="text-white mb-[3px] xl:mb-[4px] 2xl:mb-[6px] 3xl:mb-[10px]">
+                {item?.title}
                 {/* No data provided in api */}
               </Heading>
               <Heading size="heading3" as="h3" className="text-white mb-[10px] xl:mb-[15px] 2xl:mb-[20px] 3xl:mb-[30px]">
-                {item?.title}
+                {item?.subtitle}
               </Heading>
-              <Text size="text1" as="p" className="font-bold text-[#cb9576] mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
-                <b> {item.warranty_title}</b>
+              <Text size="text1" as="div" className="font-bold text-[#cb9576] mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                <b> {parse(item?.warranty_title)}</b>
               </Text>
-              <Text size="text1" as="p" className="font-normal text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
-                {item.warranty_description}
+              <Text size="text1" as="div" className="font-normal text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                {parse(item?.warranty_description)}
               </Text>
               <ul className="mb-[20px] xl:mb-[30px] 2xl:mb-[40px]">
                 {item?.offer_points?.map((offer, index) => (
@@ -63,7 +63,7 @@ export default function OfferInfoSection({ data, offersInfo }) {
                     className="my-[15px] xl:my-[20px] 2xl:my-[25px] ltr:pl-[20px] ltr:xl:pl-[30px] ltr:2xl:pl-[40px] ltr:3xl:pl-[50px] rtl:pr-[20px] rtl:xl:pr-[30px] rtl:2xl:pr-[40px] rtl:3xl:pr-[50px] last:mb-0 relative z-0 before:content-[''] before:block before:w-[15px] before:xl:w-[20px] before:2xl:w-[25px] before:3xl:w-[30px] before:aspect-square before:absolute before:z-0 ltr:before:left-0 rtl:before:right-0 before:-top-[2px] before:xl:-top-[2px] before:3xl:-top-[5px] before:bg-[url(/images/offer-list-icon.svg)] before:bg-center before:bg-contain"
                   >
                     <Heading size="heading6" as="h6" className="font-normal text-white">
-                      {offer.point}
+                      {parse(offer?.point)}
                     </Heading>
                   </li>
                 ))}

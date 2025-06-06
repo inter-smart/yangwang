@@ -55,7 +55,7 @@ const CustomPopup = ({ branch }) => {
         {" "}
         {branch?.title}
       </h3>
-      <Text size="text2" as="p" className="max-w-full text-white mb-2">
+      <Text size="text2" as="div" className="max-w-full text-white mb-2">
         {parse(branch?.address)}
       </Text>
       <Text size="text2" as="p" className="max-w-full text-white mb-2">
