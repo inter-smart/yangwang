@@ -19,7 +19,7 @@ export default async function NotFound() {
                         className="object-cover -z-1"
                     />
                 </div>
-                <div className="container z-10 flex flex-col items-center justify-center px-4">
+                <div className="container flex flex-col items-center justify-center px-4">
 
                     <Img
                         src="404Ttle.png"

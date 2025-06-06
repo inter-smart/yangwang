@@ -5,7 +5,7 @@ export default function GlobalSection({ data }) {
   const { title, description } = data;
   return (
     <section className="w-full 3xl:py-[130px] 2xl:py-[80px] xl:py-[50px] py-[40px] relative">
-      <div className="container mx-auto">
+      <div className="container">
         <Heading
           size="heading3"
           as="h3"
@@ -13,7 +13,11 @@ export default function GlobalSection({ data }) {
         >
           {title}
         </Heading>
-        <Text size="text4" as="div" className="capitalize text-black text-center 2xl:max-w-[1150px] max-w-[850px] mx-auto ">
+        <Text
+          size="text4"
+          as="div"
+          className="capitalize text-black text-center 2xl:max-w-[1150px] max-w-[850px] mx-auto "
+        >
           {parse(description)}
         </Text>
       </div>
