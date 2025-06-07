@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Text } from "@/components/layout/Text";
-
+ 
 export default function NewsCard({ item }) {
   return (
     <div className="w-full h-auto block transition-all duration-500 hover:-translate-y-2 group">

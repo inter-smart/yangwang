@@ -97,10 +97,13 @@ export default function ModelSection({ data, locale }) {
       gsap.to(video, {
         scrollTrigger: {
           trigger: container,
-          start: "top top",
-          end: "+=200",
+          // start: "top top",
+          // end: "+=500",
+          // scrub: true,
+          // pin: true,
+          start: "top center",
+          end: "center center",
           scrub: true,
-          pin: true,
           // markers: true,
           onEnter: () => {
             video.play();
@@ -135,7 +138,7 @@ export default function ModelSection({ data, locale }) {
     <section className="w-full h-auto block relative overflow-hidden">
       {data?.map((item, index) => (
         <div
-          ref={containerRef1}
+          ref={index % 2 === 1 ? containerRef1 : containerRef2}
           key={index}
           className="w-full h-dvh lg:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block overflow-hidden"
         >
@@ -265,7 +268,7 @@ export default function ModelSection({ data, locale }) {
             <div className="w-full lg:w-[420px] xl:w-[490px] 2xl:w-[650px] 3xl:w-[740px] max-lg:h-[60dvh]">
               <div className="w-full h-full bg-black block relative z-0">
                 <video
-                  ref={scrollVideo1}
+                  ref={index % 2 === 1 ? scrollVideo1 : scrollVideo2}
                   preload="metadata"
                   muted
                   loop
@@ -277,7 +280,7 @@ export default function ModelSection({ data, locale }) {
                   className="w-full h-full absolute -z-1 inset-0 object-cover opacity-80"
                 >
                   <source
-                    src={data?.home_vid_right_vid || "/videos/vdo-model-1.mp4"}
+                    src={item?.home_vid_right_vid || "/videos/vdo-model-1.mp4"}
                     type="video/mp4"
                   />
                 </video>

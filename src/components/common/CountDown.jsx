@@ -3,19 +3,27 @@ import Countdown from "react-countdown";
 import { Heading } from "../layout/Heading";
 import { Text } from "../layout/Text";
 import { useEffect, useState } from "react";
+import { LinkButton } from "../layout/Button";
 
-export default function CountDown({ date }) {
+export default function CountDown({ date, link, text }) {
   const [clientReady, setClientReady] = useState(false);
 
   const countdownStyle =
     "text-center w-[60px] xl:w-[80px] 2xl:w-[100px] 2xl:w-[100px] 3xl:w-[115px] aspect-square bg-white/10 border-[1px] border-[#5d5862] backdrop-blur-2xl flex items-center justify-center transition-background duration-300 hover:bg-white/20";
 
   const completionist = (
-    <span className="text-green-600 font-bold">You are good to go!</span>
+    <LinkButton
+      href={link}
+      color="black"
+      aria-label="View All"
+      className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
+    >
+      {text}
+    </LinkButton>
   );
 
   useEffect(() => {
-    setClientReady(true); 
+    setClientReady(true);
   }, []);
 
   if (!clientReady) return null;

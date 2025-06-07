@@ -13,19 +13,33 @@ export default async function Home({ params }) {
   let homeData = {};
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/home/${encodeURIComponent(
+        locale
+      )}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
     const result = await response.json();
     if (result.success && result.status === 200) {
       homeData = result.data;
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched home data for ${locale}`, homeData);
+      console.log(
+        `[2025-05-29T14:37:00.000Z] Fetched home data for ${locale}`,
+        homeData
+      );
     } else {
-      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+      console.error(
+        `[2025-05-29T14:37:00.000Z] API error: ${
+          result.message || "Unknown error"
+        }`
+      );
     }
   } catch (error) {
-    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch home data: ${error.message}`);
+    console.error(
+      `[2025-05-29T14:37:00.000Z] Failed to fetch home data: ${error.message}`
+    );
   }
 
   return (
@@ -37,7 +51,10 @@ export default async function Home({ params }) {
       <LaunchOffersSection data={homeData?.offer || {}} locale={locale} />
       <InteriorSection data={homeData?.feel_the_drive || {}} locale={locale} />
       <MarketingSection data={homeData?.feeds_section || {}} locale={locale} />
-      <EventsSection data={homeData?.news_and_events_section || {}} locale={locale} />
+      <EventsSection
+        data={homeData?.news_and_events_section || {}}
+        locale={locale}
+      />
     </>
   );
 }
