@@ -12,172 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Button } from "@/components/layout/Button";
 
-const colorVariants = {
-  interior: {
-    colors: [
-      {
-        color_name: "white",
-        color_thumb: {
-          url: "/images/u8-color-white.png",
-          alt_text: "thumb white color",
-        },
-        images: [
-          {
-            url: "/images/404.jpg",
-            alt_text: "Ebony Black interior color thumbnail",
-          },
-          {
-            url: "/images/interior-2.jpg",
-            alt_text: "Ebony Black interior color thumbnail",
-          },
-        ],
-      },
-      {
-        color_name: "black",
-        color_thumb: {
-          url: "/images/u8-color-black.png",
-          alt_text: "Pearl White exterior color thumbnail",
-        },
-        images: [
-          {
-            url: "/images/events-1.jpg",
-            alt_text: "Ebony Black interior color thumbnail",
-          },
-          {
-            url: "/images/events-2.jpg",
-            alt_text: "Ebony Black interior color thumbnail",
-          },
-        ],
-      },
-      {
-        color_name: "blackish green",
-        color_thumb: {
-          url: "/images/u8-color-blackishGreen.png",
-          alt_text: "Pearl White exterior color thumbnail",
-        },
-        images: [
-          {
-            url: "/images/events-2.jpg",
-            alt_text: "blackishgreen color",
-          },
-          {
-            url: "/images/innovation-1.jpg",
-            alt_text: "blackishgreen color",
-          },
-          {
-            url: "/images/innovation-2.jpg",
-            alt_text: "blackishgreen color",
-          },
-        ],
-      },
-    ],
-  },
-  exterior: {
-    colors: [
-      {
-        color_name: "white",
-        color_thumb: {
-          url: "/images/u8-color-white.png",
-          alt_text: "thumb white color",
-        },
-        images: [
-          {
-            url: "/images/u8-main-white-1.png",
-            alt_text: "white color",
-          },
-        ],
-      },
-      {
-        color_name: "black",
-        color_thumb: {
-          url: "/images/u8-color-black.png",
-          alt_text: "Pearl White exterior color thumbnail",
-        },
-        images: [
-          {
-            url: "/images/u8-main-black-1.png",
-            alt_text: "black color",
-          },
-          {
-            url: "/images/u8-main-black-2.png",
-            alt_text: "black color",
-          },
-          {
-            url: "/images/u8-main-black-3.png",
-            alt_text: "black color",
-          },
-          {
-            url: "/images/u8-main-black-4.png",
-            alt_text: "black color",
-          },
-        ],
-      },
-      {
-        color_name: "blackish green",
-        color_thumb: {
-          url: "/images/u8-color-blackishGreen.png",
-          alt_text: "Pearl White exterior color thumbnail",
-        },
-        images: [
-          {
-            url: "/images/u8-main-blackishgreen-1.png",
-            alt_text: "blackishgreen color",
-          },
-          {
-            url: "/images/u8-main-blackishgreen-2.png",
-            alt_text: "blackishgreen color",
-          },
-          {
-            url: "/images/u8-main-blackishgreen-3.png",
-            alt_text: "blackishgreen color",
-          },
-          {
-            url: "/images/u8-main-blackishgreen-4.png",
-            alt_text: "blackishgreen color",
-          },
-        ],
-      },
-    ],
-  },
-};
-
-const wheelsVariants = [
-  {
-    wheels_name: "22-inch sports forging wheel hub",
-    wheels_thumb: {
-      url: "/images/models-u8-wheels-1.png",
-      alt_text: "wheels thumbnail",
-    },
-    images: {
-      url: "/images/models-main-u8-wheels-1.png",
-      alt_text: "wheels",
-    },
-  },
-  {
-    wheels_name: "22 inches simple forging wheels",
-    wheels_thumb: {
-      url: "/images/models-u8-wheels-2.png",
-      alt_text: "wheels thumbnail",
-    },
-    images: {
-      url: "/images/models-main-u8-wheels-2.png",
-      alt_text: "wheels",
-    },
-  },
-  {
-    wheels_name: "20-inch sports forging wheel hub",
-    wheels_thumb: {
-      url: "/images/models-u8-wheels-3.png",
-      alt_text: "wheels thumbnail",
-    },
-    images: {
-      url: "/images/models-main-u8-wheels-3.png",
-      alt_text: "wheels",
-    },
-  },
-];
-
-export default function DesignViewSection({ locale }) {
+export default function DesignViewSection({ locale, exteriorData, interiorData, alloyWheelData }) {
   const [thumbsExteriorSwiper, setThumbsExteriorSwiper] = useState(null);
   const [thumbsInteriorSwiper, setThumbsInteriorSwiper] = useState(null);
   const [wheelsThumbsSwiper, setWheelsThumbsSwiper] = useState(null);
@@ -192,12 +27,7 @@ export default function DesignViewSection({ locale }) {
   const subSwiperRef = useRef(null);
 
   useEffect(() => {
-    if (
-      subSwiperRef.current &&
-      prevRef.current &&
-      nextRef.current &&
-      subSwiperRef.current.params?.navigation
-    ) {
+    if (subSwiperRef.current && prevRef.current && nextRef.current && subSwiperRef.current.params?.navigation) {
       subSwiperRef.current.params.navigation.prevEl = prevRef.current;
       subSwiperRef.current.params.navigation.nextEl = nextRef.current;
       subSwiperRef.current.navigation.destroy();
@@ -236,17 +66,14 @@ export default function DesignViewSection({ locale }) {
                 spaceBetween={0}
                 navigation={false}
                 thumbs={{
-                  swiper:
-                    thumbsExteriorSwiper && !thumbsExteriorSwiper.destroyed
-                      ? thumbsExteriorSwiper
-                      : null,
+                  swiper: thumbsExteriorSwiper && !thumbsExteriorSwiper.destroyed ? thumbsExteriorSwiper : null,
                 }}
                 modules={[Thumbs]}
                 className="w-full h-full"
                 onSlideChange={handleSlideChangeExterior}
                 onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
               >
-                {colorVariants.exterior.colors.map((colorItem, colorIndex) => (
+                {exteriorData?.colors?.map((colorItem, colorIndex) => (
                   <SwiperSlide key={`exterior-main-slide-${colorIndex}`}>
                     <Swiper
                       key={`exterior-sub-${locale}-${colorIndex}`}
@@ -261,17 +88,11 @@ export default function DesignViewSection({ locale }) {
                       modules={[EffectFade, Navigation]}
                       className="w-full h-full"
                     >
-                      {colorItem.images.map((imgItem, imgIndex) => (
-                        <SwiperSlide
-                          key={`exterior-sub-slide-${imgIndex}`}
-                          className="bg-white"
-                        >
+                      {colorItem?.images?.map((imgItem, imgIndex) => (
+                        <SwiperSlide key={`exterior-sub-slide-${imgIndex}`} className="bg-white">
                           <div className="w-full h-full relative z-0">
                             <picture className="absolute z-0 inset-0">
-                              <source
-                                media="(max-width: 768px)"
-                                srcSet={imgItem.url}
-                              />
+                              <source media="(max-width: 768px)" srcSet={imgItem.url} />
                               <Image
                                 src={imgItem.url}
                                 alt={imgItem.alt_text}
@@ -295,17 +116,14 @@ export default function DesignViewSection({ locale }) {
                 spaceBetween={0}
                 navigation={false}
                 thumbs={{
-                  swiper:
-                    thumbsInteriorSwiper && !thumbsInteriorSwiper.destroyed
-                      ? thumbsInteriorSwiper
-                      : null,
+                  swiper: thumbsInteriorSwiper && !thumbsInteriorSwiper.destroyed ? thumbsInteriorSwiper : null,
                 }}
                 modules={[Thumbs]}
                 className="w-full h-full"
                 onSlideChange={handleSlideChangeInterior}
                 onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
               >
-                {colorVariants.interior.colors.map((colorItem, colorIndex) => (
+                {interiorData?.colors.map((colorItem, colorIndex) => (
                   <SwiperSlide key={`main-slide-${colorIndex}`}>
                     <Swiper
                       key={`interior-sub-${locale}-${colorIndex}`}
@@ -321,19 +139,13 @@ export default function DesignViewSection({ locale }) {
                       ref={subSwiperRef}
                     >
                       {colorItem.images.map((imgItem, imgIndex) => (
-                        <SwiperSlide
-                          key={`interior-sub-slide-${imgIndex}`}
-                          className="bg-white"
-                        >
+                        <SwiperSlide key={`interior-sub-slide-${imgIndex}`} className="bg-white">
                           <div className="w-full h-full relative z-0">
                             <picture className="absolute z-0 inset-0">
-                              <source
-                                media="(max-width: 768px)"
-                                srcSet={imgItem.url}
-                              />
+                              <source media="(max-width: 768px)" srcSet={imgItem?.url} />
                               <Image
-                                src={imgItem.url}
-                                alt={imgItem.alt_text}
+                                src={imgItem?.url}
+                                alt={imgItem?.alt_text}
                                 fill
                                 sizes="100vw"
                                 className="object-cover"
@@ -359,7 +171,7 @@ export default function DesignViewSection({ locale }) {
                     className={`
                 ${!interiorView ? "text-black" : "text-white"}`}
                   >
-                    Design and Dimensions
+                    {!interiorView ? exteriorData?.title : interiorData?.title}
                   </Heading>
                 </div>
                 <div>
@@ -368,19 +180,9 @@ export default function DesignViewSection({ locale }) {
                     className="3xl:w-[100px] 2xl:w-[88px] xl:w-[66px] sm:w-[60px] w-[40px] cursor-pointer relative z-0"
                   >
                     {interiorView ? (
-                      <Image
-                        src="/images/models-view-1.svg"
-                        alt="models-view-1"
-                        width={100}
-                        height={64}
-                      />
+                      <Image src="/images/models-view-1.svg" alt="models-view-1" width={100} height={64} />
                     ) : (
-                      <Image
-                        src="/images/models-view-2.svg"
-                        alt="models-view-2"
-                        width={100}
-                        height={64}
-                      />
+                      <Image src="/images/models-view-2.svg" alt="models-view-2" width={100} height={64} />
                     )}
                   </button>
                 </div>
@@ -389,15 +191,8 @@ export default function DesignViewSection({ locale }) {
                 <div className="flex justify-between items-end gap-[20px] relative z-1">
                   {!interiorView ? (
                     <div>
-                      <Heading
-                        size="heading6"
-                        as="h6"
-                        className="capitalize text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
-                      >
-                        {
-                          colorVariants.exterior.colors[activeExteriorIndex]
-                            ?.color_name
-                        }
+                      <Heading size="heading6" as="h6" className="capitalize text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                        {exteriorData?.colors[activeExteriorIndex]?.color_name}
                       </Heading>
                       <Swiper
                         key={`exterior-thumbs-${locale}`}
@@ -414,13 +209,11 @@ export default function DesignViewSection({ locale }) {
                         }}
                         className="w-full h-full"
                       >
-                        {colorVariants.exterior.colors.map((item, index) => (
+                        {exteriorData?.colors.map((item, index) => (
                           <SwiperSlide
                             key={`exterior-thumb-${index}`}
                             className={`${
-                              index === activeExteriorIndex
-                                ? "scale-100"
-                                : "scale-80"
+                              index === activeExteriorIndex ? "scale-100" : "scale-80"
                             } !w-[20px] lg:!w-[25px] xl:!w-[30px] 2xl:!w-[40px] 3xl:!w-[50px]  transition-transform`}
                           >
                             <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  rounded aspect-square cursor-pointer relative z-0">
@@ -438,15 +231,8 @@ export default function DesignViewSection({ locale }) {
                     </div>
                   ) : (
                     <div>
-                      <Heading
-                        size="heading6"
-                        as="h6"
-                        className="capitalize text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
-                      >
-                        {
-                          colorVariants.interior.colors[activeInteriorIndex]
-                            ?.color_name
-                        }
+                      <Heading size="heading6" as="h6" className="capitalize text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                        {interiorData?.colors[activeInteriorIndex]?.color_name}
                       </Heading>
                       <Swiper
                         key={`interior-thumbs-${locale}`}
@@ -463,13 +249,11 @@ export default function DesignViewSection({ locale }) {
                         }}
                         className="w-full h-full"
                       >
-                        {colorVariants.interior.colors.map((item, index) => (
+                        {interiorData?.colors.map((item, index) => (
                           <SwiperSlide
                             key={`interior-thumb-${index}`}
                             className={`${
-                              index === activeInteriorIndex
-                                ? "scale-100"
-                                : "scale-80"
+                              index === activeInteriorIndex ? "scale-100" : "scale-80"
                             } !w-[20px] lg:!w-[25px] xl:!w-[30px] 2xl:!w-[40px] 3xl:!w-[50px] transition-transform`}
                           >
                             <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px] rounded aspect-square cursor-pointer relative z-0">
@@ -555,25 +339,19 @@ export default function DesignViewSection({ locale }) {
               spaceBetween={0}
               navigation={false}
               thumbs={{
-                swiper:
-                  wheelsThumbsSwiper && !wheelsThumbsSwiper.destroyed
-                    ? wheelsThumbsSwiper
-                    : null,
+                swiper: wheelsThumbsSwiper && !wheelsThumbsSwiper.destroyed ? wheelsThumbsSwiper : null,
               }}
               modules={[EffectFade, Thumbs]}
               className="w-full h-full"
             >
-              {wheelsVariants.map((item, index) => (
+              {alloyWheelData?.colors?.map((item, index) => (
                 <SwiperSlide key={`wheels-slide-${index}`} className="bg-white">
                   <div className="w-full h-full relative z-0">
                     <picture className="absolute z-0 inset-0">
-                      <source
-                        media="(max-width: 768px)"
-                        srcSet={item.images.url}
-                      />
+                      <source media="(max-width: 768px)" srcSet={item?.mobile_banner?.url} />
                       <Image
-                        src={item.images.url}
-                        alt={item.images.alt_text}
+                        src={item?.web_banner?.url}
+                        alt={item?.web_banner?.alt_text}
                         fill
                         sizes="100vw"
                         className="object-cover"
@@ -611,22 +389,19 @@ export default function DesignViewSection({ locale }) {
                 modules={[Thumbs]}
                 className="w-full"
               >
-                {wheelsVariants.map((item, index) => (
-                  <SwiperSlide
-                    key={`wheels-thumb-${index}`}
-                    className="group cursor-pointer"
-                  >
+                {alloyWheelData?.colors?.map((item, index) => (
+                  <SwiperSlide key={`wheels-thumb-${index}`} className="group cursor-pointer">
                     <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  aspect-square rounded relative z-0 mb-[4px] xl:mb-[6px] 3xl:mb-[10px] mx-auto">
                       <Image
-                        src={item.wheels_thumb.url}
-                        alt={item.wheels_thumb.alt_text}
+                        src={item?.color_thumb?.url}
+                        alt={item?.color_thumb?.alt_text}
                         fill
                         sizes="50px"
-                        title={item.wheels_name}
+                        title={item?.color_name}
                       />
                     </div>
                     <h6 className="text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-medium leading-tight capitalize text-center text-black/50 transition-color group-hover:text-black group-[&.swiper-slide-thumb-active]:text-black">
-                      {item.wheels_name}
+                      {item?.color_name}
                     </h6>
                   </SwiperSlide>
                 ))}

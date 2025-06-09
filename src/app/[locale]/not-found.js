@@ -1,7 +1,12 @@
 import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
 import Image from "next/image";
+
+import { useLocale } from "next-intl";
+
 export default function NotFound() {
+  const locale = useLocale(); // Get current locale (e.g., 'en', 'ar')
+
   return (
     <>
       <div className="w-full h-[60px] lg:h-[80px] 2xl:h-[100px] 3xl:h-[120px] block bg-black transition-all duration-300 "></div>
@@ -30,7 +35,7 @@ export default function NotFound() {
               Page Not Found
             </Heading>
             <LinkButton
-              href="/"
+              href={`/${locale}`}
               color="black"
               aria-label="Back home"
               className="min-w-[120px] sm:min-w-[140px] xl:min-w-[160px] 2xl:min-w-[180px] 3xl:min-w-[190px]"

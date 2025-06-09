@@ -2,6 +2,7 @@ import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { LinkButton } from "@/components/layout/Button";
 import Image from "next/image";
+import parse from "html-react-parser";
 
 export default function GlobalSection({ data, featuresData }) {
   const {
@@ -33,12 +34,8 @@ export default function GlobalSection({ data, featuresData }) {
         >
           {title}
         </Heading>
-        <Text
-          size="text4"
-          as="div"
-          className="capitalize text-white text-center max-w-[1400px] mx-auto "
-        >
-          {description}
+        <Text size="text4" as="div" className="capitalize text-white text-center max-w-[1400px] mx-auto ">
+          {parse(description)}
         </Text>
         <div className="flex flex-wrap justify-center w-fit mx-auto 3xl:mb-[430px] lg:mb-[250px] md:mb-[100px] mb-[75px]">
           <div className="xl:px-[13px] px-[4px]">

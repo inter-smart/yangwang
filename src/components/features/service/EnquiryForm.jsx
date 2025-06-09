@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
@@ -25,9 +25,10 @@ const formSchema = z.object({
   location: z.string().min(1, { message: "Please choose a Location" }),
   date: z.date({ message: "Please choose a Date" }),
   message: z.string().optional(),
+  offerId: z.string().min(1, { message: "Please select an offer." }),
 });
 
-export default function ServiceEnquiryForm({ locationData }) {
+export default function ServiceEnquiryForm({ offerData, locationData }) {
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -42,6 +43,7 @@ export default function ServiceEnquiryForm({ locationData }) {
       location: "",
       date: "",
       message: "",
+      offerId: "",
     },
   });
 
@@ -56,11 +58,12 @@ export default function ServiceEnquiryForm({ locationData }) {
       city_id: parseInt(values.location),
       date: format(values.date, "yyyy-MM-dd"),
       phone_number: values.phoneNumber,
+      offer_id: parseInt(values.offerId),
       message: values.message || "",
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service-contact-enquiry`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service-enquiry`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,6 +101,39 @@ export default function ServiceEnquiryForm({ locationData }) {
         }}
         className="flex flex-wrap -mx-[15px] 2xl:-mx-[25px]"
       >
+        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+          <FormField
+            control={form.control}
+            name="offerId"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="font-semibold text-black">Select Offer</FormLabel>
+                <FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger className="w-full min-h-[50px] xl:min-h-[60px] 3xl:min-h-[70px] px-4 xl:px-6 border border-[#CCCCCC] rounded-none bg-white text-[14px] 2xl:text-[16px] 3xl:text-[18px] text-[#B3B3B3] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
+                      <div className="flex items-center gap-2 flex-1 overflow-hidden">
+                        <SelectValue placeholder={"Select Offer"} className="truncate text-[#999999] font-normal" />
+                      </div>
+                    </SelectTrigger>
+                    <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
+                      {offerData?.map((item, index) => (
+                        <SelectItem
+                          key={index}
+                          value={item?.id?.toString()}
+                          className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                        >
+                          {item?.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage className={errorStyle} />
+              </FormItem>
+            )}
+          />
+        </div>
+
         <div className="w-full lg:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
@@ -291,7 +327,6 @@ export default function ServiceEnquiryForm({ locationData }) {
   );
 }
 
-
 // "use client";
 // import { zodResolver } from "@hookform/resolvers/zod";
 // import { Button } from "@/components/layout/Button";
@@ -360,8 +395,8 @@ export default function ServiceEnquiryForm({ locationData }) {
 //           <Select>
 //             <SelectTrigger
 //               className="w-full h-[70px] min-h-[70px] px-6  border border-[#CCCCCC]
-//                                      rounded-none bg-white text-[16px] text-[#B3B3B3] 
-//                                     font-medium outline-none shadow-none transition-all cursor-pointer 
+//                                      rounded-none bg-white text-[16px] text-[#B3B3B3]
+//                                     font-medium outline-none shadow-none transition-all cursor-pointer
 //                                     flex items-center justify-between relative"
 //             >
 //               <div className="flex items-center gap-2 flex-1 overflow-hidden ">

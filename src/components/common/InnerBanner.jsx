@@ -1,6 +1,6 @@
-import { Heading } from "@/components/layout/Heading";
 import Image from "next/image";
 import { Text } from "../layout/Text";
+import parse from "html-react-parser";
 
 export default function InnerBanner({
   title,
@@ -27,11 +27,11 @@ export default function InnerBanner({
           </h3>
           {description && (
             <Text
-              as="p"
+              as="div"
               size="text4"
               className="capitalize text-center text-white"
             >
-              {description}
+              {parse(description)}
             </Text>
           )}
         </div>

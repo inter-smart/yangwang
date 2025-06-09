@@ -7,7 +7,9 @@ import { Text } from "@/components/layout/Text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 
-export default function EnquirySection() {
+export default function EnquirySection({ data }) {
+  console.log(`EnquirySection data`, data);
+
   const TabsTriggerStyle =
     "text-[11px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-medium text-left text-black max-w-[160px] xl:max-w-[240px] 2xl:max-w-[300px] 3xl:max-w-[340px] p-0 relative outline-none shadow-none h-full border-0 border-b border-gray-200 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-transparent data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-none cursor-pointer";
 
@@ -16,24 +18,16 @@ export default function EnquirySection() {
       <div className="container">
         <div className="flex flex-wrap items-center justify-between">
           <div className="3xl:w-[510px] 2xl:w-[410px] xl:w-[350px] lg:w-[240px] w-full">
-            <Heading
-              size="heading3"
-              as="h3"
-              className="text-black mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"
-            >
-              Experience the Unthinkable
+            <Heading size="heading3" as="h3" className="text-black mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
+              {data?.enq_title || "Enquire Now"}
             </Heading>
-            <Text
-              size="text1"
-              as="p"
-              className="text-black mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
-            >
-              Book a test drive and discover the future of hyper-electric
-              off-roading. Includes enquiry form/button for scheduling.
+            <Text size="text1" as="p" className="text-black mb-[15px] xl:mb-[20px] 3xl:mb-[30px]">
+              {data?.enq_desc ||
+                "Fill out the form below to get in touch with us for more information about our models. Our team will respond to your enquiry as soon as possible."}
             </Text>
             <Image
-              src="/images/models-enquiry-1.png"
-              alt="models-enquiry-1"
+              src={data?.enq_image?.url || "/images/models-enquiry-1.jpg"}
+              alt={data?.enq_image?.alt_text || "Enquiry Image"}
               width={565}
               height={346}
             />

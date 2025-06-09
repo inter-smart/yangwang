@@ -47,7 +47,7 @@ export default function DealershipSection({ data, showVideo }) {
           </Heading>
           {description && (
             <Text
-              as="p"
+              as="div"
               className="3xl:text-[18px] 2xl:text-[16px] xl:text-[13px] md:text-[12px] text-[11px] font-normal leading-normal"
             >
               {parse(description)}

@@ -8,160 +8,18 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const highlight = [
-  {
-    title: "Exterior Highlights",
-    description: [
-      {
-        title: "Interstellar headlights for distinct identity",
-        media: {
-          type: "video",
-          web_banner: {
-            url: "/videos/vdo-models-exterior-1.mp4",
-            thumbnail: "/images/poster-exterior-1.jpg",
-            alt_text: "Video thumbnail image",
-          },
-          mobile_banner: {
-            url: "/videos/vdo-models-exterior-1.mp4",
-            thumbnail: "/images/poster-exterior-1.jpg",
-            alt_text: "Video thumbnail image",
-          },
-        },
-      },
-      {
-        title: "Sculpted wheel arches enhance off-road readiness",
-        media: {
-          type: "image",
-          web_banner: {
-            url: "/images/news-detail-1.jpg",
-            thumbnail: "/images/news-detail-1.jpg",
-            alt_text: "thumbnail image",
-          },
-          mobile_banner: {
-            url: "/images/news-detail-1.jpg",
-            thumbnail: "/images/news-detail-1.jpg",
-            alt_text: "thumbnail image",
-          },
-        },
-      },
-      {
-        title: 'D-pillar "Energy Tower" adds futuristic appeal',
-        media: {
-          type: "image",
-          web_banner: {
-            url: "/images/news-detail-2.jpg",
-            thumbnail: "/images/news-detail-2.jpg",
-            alt_text: "thumbnail image",
-          },
-          mobile_banner: {
-            url: "/images/news-detail-2.jpg",
-            thumbnail: "/images/news-detail-2.jpg",
-            alt_text: "thumbnail image",
-          },
-        },
-      },
-      {
-        title: "Roof-mounted detection system for intelligent driving",
-        media: {
-          type: "image",
-          web_banner: {
-            url: "/images/news-detail-3.jpg",
-            thumbnail: "/images/news-detail-3.jpg",
-            alt_text: "thumbnail image",
-          },
-          mobile_banner: {
-            url: "/images/news-detail-3.jpg",
-            thumbnail: "/images/news-detail-3.jpg",
-            alt_text: "thumbnail image",
-          },
-        },
-      },
-    ],
-  },
-  {
-    title: "Interior - Ultra Luxury Cabin",
-    description: [
-      {
-        title: "Panoramic cockpit with flexible curved screens",
-        media: {
-          type: "video",
-          web_banner: {
-            url: "/videos/vdo-models-interior-1.mp4",
-            thumbnail: "/images/poster-interior-1.jpg",
-            alt_text: "Video thumbnail image",
-          },
-          mobile_banner: {
-            url: "/videos/vdo-models-interior-1.mp4",
-            thumbnail: "/images/poster-interior-1.jpg",
-            alt_text: "Video thumbnail image",
-          },
-        },
-      },
-      {
-        title: "5 integrated displays for immersive control",
-        media: {
-          type: "image",
-          web_banner: {
-            url: "/images/models-u8-1.jpg",
-            thumbnail: "/images/models-u8-1.jpg",
-            alt_text: "thumbnail image",
-          },
-          mobile_banner: {
-            url: "/images/models-u8-1.jpg",
-            thumbnail: "/images/models-u8-1.jpg",
-            alt_text: "thumbnail image",
-          },
-        },
-      },
-      {
-        title: "Ergonomic seating for all passengers",
-        media: {
-          type: "image",
-          web_banner: {
-            url: "/images/models-u8-1.jpg",
-            thumbnail: "/images/models-u8-1.jpg",
-            alt_text: "thumbnail image",
-          },
-          mobile_banner: {
-            url: "/images/models-u8-1.jpg",
-            thumbnail: "/images/models-u8-1.jpg",
-            alt_text: "thumbnail image",
-          },
-        },
-      },
-      {
-        title: "Premium sound system",
-        media: {
-          type: "image",
-          web_banner: {
-            url: "/images/models-u8-1.jpg",
-            thumbnail: "/images/models-u8-1.jpg",
-            alt_text: "thumbnail image",
-          },
-          mobile_banner: {
-            url: "/images/models-u8-1.jpg",
-            thumbnail: "/images/models-u8-1.jpg",
-            alt_text: "thumbnail image",
-          },
-        },
-      },
-    ],
-  },
-];
-
-export default function HighlightSection() {
+export default function HighlightSection({ interiorData, exteriorHighlights }) {
+  const highlightData = [interiorData, exteriorHighlights];
   const containerRefs = useRef([]);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
-  const [activeItemIndexes, setActiveItemIndexes] = useState(
-    highlight.map(() => 0)
-  );
+  const [activeItemIndexes, setActiveItemIndexes] = useState(highlightData?.map(() => 0));
 
   useEffect(() => {
-    const triggers = highlight.map((section, sectionIndex) => {
-      const container = containerRefs.current[sectionIndex];
+    const triggers = highlightData?.map((section, sectionIndex) => {
+      const container = containerRefs?.current[sectionIndex];
       if (!container) return null;
 
-      const totalItems = section.description.length;
+      const totalItems = section?.highlights?.length;
 
       return ScrollTrigger.create({
         trigger: container,
@@ -171,13 +29,8 @@ export default function HighlightSection() {
         pin: true,
         onUpdate: (self) => {
           const progress = self.progress;
-          const index = Math.min(
-            Math.floor(progress * totalItems),
-            totalItems - 1
-          );
-          setActiveItemIndexes((prev) =>
-            prev.map((v, i) => (i === sectionIndex ? index : v))
-          );
+          const index = Math.min(Math.floor(progress * totalItems), totalItems - 1);
+          setActiveItemIndexes((prev) => prev?.map((v, i) => (i === sectionIndex ? index : v)));
         },
       });
     });
@@ -189,16 +42,14 @@ export default function HighlightSection() {
 
   const handleItemClick = (sectionIndex, itemIndex) => {
     setActiveSectionIndex(sectionIndex);
-    setActiveItemIndexes((prev) =>
-      prev.map((val, i) => (i === sectionIndex ? itemIndex : val))
-    );
+    setActiveItemIndexes((prev) => prev.map((val, i) => (i === sectionIndex ? itemIndex : val)));
   };
 
   return (
     <section className="w-full h-auto block bg-black overflow-hidden">
-      {highlight.map((section, sectionIndex) => {
+      {highlightData?.map((section, sectionIndex) => {
         const activeIndex = activeItemIndexes[sectionIndex];
-        const activeItem = section.description[activeIndex];
+        const activeItem = section?.highlights[activeIndex];
 
         return (
           <div
@@ -208,14 +59,14 @@ export default function HighlightSection() {
           >
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeItem.media.web_banner.url}
+                key={activeItem?.media?.web_banner?.url}
                 initial={{ opacity: 0.6, scale: 1.02 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.06 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 className="absolute inset-0 w-full h-full -z-2"
               >
-                {activeItem.media.type === "video" ? (
+                {activeItem?.media?.type === "video" ? (
                   <video
                     autoPlay
                     preload="auto"
@@ -224,23 +75,17 @@ export default function HighlightSection() {
                     playsInline
                     className="w-full h-full object-cover"
                     aria-label="Video player"
-                    poster={activeItem.media.web_banner.thumbnail}
+                    poster={activeItem?.media?.banner_video?.thumbnail}
                   >
-                    <source
-                      src={activeItem.media.web_banner.url}
-                      type="video/mp4"
-                    />
+                    <source src={activeItem?.media?.banner_video?.url} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 ) : (
                   <picture>
-                    <source
-                      media="(max-width: 768px)"
-                      srcSet={activeItem.media.mobile_banner.url}
-                    />
+                    <source media="(max-width: 768px)" srcSet={activeItem?.media?.banner_mobile?.url} />
                     <Image
-                      src={activeItem.media.web_banner.url}
-                      alt={activeItem.media.web_banner.alt_text}
+                      src={activeItem?.media?.banner_web?.url}
+                      alt={activeItem?.media?.banner_web?.alt_text}
                       fill
                       sizes="100vw"
                       className="object-cover"
@@ -256,28 +101,18 @@ export default function HighlightSection() {
                   as="h3"
                   className="!font-normal text-white mb-[20px] lg:mb-[30px] 2xl:mb-[40px] 3xl:mb-[50px]"
                 >
-                  {section.title}
+                  {section?.title}
                 </Heading>
                 <div className="ltr:border-l-[1px] rtl:border-r-[1px] border-white/50 border-dashed mx-[5px]">
-                  {section.description.map((desc, idx) => (
+                  {section?.highlights?.map((desc, idx) => (
                     <div
                       key={`desc-${idx}`}
                       className={`cursor-pointer mb-[15px] lg:mb-[20px] xl:mb-[25px] 2xl:mb-[30px] 3xl:mb-[45px] last:m-0 ltr:pl-[15px] ltr:lg:pl-[20px] ltr:2xl:pl-[30px] rtl:pr-[15px] rtl:lg:pr-[20px] rtl:2xl:pr-[30px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:top-[6px] before:lg:top-[6px] before:2xl:top-[10px] ltr:before:left-0 rtl:before:right-0 ltr:before:-translate-x-1/2 rtl:before:translate-x-1/2 before:w-[5px] before:lg:w-[7px] before:2xl:w-[9px] before:h-auto before:aspect-square before:rounded-full before:shadow-[0_0_0_4px_rgba(217,217,217,0.2)] before:lg:shadow-[0_0_0_6px_rgba(217,217,217,0.2)] before:2xl:shadow-[0_0_0_10px_rgba(217,217,217,0.2)] before:pointer-events-none ${
-                        activeIndex === idx
-                          ? "before:bg-white"
-                          : "before:bg-[#d9d9d9]"
+                        activeIndex === idx ? "before:bg-white" : "before:bg-[#d9d9d9]"
                       }`}
                       onClick={() => handleItemClick(sectionIndex, idx)}
                     >
-                      <Text
-                        size="text1"
-                        as="p"
-                        className={` ${
-                          activeIndex === idx
-                            ? "!font-bold text-base1 "
-                            : "text-white"
-                        }`}
-                      >
+                      <Text size="text1" as="p" className={` ${activeIndex === idx ? "!font-bold text-base1 " : "text-white"}`}>
                         {desc.title}
                       </Text>
                     </div>

@@ -5,6 +5,7 @@ import { Text } from "@/components/layout/Text";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import parse from "html-react-parser";
 
 export default function EventsSection({ data }) {
   return (
@@ -19,8 +20,8 @@ export default function EventsSection({ data }) {
             >
               {data?.header?.title}
             </Heading>
-            <Text size="text3" as="p" className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]">
-              {data?.header?.description}
+            <Text size="text3" as="div" className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]">
+              {parse(data?.header?.description)}
             </Text>
             <LinkButton
               href={data?.header?.button?.link}

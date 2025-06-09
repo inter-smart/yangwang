@@ -2,16 +2,13 @@ import InnerBanner from "@/components/common/InnerBanner";
 import PrivacyPolicy from "@/components/features/privacy-policy/PrivacyPolicy";
 
 export async function generateMetadata({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/privacy-policy?lang=${encodeURIComponent(locale)}`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 60 },
-      }
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/privacy-policy/${encodeURIComponent(locale)}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
     const result = await response.json();
 
     if (result.success && result.status === 200) {
@@ -42,7 +39,7 @@ export default async function page({ params }) {
   let privacyPolicyData = {};
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/privacy-policy?lang=${encodeURIComponent(locale)}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/privacy-policy/${encodeURIComponent(locale)}`, {
       cache: "force-cache",
       next: { revalidate: 60 },
     });
@@ -64,7 +61,7 @@ export default async function page({ params }) {
         banner_image={privacyPolicyData?.banner_section?.web_banner}
         banner_alt={privacyPolicyData?.banner_section?.web_banner_alt}
       />
-      <PrivacyPolicy data={privacyPolicyData?.['privacy-policy']} titles={privacyPolicyData?.title_listing} />
+      <PrivacyPolicy data={privacyPolicyData?.["privacy-policy"]} titles={privacyPolicyData?.title_listing} />
     </>
   );
 }

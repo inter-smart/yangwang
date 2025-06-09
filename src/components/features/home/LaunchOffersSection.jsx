@@ -4,6 +4,7 @@ import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
 import Image from "next/image";
 import Link from "next/link";
+import parse from "html-react-parser";
 
 export default function LaunchOffersSection({ data }) {
   return (
@@ -46,10 +47,10 @@ export default function LaunchOffersSection({ data }) {
             </Heading>
             <Text
               size="text3"
-              as="p"
+              as="div"
               className="text-white mb-[15px] xl:mb-[30px] 2xl:mb-[50px] 3xl:mb-[60px]"
             >
-              {data?.description}
+              {parse(data?.description)}
             </Text>
             <CountDown
               date={data?.date_time}
