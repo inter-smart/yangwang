@@ -102,7 +102,7 @@ export default function ModelSection({ data, locale }) {
           // scrub: true,
           // pin: true,
           start: "top center",
-          end: "center center",
+          end: "bottom center",
           scrub: true,
           // markers: true,
           onEnter: () => {

@@ -6,6 +6,7 @@ import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import parse from "html-react-parser";
 
 export default function EnquirySection({ data }) {
   console.log(`EnquirySection data`, data);
@@ -22,7 +23,7 @@ export default function EnquirySection({ data }) {
               {data?.enq_title || "Enquire Now"}
             </Heading>
             <Text size="text1" as="p" className="text-black mb-[15px] xl:mb-[20px] 3xl:mb-[30px]">
-              {data?.enq_desc ||
+              {parse(data?.enq_desc) ||
                 "Fill out the form below to get in touch with us for more information about our models. Our team will respond to your enquiry as soon as possible."}
             </Text>
             <Image

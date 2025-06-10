@@ -1,8 +1,8 @@
 "use client";
 import { Heading } from "@/components/layout/Heading";
-import { Text } from "@/components/layout/Text";
 import Image from "next/image";
 import CountUp from "react-countup";
+import parse from "html-react-parser";
 
 export default function RangeSection({ data }) {
   return (
@@ -43,7 +43,7 @@ export default function RangeSection({ data }) {
               as="h3"
               className="max-sm:text-[12px] max-lg:text-[14px] leading-tight font-medium text-white mx-[5px] lg:mx-[10px] xl:mx-[15px] 3xl:mx-[20px] mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"
             >
-              {data?.distance_range_km_desc || "Go the Distance on a Single Charge"}
+              {parse(data?.distance_range_km_desc) || "Go the Distance on a Single Charge"}
             </Heading>
             <Image
               src={data?.distance_right_image?.url}

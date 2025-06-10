@@ -58,6 +58,10 @@ export default function LocationSection({ variant, showRooms, serviceCentres, cu
       show: hasVariantService,
     },
   ];
+
+  console.log("showRooms?.header?.showroom_image",showRooms?.header?.showroom_image);
+  
+
   return (
     <section className="w-full block bg-[#1D0A44] 3xl:py-[100px] 2xl:py-[80px] py-[40px]">
       <div className="container">

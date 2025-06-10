@@ -81,7 +81,7 @@ export default function HighlightSection({ interiorData, exteriorHighlights }) {
                     Your browser does not support the video tag.
                   </video>
                 ) : (
-                  <picture>
+                  <picture className="absolute z-0 inset-0">
                     <source media="(max-width: 768px)" srcSet={activeItem?.media?.banner_mobile?.url} />
                     <Image
                       src={activeItem?.media?.banner_web?.url}

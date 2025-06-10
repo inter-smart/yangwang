@@ -12,7 +12,13 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Button } from "@/components/layout/Button";
 
-export default function DesignViewSection({ locale, exteriorData, interiorData, alloyWheelData }) {
+export default function DesignViewSection({
+  locale,
+  exteriorData,
+  interiorData,
+  model,
+  alloyWheelData,
+}) {
   const [thumbsExteriorSwiper, setThumbsExteriorSwiper] = useState(null);
   const [thumbsInteriorSwiper, setThumbsInteriorSwiper] = useState(null);
   const [wheelsThumbsSwiper, setWheelsThumbsSwiper] = useState(null);
@@ -27,7 +33,12 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
   const subSwiperRef = useRef(null);
 
   useEffect(() => {
-    if (subSwiperRef.current && prevRef.current && nextRef.current && subSwiperRef.current.params?.navigation) {
+    if (
+      subSwiperRef.current &&
+      prevRef.current &&
+      nextRef.current &&
+      subSwiperRef.current.params?.navigation
+    ) {
       subSwiperRef.current.params.navigation.prevEl = prevRef.current;
       subSwiperRef.current.params.navigation.nextEl = nextRef.current;
       subSwiperRef.current.navigation.destroy();
@@ -54,7 +65,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
   return (
     <section className="w-full h-[276px] 2xs:h-[368px] xs:h-[420px] sm:h-dvh sm:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block py-[20px] sm:py-[30px] lg:py-[50px_60px] xl:py-[60px_70px] 2xl:py-[80px_90px] 3xl:py-[90px_100px] overflow-hidden relative z-0">
       <div className="3xl:text-[220px] 2xl:text-[200px] xl:text-[140px] lg:text-[120px] md:text-[100px] sm:text-[72px] text-[48px] leading-none uppercase font-medium bg-gradient-to-b from-[#cfcece] to-transparent bg-clip-text text-transparent absolute z-3 top-[15px] xl:top-[20px] 2xl:top-[30px] 3xl:top-[40px] ltr:right-[15%] rtl:left-[15%] mix-blend-darken pointer-events-none">
-        u8
+        {model}
       </div>
       {!wheelsView ? (
         <>
@@ -66,7 +77,10 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                 spaceBetween={0}
                 navigation={false}
                 thumbs={{
-                  swiper: thumbsExteriorSwiper && !thumbsExteriorSwiper.destroyed ? thumbsExteriorSwiper : null,
+                  swiper:
+                    thumbsExteriorSwiper && !thumbsExteriorSwiper.destroyed
+                      ? thumbsExteriorSwiper
+                      : null,
                 }}
                 modules={[Thumbs]}
                 className="w-full h-full"
@@ -89,10 +103,16 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                       className="w-full h-full"
                     >
                       {colorItem?.images?.map((imgItem, imgIndex) => (
-                        <SwiperSlide key={`exterior-sub-slide-${imgIndex}`} className="bg-white">
+                        <SwiperSlide
+                          key={`exterior-sub-slide-${imgIndex}`}
+                          className="bg-white"
+                        >
                           <div className="w-full h-full relative z-0">
                             <picture className="absolute z-0 inset-0">
-                              <source media="(max-width: 768px)" srcSet={imgItem.url} />
+                              <source
+                                media="(max-width: 768px)"
+                                srcSet={imgItem.url}
+                              />
                               <Image
                                 src={imgItem.url}
                                 alt={imgItem.alt_text}
@@ -116,7 +136,10 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                 spaceBetween={0}
                 navigation={false}
                 thumbs={{
-                  swiper: thumbsInteriorSwiper && !thumbsInteriorSwiper.destroyed ? thumbsInteriorSwiper : null,
+                  swiper:
+                    thumbsInteriorSwiper && !thumbsInteriorSwiper.destroyed
+                      ? thumbsInteriorSwiper
+                      : null,
                 }}
                 modules={[Thumbs]}
                 className="w-full h-full"
@@ -139,10 +162,16 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                       ref={subSwiperRef}
                     >
                       {colorItem.images.map((imgItem, imgIndex) => (
-                        <SwiperSlide key={`interior-sub-slide-${imgIndex}`} className="bg-white">
+                        <SwiperSlide
+                          key={`interior-sub-slide-${imgIndex}`}
+                          className="bg-white"
+                        >
                           <div className="w-full h-full relative z-0">
                             <picture className="absolute z-0 inset-0">
-                              <source media="(max-width: 768px)" srcSet={imgItem?.url} />
+                              <source
+                                media="(max-width: 768px)"
+                                srcSet={imgItem?.url}
+                              />
                               <Image
                                 src={imgItem?.url}
                                 alt={imgItem?.alt_text}
@@ -180,9 +209,19 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                     className="3xl:w-[100px] 2xl:w-[88px] xl:w-[66px] sm:w-[60px] w-[40px] cursor-pointer relative z-0"
                   >
                     {interiorView ? (
-                      <Image src="/images/models-view-1.svg" alt="models-view-1" width={100} height={64} />
+                      <Image
+                        src="/images/models-view-1.svg"
+                        alt="models-view-1"
+                        width={100}
+                        height={64}
+                      />
                     ) : (
-                      <Image src="/images/models-view-2.svg" alt="models-view-2" width={100} height={64} />
+                      <Image
+                        src="/images/models-view-2.svg"
+                        alt="models-view-2"
+                        width={100}
+                        height={64}
+                      />
                     )}
                   </button>
                 </div>
@@ -191,7 +230,11 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                 <div className="flex justify-between items-end gap-[20px] relative z-1">
                   {!interiorView ? (
                     <div>
-                      <Heading size="heading6" as="h6" className="capitalize text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                      <Heading
+                        size="heading6"
+                        as="h6"
+                        className="capitalize text-black mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                      >
                         {exteriorData?.colors[activeExteriorIndex]?.color_name}
                       </Heading>
                       <Swiper
@@ -213,7 +256,9 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                           <SwiperSlide
                             key={`exterior-thumb-${index}`}
                             className={`${
-                              index === activeExteriorIndex ? "scale-100" : "scale-80"
+                              index === activeExteriorIndex
+                                ? "scale-100"
+                                : "scale-80"
                             } !w-[20px] lg:!w-[25px] xl:!w-[30px] 2xl:!w-[40px] 3xl:!w-[50px]  transition-transform`}
                           >
                             <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  rounded aspect-square cursor-pointer relative z-0">
@@ -231,7 +276,11 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                     </div>
                   ) : (
                     <div>
-                      <Heading size="heading6" as="h6" className="capitalize text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                      <Heading
+                        size="heading6"
+                        as="h6"
+                        className="capitalize text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                      >
                         {interiorData?.colors[activeInteriorIndex]?.color_name}
                       </Heading>
                       <Swiper
@@ -253,7 +302,9 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                           <SwiperSlide
                             key={`interior-thumb-${index}`}
                             className={`${
-                              index === activeInteriorIndex ? "scale-100" : "scale-80"
+                              index === activeInteriorIndex
+                                ? "scale-100"
+                                : "scale-80"
                             } !w-[20px] lg:!w-[25px] xl:!w-[30px] 2xl:!w-[40px] 3xl:!w-[50px] transition-transform`}
                           >
                             <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px] rounded aspect-square cursor-pointer relative z-0">
@@ -339,7 +390,10 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
               spaceBetween={0}
               navigation={false}
               thumbs={{
-                swiper: wheelsThumbsSwiper && !wheelsThumbsSwiper.destroyed ? wheelsThumbsSwiper : null,
+                swiper:
+                  wheelsThumbsSwiper && !wheelsThumbsSwiper.destroyed
+                    ? wheelsThumbsSwiper
+                    : null,
               }}
               modules={[EffectFade, Thumbs]}
               className="w-full h-full"
@@ -348,7 +402,10 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                 <SwiperSlide key={`wheels-slide-${index}`} className="bg-white">
                   <div className="w-full h-full relative z-0">
                     <picture className="absolute z-0 inset-0">
-                      <source media="(max-width: 768px)" srcSet={item?.mobile_banner?.url} />
+                      <source
+                        media="(max-width: 768px)"
+                        srcSet={item?.mobile_banner?.url}
+                      />
                       <Image
                         src={item?.web_banner?.url}
                         alt={item?.web_banner?.alt_text}
@@ -390,7 +447,10 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                 className="w-full"
               >
                 {alloyWheelData?.colors?.map((item, index) => (
-                  <SwiperSlide key={`wheels-thumb-${index}`} className="group cursor-pointer">
+                  <SwiperSlide
+                    key={`wheels-thumb-${index}`}
+                    className="group cursor-pointer"
+                  >
                     <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  aspect-square rounded relative z-0 mb-[4px] xl:mb-[6px] 3xl:mb-[10px] mx-auto">
                       <Image
                         src={item?.color_thumb?.url}

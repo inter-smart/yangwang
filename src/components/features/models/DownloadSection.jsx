@@ -2,6 +2,7 @@ import { LinkButton } from "@/components/layout/Button";
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import Image from "next/image";
+import parse from "html-react-parser";
 
 export default function DownloadSection({data}) {
   return (
@@ -27,7 +28,7 @@ export default function DownloadSection({data}) {
             as="p"
             className="text-center text-white mb-[20px] xl:mb-[30px] 3xl:mb-[40px]"
           >
-            {data?.footer_desc || "All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to add new products, so stay tuned."}
+            {parse(data?.footer_desc) || "All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to add new products, so stay tuned."}
           </Text>
           <div className="flex justify-center">
             <LinkButton

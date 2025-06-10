@@ -1,7 +1,12 @@
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Img } from "@/components/layout/Img";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Image from "next/image";
 import parse from "html-react-parser";
 
@@ -13,12 +18,21 @@ export default function FaqSection({ faqData, socialData }) {
           {/* Left Column */}
           <div className="w-full 3xl:[width:calc(100%-700px)] xl:[width:calc(100%-550px)] lg:[width:calc(100%-450px)] lg:mb-0 mb-[25px]">
             <div className="w-full 3xl:mb-[50px]">
-              <Heading size="heading3" as="h3" className="capitalize text-black mb-[6px] xl:mb-[8px] 3xl:mb-[10px]">
+              <Heading
+                size="heading3"
+                as="h3"
+                className="capitalize text-black mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
+              >
                 {faqData?.header?.faq_title}
               </Heading>
             </div>
 
-            <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+            <Accordion
+              type="single"
+              collapsible
+              defaultValue="item-0"
+              className="w-full"
+            >
               {faqData?.faqs?.map((item, index) => (
                 <AccordionItem
                   key={`faq-${index}`}
@@ -61,28 +75,34 @@ export default function FaqSection({ faqData, socialData }) {
                 />
               </div>
 
-              <div className="text-[15px] sm:text-[18px] lg:text-[22px] xl:text-[30px] 2xl:text-[35px] 3xl:text-[40px] text-black font-normal capitalize max-w-[330px] 2xl:mb-[50px] md:mb-[30px] mb-[15px]">
+              <div className="text-[15px] sm:text-[18px] lg:text-[22px] xl:text-[30px] 2xl:text-[35px] 3xl:text-[40px] text-black font-normal capitalize max-w-[330px] 2xl:mb-[40px] md:mb-[30px] mb-[15px]">
                 {/* Follow us to <br /> get updates */}
                 {socialData?.header?.social_link_title}
               </div>
 
               <div className="flex gap-4">
-                {socialData?.social_media_links?.map(({ icon, name, url, icon_alt }, idx) => (
-                  <a
-                    key={idx}
-                    href={url}
-                    title={name}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="3xl:w-[77px] 2xl:w-[65px] xl:w-[55px] w-[40px] 3xl:h-[77px] 2xl:h-[65px] xl:h-[55px] h-[40px]
-                                            rounded-full flex items-center justify-center border border-gray-300 text-black transition-all duration-300
-                                            hover:bg-[#5949A7] hover:text-white cursor-pointer"
-                  >
-                    {/* <div className="w-[12px] xl:w-[21px] h-[12px] xl:h-[18px] [&>icon]:w-full [&>svg]:h-full [&>svg]:fill-current"> */}
-                    <Image src={icon} alt={icon_alt} width={12} height={12} />
-                    {/* </div> */}
-                  </a>
-                ))}
+                {socialData?.social_media_links?.map(
+                  ({ icon, name, url, icon_alt }, idx) => (
+                    <a
+                      key={idx}
+                      href={url}
+                      title={name}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group 3xl:w-[77px] 2xl:w-[65px] xl:w-[55px] w-[40px] 3xl:h-[77px] 2xl:h-[65px] xl:h-[55px] h-[40px] rounded-full flex items-center justify-center border border-[#dadada] transition-all duration-300 hover:bg-[#5949A7] cursor-pointer"
+                    >
+                      {/* <div className="w-[12px] xl:w-[21px] h-[12px] xl:h-[18px] [&>icon]:w-full [&>svg]:h-full [&>svg]:fill-current"> */}
+                      <Image
+                        src={icon}
+                        alt={icon_alt}
+                        width={12}
+                        height={12}
+                        className="w-[10px] xl:w-[15px] 3xl:w-[20px] aspect-square object-contain filter-[brightness(0)_saturate(100%)] group-hover:filter-none"
+                      />
+                      {/* </div> */}
+                    </a>
+                  )
+                )}
               </div>
             </div>
           </div>

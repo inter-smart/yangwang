@@ -12,10 +12,15 @@ export async function generateMetadata({ params }) {
   const { locale, slug } = params;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/prdouct-detail/${slug}/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/prdouct-detail/${slug}/${encodeURIComponent(locale)}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
     const result = await response.json();
 
     if (result.success && result.status === 200) {
@@ -46,7 +51,11 @@ export default async function page({ params }) {
   let productData = {};
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/product-detail/${encodeURIComponent(slug)}/${encodeURIComponent(locale)}`,
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/product-detail/${encodeURIComponent(slug)}/${encodeURIComponent(
+        locale
+      )}`,
       {
         cache: "force-cache",
         next: { revalidate: 60 },
@@ -55,27 +64,45 @@ export default async function page({ params }) {
     const result = await response.json();
     if (result.success && result.status === 200) {
       productData = result.data;
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched product data for ${locale}`, productData);
+      console.log(
+        `[2025-05-29T14:37:00.000Z] Fetched product data for ${locale}`,
+        productData
+      );
     } else {
-      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+      console.error(
+        `[2025-05-29T14:37:00.000Z] API error: ${
+          result.message || "Unknown error"
+        }`
+      );
     }
   } catch (error) {
-    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch product data: ${error.message}`);
+    console.error(
+      `[2025-05-29T14:37:00.000Z] Failed to fetch product data: ${error.message}`
+    );
   }
   return (
     <>
       <ModelsHeroSection data={productData?.banner_section} model={slug} />
-      <HighlightSection interiorData={productData?.interior_highlights} exteriorHighlights={productData?.exterior_highlights} />
+      <HighlightSection
+        interiorData={productData?.interior_highlights}
+        exteriorHighlights={productData?.exterior_highlights}
+      />
       <DesignViewSection
         locale={locale}
         exteriorData={productData?.exterior}
         interiorData={productData?.interior}
+        model={slug}
         alloyWheelData={productData?.alloy_wheel}
       />
       <RangeSection data={productData?.distance_section} />
-      <PerformanceSection performanceData={productData?.performance_section?.performance} />
+      <PerformanceSection
+        performanceData={productData?.performance_section?.performance}
+      />
       <PlatformSection data={productData?.platform_section} />
-      <BodyFeaturesSection locale={locale} data={productData?.body_feature_section} />
+      <BodyFeaturesSection
+        locale={locale}
+        data={productData?.body_feature_section}
+      />
       <EnquirySection data={productData?.enquiry_section} />
       <DownloadSection data={productData?.footer_section} />
     </>
