@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { Heading } from "../Heading";
 import { Img } from "../Img";
-import { Text } from "../Text";
 import { usePathname } from "next/navigation";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import Image from "next/image";
@@ -67,7 +66,11 @@ const socialmedia = [
 export default function Footer({ data }) {
   const pathname = usePathname();
 
-  const placeholders = ["Enter Your email address", "Subscribe for latest updates", "Get up-to-date"];
+  const placeholders = [
+    "Enter Your email address",
+    "Subscribe for latest updates",
+    "Get up-to-date",
+  ];
 
   const { social_media_section } = data;
 
@@ -86,7 +89,10 @@ export default function Footer({ data }) {
                 </Heading>
                 <ul>
                   {footerNav.map((item, index) => (
-                    <li key={`footeNav-${index}`} className="w-full mb-[10px] xl:mb-[15px] 2xl:mb-[25px]">
+                    <li
+                      key={`footeNav-${index}`}
+                      className="w-full mb-[10px] xl:mb-[15px] 2xl:mb-[25px]"
+                    >
                       <Heading
                         as="h6"
                         className={`3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
@@ -109,7 +115,10 @@ export default function Footer({ data }) {
                   </Heading>
                   <ul>
                     {modelsNav.map((item, index) => (
-                      <li key={`modelsNav-${index}`} className="w-full mb-[10px] xl:mb-[15px] 2xl:mb-[25px]">
+                      <li
+                        key={`modelsNav-${index}`}
+                        className="w-full mb-[10px] xl:mb-[15px] 2xl:mb-[25px]"
+                      >
                         <Heading
                           as="h6"
                           className={`3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] lg:text-[12px] text-[12px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
@@ -124,16 +133,24 @@ export default function Footer({ data }) {
                 </div>
                 <div>
                   <ul className="flex gap-[15px] sm:gap-[15px] xl:gap-[20px] 2xl:gap-[30px]">
-                    {social_media_section?.social_media_links?.map((item, index) => (
-                      <li key={`socialmedia-${index}`}>
-                        <Link
-                          href={item?.url}
-                          className="w-[12px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] aspect-square block transition-transform duration-300 hover:scale-110"
-                        >
-                          <Image src={item?.icon} alt={item.icon_alt} width={38} height={38} className="w-full h-full block" />
-                        </Link>
-                      </li>
-                    ))}
+                    {social_media_section?.social_media_links?.map(
+                      (item, index) => (
+                        <li key={`socialmedia-${index}`}>
+                          <Link
+                            href={item?.url}
+                            className="w-[12px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] aspect-square block transition-transform duration-300 hover:scale-110"
+                          >
+                            <Image
+                              src={item?.icon}
+                              alt={item.icon_alt}
+                              width={38}
+                              height={38}
+                              className="w-full h-full block object-contain"
+                            />
+                          </Link>
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               </div>
@@ -190,7 +207,11 @@ export default function Footer({ data }) {
                         as="h6"
                         className="3xl:text-[14px] 2xl:text-[16px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base1"
                       >
-                        <a href={`mailto:${data?.email}`} target="_blank" aria-label="mailto">
+                        <a
+                          href={`mailto:${data?.email}`}
+                          target="_blank"
+                          aria-label="mailto"
+                        >
                           {data?.email}
                         </a>
                       </Heading>
@@ -200,7 +221,11 @@ export default function Footer({ data }) {
                         as="h6"
                         className="3xl:text-[14px] 2xl:text-[16px] xl:text-[10px] lg:text-[10px] text-[10px] leading-none font-normal text-white hover:text-base1"
                       >
-                        <a href={`tel:${data?.phone_number}`} target="_blank" aria-label="tel">
+                        <a
+                          href={`tel:${data?.phone_number}`}
+                          target="_blank"
+                          aria-label="tel"
+                        >
                           {data?.phone_number}
                         </a>
                       </Heading>
@@ -211,7 +236,8 @@ export default function Footer({ data }) {
             </div>
             <div className="flex items-center justify-between gap-[5px] py-[15px] xl:py-[30px] 3xl:py-[40px] border-t-[1px] border-[#2c2c2c] max-2xs:flex-col">
               <p className="3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white">
-                Copyright © Shenzhen Yangwang Automobile Sales Co., Ltd. All Rights Reserved.
+                Copyright © Shenzhen Yangwang Automobile Sales Co., Ltd. All
+                Rights Reserved.
               </p>
               <ul className="flex items-center gap-[10px] xl:gap-[20px] 3xl:gap-[28px]">
                 <li>
@@ -237,7 +263,11 @@ export default function Footer({ data }) {
                     <p className="3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white">
                       Crafted By&nbsp;
                     </p>
-                    <a href={"https://www.intersmartsolution.com/"} target="_blank" aria-label="app">
+                    <a
+                      href={"https://www.intersmartsolution.com/"}
+                      target="_blank"
+                      aria-label="app"
+                    >
                       <Img
                         src="author.svg"
                         alt="author"
@@ -253,7 +283,12 @@ export default function Footer({ data }) {
           </div>
           <div className="w-full lg:w-[320px] xl:w-[420px] 2xl:w-[560px] 3xl:w-[640px]">
             <div className="w-full h-full flex items-center justify-center relative z-0 p-[20px_10px]">
-              <Img src="footer-bg.jpg" alt="footer-bg" fill className="-z-1 opacity-[44%] object-cover" />
+              <Img
+                src="footer-bg.jpg"
+                alt="footer-bg"
+                fill
+                className="-z-1 opacity-[44%] object-cover"
+              />
               <div>
                 <Heading
                   as="h6"
@@ -261,7 +296,10 @@ export default function Footer({ data }) {
                 >
                   SUBCRIBE NEWSLETTER
                 </Heading>
-                <PlaceholdersAndVanishInput className="rounded-0 rtl:text-right bg-ba" placeholders={placeholders} />
+                <PlaceholdersAndVanishInput
+                  className="rounded-0 rtl:text-right bg-ba"
+                  placeholders={placeholders}
+                />
               </div>
             </div>
           </div>
