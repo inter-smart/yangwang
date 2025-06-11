@@ -39,9 +39,9 @@ export default function PlatformSection({ data }) {
                 alt={features?.icon?.alt_text}
                 width={40}
                 height={40}
-                className="w-[40px] xl:w-[60px] 3xl:w-[60px] aspect-[4/3] mx-auto mb-[10px] xl:mb-[15px] 3xl:mb-[20px]"
+                className="w-[40px] xl:w-[60px] 3xl:w-[60px] aspect-[4/3] mx-auto mb-[10px] xl:mb-[15px] 3xl:mb-[20px] object-contain"
               />
-              <Heading size="heading6" as="h6" className="text-center text-white">
+              <Heading size="heading6" as="h6" className="leading-tight text-center text-white">
                 {features.title}
               </Heading>
             </div>

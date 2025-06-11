@@ -84,10 +84,6 @@ export default function PerformanceSection({ performanceData }) {
             defaultValue={`item-${activeIndex}`}
           >
             {performanceData?.map((item, index) => {
-              const pointItems = item?.points
-                ?.split(/<\/p>\s*<p>/i)
-                .map((p) => p.replace(/<\/?p>/gi, "").trim())
-                .filter(Boolean);
               return (
                 <AccordionItem
                   key={`accordion-${index}`}
@@ -100,16 +96,12 @@ export default function PerformanceSection({ performanceData }) {
                   >
                     {item.title}
                   </AccordionTrigger>
-                  <AccordionContent className="max-w-[400px] xl:max-w-[430px] 2xl:max-w-[560px] 3xl:max-w-[660px] ltr:pl-[5px] ltr:lg:pl-[10px] ltr:2xl:pl-[15px] rtl:pr-[5px] rtl:lg:pr-[10px] rtl:2xl:pr-[15px]">
+                  <AccordionContent className="max-w-[400px] xl:max-w-[430px] 2xl:max-w-[560px] 3xl:max-w-[660px] lg:max-h-[200px] 2xl:max-h-[250px] 3xl:max-h-[300px] overflow-y-auto scrollbar-hide ltr:pl-[5px] ltr:lg:pl-[10px] ltr:2xl:pl-[15px] rtl:pr-[5px] rtl:lg:pr-[10px] rtl:2xl:pr-[15px]">
                     <div
                       className="typography ltr:border-l-[1px] rtl:border-r-[1px] border-white/50 border-dashed mx-[5px] [&>ul>li]:text-white [&>ul>li]:list-none [&>ul]:p-0 ltr:[&>ul>li]:pl-[15px] ltr:[&>ul>li]:lg:pl-[20px] ltr:[&>ul>li]:2xl:pl-[30px] rtl:[&>ul>li]:pr-[15px] rtl:[&>ul>li]:lg:pr-[20px] rtl:[&>ul>li]:2xl:pr-[30px] [&>ul>li]:relative [&>ul>li]:z-0 [&>ul>li]:before:content-[''] [&>ul>li]:before:block [&>ul>li]:before:absolute [&>ul>li]:before:-z-1 [&>ul>li]:before:top-[6px] [&>ul>li]:before:lg:top-[6px] [&>ul>li]:before:2xl:top-[8px] [&>ul>li]:before:3xl:top-[10px] ltr:[&>ul>li]:before:left-0 rtl:[&>ul>li]:before:right-0 ltr:[&>ul>li]:before:-translate-x-1/2 rtl:[&>ul>li]:before:translate-x-1/2 [&>ul>li]:before:w-[5px] [&>ul>li]:before:lg:w-[7px] [&>ul>li]:before:2xl:w-[9px] [&>ul>li]:before:h-auto [&>ul>li]:before:aspect-square [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-white [&>ul>li]:before:shadow-[0_0_0_4px_rgba(217,217,217,0.2)] [&>ul>li]:before:lg:shadow-[0_0_0_6px_rgba(217,217,217,0.2)] [&>ul>li]:before:2xl:shadow-[0_0_0_8px_rgba(217,217,217,0.2)] [&>ul>li]:before:pointer-events-none [&>ul>li]:before:opacity-0 [&>ul>li:hover]:before:opacity-100 [&>ul>li]:hover:font-bold [&>ul>li:first-child]:before:opacity-100 [&>ul>li:first-child]:font-bold [&>ul>li]:before:transition-all [&>ul>li]:transition-all [&>ul>li]:duration-300"
                       // dangerouslySetInnerHTML={{ __html: item.description }}
                     >
-                      {pointItems?.map((point, pointIndex) => (
-                        <ul key={`point-${pointIndex}`}>
-                          <li>{parse(point)}</li>
-                        </ul>
-                      ))}
+                      {parse(item.points)}
                     </div>
                   </AccordionContent>
                 </AccordionItem>

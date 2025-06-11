@@ -175,7 +175,7 @@ export default function Header({ locale, data }) {
                           {item.title}
                         </div>
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="bg-black/40 backdrop-blur-lg border-base1/10 sm:absolute">
+                      <NavigationMenuContent className="bg-black/60 backdrop-blur-lg border-base1/10 sm:absolute">
                         <ul className="grid w-full min-w-[80px] lg:min-w-[120px]">
                           {item.dropdown.map((subItem, subIndex) => (
                             <li key={subIndex}>

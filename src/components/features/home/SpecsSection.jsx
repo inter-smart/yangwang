@@ -106,16 +106,14 @@ export default function SpecsSection({ data, locale }) {
                       >
                         <div className="flex items-center gap-[10px] sm:gap-[15px] xl:gap-[20px] 3xl:gap-[30px]">
                           <Image
-                            src={spec?.media?.web_banner?.url || "/idj.jpg"}
-                            alt={
-                              spec?.media?.web_banner?.alt_text || "specsInfo"
-                            }
+                            src={spec?.icon?.url || "/idj.jpg"}
+                            alt={spec?.icon?.alt_text || "specsInfo"}
                             width={40}
                             height={40}
-                            className="w-[15px] sm:w-[20px] xl:w-[26px] 3xl:w-[40px]"
+                            className="w-[15px] sm:w-[20px] xl:w-[26px] 3xl:w-[40px] filter-[brightness(0)_saturate(100%)]"
                           />
                           <div className="flex-1">
-                            <h6 className="text-[10px] sm:text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[17px] 3xl:text-[20px] font-medium leading-tight capitalize text-black xl:max-w-[60px] 2xl:max-w-[80px] 3xl:max-w-[100px]">
+                            <h6 className="text-[10px] sm:text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[17px] 3xl:text-[20px] font-medium leading-tight capitalize text-black xl:max-w-[90%]">
                               {spec?.title}
                             </h6>
                           </div>
@@ -128,8 +126,14 @@ export default function SpecsSection({ data, locale }) {
               <div className="w-full sm:w-[calc(100%-300px)] lg:w-[calc(100%-320px)] xl:w-[calc(100%-490px)] 2xl:w-[calc(100%-650px)] 3xl:w-[calc(100%-740px)] ltr:sm:pl-[15px] ltr:xl:pl-[20px] ltr:2xl:pl-[30px] rtl:sm:pr-[15px] rtl:xl:pr-[20px] rtl:2xl:pr-[30px] px-[calc(((100vw-var(--breakpoint-4xs))/2)+var(--breakpoint-gap))] 3xs:px-[calc(((100vw-var(--breakpoint-3xs))/2)+var(--breakpoint-gap))] 2xs:px-[calc(((100vw-var(--breakpoint-2xs))/2)+var(--breakpoint-gap))] xs:px-[calc(((100vw-var(--breakpoint-xs))/2)+var(--breakpoint-gap))] ltr:sm:pr-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] ltr:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:sm:pl-[calc(((100vw-var(--breakpoint-sm))/2)+var(--breakpoint-gap))] rtl:md:pl-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pl-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pl-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pl-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pl-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] py-[10px_30px] sm:py-[40px_30px] xl:py-[90px_80px] 3xl:py-[140px_130px]">
                 <div className="w-full h-auto aspect-[1040/588] block relative z-0 overflow-hidden sm:mt-[40px] xl:mt-[50px] 3xl:mt-[80px]">
                   <Image
-                    src={item?.platform?.[0]?.media?.web_banner?.url || "/images/defaultImage.jpg"}
-                    alt={item?.model}
+                    src={
+                      item?.platform?.[0]?.media?.web_banner?.url ||
+                      "/images/defaultImage.jpg"
+                    }
+                    alt={
+                      item?.platform?.[0]?.media?.web_banner?.alt_text ||
+                      "default"
+                    }
                     fill
                     sizes="1040px"
                     className="object-cover transition-transform duration-300 hover:scale-110"
