@@ -101,7 +101,7 @@ export default function HighlightSection({ interiorData, exteriorHighlights }) {
                   as="h3"
                   className="!font-normal text-white mb-[20px] lg:mb-[30px] 2xl:mb-[40px] 3xl:mb-[50px]"
                 >
-                  {section?.title}
+                  {section?.title} 
                 </Heading>
                 <div className="ltr:border-l-[1px] rtl:border-r-[1px] border-white/50 border-dashed mx-[5px]">
                   {section?.highlights?.map((desc, idx) => (
