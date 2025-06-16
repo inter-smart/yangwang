@@ -7,7 +7,7 @@ import { Text } from "@/components/layout/Text";
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import parse from "html-react-parser";
+// import parse from "html-react-parser";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,14 +23,18 @@ export default function AboutSection({ data }) {
   const sectionRef = useRef(null);
   const carRef1 = useRef(null);
   const carRef2 = useRef(null);
+  const animatedTextRef = useRef(null);
 
   useEffect(() => {
-    const targets = sectionRef.current?.querySelectorAll("span");
-    if (!targets || !carRef1.current) return;
-    if (!targets || !carRef2.current) return;
+    // const targets = sectionRef.current?.querySelectorAll("span");
+    if (!sectionRef || !carRef1.current) return;
+    if (!sectionRef || !carRef2.current) return;
+    if (!sectionRef || !animatedTextRef.current) return;
+
+    const spans = animatedTextRef.current.querySelectorAll("span");
 
     // Character animation
-    gsap.to(targets, {
+    gsap.to(spans, {
       color: "#000",
       stagger: 0.02,
       scrollTrigger: {
@@ -38,6 +42,7 @@ export default function AboutSection({ data }) {
         start: "top center",
         end: "center center",
         scrub: true,
+        // markers: true,
       },
     });
     gsap.fromTo(
@@ -93,26 +98,43 @@ export default function AboutSection({ data }) {
     };
   }, []);
 
+  const desc = data?.description?.replace(/^<p>|<\/p>$/g, "") || "";
+
   return (
-    <section ref={sectionRef} className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px] overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="w-full h-auto block pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[160px] overflow-hidden"
+    >
       <div className="container">
         <div className="3xl:max-w-[1320px] 2xl:max-w-[1080px] xl:max-w-[870px] lg:max-w-[768px] sm:max-w-[576px] mx-auto">
-          <Heading size="heading6" as="h6" className="font-normal capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]">
+          <Heading
+            size="heading6"
+            as="h6"
+            className="font-normal capitalize text-[#4c4c4c] mb-[6px] xl:mb-[8px] 3xl:mb-[10px]"
+          >
             {data?.name}
           </Heading>
-          <Heading size="heading3" as="h2" className="uppercase text-black mb-[15px] xl:mb-[20px] 3xl:mb-[40px]">
+          <Heading
+            size="heading3"
+            as="h2"
+            className="uppercase text-black mb-[15px] xl:mb-[20px] 3xl:mb-[40px]"
+          >
             {data?.modal}
           </Heading>
           <Text
             as="div"
             className="3xl:text-[35px] 2xl:text-[30px] xl:text-[23px] lg:text-[20px] sm:text-[16px] text-[14px] leading-normal font-bold"
           >
-            {parse(data?.description)}
+            {/* {parse(data?.description)} */}
+            <span ref={animatedTextRef}>{splitTextToSpans(desc)}</span>
           </Text>
         </div>
       </div>
 
-      <div className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]" dir="ltr">
+      <div
+        className="w-full h-auto flex justify-between relative z-0 -mt-[20px] xl:-mt-[40px] 3xl:-mt-[60px]"
+        dir="ltr"
+      >
         <Img
           src="about-bg-1.png"
           alt="about-bg-1"

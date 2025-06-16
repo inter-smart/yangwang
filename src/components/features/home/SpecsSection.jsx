@@ -1,52 +1,7 @@
 import { Heading } from "@/components/layout/Heading";
-import { Img } from "@/components/layout/Img";
 import { Text } from "@/components/layout/Text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-
-// const specsInfo = [
-//   {
-//     model: "u8",
-//     title: "Where Art Meets Intelligence",
-//     description: "Advanced Design. Revolutionary Technology. Uncompromised Power.",
-//     image: "specs-img-1.jpg",
-//     specsList: [
-//       {
-//         image: "specsInfo-1.svg",
-//         alt: "specsInfo",
-//         title: "Tank Turn Feature",
-//       },
-//       { image: "specsInfo-2.svg", alt: "specsInfo", title: "Floating SUV" },
-//       { image: "specsInfo-3.svg", alt: "specsInfo", title: "360° Camera" },
-//       { image: "specsInfo-4.svg", alt: "specsInfo", title: "Ultimate Safety" },
-//       {
-//         image: "specsInfo-5.svg",
-//         alt: "specsInfo",
-//         title: "Ultimate Performance",
-//       },
-//     ],
-//   },
-//   {
-//     model: "u9",
-//     title: "Where Art Meets Intelligence",
-//     description: "Advanced Design. Revolutionary Technology. Uncompromised Power.",
-//     specsList: [
-//       {
-//         image: "specsInfo-1.svg",
-//         alt: "specsInfo",
-//         title: "Tank Turn Feature",
-//       },
-//       { image: "specsInfo-2.svg", alt: "specsInfo", title: "Floating SUV" },
-//       { image: "specsInfo-3.svg", alt: "specsInfo", title: "360° Camera" },
-//       { image: "specsInfo-4.svg", alt: "specsInfo", title: "Ultimate Safety" },
-//       {
-//         image: "specsInfo-5.svg",
-//         alt: "specsInfo",
-//         title: "Ultimate Performance",
-//       },
-//     ],
-//   },
-// ];
 
 export default function SpecsSection({ data, locale }) {
   console.log("data spec", data);
@@ -96,7 +51,7 @@ export default function SpecsSection({ data, locale }) {
                     as="p"
                     className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
                   >
-                    {item?.description}
+                    {item?.description?.replace(/^<p>|<\/p>$/g, "") || ""}
                   </Text>
                   <ul>
                     {item?.platform?.map((spec, index) => (
