@@ -269,9 +269,15 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                 <FormControl>
                   <Input
                     className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
-                    type="text"
+                    type="tel"
+                    inputMode="tel"
+                    pattern="[\d\s()+-]*"
                     placeholder="Mobile Number"
                     {...field}
+                    onInput={(e) => {
+                      // Only allow digits, spaces, parentheses, dashes, and plus
+                      e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
+                    }}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />

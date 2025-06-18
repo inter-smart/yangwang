@@ -291,9 +291,15 @@ export default function EnquiryForm() {
                               focus-visible:shadow-none
                               focus:border-b-[#5949A7]
                     "
-                    type="text"
+                    type="tel"
+                    inputMode="tel"
+                    pattern="[\d\s()+-]*"
                     placeholder="Mobile Number"
                     {...field}
+                    onInput={(e) => {
+                      // Only allow digits, spaces, parentheses, dashes, and plus
+                      e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
+                    }}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
