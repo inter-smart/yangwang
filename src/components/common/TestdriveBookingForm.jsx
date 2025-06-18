@@ -14,18 +14,80 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "../layout/Button";
 
+// const formSchema = z.object({
+//   fName: z.string().min(1, { message: "First Name is required." }),
+//   sName: z.string().min(1, { message: "Second Name is required." }),
+//   email: z.string().email({ message: "Invalid email address." }),
+//   phoneNumber: z
+//     .string()
+//     .min(10, { message: "Phone number must be at least 10 digits." })
+//     .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
+//   model: z.string().min(1, { message: "Please select a model." }),
+//   location: z.string().min(1, { message: "Please select a location." }),
+//   date: z.date({ required_error: "Please select a date." }),
+//   message: z.string().optional(),
+// });
+
+// Patterns for validation
+const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
+const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
+const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
+const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
+
 const formSchema = z.object({
-  fName: z.string().min(1, { message: "First Name is required." }),
-  sName: z.string().min(1, { message: "Second Name is required." }),
-  email: z.string().email({ message: "Invalid email address." }),
+  fName: z
+    .string()
+    .trim()
+    .min(2, { message: "First Name must be at least 2 characters." })
+    .max(255, { message: "First Name is too long." })
+    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
+    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+
+  sName: z
+    .string()
+    .trim()
+    .min(2, { message: "Second Name must be at least 2 characters." })
+    .max(255, { message: "Second Name is too long." })
+    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
+    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+
+  email: z
+    .string()
+    .trim()
+    .email({ message: "Invalid email address." })
+    .max(255, { message: "Email is too long." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe email." }),
+
   phoneNumber: z
     .string()
-    .min(10, { message: "Phone number must be at least 10 digits." })
-    .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
-  model: z.string().min(1, { message: "Please select a model." }),
-  location: z.string().min(1, { message: "Please select a location." }),
+    .trim()
+    .regex(phoneRegex, { message: "Invalid phone number format. Use 10 to 15 digits, may start with '+'." })
+    .refine(
+      (val) => {
+        const digits = val.replace(/\D/g, "");
+        return digits.length >= 10 && digits.length <= 15;
+      },
+      { message: "Phone number must have between 10 and 15 digits." }
+    )
+    .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: "Phone number cannot be all zeros." })
+    .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: "Invalid characters in phone number." }),
+
+  model: z.string().trim().min(1, { message: "Please select a model." }),
+
+  location: z.string().trim().min(1, { message: "Please select a location." }),
+
   date: z.date({ required_error: "Please select a date." }),
-  message: z.string().optional(),
+
+  message: z
+    .string()
+    .trim()
+    .min(2, { message: "Message must be at least 2 characters." })
+    .max(5000, { message: "Message is too long." })
+    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in message." })
+    .optional(),
 });
 
 export default function TestdriveBookingForm({ locationData, modelData }) {

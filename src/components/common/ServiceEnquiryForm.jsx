@@ -2,45 +2,89 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../layout/Button";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 
+// const formSchema = z.object({
+//   fName: z.string().min(1, { message: "First Name is required." }),
+//   sName: z.string().min(1, { message: "Second Name is required." }),
+//   email: z.string().email({ message: "Invalid email address." }),
+//   phoneNumber: z
+//     .string()
+//     .min(10, { message: "Phone number must be at least 10 digits." })
+//     .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
+//   location: z.string().min(1, { message: "Please choose a Location" }),
+//   date: z.date({ message: "Please choose a Date" }),
+//   message: z.string().optional(),
+// });
+
+// Patterns for validation
+const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
+const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
+const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
+const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
+
 const formSchema = z.object({
-  fName: z.string().min(1, { message: "First Name is required." }),
-  sName: z.string().min(1, { message: "Second Name is required." }),
-  email: z.string().email({ message: "Invalid email address." }),
+  fName: z
+    .string()
+    .trim()
+    .min(2, { message: "First Name must be at least 2 characters." })
+    .max(255, { message: "First Name is too long." })
+    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
+    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+
+  sName: z
+    .string()
+    .trim()
+    .min(2, { message: "Second Name must be at least 2 characters." })
+    .max(255, { message: "Second Name is too long." })
+    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
+    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+
+  email: z
+    .string()
+    .trim()
+    .email({ message: "Invalid email address." })
+    .max(255, { message: "Email is too long." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe email." }),
+
   phoneNumber: z
     .string()
-    .min(10, { message: "Phone number must be at least 10 digits." })
-    .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
-  location: z.string().min(1, { message: "Please choose a Location" }),
+    .trim()
+    .regex(phoneRegex, { message: "Invalid phone number format. Use 10 to 15 digits, may start with '+'." })
+    .refine(
+      (val) => {
+        const digits = val.replace(/\D/g, "");
+        return digits.length >= 10 && digits.length <= 15;
+      },
+      { message: "Phone number must have between 10 and 15 digits." }
+    )
+    .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: "Phone number cannot be all zeros." })
+    .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: "Invalid characters in phone number." }),
+
+  location: z.string().trim().min(1, { message: "Please choose a Location" }),
+
   date: z.date({ message: "Please choose a Date" }),
-  message: z.string().optional(),
+
+  message: z
+    .string()
+    .trim()
+    .min(2, { message: "Message must be at least 2 characters." })
+    .max(5000, { message: "Message is too long." })
+    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in message." })
+    .optional(),
 });
 
 export default function ServiceEnquiryForm({ locationData }) {
@@ -76,16 +120,13 @@ export default function ServiceEnquiryForm({ locationData }) {
     };
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/service-contact-enquiry`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service-contact-enquiry`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
@@ -207,10 +248,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue
-                          placeholder="Select Location"
-                          className="truncate text-[#999999] font-semibold"
-                        />
+                        <SelectValue placeholder="Select Location" className="truncate text-[#999999] font-semibold" />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
@@ -252,10 +290,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                         <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
-                    <PopoverContent
-                      className="w-full p-0 bg-black text-white"
-                      align="start"
-                    >
+                    <PopoverContent className="w-full p-0 bg-black text-white" align="start">
                       <Calendar
                         mode="single"
                         selected={date}
@@ -308,15 +343,7 @@ export default function ServiceEnquiryForm({ locationData }) {
 
         {submitStatus && (
           <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] text-center">
-            <p
-              className={
-                submitStatus.type === "success"
-                  ? "text-green-500"
-                  : "text-red-500"
-              }
-            >
-              {submitStatus.message}
-            </p>
+            <p className={submitStatus.type === "success" ? "text-green-500" : "text-red-500"}>{submitStatus.message}</p>
           </div>
         )}
       </form>

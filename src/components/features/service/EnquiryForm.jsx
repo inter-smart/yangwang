@@ -14,18 +14,90 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/layout/Button";
 
+// const formSchema = z.object({
+//   fName: z.string().min(1, { message: "First Name is required." }),
+//   sName: z.string().min(1, { message: "Second Name is required." }),
+//   email: z.string().email({ message: "Invalid email address." }),
+//   phoneNumber: z
+//     .string()
+//     .min(10, { message: "Phone number must be at least 10 digits." })
+//     .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
+//   location: z.string().min(1, { message: "Please choose a Location" }),
+//   date: z.date({ message: "Please choose a Date" }),
+//   message: z.string().optional(),
+//   offerId: z.string().min(1, { message: "Please select an offer." }),
+// });
+
+// Patterns for validation
+const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
+const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
+const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
+const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
+
 const formSchema = z.object({
-  fName: z.string().min(1, { message: "First Name is required." }),
-  sName: z.string().min(1, { message: "Second Name is required." }),
-  email: z.string().email({ message: "Invalid email address." }),
+  // First Name
+  fName: z
+    .string()
+    .trim()
+    .min(2, { message: "First Name must be at least 2 characters." })
+    .max(255, { message: "First Name is too long." })
+    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
+    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+
+  // Second Name
+  sName: z
+    .string()
+    .trim()
+    .min(2, { message: "Second Name must be at least 2 characters." })
+    .max(255, { message: "Second Name is too long." })
+    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
+    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+
+  // Email
+  email: z
+    .string()
+    .trim()
+    .email({ message: "Invalid email address." })
+    .max(255, { message: "Email is too long." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe email." }),
+
+  // Phone Number (universal, E.164)
   phoneNumber: z
     .string()
-    .min(10, { message: "Phone number must be at least 10 digits." })
-    .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
-  location: z.string().min(1, { message: "Please choose a Location" }),
-  date: z.date({ message: "Please choose a Date" }),
-  message: z.string().optional(),
-  offerId: z.string().min(1, { message: "Please select an offer." }),
+    .trim()
+    .regex(phoneRegex, { message: "Invalid phone number format. Use 10 to 15 digits, may start with '+'." })
+    .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: "Phone number cannot be all zeros." })
+    .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: "Invalid characters in phone number." }),
+
+  // Location
+  location: z.string().trim().min(1, { message: "Please choose a Location." }),
+
+  // Date (as JavaScript Date object)
+  date: z.date({ message: "Please choose a Date." }),
+
+  // Message
+  message: z
+    .string()
+    .trim()
+    .min(2, { message: "Message must be at least 2 characters." })
+    .max(5000, { message: "Message is too long." })
+    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in message." })
+    .optional(),
+
+  // Subject
+  subject: z
+    .string()
+    .trim()
+    .min(2, { message: "Subject must be at least 2 characters." })
+    .max(255, { message: "Subject is too long." })
+    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
+    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in subject." }),
+
+  // Offer ID
+  offerId: z.string().trim().min(1, { message: "Please select an offer." }),
 });
 
 export default function ServiceEnquiryForm({ offerData, locationData }) {
