@@ -1,5 +1,6 @@
 import { Heading } from "@/components/layout/Heading";
 import Image from "next/image";
+import parse from "html-react-parser";
 
 export default function PlatformSection({ data }) {
   return (
@@ -28,7 +29,7 @@ export default function PlatformSection({ data }) {
             as="h5"
             className="leading-normal text-center capitalize text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px]"
           >
-            {data?.description || "Platform Section Description"}
+            {parse(data?.description) || "Platform Section Description"}
           </Heading>
         </div>
         <div className="max-w-[768px] xl:max-w-[992px] 2xl:max-w-[1200px] 3xl:max-w-[1300px] mx-auto flex flex-wrap [&>*]:p-[10px] xl:[&>*]:p-[15px] 3xl:[&>*]:p-[20px]">
