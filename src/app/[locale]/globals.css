@@ -126,6 +126,10 @@
   }
 } */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-urwForm), Arial, sans-serif;
   transition-property: opacity, transform, filter, background;

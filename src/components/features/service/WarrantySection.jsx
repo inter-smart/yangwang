@@ -40,7 +40,7 @@ export default function GlobalSection({ data, featuresData }) {
         <div className="flex flex-wrap justify-center w-fit mx-auto 3xl:mb-[430px] lg:mb-[250px] md:mb-[100px] mb-[75px]">
           <div className="xl:px-[13px] px-[4px]">
             <LinkButton
-              href={enquire_button_link}
+              href={"#service-form"}
               aria-label="Book Test Drive"
               className="text-white bg-black min-w-[100px] sm:min-w-[120px] xl:min-w-[140px] 3xl:min-w-[170px] mt-[35px]  hover:!bg-[#F1D1A8] hover:text-black"
               color="black"

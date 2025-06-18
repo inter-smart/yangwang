@@ -7,7 +7,7 @@ export default function FollowusSection({ data, offerData, locationData }) {
   console.log("offerData, locationData", offerData, locationData);
 
   return (
-    <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative">
+    <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative" id='service-form'>
       <div className="container h-full lg:mb-0 mb-[35px]">
         <div className="w-full flex flex-wrap">
           <div className="w-full lg:w-[350px] xl:w-[400px] 2xl:w-[500px] ltr:pr-[50px] rtl:pl-[50px]">
