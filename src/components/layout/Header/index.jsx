@@ -29,6 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
+import { LinkButton } from "../Button";
 
 export default function Header({ locale, data }) {
   const t = useTranslations("header");
@@ -96,6 +97,7 @@ export default function Header({ locale, data }) {
       { href: "/contact", title: t("contact") },
       { href: "/ownership", title: t("owners") },
       { href: "/offers", title: t("offers") },
+      { type: "mobile", href: "/offers", title: ("book text drive") },
     ],
     [t]
   );
@@ -166,60 +168,72 @@ export default function Header({ locale, data }) {
             className="max-sm:hidden"
           >
             <NavigationMenuList className="gap-0">
-              {menuItems.map((item, index) => (
-                <NavigationMenuItem key={index}>
-                  {item.dropdown ? (
-                    <>
-                      <NavigationMenuTrigger className="data-[active=true]:focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:bg-transparent hover:bg-transparent focus:bg-transparent [&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0">
-                        <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1">
-                          {item.title}
-                        </div>
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent className="bg-black/60 backdrop-blur-lg border-base1/10 sm:absolute">
-                        <ul className="grid w-full min-w-[80px] lg:min-w-[120px]">
-                          {item.dropdown.map((subItem, subIndex) => (
-                            <li key={subIndex}>
-                              <NavigationMenuLink
-                                asChild
-                                className="hover:bg-black/40 p-1 lg:p-2 transition-background duration-300"
-                              >
-                                <Link
-                                  href={subItem.href}
-                                  className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
-                                    pathname === subItem.href
-                                      ? "text-base1"
-                                      : "text-white"
-                                  }`}
-                                >
-                                  {subItem.title}
-                                </Link>
-                              </NavigationMenuLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    <NavigationMenuLink
-                      asChild
-                      className="data-[active=true]:focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:bg-transparent hover:bg-transparent focus:bg-transparent p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0"
-                    >
-                      <Link
-                        href={item.href}
-                        className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
-                          pathname === item.href ? "text-base1" : "text-white"
-                        }`}
-                      >
-                        {item.title}
-                      </Link>
-                    </NavigationMenuLink>
-                  )}
-                </NavigationMenuItem>
-              ))}
+              {menuItems.map(
+                (item, index) =>
+                  item.type !== "mobile" && (
+                    <NavigationMenuItem key={index}>
+                      {item.dropdown ? (
+                        <>
+                          <NavigationMenuTrigger className="data-[active=true]:focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:bg-transparent hover:bg-transparent focus:bg-transparent [&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0">
+                            <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1">
+                              {item.title}
+                            </div>
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent className="bg-black/60 backdrop-blur-lg border-base1/10 sm:absolute">
+                            <ul className="grid w-full min-w-[80px] lg:min-w-[120px]">
+                              {item.dropdown.map((subItem, subIndex) => (
+                                <li key={subIndex}>
+                                  <NavigationMenuLink
+                                    asChild
+                                    className="hover:bg-black/40 p-1 lg:p-2 transition-background duration-300"
+                                  >
+                                    <Link
+                                      href={subItem.href}
+                                      className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
+                                        pathname === subItem.href
+                                          ? "text-base1"
+                                          : "text-white"
+                                      }`}
+                                    >
+                                      {subItem.title}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                </li>
+                              ))}
+                            </ul>
+                          </NavigationMenuContent>
+                        </>
+                      ) : (
+                        <NavigationMenuLink
+                          asChild
+                          className="data-[active=true]:focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:bg-transparent hover:bg-transparent focus:bg-transparent p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0"
+                        >
+                          <Link
+                            href={item.href}
+                            className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
+                              pathname === item.href
+                                ? "text-base1"
+                                : "text-white"
+                            }`}
+                          >
+                            {item.title}
+                          </Link>
+                        </NavigationMenuLink>
+                      )}
+                    </NavigationMenuItem>
+                  )
+              )}
             </NavigationMenuList>
           </NavigationMenu>
 
           <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 2xl:gap-[30px] 3xl:gap-[40px]">
+            <LinkButton
+              href="/"
+              aria-label="model"
+              className="capitalize min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px] max-sm:hidden"
+            >
+              book test drive
+            </LinkButton>
             <Select
               onValueChange={handleLocaleChange}
               value={locale}
