@@ -4,7 +4,7 @@ import RelatedPostSection from "@/components/features/news/RelatedPostSection";
 import SocialLinkSection from "@/components/features/news/SocialLinkSection";
 
 export async function generateMetadata({ params }) {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
 
   try {
     const response = await fetch(
