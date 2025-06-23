@@ -6,57 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-const newsInfo = [
-  {
-    title: "Lorem ipsum dolor sit amet con",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula nunc malesuada vitae, varius tortor at, sed, convallis magna.",
-    date: "18.07.2024",
-    category: "Product Launches",
-    image: "/images/news-1.jpg",
-  },
-  {
-    title: "Lorem ipsum dolor sit amet con",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula nunc malesuada vitae, varius tortor at, sed, convallis magna.",
-    date: "18.07.2024",
-    category: "Technology",
-    image: "/images/news-2.jpg",
-  },
-  {
-    title: "Lorem ipsum dolor sit amet con",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula nunc malesuada vitae, varius tortor at, sed, convallis magna.",
-    date: "18.07.2024",
-    category: "Product Launches",
-    image: "/images/news-3.jpg",
-  },
-  {
-    title: "Lorem ipsum dolor sit amet con",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula nunc malesuada vitae, varius tortor at, sed, convallis magna.",
-    date: "18.07.2024",
-    category: "Events",
-    image: "/images/news-4.jpg",
-  },
-  {
-    title: "Lorem ipsum dolor sit amet con",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula nunc malesuada vitae, varius tortor at, sed, convallis magna.",
-    date: "18.07.2024",
-    category: "Product Launches",
-    image: "/images/news-5.jpg",
-  },
-  {
-    title: "Lorem ipsum dolor sit amet con",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ligula nunc malesuada vitae, varius tortor at, sed, convallis magna.",
-    date: "18.07.2024",
-    category: "Press Releases",
-    image: "/images/news-6.jpg",
-  },
-];
-
 export default function RelatedPostSection({ locale, data }) {
   return (
     <section className="w-full h-auto block p-[20px_0_50px] md:p-[20px_0_50px] 2xl:p-[50px_0_110px] 3xl:p-[60px_0_100px]">

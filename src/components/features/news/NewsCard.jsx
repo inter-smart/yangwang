@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Text } from "@/components/layout/Text";
- 
+import parse from "html-react-parser";
+
 export default function NewsCard({ item }) {
   return (
     <div className="w-full h-auto block transition-all duration-500 hover:-translate-y-2 group">
@@ -21,8 +22,8 @@ export default function NewsCard({ item }) {
         >
           {item?.title}
         </Text>
-        <Text size="text4" as="p">
-          {item?.description}
+        <Text size="text4" as="p" className="line-clamp-4 overflow-hidden text-ellipsis">
+          {parse(item?.description)}
         </Text>
       </div>
       <div className="flex items-center justify-between">
