@@ -25,7 +25,7 @@ export default function DownloadSection({data}) {
           </Heading>
           <Text
             size="text1"
-            as="p"
+            as="div"
             className="text-center text-white mb-[20px] xl:mb-[30px] 3xl:mb-[40px]"
           >
             {parse(data?.footer_desc) || "All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to add new products, so stay tuned."}
