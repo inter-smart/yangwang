@@ -28,7 +28,7 @@ export default function FaqSection({ faqData, socialData }) {
             </div>
 
             <Accordion
-              type="single"
+              type="button"
               collapsible
               defaultValue="item-0"
               className="w-full"

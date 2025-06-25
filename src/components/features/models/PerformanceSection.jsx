@@ -78,7 +78,7 @@ export default function PerformanceSection({ performanceData }) {
             {activeItem?.title}
           </Heading>
           <Accordion
-            type="single"
+            type="button"
             collapsible
             className="w-full"
             defaultValue={`item-${activeIndex}`}
