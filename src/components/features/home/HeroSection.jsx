@@ -86,7 +86,7 @@ export default function HeroSection({ data, locale }) {
                   className="w-full h-full absolute -z-2 inset-0 object-cover"
                   aria-label="Video player"
                   poster={item.media.url}
-                  priority="true"
+                  // priority="true"
                 >
                   <source src={item.media.web_banner.url} type="video/mp4" />
                   Your browser does not support the video tag.
