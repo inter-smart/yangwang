@@ -40,7 +40,7 @@ export default function EnquirySection({ data }) {
                 <TabsTrigger
                   value="enquire"
                   className="relative text-black font-medium outline-none shadow-none
-                                        text-[11px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] p-[0] text-left h-full
+                                        text-[13px] sm-text-[15px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] p-[0] text-left h-full
                                         after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-full after:h-[3px] after:bg-transparent
                                         data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
                 >
@@ -50,7 +50,7 @@ export default function EnquirySection({ data }) {
                 <TabsTrigger
                   value="book"
                   className="relative text-black font-medium outline-none shadow-none
-                                        text-[11px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full
+                                        text-[13px] sm-text-[15px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full
                                         after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-full after:h-[3px] after:bg-transparent
                                         data-[state=active]:after:bg-[#5949A7]  data-[state=active]:shadow-none  transition-all rounded-0 cursor-pointer"
                 >
@@ -60,7 +60,7 @@ export default function EnquirySection({ data }) {
                 <TabsTrigger
                   value="service"
                   className="relative text-black font-medium outline-none shadow-none
-                                        text-[11px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full
+                                        text-[13px] sm-text-[15px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full
                                         after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-full after:h-[3px] after:bg-transparent
                                         data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none  transition-all justify-end rounded-0 cursor-pointer"
                 >
