@@ -60,7 +60,7 @@ export default function GlobalSection({ data, featuresData }) {
         </div>
         <div className="realtive ">
           <ul className="flex flex-wrap justify-center w-full">
-            {featuresData?.features?.map((feature, index) => (
+            {featuresData?.map((feature, index) => (
               <li
                 key={index}
                 className="3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] text-white font-normal leading-normal relative px-[15px_25px] after:content-[] after:absolute after:w-[8px] after:h-[8px] after:rounded-full after:bg-white after:left-0 after:top-0 after:bottom-0 after:m-auto   "
