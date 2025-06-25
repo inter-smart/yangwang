@@ -7,37 +7,6 @@ const LocationMap = dynamic(() => import("../../common/LocationMap"), {
   ssr: false, // This ensures the component only loads on the client
 });
 
-const customerSupport = [
-  {
-    type: null,
-    title: "Customer Support",
-    value: "Reach Us Directly",
-    image: null,
-    image_alt: null,
-  },
-  {
-    type: "phone",
-    title: "Toll Free number",
-    value: "008968 24578000",
-    image: "/images/icon-csupport-phone.svg",
-    image_alt: "alt",
-  },
-  {
-    type: "mail",
-    title: "mail us",
-    value: "support@yangwang.com",
-    image: "/images/icon-csupport-phone.svg",
-    image_alt: "alt",
-  },
-  {
-    type: "whatsapp",
-    title: "WhatsApp",
-    value: "+968 24578000",
-    image: "/images/icon-csupport-whatsapp.svg",
-    image_alt: "alt",
-  },
-];
-
 export default function LocationSection({
   variant,
   showRooms,

@@ -24,39 +24,33 @@ export default function FollowusSection({ data }) {
             {/* Follow us to get updates */}
             {data?.header?.social_link_title}
           </Heading>
-          <Text
-            size="text4"
-            as="p"
-            className="capitalize text-white text-center max-w-[650px] mx-auto "
-          >
+          <Text size="text4" as="div" className="capitalize text-white text-center max-w-[650px] mx-auto ">
             {/* All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to
             add new products, so stay tuned. */}
             {parse(data?.header?.social_media_description)}
           </Text>
         </div>
         <div className="flex justify-center gap-4 ">
-          {data?.social_media_links?.map(
-            ({ icon, icon_alt, name, url }, idx) => (
-              <a
-                key={idx}
-                href={url}
-                title={name}
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" 2xl:w-[55px] xl:w-[45px] sm:w-[40px] w-[35px] 2xl:h-[55px] xl:h-[45px] sm:h-[40px] h-[35px]
+          {data?.social_media_links?.map(({ icon, icon_alt, name, url }, idx) => (
+            <a
+              key={idx}
+              href={url}
+              title={name}
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" 2xl:w-[55px] xl:w-[45px] sm:w-[40px] w-[35px] 2xl:h-[55px] xl:h-[45px] sm:h-[40px] h-[35px]
                                             rounded-full flex items-center justify-center border border-gray-300 text-black transition-all duration-300
                                             hover:bg-[#5949A7] hover:text-white cursor-pointer"
-              >
-                <Image
-                  src={icon}
-                  alt={icon_alt}
-                  width={12}
-                  height={12}
-                  className="w-[12px] xl:w-[21px] h-[12px] xl:h-[18px] object-contain"
-                />
-              </a>
-            )
-          )}
+            >
+              <Image
+                src={icon}
+                alt={icon_alt}
+                width={12}
+                height={12}
+                className="w-[12px] xl:w-[21px] h-[12px] xl:h-[18px] object-contain"
+              />
+            </a>
+          ))}
         </div>
       </div>
     </section>
