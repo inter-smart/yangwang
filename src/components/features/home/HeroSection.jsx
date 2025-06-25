@@ -21,12 +21,7 @@ export default function HeroSection({ data, locale }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (
-      swiperInstance &&
-      prevRef.current &&
-      nextRef.current &&
-      swiperInstance.params
-    ) {
+    if (swiperInstance && prevRef.current && nextRef.current && swiperInstance.params) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
       swiperInstance.params.navigation.nextEl = nextRef.current;
       swiperInstance.navigation.init();
@@ -40,8 +35,7 @@ export default function HeroSection({ data, locale }) {
     }
   };
 
-  const nextSlideThumb =
-    data[(activeIndex + 1) % data?.length]?.media?.thumbnail;
+  const nextSlideThumb = data[(activeIndex + 1) % data?.length]?.media?.thumbnail;
   const nextSlideTitle = data[(activeIndex + 1) % data?.length]?.title;
 
   return (
@@ -101,11 +95,7 @@ export default function HeroSection({ data, locale }) {
 
               <div className="container">
                 <div className="w-full">
-                  <Heading
-                    size="heading1"
-                    as="h1"
-                    className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
-                  >
+                  <Heading size="heading1" as="h1" className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
                     {item.title}
                   </Heading>
                   <Text
@@ -168,26 +158,18 @@ export default function HeroSection({ data, locale }) {
         >
           <button
             ref={prevRef}
+            type="button"
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img
-              src="icon-arrow-left.svg"
-              alt="icon-arrow-left"
-              width={16}
-              height={16}
-            />
+            <Img src="icon-arrow-left.svg" alt="icon-arrow-left" width={16} height={16} />
             <span className="sr-only">left</span>
           </button>
           <button
+            type="button"
             ref={nextRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img
-              src="icon-arrow-right.svg"
-              alt="icon-arrow-right"
-              width={16}
-              height={16}
-            />
+            <Img src="icon-arrow-right.svg" alt="icon-arrow-right" width={16} height={16} />
             <span className="sr-only">next</span>
           </button>
         </div>
