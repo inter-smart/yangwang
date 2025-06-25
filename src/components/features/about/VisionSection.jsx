@@ -29,17 +29,12 @@ const options = {
 
 export default function VisionSection({ locale, data }) {
   const { title, description, items, video } = data;
-  console.log("items ==>", items);
 
   return (
     <section className="w-full h-auto block p-[40px_0_50px] md:p-[50px_0_70px] xl:p-[75px_0_100px] 3xl:p-[110px_0_150px] bg-[#262626]">
       <div className="container">
         <div className="text-center 3xl:max-w-[1070px] xl:max-w-[715px] md:max-w-[620px] mx-auto 3xl:mb-[60px] xl:mb-[40px] mb-[30px]">
-          <Heading
-            size="heading3"
-            as="h3"
-            className="text-white xl:mb-[25px] mb-[15px]"
-          >
+          <Heading size="heading3" as="h3" className="text-white xl:mb-[25px] mb-[15px]">
             {title}
           </Heading>
           <Text
@@ -74,7 +69,6 @@ export default function VisionSection({ locale, data }) {
               modules={[Autoplay, Pagination]}
               spaceBetween={120}
               slidesPerView={3}
-              auto
               centeredSlides={false}
               centerInsufficientSlides={true}
               // autoplay={{

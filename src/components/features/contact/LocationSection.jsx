@@ -181,7 +181,7 @@ export default function LocationSection({
                       </div>
                       {item?.type === "phone" ? (
                         <a
-                          href={`tel:${item?.value}`}
+                          href={`tel:${item?.value?.replace(/[^+\d]/g, '')}`}
                           className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none text-white transition-color block hover:text-base3"
                         >
                           {item?.value}
