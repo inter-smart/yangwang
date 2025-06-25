@@ -84,7 +84,7 @@ export default function MarketingSection({ data }) {
                       />
                     ) : (
                       <video
-                        preload="meta"
+                        preload="metadata"
                         width={420}
                         height={590}
                         muted
