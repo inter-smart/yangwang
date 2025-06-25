@@ -175,9 +175,9 @@ export default function Header({ locale, data }) {
                       {item.dropdown ? (
                         <>
                           <NavigationMenuTrigger className="data-[active=true]:focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:bg-transparent hover:bg-transparent focus:bg-transparent [&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0">
-                            <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1">
+                            <span className="3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize text-white transition-colors duration-300 hover:text-base1 focus:text-base1">
                               {item.title}
-                            </div>
+                            </span>
                           </NavigationMenuTrigger>
                           <NavigationMenuContent className="bg-black/60 backdrop-blur-lg border-base1/10 sm:absolute">
                             <ul className="grid w-full min-w-[80px] lg:min-w-[120px]">
