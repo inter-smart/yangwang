@@ -6,28 +6,7 @@ const title = "Follow us to get updates";
 const description =
   "All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to add new products, so stay tuned.";
 const backgroundImage = "/images/news-followus-banner.jpg";
-const socialLinks = [
-  {
-    href: "https://facebook.com",
-    src: "/images/facebook-icon.svg",
-    alt: "Facebook link",
-  },
-  {
-    href: "https://youtube.com",
-    src: "/images/youtube-icon.svg",
-    alt: "YouTube link",
-  },
-  {
-    href: "https://instagram.com",
-    src: "/images/instagram-icon.svg",
-    alt: "Instagram link",
-  },
-  {
-    href: "https://linkedin.com",
-    src: "/images/linkedin-icon.svg",
-    alt: "LinkedIn link",
-  },
-];
+
 
 export default function SocialLinkSection({ data }) {
   return (

@@ -7,9 +7,10 @@ import { Text } from "@/components/layout/Text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import parse from "html-react-parser";
+import { useTranslations } from "next-intl";
 
 export default function EnquirySection({ data }) {
-  console.log(`EnquirySection data`, data);
+  const t = useTranslations("form");
 
   const TabsTriggerStyle =
     "text-[11px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-medium text-left text-black max-w-[160px] xl:max-w-[240px] 2xl:max-w-[300px] 3xl:max-w-[340px] p-0 relative outline-none shadow-none h-full border-0 border-b border-gray-200 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-transparent data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-none cursor-pointer";
@@ -40,10 +41,10 @@ export default function EnquirySection({ data }) {
             >
               <TabsList className="flex justify-start items-center mr-[25px] relative w-full h-[60px] rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
                 <TabsTrigger value="enquire" className={TabsTriggerStyle}>
-                  Enquire Now
+                  {t("enquire_now")}
                 </TabsTrigger>
                 <TabsTrigger value="book" className={TabsTriggerStyle}>
-                  Book a test drive
+                  {t("book_a_test_drive")}
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="enquire">

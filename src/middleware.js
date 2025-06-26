@@ -10,6 +10,7 @@ const validRoutes = [
   /^\/(en|ar)\/legal-statement$/, // statement page
   /^\/(en|ar)\/models\/(u8|u9)(\/.*)?$/, // models page
   /^\/(en|ar)\/news$/, // News page
+  /^\/(en|ar)\/news\/(\/.*)?$/,
   /^\/(en|ar)\/offers$/, // Offers page
   /^\/(en|ar)\/ownership$/, // Ownership page
   /^\/(en|ar)\/privacy-policy$/, // Privacy page
