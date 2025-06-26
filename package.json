@@ -30,6 +30,7 @@
     "motion": "^12.12.1",
     "next": "15.3.2",
     "next-intl": "^4.1.0",
+    "path-to-regexp": "^6.3.0",
     "react": "^19.0.0",
     "react-countdown": "^2.3.6",
     "react-countup": "^6.5.3",
