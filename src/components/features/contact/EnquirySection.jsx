@@ -7,8 +7,10 @@ import { Img } from "@/components/layout/Img";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import parse from "html-react-parser";
+import { useTranslations } from "next-intl";
 
 export default function EnquirySection({ data }) {
+  const t = useTranslations("form");
   const { header, location, model } = data;
   return (
     <section className="w-full pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[130px] lg:pb-[40px] pb-[60px] relative min-h-[400px] md:min-h-[600px]">
@@ -44,7 +46,7 @@ export default function EnquirySection({ data }) {
                                         after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-full after:h-[3px] after:bg-transparent
                                         data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
                 >
-                  Enquire Now
+                  {t("enquire_now")}
                 </TabsTrigger>
 
                 <TabsTrigger
@@ -54,7 +56,7 @@ export default function EnquirySection({ data }) {
                                         after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-full after:h-[3px] after:bg-transparent
                                         data-[state=active]:after:bg-[#5949A7]  data-[state=active]:shadow-none  transition-all rounded-0 cursor-pointer"
                 >
-                  Book a test drive
+                  {t("book_a_test_drive")}
                 </TabsTrigger>
 
                 <TabsTrigger
@@ -64,7 +66,7 @@ export default function EnquirySection({ data }) {
                                         after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-full after:h-[3px] after:bg-transparent
                                         data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none  transition-all justify-end rounded-0 cursor-pointer"
                 >
-                  Service Enquiry
+                  {t("service_enquiry")}
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="enquire" className="w-full">

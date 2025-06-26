@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "@/components/layout/Button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { format } from "date-fns";
+import { useTranslations } from "next-intl";
 
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
@@ -16,59 +17,57 @@ const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQ
 const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
 const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
 
-const formSchema = z.object({
-  fName: z
-    .string()
-    .trim()
-    .min(2, { message: "First Name must be at least 2 characters." })
-    .max(255, { message: "First Name is too long." })
-    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
-    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
-
-  sName: z
-    .string()
-    .trim()
-    .min(2, { message: "Second Name must be at least 2 characters." })
-    .max(255, { message: "Second Name is too long." })
-    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
-    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
-
-  email: z
-    .string()
-    .trim()
-    .email({ message: "Invalid email address." })
-    .max(255, { message: "Email is too long." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe email." }),
-
-  phoneNumber: z
-    .string()
-    .trim()
-    .regex(phoneRegex, { message: "Invalid phone number format. Use 10 to 15 digits, may start with '+'." })
-    .refine(
-      (val) => {
-        const digits = val.replace(/\D/g, "");
-        return digits.length >= 10 && digits.length <= 15;
-      },
-      { message: "Phone number must have between 10 and 15 digits." }
-    )
-    .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: "Phone number cannot be all zeros." })
-    .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: "Invalid characters in phone number." }),
-
-  offerId: z.string().trim().min(1, { message: "Please select an offer." }),
-
-  message: z
-    .string()
-    .trim()
-    .min(2, { message: "Message must be at least 2 characters." })
-    .max(5000, { message: "Message is too long." })
-    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in message." })
-    .optional(),
-});
-
 export default function OfferEnquiryForm({ offerData, serviceTitle }) {
+  const t = useTranslations("form");
+
+  const formSchema = z.object({
+    // First Name
+    fName: z
+      .string()
+      .trim()
+      .min(2, { message: t("fName_min") })
+      .max(255, { message: t("fName_max") })
+      .regex(nameRegex, { message: t("fName_regex") })
+      .refine((val) => !/\d/.test(val), { message: t("fName_no_numbers") })
+      .refine((val) => !unsafePattern.test(val), { message: t("fName_unsafe") }),
+
+    // Second Name
+    sName: z
+      .string()
+      .trim()
+      .min(2, { message: t("sName_min") })
+      .max(255, { message: t("sName_max") })
+      .regex(nameRegex, { message: t("sName_regex") })
+      .refine((val) => !/\d/.test(val), { message: t("sName_no_numbers") })
+      .refine((val) => !unsafePattern.test(val), { message: t("sName_unsafe") }),
+
+    // Email
+    email: z
+      .string()
+      .trim()
+      .email({ message: t("email_invalid") })
+      .max(255, { message: t("email_max") })
+      .refine((val) => !unsafePattern.test(val), { message: t("email_unsafe") }),
+
+    // Phone Number (universal, E.164)
+    phoneNumber: z
+      .string()
+      .trim()
+      .regex(phoneRegex, { message: t("phoneNumber_regex") })
+      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: t("phoneNumber_zeros") })
+      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: t("phoneNumber_invalid_chars") }),
+
+    offerId: z.string().min(1, { message: t("offerId_required") }),
+
+    message: z
+      .string()
+      .trim()
+      .min(2, { message: t("message_min") })
+      .max(5000, { message: t("message_max") })
+      .refine((val) => !specialCharsOnly.test(val), { message: t("message_special_chars") })
+      .refine((val) => !unsafePattern.test(val), { message: t("message_unsafe") })
+      .optional(),
+  });
   // Define form
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -191,7 +190,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
             name="fName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-black">First Name</FormLabel>
+                {/* <FormLabel className="font-semibold text-black">{t("fName_placeholder")}</FormLabel> */}
                 <FormControl>
                   <Input
                     className="
@@ -202,7 +201,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                       focus:border-b-[#5949A7]
                     "
                     type="text"
-                    placeholder="First Name"
+                    placeholder={t("fName_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("fName", e.target.value)}
                   />
@@ -219,7 +218,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
             name="sName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-black">Second Name</FormLabel>
+                {/* <FormLabel className="font-semibold text-black">{t("sName_placeholder")}</FormLabel> */}
                 <FormControl>
                   <Input
                     className="
@@ -230,7 +229,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                       focus:border-b-[#5949A7]
                     "
                     type="text"
-                    placeholder="Second Name"
+                    placeholder={t("sName_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("sName", e.target.value)}
                   />
@@ -247,7 +246,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-black">Email</FormLabel>
+                {/* <FormLabel className="font-semibold text-black">{t("email_placeholder")}</FormLabel> */}
                 <FormControl>
                   <Input
                     className="
@@ -258,7 +257,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                       focus:border-b-[#5949A7]
                     "
                     type="text"
-                    placeholder="Email"
+                    placeholder={t("email_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("email", e.target.value)}
                   />
@@ -275,7 +274,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
             name="phoneNumber"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-black">Mobile Number</FormLabel>
+                {/* <FormLabel className="font-semibold text-black">{t("phoneNumber_placeholder")}</FormLabel> */}
                 <FormControl>
                   <Input
                     className="
@@ -288,7 +287,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                     type="tel"
                     inputMode="tel"
                     pattern="[\d\s()+-]*"
-                    placeholder="Mobile Number"
+                    placeholder={t("phoneNumber_placeholder")}
                     {...field}
                     onInput={(e) => {
                       // Only allow digits, spaces, parentheses, dashes, and plus
@@ -309,7 +308,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-black">Message</FormLabel>
+                {/* <FormLabel className="font-semibold text-black">{}</FormLabel> */}
                 <FormControl>
                   <Textarea
                     className="
@@ -319,7 +318,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                       focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none
                       focus:border-b-[#5949A7]
                     "
-                    placeholder="Message"
+                    placeholder={t("message_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("message", e.target.value)}
                   />
@@ -357,10 +356,10 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   />
                 </svg>
-                Sending...
+                {t("submit_loading")}
               </span>
             ) : (
-              "Send Message"
+              t("submit_button")
             )}
           </Button>
         </div>

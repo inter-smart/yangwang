@@ -13,6 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/layout/Button";
+import { useTranslations } from "next-intl";
 
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
@@ -20,80 +21,69 @@ const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQ
 const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
 const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
 
-const formSchema = z.object({
-  // First Name
-  fName: z
-    .string()
-    .trim()
-    .min(2, { message: "First Name must be at least 2 characters." })
-    .max(255, { message: "First Name is too long." })
-    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
-    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
-
-  // Second Name
-  sName: z
-    .string()
-    .trim()
-    .min(2, { message: "Second Name must be at least 2 characters." })
-    .max(255, { message: "Second Name is too long." })
-    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
-    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
-
-  // Email
-  email: z
-    .string()
-    .trim()
-    .email({ message: "Invalid email address." })
-    .max(255, { message: "Email is too long." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe email." }),
-
-  // Phone Number (universal, E.164)
-  phoneNumber: z
-    .string()
-    .trim()
-    .regex(phoneRegex, { message: "Invalid phone number format. Use 10 to 15 digits, may start with '+'." })
-    .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: "Phone number cannot be all zeros." })
-    .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: "Invalid characters in phone number." }),
-
-  // Location
-  location: z.string().trim().min(1, { message: "Please choose a Location." }),
-
-  // Date (as JavaScript Date object)
-  date: z.date({ message: "Please choose a Date." }),
-
-  // Message
-  message: z
-    .string()
-    .trim()
-    .min(2, { message: "Message must be at least 2 characters." })
-    .max(5000, { message: "Message is too long." })
-    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in message." })
-    .optional(),
-  offerId: z.string().min(1, { message: "Please select an offer." }),
-});
-
 export default function ServiceEnquiryForm({ offerData, locationData }) {
-  const [open, setOpen] = useState(false);
+  const t = useTranslations("form");
+
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      fName: "",
-      sName: "",
-      email: "",
-      phoneNumber: "",
-      location: "",
-      date: "",
-      message: "",
-      offerId: "",
-    },
-    mode: "onChange",
+  const formSchema = z.object({
+    // First Name
+    fName: z
+      .string()
+      .trim()
+      .min(2, { message: t("fName_min") })
+      .max(255, { message: t("fName_max") })
+      .regex(nameRegex, { message: t("fName_regex") })
+      .refine((val) => !/\d/.test(val), { message: t("fName_no_numbers") })
+      .refine((val) => !unsafePattern.test(val), { message: t("fName_unsafe") }),
+
+    // Second Name
+    sName: z
+      .string()
+      .trim()
+      .min(2, { message: t("sName_min") })
+      .max(255, { message: t("sName_max") })
+      .regex(nameRegex, { message: t("sName_regex") })
+      .refine((val) => !/\d/.test(val), { message: t("sName_no_numbers") })
+      .refine((val) => !unsafePattern.test(val), { message: t("sName_unsafe") }),
+
+    // Email
+    email: z
+      .string()
+      .trim()
+      .email({ message: t("email_invalid") })
+      .max(255, { message: t("email_max") })
+      .refine((val) => !unsafePattern.test(val), { message: t("email_unsafe") }),
+
+    // Phone Number (universal, E.164)
+    phoneNumber: z
+      .string()
+      .trim()
+      .regex(phoneRegex, { message: t("phoneNumber_regex") })
+      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: t("phoneNumber_zeros") })
+      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: t("phoneNumber_invalid_chars") }),
+
+    // Location
+    location: z
+      .string()
+      .trim()
+      .min(1, { message: t("location_required") }),
+
+    // Date (as JavaScript Date object)
+    date: z.date({ message: t("date_required") }),
+
+    // Message
+    message: z
+      .string()
+      .trim()
+      .min(2, { message: t("message_min") })
+      .max(5000, { message: t("message_max") })
+      .refine((val) => !specialCharsOnly.test(val), { message: t("message_special_chars") })
+      .refine((val) => !unsafePattern.test(val), { message: t("message_unsafe") })
+      .optional(),
+    offerId: z.string().min(1, { message: t("offerId_required") }),
   });
 
   async function onSubmit(values) {
@@ -139,6 +129,21 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
     }
   }
 
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fName: "",
+      sName: "",
+      email: "",
+      phoneNumber: "",
+      location: "",
+      date: "",
+      message: "",
+      offerId: "",
+    },
+    mode: "onChange",
+  });
+
   const errorStyle = "text-red-500";
 
   const handleBlur = (fieldName, value) => {
@@ -161,12 +166,12 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
             name="offerId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-black">Select Offer</FormLabel>
+                <FormLabel className="font-semibold text-black">{t("offerId_placeholder")}</FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className="w-full min-h-[50px] xl:min-h-[60px] 3xl:min-h-[70px] px-4 xl:px-6 border border-[#CCCCCC] rounded-none bg-white text-[14px] 2xl:text-[16px] 3xl:text-[18px] text-[#B3B3B3] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder={"Select Offer"} className="truncate text-[#999999] font-normal" />
+                        <SelectValue placeholder={t("offerId_placeholder")} className="truncate text-[#999999] font-normal" />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
@@ -198,7 +203,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                   <Input
                     className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     type="text"
-                    placeholder="First Name"
+                    placeholder={t("fName_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("fName", e.target.value)}
                   />
@@ -219,7 +224,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                   <Input
                     className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     type="text"
-                    placeholder="Second Name"
+                    placeholder={t("sName_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("sName", e.target.value)}
                   />
@@ -240,7 +245,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                   <Input
                     className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     type="text"
-                    placeholder="Email"
+                    placeholder={t("email_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("email", e.target.value)}
                   />
@@ -263,7 +268,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                     type="tel"
                     inputMode="tel"
                     pattern="[\d\s()+-]*"
-                    placeholder="Mobile Number"
+                    placeholder={t("phoneNumber_placeholder")}
                     {...field}
                     onInput={(e) => {
                       e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
@@ -287,7 +292,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder="Select Location" className="truncate text-[#999999] font-semibold" />
+                        <SelectValue placeholder={t("location_placeholder")} className="truncate text-[#999999] font-semibold" />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
@@ -326,7 +331,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                           !date && "text-muted-foreground"
                         )}
                       >
-                        {date ? format(date, "PPP") : "Select Date"}
+                        {date ? format(date, "PPP") : t("date_placeholder")}
                         <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
@@ -360,8 +365,8 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Textarea
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[10px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
-                    placeholder="Message"
+                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    placeholder={t("message_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("message", e.target.value)}
                   />
@@ -380,7 +385,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
             className="max-w-[70px] sm:max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
             disabled={isLoading}
           >
-            {isLoading ? "Sending..." : "Send Message"}
+            {isLoading ? t("submit_loading") : t("submit_button")}
           </Button>
         </div>
 
