@@ -110,8 +110,8 @@ export default function NewSection({ newsData, categoryList, pagination, locale,
                 type="button"
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] font-normal leading-normal border-none cursor-pointer transition-all duration-300 hover:text-[#5949A7] ${
-                  activeFilter === filter ? "text-[#5949A7] underline" : "text-black"
+                className={`3xl:text-[20px] 2xl:text-[16px] xl:text-[13px] lg:text-[12px] text-[12px] leading-normal border-none cursor-pointer transition-all duration-300 hover:text-[#5949A7] ${
+                  activeFilter === filter ? "font-medium text-[#5949A7] underline" : "font-normal text-black"
                 }`}
               >
                 {filter}

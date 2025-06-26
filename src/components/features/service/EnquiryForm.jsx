@@ -218,7 +218,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     type="text"
                     placeholder="First Name"
                     {...field}
@@ -238,7 +238,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     type="text"
                     placeholder="Second Name"
                     {...field}
@@ -258,7 +258,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     type="text"
                     placeholder="Email"
                     {...field}
@@ -278,7 +278,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     type="tel"
                     inputMode="tel"
                     pattern="[\d\s()+-]*"
@@ -376,7 +376,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Textarea
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     placeholder="Message"
                     {...field}
                   />
