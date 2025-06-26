@@ -14,20 +14,6 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "../layout/Button";
 
-// const formSchema = z.object({
-//   fName: z.string().min(1, { message: "First Name is required." }),
-//   sName: z.string().min(1, { message: "Second Name is required." }),
-//   email: z.string().email({ message: "Invalid email address." }),
-//   phoneNumber: z
-//     .string()
-//     .min(10, { message: "Phone number must be at least 10 digits." })
-//     .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
-//   model: z.string().min(1, { message: "Please select a model." }),
-//   location: z.string().min(1, { message: "Please select a location." }),
-//   date: z.date({ required_error: "Please select a date." }),
-//   message: z.string().optional(),
-// });
-
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
 const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
@@ -106,6 +92,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       location: "",
       message: "",
     },
+    mode: "onChange",
   });
 
   async function onSubmit(values) {
@@ -132,15 +119,6 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
         body: JSON.stringify(payload),
       });
 
-      // if (response.ok) {
-      //   setSubmitStatus({ type: "success", message: "Test drive booked successfully!" });
-      //   form.reset();
-      //   setDate(null);
-      // } else {
-      //   const errorData = await response.json();
-      //   setSubmitStatus({ type: "error", message: errorData.message || "Failed to book test drive. Please try again." });
-      // }
-
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
       }
@@ -156,6 +134,11 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       setIsLoading(false);
     }
   }
+
+  const handleBlur = (fieldName, value) => {
+    const trimmedValue = value.trim();
+    form.setValue(fieldName, trimmedValue, { shouldValidate: true });
+  };
 
   const errorStyle = "text-red-500";
 
@@ -180,6 +163,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                     type="text"
                     placeholder="First Name"
                     {...field}
+                    onBlur={(e) => handleBlur("fName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -200,6 +184,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                     type="text"
                     placeholder="Second Name"
                     {...field}
+                    onBlur={(e) => handleBlur("sName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -220,6 +205,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                     type="text"
                     placeholder="Email"
                     {...field}
+                    onBlur={(e) => handleBlur("email", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -278,6 +264,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                       // Only allow digits, spaces, parentheses, dashes, and plus
                       e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
                     }}
+                    onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -348,6 +335,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                         }}
                         initialFocus
                         className="rounded-md border"
+                        disabled={(date) => date < new Date().setHours(0, 0, 0, 0)}
                       />
                     </PopoverContent>
                   </Popover>
@@ -369,6 +357,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                     className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     placeholder="Message"
                     {...field}
+                    onBlur={(e) => handleBlur("message", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />

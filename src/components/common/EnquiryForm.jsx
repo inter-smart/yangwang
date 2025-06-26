@@ -8,17 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../layout/Button";
 import { useState } from "react";
 
-// const formSchema = z.object({
-//   fName: z.string().min(1, { message: "First Name is required." }),
-//   sName: z.string().min(1, { message: "Second Name is required." }),
-//   email: z.string().email({ message: "Invalid email address." }),
-//   phoneNumber: z
-//     .string()
-//     .min(10, { message: "Phone number must be at least 10 digits." })
-//     .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
-//   message: z.string().optional(),
-// });
-
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
 const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
@@ -86,6 +75,7 @@ export default function EnquiryForm() {
       phoneNumber: "",
       message: "",
     },
+    mode: "onChange",
   });
 
   // State for loading and feedback
@@ -120,7 +110,6 @@ export default function EnquiryForm() {
       }
 
       const data = await response.json();
-      console.log("API response:", data);
       setFeedback({ type: "success", message: data?.message });
       form.reset(); // Reset form on success
     } catch (error) {
@@ -134,6 +123,12 @@ export default function EnquiryForm() {
     }
   }
 
+  // Generic onBlur handler to trim whitespace
+  const handleBlur = (fieldName, value) => {
+    const trimmedValue = value.trim();
+    form.setValue(fieldName, trimmedValue, { shouldValidate: true });
+  };
+
   // Log form errors for debugging
   const errors = form.formState.errors;
   if (Object.keys(errors).length > 0) {
@@ -145,7 +140,6 @@ export default function EnquiryForm() {
     <Form {...form}>
       <form
         onSubmit={(e) => {
-          console.log("Form submit event triggered");
           form.handleSubmit(onSubmit)(e);
         }}
         className="flex flex-wrap -mx-[15px] lg:-mx-[25px]"
@@ -180,6 +174,7 @@ export default function EnquiryForm() {
                     type="text"
                     placeholder="First Name"
                     {...field}
+                    onBlur={(e) => handleBlur("fName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -218,6 +213,7 @@ export default function EnquiryForm() {
                     type="text"
                     placeholder="Second Name"
                     {...field}
+                    onBlur={(e) => handleBlur("sName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -251,11 +247,11 @@ export default function EnquiryForm() {
                               focus:shadow-none
                               focus-visible:ring-0
                               focus-visible:shadow-none
-                              focus:border-b-[#5949A7]
-                    "
+                              focus:border-b-[#5949A7]"
                     type="text"
                     placeholder="Email"
                     {...field}
+                    onBlur={(e) => handleBlur("email", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -300,6 +296,7 @@ export default function EnquiryForm() {
                       // Only allow digits, spaces, parentheses, dashes, and plus
                       e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
                     }}
+                    onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -337,6 +334,7 @@ export default function EnquiryForm() {
                     "
                     placeholder="Message"
                     {...field}
+                    onBlur={(e) => handleBlur("message", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />

@@ -80,6 +80,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
       offerId: "",
       message: "",
     },
+    mode: "onChange",
   });
 
   // State for loading and feedback
@@ -134,6 +135,12 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
   if (Object.keys(errors).length > 0) {
     console.log("Form validation errors:", errors);
   }
+
+  const handleBlur = (fieldName, value) => {
+    const trimmedValue = value.trim();
+    form.setValue(fieldName, trimmedValue, { shouldValidate: true });
+  };
+
   const errorStyle = "text-red-500";
 
   return (
@@ -197,6 +204,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                     type="text"
                     placeholder="First Name"
                     {...field}
+                    onBlur={(e) => handleBlur("fName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -224,6 +232,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                     type="text"
                     placeholder="Second Name"
                     {...field}
+                    onBlur={(e) => handleBlur("sName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -251,6 +260,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                     type="text"
                     placeholder="Email"
                     {...field}
+                    onBlur={(e) => handleBlur("email", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -284,6 +294,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                       // Only allow digits, spaces, parentheses, dashes, and plus
                       e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
                     }}
+                    onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -310,6 +321,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
                     "
                     placeholder="Message"
                     {...field}
+                    onBlur={(e) => handleBlur("message", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
