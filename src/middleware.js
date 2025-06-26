@@ -3,6 +3,7 @@ import createMiddleware from "next-intl/middleware";
 
 // 1. Define your valid route patterns (adjust as needed)
 const validRoutes = [
+  /^\/$/, // Allow root "/" as valid
   /^\/(en|ar)$/, // Home pages for each locale
   /^\/(en|ar)\/about$/, // About page
   /^\/(en|ar)\/contact$/, // Contact page
