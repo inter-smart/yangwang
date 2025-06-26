@@ -56,7 +56,7 @@ export default function AboutSection({ data }) {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "center 70%",
-          toggleActions: "play reset play none",
+          toggleActions: "play reset play reset",
         },
       }
     );
@@ -71,7 +71,7 @@ export default function AboutSection({ data }) {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "center 70%",
-          toggleActions: "play reset play none",
+          toggleActions: "play reset play reset",
           // markers: true,
         },
         onStart: function () {

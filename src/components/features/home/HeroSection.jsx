@@ -79,6 +79,7 @@ export default function HeroSection({ data, locale }) {
                 <video
                   autoPlay
                   preload="auto"
+                  playsInline
                   width={1920}
                   height={1080}
                   muted

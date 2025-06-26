@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 export default function LaunchOffersSection({ data }) {
   return (
     <section className="w-full h-[60dvh] md:h-auto min-h-[368px] py-[40px] md:py-[160px_140px] lg:py-[200px_280px] xl:py-[220px_190px] 2xl:py-[290px_260px] 3xl:py-[330px_290px] flex md:items-center relative z-0">
-      <picture>
+      <picture className="absolute -z-1 inset-0">
         <source
           media="(max-width: 768px)"
           srcSet="/images/mob-launchOffers-bg-1.jpg"

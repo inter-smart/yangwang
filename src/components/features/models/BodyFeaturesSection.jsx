@@ -38,7 +38,7 @@ const slide = [
 export default function BodyFeaturesSection({ locale, data }) {
   return (
     <section className="w-full h-auto block py-[30px] lg:py-[40px_50px] xl:py-[50px_70px] 2xl:py-[60px_90px] 3xl:py-[70px_100px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/70 before:pointer-events-none">
-      <picture>
+      <picture className="absolute -z-1 inset-0">
         <source media="(max-width: 768px)" srcSet="/images/models-u8-bodyFeatures-bg.jpg" />
         <Image
           src={data?.web_banner?.url || "/images/models-u8-bodyFeatures-bg.jpg"}

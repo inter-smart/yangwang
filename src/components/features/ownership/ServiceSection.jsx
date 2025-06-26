@@ -70,7 +70,6 @@ export default function ServiceSection({ data, partsData }) {
                     href="tel: 400-039-6666"
                     className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] text-[#5949A7] underline font-medium not-italic leading-none"
                   >
-                    {" "}
                     {contact_number}
                   </a>
                 </Text>

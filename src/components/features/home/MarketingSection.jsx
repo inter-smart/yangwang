@@ -89,6 +89,7 @@ export default function MarketingSection({ data }) {
                         height={590}
                         muted
                         loop
+                        playsInline
                         className="w-full h-full absolute -z-1 inset-0 object-cover"
                         aria-label="Video player"
                         onMouseEnter={(e) => e.target.play()}

@@ -26,7 +26,7 @@ export default function ExteriorInterior() {
               >
                 {colorItem.images.map((imgItem, imgIndex) => (
                   <SwiperSlide key={`sub-slide-${imgIndex}`} className="bg-white">
-                    <picture>
+                    <picture  className="absolute -z-1 inset-0">
                       <source media="(max-width: 768px)" srcSet="/images/models-u8-bodyFeatures-bg.jpg" />
                       <Image src={imgItem.url} alt={imgItem.alt_text} fill sizes="100vw" className="object-cover" />
                     </picture>

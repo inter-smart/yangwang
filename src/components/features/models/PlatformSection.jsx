@@ -8,6 +8,7 @@ export default function PlatformSection({ data }) {
       <video
         autoPlay
         preload="auto"
+        playsInline
         width={1920}
         height={540}
         muted

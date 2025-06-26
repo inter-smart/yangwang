@@ -22,7 +22,7 @@ export default function EnquirySection({ data }) {
             <Heading size="heading3" as="h3" className="text-black mb-[10px] xl:mb-[15px] 3xl:mb-[20px]">
               {data?.enq_title || "Enquire Now"}
             </Heading>
-            <Text size="text1" as="p" className="text-black mb-[15px] xl:mb-[20px] 3xl:mb-[30px]">
+            <Text size="text1" as="div" className="text-black mb-[15px] xl:mb-[20px] 3xl:mb-[30px]">
               {parse(data?.enq_desc) ||
                 "Fill out the form below to get in touch with us for more information about our models. Our team will respond to your enquiry as soon as possible."}
             </Text>

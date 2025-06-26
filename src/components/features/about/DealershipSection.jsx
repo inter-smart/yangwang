@@ -10,7 +10,7 @@ export default function DealershipSection({ data, showVideo }) {
   const imageAlt = images?.web?.alt;
   return (
     <section className="w-full max-md:h-[420px] md:h-dvh md:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0 before:content-[''] before:absolute before:z-1 before:inset-0 before:w-full before:h-full before:block before:bg-black/20 before:pointer-events-none">
-      <picture>
+      <picture className="absolute -z-1 inset-0">
         <source media="(max-width: 768px)" srcSet={mobileImageSrc} />
         <Image
           src={deskImageSrc}

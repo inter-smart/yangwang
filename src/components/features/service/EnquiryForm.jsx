@@ -87,20 +87,21 @@ const formSchema = z.object({
     .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in message." })
     .optional(),
 
-  // Subject
-  subject: z
-    .string()
-    .trim()
-    .min(2, { message: "Subject must be at least 2 characters." })
-    .max(255, { message: "Subject is too long." })
-    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in subject." }),
+  // // Subject
+  // subject: z
+  //   .string()
+  //   .trim()
+  //   .min(2, { message: "Subject must be at least 2 characters." })
+  //   .max(255, { message: "Subject is too long." })
+  //   .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
+  //   .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in subject." }),
 
   // Offer ID
-  offerId: z.string().trim().min(1, { message: "Please select an offer." }),
+  offerId: z.string().min(1, { message: "Please select an offer." }),
 });
 
 export default function ServiceEnquiryForm({ offerData, locationData }) {
+  const [open, setOpen] = useState(false);
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -164,11 +165,15 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
 
   const errorStyle = "text-red-500";
 
+
+  console.log("Form errors:", form.formState.errors);
+  
+
   return (
     <Form {...form}>
       <form
         onSubmit={(e) => {
-          console.log("Form submit event triggered");
+          console.log("Form submit event triggered")
           form.handleSubmit(onSubmit)(e);
         }}
         className="flex flex-wrap -mx-[15px] 2xl:-mx-[25px]"
@@ -330,7 +335,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Popover>
+                  <Popover open={open} onOpenChange={setOpen}>
                     <PopoverTrigger asChild>
                       <button
                         type="button"
@@ -351,6 +356,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                         onSelect={(selectedDate) => {
                           setDate(selectedDate);
                           field.onChange(selectedDate);
+                          setOpen(false);
                         }}
                         initialFocus
                         className="rounded-md border"

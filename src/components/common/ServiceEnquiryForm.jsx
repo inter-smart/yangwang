@@ -88,6 +88,7 @@ const formSchema = z.object({
 });
 
 export default function ServiceEnquiryForm({ locationData }) {
+  const [open, setOpen] = useState(false);
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -283,7 +284,7 @@ export default function ServiceEnquiryForm({ locationData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Popover>
+                  <Popover open={open} onOpenChange={setOpen}>
                     <PopoverTrigger asChild>
                       <button
                         variant="outline"
@@ -304,6 +305,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                         onSelect={(selectedDate) => {
                           setDate(selectedDate);
                           field.onChange(selectedDate);
+                          setOpen(false);
                         }}
                         initialFocus
                         className="rounded-md border"

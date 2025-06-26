@@ -7,37 +7,6 @@ const LocationMap = dynamic(() => import("../../common/LocationMap"), {
   ssr: false, // This ensures the component only loads on the client
 });
 
-const customerSupport = [
-  {
-    type: null,
-    title: "Customer Support",
-    value: "Reach Us Directly",
-    image: null,
-    image_alt: null,
-  },
-  {
-    type: "phone",
-    title: "Toll Free number",
-    value: "008968 24578000",
-    image: "/images/icon-csupport-phone.svg",
-    image_alt: "alt",
-  },
-  {
-    type: "mail",
-    title: "mail us",
-    value: "support@yangwang.com",
-    image: "/images/icon-csupport-phone.svg",
-    image_alt: "alt",
-  },
-  {
-    type: "whatsapp",
-    title: "WhatsApp",
-    value: "+968 24578000",
-    image: "/images/icon-csupport-whatsapp.svg",
-    image_alt: "alt",
-  },
-];
-
 export default function LocationSection({
   variant,
   showRooms,
@@ -85,7 +54,7 @@ export default function LocationSection({
                   <TabsTrigger
                     key={tab.key}
                     value={tab.key}
-                    className="relative text-white font-medium outline-none shadow-none text-[10px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full pb-[20px] after:content-[''] after:absolute after:bottom-[-4px] after:left-[-1px] after:lg:w-[350px] after:w-full after:h-[5px] after:bg-transparent data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
+                    className="relative text-white font-medium outline-none shadow-none text-[10px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full pb-[20px] after:content-[''] after:absolute after:bottom-[-4px] after:left-[-1px] after:lg:w-full after:lg:max-w-[350px] after:w-full after:h-[5px] after:bg-transparent data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
                   >
                     <div className={`${tab.width} ${tab.height} flex relative`}>
                       <Image
@@ -181,7 +150,7 @@ export default function LocationSection({
                       </div>
                       {item?.type === "phone" ? (
                         <a
-                          href={`tel:${item?.value}`}
+                          href={`tel:${item?.value?.replace(/[^+\d]/g, '')}`}
                           className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-none text-white transition-color block hover:text-base3"
                         >
                           {item?.value}
