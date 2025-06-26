@@ -4,7 +4,7 @@ import { Text } from "@/components/layout/Text";
 import Image from "next/image";
 import parse from "html-react-parser";
 
-export default function OwnerContactSection({ data }) {
+export default function OwnerContactSection({ data }) { 
   const {
     button_link = "#",
     button_text = "Default Button",
