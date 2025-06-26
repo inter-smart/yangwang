@@ -89,6 +89,7 @@ export default function Footer({ data, locale }) {
                       <li key={`socialmedia-${index}`}>
                         <Link
                           href={item?.url}
+                          target="_blank"
                           className="w-[12px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] aspect-square block transition-transform duration-300 hover:scale-110"
                         >
                           <Image

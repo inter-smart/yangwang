@@ -33,6 +33,8 @@ export default function DownloadSection({data}) {
           <div className="flex justify-center">
             <LinkButton
               href={data?.download_spec || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
               color="black"
               aria-label="Download spec sheet"
               className="min-w-[110px] sm:min-w-[130px] xl:min-w-[155px] 2xl:min-w-[200px] 3xl:min-w-[230px]"
