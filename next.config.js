@@ -1,5 +1,4 @@
 const createNextIntlPlugin = require("next-intl/plugin");
-
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
@@ -22,16 +21,20 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)", // Apply to all routes
+        source: "/(.*)",
         headers: [
           {
             key: "Content-Security-Policy",
             value: `
               default-src 'self';
-              script-src 'self' 'unsafe-inline';
+              script-src 'self' 'unsafe-inline' ${
+                process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ""
+              };
               style-src 'self' 'unsafe-inline';
-              img-src 'self' data: *.dev20.intersmarthosting.in;
-              connect-src 'self';
+              font-src 'self' data:;
+              img-src 'self' data: https://yangwang.dev20.intersmarthosting.in https://www.yangwang.dev20.intersmarthosting.in;
+              media-src 'self' https://yangwang.dev20.intersmarthosting.in https://www.yangwang.dev20.intersmarthosting.in;
+              connect-src 'self' https://yangwang.dev20.intersmarthosting.in;
               frame-ancestors 'none';
             `.replace(/\s{2,}/g, " ").trim(),
           },
@@ -54,6 +57,7 @@ const nextConfig = {
 };
 
 module.exports = withNextIntl(nextConfig);
+
 
 
 
