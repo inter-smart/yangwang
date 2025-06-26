@@ -14,19 +14,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 
-// const formSchema = z.object({
-//   fName: z.string().min(1, { message: "First Name is required." }),
-//   sName: z.string().min(1, { message: "Second Name is required." }),
-//   email: z.string().email({ message: "Invalid email address." }),
-//   phoneNumber: z
-//     .string()
-//     .min(10, { message: "Phone number must be at least 10 digits." })
-//     .regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number format." }),
-//   location: z.string().min(1, { message: "Please choose a Location" }),
-//   date: z.date({ message: "Please choose a Date" }),
-//   message: z.string().optional(),
-// });
-
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
 const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
@@ -104,6 +91,7 @@ export default function ServiceEnquiryForm({ locationData }) {
       date: "",
       message: "",
     },
+    mode: "onChange",
   });
 
   async function onSubmit(values) {
@@ -148,6 +136,11 @@ export default function ServiceEnquiryForm({ locationData }) {
     }
   }
 
+  const handleBlur = (fieldName, value) => {
+    const trimmedValue = value.trim();
+    form.setValue(fieldName, trimmedValue, { shouldValidate: true });
+  };
+
   const errorStyle = "text-red-500";
 
   return (
@@ -171,6 +164,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                     type="text"
                     placeholder="First Name"
                     {...field}
+                    onBlur={(e) => handleBlur("fName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -191,6 +185,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                     type="text"
                     placeholder="Second Name"
                     {...field}
+                    onBlur={(e) => handleBlur("sName", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -211,6 +206,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                     type="text"
                     placeholder="Email"
                     {...field}
+                    onBlur={(e) => handleBlur("email", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -237,6 +233,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                       // Only allow digits, spaces, parentheses, dashes, and plus
                       e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
                     }}
+                    onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
@@ -309,6 +306,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                         }}
                         initialFocus
                         className="rounded-md border"
+                        disabled={(date) => date < new Date().setHours(0, 0, 0, 0)}
                       />
                     </PopoverContent>
                   </Popover>
@@ -330,6 +328,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                     className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
                     placeholder="Message"
                     {...field}
+                    onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
                 </FormControl>
                 <FormMessage className={errorStyle} />
