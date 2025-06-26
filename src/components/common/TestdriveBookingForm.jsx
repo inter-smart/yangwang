@@ -2,14 +2,30 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "../layout/Button";
@@ -40,30 +56,49 @@ const formSchema = z.object({
     .trim()
     .min(2, { message: "First Name must be at least 2 characters." })
     .max(255, { message: "First Name is too long." })
-    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
-    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+    .regex(nameRegex, {
+      message:
+        "Name can only contain letters, spaces, apostrophes, and hyphens.",
+    })
+    .refine((val) => !/\d/.test(val), {
+      message: "Name cannot contain numbers.",
+    })
+    .refine((val) => !unsafePattern.test(val), {
+      message: "Invalid or unsafe input in name.",
+    }),
 
   sName: z
     .string()
     .trim()
     .min(2, { message: "Second Name must be at least 2 characters." })
     .max(255, { message: "Second Name is too long." })
-    .regex(nameRegex, { message: "Name can only contain letters, spaces, apostrophes, and hyphens." })
-    .refine((val) => !/\d/.test(val), { message: "Name cannot contain numbers." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in name." }),
+    .regex(nameRegex, {
+      message:
+        "Name can only contain letters, spaces, apostrophes, and hyphens.",
+    })
+    .refine((val) => !/\d/.test(val), {
+      message: "Name cannot contain numbers.",
+    })
+    .refine((val) => !unsafePattern.test(val), {
+      message: "Invalid or unsafe input in name.",
+    }),
 
   email: z
     .string()
     .trim()
     .email({ message: "Invalid email address." })
     .max(255, { message: "Email is too long." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe email." }),
+    .refine((val) => !unsafePattern.test(val), {
+      message: "Invalid or unsafe email.",
+    }),
 
   phoneNumber: z
     .string()
     .trim()
-    .regex(phoneRegex, { message: "Invalid phone number format. Use 10 to 15 digits, may start with '+'." })
+    .regex(phoneRegex, {
+      message:
+        "Invalid phone number format. Use 10 to 15 digits, may start with '+'.",
+    })
     .refine(
       (val) => {
         const digits = val.replace(/\D/g, "");
@@ -71,8 +106,12 @@ const formSchema = z.object({
       },
       { message: "Phone number must have between 10 and 15 digits." }
     )
-    .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: "Phone number cannot be all zeros." })
-    .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: "Invalid characters in phone number." }),
+    .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), {
+      message: "Phone number cannot be all zeros.",
+    })
+    .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), {
+      message: "Invalid characters in phone number.",
+    }),
 
   model: z.string().trim().min(1, { message: "Please select a model." }),
 
@@ -85,12 +124,17 @@ const formSchema = z.object({
     .trim()
     .min(2, { message: "Message must be at least 2 characters." })
     .max(5000, { message: "Message is too long." })
-    .refine((val) => !specialCharsOnly.test(val), { message: "Cannot be only special characters." })
-    .refine((val) => !unsafePattern.test(val), { message: "Invalid or unsafe input in message." })
+    .refine((val) => !specialCharsOnly.test(val), {
+      message: "Cannot be only special characters.",
+    })
+    .refine((val) => !unsafePattern.test(val), {
+      message: "Invalid or unsafe input in message.",
+    })
     .optional(),
 });
 
 export default function TestdriveBookingForm({ locationData, modelData }) {
+  const [open, setOpen] = useState(false);
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -124,13 +168,16 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
     };
 
     try {
-      const response = await fetch("https://www.yangwang.dev20.intersmarthosting.in/api/book-test-drive", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://www.yangwang.dev20.intersmarthosting.in/api/book-test-drive",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       // if (response.ok) {
       //   setSubmitStatus({ type: "success", message: "Test drive booked successfully!" });
@@ -151,7 +198,10 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       form.reset(); // Reset form on success
       setDate(null);
     } catch (error) {
-      setSubmitStatus({ type: "error", message: "An error occurred. Please try again later." });
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -238,7 +288,10 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                   <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder="Select Model" className="truncate text-[#999999] font-semibold" />
+                        <SelectValue
+                          placeholder="Select Model"
+                          className="truncate text-[#999999] font-semibold"
+                        />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
@@ -276,7 +329,10 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                     {...field}
                     onInput={(e) => {
                       // Only allow digits, spaces, parentheses, dashes, and plus
-                      e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
+                      e.target.value = e.target.value.replace(
+                        /[^0-9()+\-\s]/g,
+                        ""
+                      );
                     }}
                   />
                 </FormControl>
@@ -296,7 +352,10 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                   <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder="Select Location" className="truncate text-[#999999] font-semibold" />
+                        <SelectValue
+                          placeholder="Select Location"
+                          className="truncate text-[#999999] font-semibold"
+                        />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
@@ -325,7 +384,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Popover>
+                  <Popover open={open} onOpenChange={setOpen}>
                     <PopoverTrigger asChild>
                       <button
                         type="button"
@@ -338,13 +397,18 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                         <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-full p-0 bg-black text-white" align="start">
+                    <PopoverContent
+                      className="w-full p-0 bg-black text-white"
+                      align="start"
+                    >
                       <Calendar
                         mode="single"
                         selected={date}
+                        captionLayout="dropdown"
                         onSelect={(selectedDate) => {
                           setDate(selectedDate);
                           field.onChange(selectedDate);
+                          setOpen(false);
                         }}
                         initialFocus
                         className="rounded-md border"
@@ -391,7 +455,15 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
 
         {submitStatus && (
           <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] text-center">
-            <p className={submitStatus.type === "success" ? "text-green-500" : "text-red-500"}>{submitStatus.message}</p>
+            <p
+              className={
+                submitStatus.type === "success"
+                  ? "text-green-500"
+                  : "text-red-500"
+              }
+            >
+              {submitStatus.message}
+            </p>
           </div>
         )}
       </form>

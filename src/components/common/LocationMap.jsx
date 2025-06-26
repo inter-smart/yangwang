@@ -146,9 +146,9 @@ export default function LocationMap({ data }) {
   }, [data]);
 
   return (
-    <div className="flex flex-wrap w-full h-[510px] 2xl:h-[670px] relative z-1 overflow-hidden">
-      <div className="w-full md:w-[300px] xl:w-[350px] 2xl:w-[500px] 3xl:w-[585px] md:pr-[25px] 2xl:pr-[40px] max-md:max-h-[250px] overflow-y-auto max-md:mb-[20px] text-white">
-        <div className="realtive overflow-y-auto md:max-h-full text-left">
+    <div className="flex flex-wrap w-full relative z-1 overflow-hidden">
+      <div className="w-full md:w-[300px] xl:w-[350px] 2xl:w-[500px] 3xl:w-[585px] md:pr-[25px] 2xl:pr-[40px] max-md:mb-[20px] text-white">
+        <div className="realtive overflow-y-auto w-full max-h-[468px] md:max-h-[500px] lg:max-h-[500px] xl:max-h-[500px] 2xl:max-h-[640px] 3xl:max-h-[668px] text-left [&::-webkit-scrollbar]:[width:8px] [&::-webkit-scrollbar-thumb]:bg-base1 [&::-webkit-scrollbar-track]:bg-base1/20">
           {data.map((branch, index) => (
             <div
               key={index}
@@ -247,7 +247,7 @@ export default function LocationMap({ data }) {
           ))}
         </div>
       </div>
-      <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-350px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-585px)] max-md:h-[850px] relative z-0">
+      <div className="w-full md:w-[calc(100%-300px)] xl:w-[calc(100%-350px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-585px)] max-md:h-[420px] relative z-0">
         <MapContainer
           center={mapCenter}
           zoom={12}

@@ -86,13 +86,13 @@ export default function BodyFeaturesSection({ locale, data }) {
             {data?.body_feature?.map((item, index) => (
               <SwiperSlide key={"slide" + index}>
                 <Card className="w-full h-auto block rounded-none border-none">
-                  <CardHeader className="aspect-[476/576] relative z-0 overflow-hidden mb-[20px] xl:mb-[40px] 3xl:mb-[50px]">
+                  <CardHeader className="aspect-[476/576] relative z-0 overflow-hidden mb-[15px] xl:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
                     <Image
                       src={item?.media?.web_banner?.url || "/images/models-u8-bodyFeatures-1.jpg"}
                       alt={item?.alt_text || "Body Feature Image"}
                       fill
                       sizes="420px"
-                      className="transition-transform duration-300 hover:scale-105"
+                      className="object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </CardHeader>
                   <CardContent className="max-lg:px-2">

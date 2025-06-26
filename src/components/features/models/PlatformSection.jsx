@@ -32,7 +32,7 @@ export default function PlatformSection({ data }) {
             {parse(data?.description) || "Platform Section Description"}
           </Heading>
         </div>
-        <div className="max-w-[768px] xl:max-w-[992px] 2xl:max-w-[1200px] 3xl:max-w-[1300px] mx-auto flex flex-wrap [&>*]:p-[10px] xl:[&>*]:p-[15px] 3xl:[&>*]:p-[20px]">
+        <div className="max-w-[768px] xl:max-w-[992px] 2xl:max-w-[1200px] 3xl:max-w-[1300px] mx-auto flex flex-wrap justify-center [&>*]:p-[10px] xl:[&>*]:p-[15px] 3xl:[&>*]:p-[20px]">
           {data?.platform?.map((features, index) => (
             <div key={index} className="w-1/2 lg:w-1/4">
               <Image

@@ -50,8 +50,8 @@ export default function LocationSection({
       key: "showroom",
       label: showRooms?.header?.find_a_showroom_title || "Find a Showroom",
       icon: showRooms?.header?.showroom_image || "/images/carIcon.svg",
-      width: "w-[35px] md:w-[50px]",
-      height: "h-[35px] md:h-[50px]",
+      width: "w-[20px] md:w-[50px]",
+      height: "h-[20px] md:h-[50px]",
       show: true,
     },
     {
@@ -62,8 +62,8 @@ export default function LocationSection({
       icon:
         serviceCentres?.header?.service_centre_image ||
         "/images/serviceIcon.svg",
-      width: "w-[20px] md:w-[30px]",
-      height: "h-[20px] md:h-[30px]",
+      width: "w-[15px] md:w-[30px]",
+      height: "h-[15px] md:h-[30px]",
       show: hasVariantService,
     },
   ];
@@ -85,7 +85,7 @@ export default function LocationSection({
                   <TabsTrigger
                     key={tab.key}
                     value={tab.key}
-                    className="relative text-white font-medium outline-none shadow-none text-[11px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full pb-[20px] after:content-[''] after:absolute after:bottom-[-4px] after:left-[-1px] after:lg:w-[350px] after:w-full after:h-[5px] after:bg-transparent data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
+                    className="relative text-white font-medium outline-none shadow-none text-[10px] sm-text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] text-left h-full pb-[20px] after:content-[''] after:absolute after:bottom-[-4px] after:left-[-1px] after:lg:w-[350px] after:w-full after:h-[5px] after:bg-transparent data-[state=active]:after:bg-[#5949A7] data-[state=active]:shadow-none transition-all justify-start rounded-0 cursor-pointer"
                   >
                     <div className={`${tab.width} ${tab.height} flex relative`}>
                       <Image
@@ -104,7 +104,7 @@ export default function LocationSection({
                         className="object-contain transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
-                    <span className="px-[10px]">{tab.label}</span>
+                    <span className="px-[5px] md:px-[10px]">{tab.label}</span>
                   </TabsTrigger>
                 )
             )}

@@ -60,6 +60,7 @@ export default async function page({ params }) {
         title={privacyPolicyData?.banner_section?.title}
         banner_image={privacyPolicyData?.banner_section?.web_banner}
         banner_alt={privacyPolicyData?.banner_section?.web_banner_alt}
+        className="!h-[220px] xl:!h-[400px] 2xl:!h-[576px] 3xl:!h-620px] "
       />
       <PrivacyPolicy data={privacyPolicyData?.["privacy-policy"]} titles={privacyPolicyData?.title_listing} />
     </>
