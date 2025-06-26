@@ -34,7 +34,7 @@ export default function MarketingSection({ data }) {
               alt={data?.header?.icon?.alt_text}
               width={12}
               height={12}
-              className="w-[10px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] block"
+              className="w-[10px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] block filter-[brightness(0)_saturate(100%)]"
             />
             {data?.header?.button?.text}
           </Link>
