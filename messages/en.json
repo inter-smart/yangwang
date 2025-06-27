@@ -10,7 +10,8 @@
     "u8": "U8",
     "u8_description": "Premium electric vehicle with advanced technology.",
     "u9": "U9",
-    "u9_description": "High-performance electric supercar."
+    "u9_description": "High-performance electric supercar.",
+    "book_test_drive": "Book test drive"
   },
   "footer": {
     "menu": "Menu",
