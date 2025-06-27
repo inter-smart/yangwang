@@ -29,7 +29,7 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "../layout/Button";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
@@ -44,6 +44,8 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
+  const locale = useLocale();
+
   const formSchema = z.object({
     fName: z
       .string()
@@ -52,7 +54,9 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       .max(255, { message: t("fName_max") })
       .regex(nameRegex, { message: t("fName_regex") })
       .refine((val) => !/\d/.test(val), { message: t("fName_no_numbers") })
-      .refine((val) => !unsafePattern.test(val), { message: t("fName_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("fName_unsafe"),
+      }),
 
     // Second Name
     sName: z
@@ -62,7 +66,9 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       .max(255, { message: t("sName_max") })
       .regex(nameRegex, { message: t("sName_regex") })
       .refine((val) => !/\d/.test(val), { message: t("sName_no_numbers") })
-      .refine((val) => !unsafePattern.test(val), { message: t("sName_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("sName_unsafe"),
+      }),
 
     // Email
     email: z
@@ -70,15 +76,21 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       .trim()
       .email({ message: t("email_invalid") })
       .max(255, { message: t("email_max") })
-      .refine((val) => !unsafePattern.test(val), { message: t("email_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("email_unsafe"),
+      }),
 
     // Phone Number (universal, E.164)
     phoneNumber: z
       .string()
       .trim()
       .regex(phoneRegex, { message: t("phoneNumber_regex") })
-      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: t("phoneNumber_zeros") })
-      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: t("phoneNumber_invalid_chars") }),
+      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), {
+        message: t("phoneNumber_zeros"),
+      })
+      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), {
+        message: t("phoneNumber_invalid_chars"),
+      }),
 
     model: z
       .string()
@@ -97,8 +109,12 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       .trim()
       .min(2, { message: t("message_min") })
       .max(5000, { message: t("message_max") })
-      .refine((val) => !specialCharsOnly.test(val), { message: t("message_special_chars") })
-      .refine((val) => !unsafePattern.test(val), { message: t("message_unsafe") })
+      .refine((val) => !specialCharsOnly.test(val), {
+        message: t("message_special_chars"),
+      })
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("message_unsafe"),
+      })
       .optional(),
   });
 
@@ -248,10 +264,17 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select value={field.value} onValueChange={field.onChange}>
+                  <Select
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                    value={field.value}
+                    onValueChange={field.onChange}
+                  >
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder={t("model_placeholder")} className="truncate text-[#999999] font-semibold" />
+                        <SelectValue
+                          placeholder={t("model_placeholder")}
+                          className="truncate text-[#999999] font-semibold"
+                        />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
@@ -310,10 +333,17 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select value={field.value} onValueChange={field.onChange}>
+                  <Select
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                    value={field.value}
+                    onValueChange={field.onChange}
+                  >
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder={t("location_placeholder")} className="truncate text-[#999999] font-semibold" />
+                        <SelectValue
+                          placeholder={t("location_placeholder")}
+                          className="truncate text-[#999999] font-semibold"
+                        />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
@@ -351,7 +381,11 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                           !date && "text-muted-foreground"
                         )}
                       >
-                        {date ? format(date, "PPP") : <span>{t("date_placeholder")}</span>}
+                        {date ? (
+                          format(date, "PPP")
+                        ) : (
+                          <span>{t("date_placeholder")}</span>
+                        )}
                         <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
@@ -370,7 +404,9 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                         }}
                         initialFocus
                         className="rounded-md border"
-                        disabled={(date) => date < new Date().setHours(0, 0, 0, 0)}
+                        disabled={(date) =>
+                          date < new Date().setHours(0, 0, 0, 0)
+                        }
                       />
                     </PopoverContent>
                   </Popover>

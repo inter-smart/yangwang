@@ -13,7 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/layout/Button";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
@@ -23,6 +23,7 @@ const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first d
 
 export default function ServiceEnquiryForm({ offerData, locationData }) {
   const t = useTranslations("form");
+  const locale = useLocale();
 
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState();
@@ -169,7 +170,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormLabel className="font-semibold text-black">{t("offerId_placeholder")}</FormLabel>
                 <FormControl>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                  <Select dir={locale === "ar" ? "rtl" : "ltr"} onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className="w-full min-h-[50px] xl:min-h-[60px] 3xl:min-h-[70px] px-4 xl:px-6 border border-[#CCCCCC] rounded-none bg-white text-[14px] 2xl:text-[16px] 3xl:text-[18px] text-[#B3B3B3] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
                         <SelectValue placeholder={t("offerId_placeholder")} className="truncate text-[#999999] font-normal" />
@@ -290,7 +291,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                  <Select dir={locale === "ar" ? "rtl" : "ltr"} onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
                         <SelectValue placeholder={t("location_placeholder")} className="truncate text-[#999999] font-semibold" />
