@@ -1,26 +1,25 @@
 import { NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
-// 1. Define your valid route patterns (adjust as needed)
+// 1. Define your valid route patterns
 const validRoutes = [
   /^\/$/, // Allow root "/" as valid
   /^\/(en|ar)$/, // Home pages for each locale
   /^\/(en|ar)\/about$/, // About page
   /^\/(en|ar)\/contact$/, // Contact page
-  /^\/(en|ar)\/legal-statement$/, // statement page
-  /^\/(en|ar)\/models\/(u8|u9)(\/.*)?$/, // models page
+  /^\/(en|ar)\/legal-statement$/, // Statement page
+  /^\/(en|ar)\/models\/(u8|u9)(\/.*)?$/, // Models page
   /^\/(en|ar)\/news$/, // News page
+  /^\/(en|ar)\/news\/[^\/]+$/, // News detail page (matches /en/news/some-article)
   /^\/(en|ar)\/offers$/, // Offers page
   /^\/(en|ar)\/ownership$/, // Ownership page
   /^\/(en|ar)\/privacy-policy$/, // Privacy page
-  /^\/(en|ar)\/service$/, // service page
-  /^\/(en|ar)\/not-found$/, // error
-  // Add more patterns as needed
+  /^\/(en|ar)\/service$/, // Service page
+  /^\/(en|ar)\/not-found$/, // Error page
 ];
 
 function isValidRoute(pathname) {
   console.log(`[${new Date().toISOString()}] Checking if route is valid: ${pathname}`);
-
   return validRoutes.some((pattern) => pattern.test(pathname));
 }
 
@@ -28,11 +27,12 @@ export default async function middleware(request) {
   const { pathname, search } = request.nextUrl;
   console.log(`[${new Date().toISOString()}] Middleware triggered for: ${pathname}${search}`);
 
-  // Redirect / to /en or user's locale
-  if (pathname === "/" || pathname === "") {
+  // Redirect paths without locale prefix to locale-specific path
+  if (!pathname.startsWith("/en") && !pathname.startsWith("/ar")) {
     const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
-    console.log(`[${new Date().toISOString()}] Redirecting ${pathname} to /${locale}`);
-    const url = new URL(`/${locale}${search}`, request.url);
+    const targetPath = pathname === "/" || pathname === "" ? `/${locale}` : `/${locale}${pathname}`;
+    console.log(`[${new Date().toISOString()}] Redirecting ${pathname} to ${targetPath}`);
+    const url = new URL(targetPath + search, request.url);
     return NextResponse.redirect(url, { status: 308 });
   }
 
@@ -43,9 +43,9 @@ export default async function middleware(request) {
     return NextResponse.redirect(url, { status: 308 });
   }
 
-  // 2. Check if the route is valid
+  // Check if the route is valid
   if (!isValidRoute(pathname)) {
-    // Try to extract locale from pathname, default to "en"
+    // Extract locale from pathname, default to "en"
     const match = pathname.match(/^\/(en|ar)(\/|$)/);
     const locale = match ? match[1] : "en";
     console.log(`[${new Date().toISOString()}] Invalid route: ${pathname}, redirecting to /${locale}/not-found`);
@@ -53,7 +53,7 @@ export default async function middleware(request) {
     return NextResponse.redirect(url, { status: 307 });
   }
 
-  // 3. Apply next-intl middleware for localization
+  // Apply next-intl middleware for localization
   try {
     const intlMiddleware = createMiddleware({
       locales: ["en", "ar"],

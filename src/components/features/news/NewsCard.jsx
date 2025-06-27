@@ -22,7 +22,7 @@ export default function NewsCard({ item }) {
         >
           {item?.title}
         </Text>
-        <Text size="text4" as="p" className="line-clamp-4 overflow-hidden text-ellipsis">
+        <Text size="text4" as="div" className="line-clamp-4 overflow-hidden text-ellipsis">
           {parse(item?.description)}
         </Text>
       </div>

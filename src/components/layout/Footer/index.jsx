@@ -25,7 +25,7 @@ export default function Footer({ data, locale }) {
     { href: "/contact", title: t("contact") },
     { href: "/ownership", title: t("owners") },
     { href: "/offers", title: t("offers") },
-    { href: "/news", title: ("news") },
+    { href: "/news", title: t("news") },
   ];
 
   const modelsNav = [

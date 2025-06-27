@@ -10,7 +10,8 @@
     "u8": "U8",
     "u8_description": "Premium electric vehicle with advanced technology.",
     "u9": "U9",
-    "u9_description": "High-performance electric supercar."
+    "u9_description": "High-performance electric supercar.",
+    "book_test_drive": "Book test drive"
   },
   "footer": {
     "menu": "Menu",
@@ -31,7 +32,8 @@
     "copyright": "Copyright © Shenzhen Yangwang Automobile Sales Co., Ltd. All Rights Reserved.",
     "terms_conditions": "Terms & Conditions",
     "privacy_policy": "Privacy Policy",
-    "crafted_by": "Crafted By"
+    "crafted_by": "Crafted By",
+    "news": "News"
   },
   "form": {
     "fName_placeholder": "First Name",

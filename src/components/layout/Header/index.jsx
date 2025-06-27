@@ -76,7 +76,7 @@ export default function Header({ locale, data }) {
       { href: "/contact", title: t("contact") },
       { href: "/ownership", title: t("owners") },
       { href: "/offers", title: t("offers") },
-      { type: "mobile", href: "/offers", title: "book text drive" },
+      { type: "mobile", href: "/offers", title: t("book_test_drive") },
     ],
     [t]
   );
@@ -203,7 +203,7 @@ export default function Header({ locale, data }) {
               aria-label="model"
               className="capitalize min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px] max-sm:hidden"
             >
-              book test drive
+              {t("book_test_drive")}
             </LinkButton>
             <Select onValueChange={handleLocaleChange} value={locale} defaultValue={locale}>
               <SelectTrigger className="3xl:text-[15px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 2xl:[&>svg]:mt-[1px] 3xl:[&>svg]:mt-[2px]">
