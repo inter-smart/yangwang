@@ -57,8 +57,8 @@ export default async function page({ params }) {
         locale
       )}`,
       {
-        cache: "force-cache",
-        next: { revalidate: 60 },
+        cache: "no-store",
+        // next: { revalidate: 60 },
       }
     );
     const result = await response.json();
