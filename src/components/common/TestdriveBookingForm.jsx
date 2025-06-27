@@ -38,6 +38,7 @@ const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first d
 const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
 
 export default function TestdriveBookingForm({ locationData, modelData }) {
+  const [open, setOpen] = useState(false);
   const t = useTranslations("form");
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);

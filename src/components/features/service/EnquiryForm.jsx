@@ -24,6 +24,7 @@ const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first d
 export default function ServiceEnquiryForm({ offerData, locationData }) {
   const t = useTranslations("form");
 
+  const [open, setOpen] = useState(false);
   const [date, setDate] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
