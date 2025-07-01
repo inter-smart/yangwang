@@ -9,7 +9,7 @@ import Image from "next/image";
 import parse from "html-react-parser";
 import { useTranslations } from "next-intl";
 
-export default function EnquirySection({ data }) {
+export default function EnquirySection({ data, modelsData, locationData }) {
   const t = useTranslations("form");
 
   const TabsTriggerStyle =
@@ -51,7 +51,7 @@ export default function EnquirySection({ data }) {
                 <EnquiryForm />
               </TabsContent>
               <TabsContent value="book">
-                <TestdriveBookingForm />
+                <TestdriveBookingForm modelData={modelsData} locationData={locationData} />
               </TabsContent>
             </Tabs>
           </div>
