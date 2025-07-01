@@ -76,7 +76,7 @@ export default function Header({ locale, data }) {
       { href: "/contact", title: t("contact") },
       { href: "/ownership", title: t("owners") },
       { href: "/offers", title: t("offers") },
-      { type: "mobile", href: "/offers", title: t("book_test_drive") },
+      { type: "mobile", href: "/contact?tab=book", title: t("book_test_drive") },
     ],
     [t]
   );
@@ -199,7 +199,7 @@ export default function Header({ locale, data }) {
 
           <div className="flex items-center gap-[15px] lg:gap-[20px] xl:gap-[25px] 2xl:gap-[30px] 3xl:gap-[40px]">
             <LinkButton
-              href="/"
+              href="contact?tab=book"
               aria-label="model"
               className="capitalize min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px] max-sm:hidden"
             >

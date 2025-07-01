@@ -182,7 +182,7 @@ export default function ModelSection({ data, locale }) {
                         {item?.title}
                       </Heading>
                       <LinkButton
-                        href={item?.button?.link || "#"}
+                        href={`models/${item?.button?.link}` || "#"}
                         aria-label="Explore Models"
                         className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
                       >
