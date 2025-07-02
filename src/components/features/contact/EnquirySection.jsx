@@ -3,7 +3,6 @@
 import EnquiryForm from "@/components/common/EnquiryForm";
 import ServiceEnquiryForm from "@/components/common/ServiceEnquiryForm";
 import TestdriveBookingForm from "@/components/common/TestdriveBookingForm";
-import { Img } from "@/components/layout/Img";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import parse from "html-react-parser";

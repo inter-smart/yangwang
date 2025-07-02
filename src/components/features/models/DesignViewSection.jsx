@@ -26,6 +26,11 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
   const mainSwiperRef = useRef(null);
   const subSwiperRef = useRef(null);
 
+
+  console.log("exteriorData====>", exteriorData);
+  console.log("interiorData====>", interiorData);
+  
+
   useEffect(() => {
     if (subSwiperRef.current && prevRef.current && nextRef.current && subSwiperRef.current.params?.navigation) {
       subSwiperRef.current.params.navigation.prevEl = prevRef.current;
@@ -97,7 +102,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                                 src={imgItem.url}
                                 alt={imgItem.alt_text}
                                 fill
-                                sizes="100vw"
+                                sizes="1920px"
                                 className="object-cover"
                                 priority={imgIndex === 0}
                               />
