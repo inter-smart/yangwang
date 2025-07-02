@@ -16,11 +16,15 @@ export default function InteriorSection({ data }) {
             <Heading size="heading3" as="h3" className="capitalize text-white mb-[6px] xl:mb-[8px] 3xl:mb-[10px]">
               {data?.title}
             </Heading>
-            <Text size="text3" as="div" className="text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px] 3xl:max-w-[576px] 2xl:max-w-[500px] lg:max-w-[376px]">
+            <Text
+              size="text3"
+              as="div"
+              className="text-white mb-[15px] xl:mb-[20px] 3xl:mb-[30px] 3xl:max-w-[576px] 2xl:max-w-[500px] lg:max-w-[376px]"
+            >
               {parse(data?.description)}
             </Text>
             <LinkButton
-              href="#"
+              href={`/contact?tab=book`}
               aria-label="Book Test Drive"
               className="min-w-[70px] sm:min-w-[80px] xl:min-w-[97px] 2xl:min-w-[127px] 3xl:min-w-[146px]"
             >

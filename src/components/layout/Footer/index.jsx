@@ -186,10 +186,10 @@ export default function Footer({ data, locale }) {
                 <li>
                   <h6
                     className={`3xl:text-[12px] 2xl:text-[11px] xl:text-[9px] text-[8px] leading-none font-normal text-white hover:text-base1 transition-color duration-300 ${
-                      pathname === "/privacy-policy" ? "underline" : ""
+                      pathname === "/legal-statement" ? "underline" : ""
                     }`}
                   >
-                    <Link href="/privacy-policy">{t("terms_conditions") || "Terms & Conditions"}</Link>
+                    <Link href="/legal-statement">{t("terms_conditions") || "Terms & Conditions"}</Link>
                   </h6>
                 </li>
                 <li>

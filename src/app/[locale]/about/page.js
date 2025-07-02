@@ -46,8 +46,8 @@ export default async function AboutPage({ params }) {
   try {
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/about/${encodeURIComponent(locale)}`;
     const response = await fetch(apiUrl, {
-      cache: "force-cache",
-      next: { revalidate: 3600 }, // 1-hour revalidation
+      cache: "no-store",
+      // next: { revalidate: 3600 }, // 1-hour revalidation
     });
 
     if (!response.ok) {

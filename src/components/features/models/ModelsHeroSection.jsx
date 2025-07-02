@@ -5,6 +5,8 @@ import Image from "next/image";
 export default function ModelsHeroSection({ data, model }) {
   const { media } = data;
 
+  console.log("data ====>", data);
+
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-end py-[40px] lg:py-[60px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/50 before:pointer-events-none">
       <picture className="absolute -z-2 inset-0">
@@ -29,15 +31,9 @@ export default function ModelsHeroSection({ data, model }) {
               alt="models-logo"
               width={246}
               height={26}
-              className={
-                "w-[100px] sm:w-[120px] xl:w-[160px] 2xl:w-[215px] 3xl:w-[246px] mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]"
-              }
+              className={"w-[100px] sm:w-[120px] xl:w-[160px] 2xl:w-[215px] 3xl:w-[246px] mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]"}
             />
-            <Heading
-              size="heading3"
-              as="h3"
-              className="!font-normal text-white max-lg:mb-[15px]"
-            >
+            <Heading size="heading3" as="h3" className="!font-normal text-white max-lg:mb-[15px]">
               {data?.banner_sub_title}
             </Heading>
           </div>
@@ -51,12 +47,13 @@ export default function ModelsHeroSection({ data, model }) {
               {data?.banner_btn || "Book a test drive"}
             </LinkButton>
             <LinkButton
-              href="#"
+              href={data?.download_spec_link || "#"}
+              target="_blank"
               color="black"
               aria-label="Download spec sheet"
               className="min-w-[120px] sm:min-w-[130px] xl:min-w-[155px] 2xl:min-w-[200px] 3xl:min-w-[230px]"
             >
-              Download spec sheet
+              {data?.download_spec_btn || "Download spec sheet"}
             </LinkButton>
           </div>
         </div>

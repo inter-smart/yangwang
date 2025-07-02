@@ -7,14 +7,22 @@ import { Img } from "@/components/layout/Img";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import parse from "html-react-parser";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function EnquirySection({ data }) {
   const t = useTranslations("form");
   const { header, location, model } = data;
 
-  const locale = useLocale();
-  
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  console.log("searchParams", searchParams.get("tab"));
+
+  const defaultTab = tabParam ? tabParam : "enquire";
+
+  console.log("defaultTab", defaultTab);
+
   return (
     <section className="w-full pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[130px] lg:pb-[40px] pb-[60px] relative min-h-[400px] md:min-h-[600px]">
       <div
@@ -40,8 +48,8 @@ export default function EnquirySection({ data }) {
 
           {/* Right Column */}
           <div className="w-full 3xl:w-[calc(100%-510px)] 2xl:w-[calc(100%-410px)] xl:w-[calc(100%-350px)] lg:w-[calc(100%-250px)]">
-            <Tabs dir={locale === "ar" ? "rtl" : "ltr"} defaultValue="enquire" className="w-full">
-              <TabsList className="flex justify-between items-center ltr:mr-[25px] border-b border-gray-200 relative w-full h-[60px] rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
+            <Tabs defaultValue={defaultTab} className="w-full">
+              <TabsList className="flex justify-between items-center mr-[25px] border-b border-gray-200 relative w-full h-[60px] rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
                 <TabsTrigger
                   value="enquire"
                   className="relative text-black font-medium outline-none shadow-none

@@ -46,8 +46,8 @@ export default async function page({ params }) {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/news-and-events/${encodeURIComponent(locale)}&limit=${limit}&page=${initialPage}`,
       {
-        cache: "force-cache",
-        next: { revalidate: 60 },
+        cache: "no-store",
+        // next: { revalidate: 60 },
       }
     );
 
