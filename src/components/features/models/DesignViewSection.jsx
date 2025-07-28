@@ -287,19 +287,23 @@ export default function DesignViewSection({
                         {exteriorData?.colors.map((item, index) => (
                           <SwiperSlide
                             key={`exterior-thumb-${index}`}
-                            className={`${
-                              index === activeExteriorIndex
-                                ? "scale-100"
-                                : "scale-80"
-                            } !w-[20px] lg:!w-[25px] xl:!w-[30px] 2xl:!w-[40px] 3xl:!w-[50px]  transition-transform`}
+                            className="!w-[20px] lg:!w-[25px] xl:!w-[30px] 2xl:!w-[40px] 3xl:!w-[50px] transition-transform"
                           >
-                            <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  rounded aspect-square cursor-pointer relative z-0">
+                            <div
+                              className={`
+                              ${
+                                index === activeExteriorIndex
+                                  ? "scale-100"
+                                  : "scale-80"
+                              } w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  rounded aspect-square cursor-pointer`}
+                            >
                               <Image
+                                title={item.color_name}
                                 src={item.color_thumb.url}
                                 alt={item.color_thumb.alt_text}
-                                fill
-                                sizes="50px"
-                                title={item.color_name}
+                                width={50}
+                                height={50}
+                                className="w-full h-full object-cover"
                               />
                             </div>
                           </SwiperSlide>
