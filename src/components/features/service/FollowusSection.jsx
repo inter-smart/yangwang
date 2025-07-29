@@ -44,7 +44,7 @@ export default function FollowusSection({ data }) {
             >
               <Image
                 src={icon}
-                alt={icon_alt}
+                alt={icon_alt || "social media"}
                 width={12}
                 height={12}
                 className="w-[12px] xl:w-[21px] h-[12px] xl:h-[18px] object-contain"

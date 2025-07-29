@@ -30,7 +30,7 @@ export default function EnquirySection({ data }) {
       >
         <Image
           src={header?.image}
-          alt={header?.image_alt}
+          alt={header?.image_alt || "enquiry-banner"}
           fill
           sizes="(max-width: 650px) 100vw, 1050px"
           className="object-contain transition-transform duration-300"

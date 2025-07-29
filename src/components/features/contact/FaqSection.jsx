@@ -68,7 +68,7 @@ export default function FaqSection({ faqData, socialData }) {
               <div className="w-full 3xl:mb-[50px] 2xl:mb-[40px] mb-[30px] aspect-square relative group overflow-hidden">
                 <Image
                   src={faqData?.header?.faq_image}
-                  alt={faqData?.header?.faq_image_alt}
+                  alt={faqData?.header?.faq_image_alt || "faq-banner"}
                   fill
                   sizes="(max-width: 510px) 100vw, 1050px"
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -94,7 +94,7 @@ export default function FaqSection({ faqData, socialData }) {
                       {/* <div className="w-[12px] xl:w-[21px] h-[12px] xl:h-[18px] [&>icon]:w-full [&>svg]:h-full [&>svg]:fill-current"> */}
                       <Image
                         src={icon}
-                        alt={icon_alt}
+                        alt={icon_alt || "social-icon"}
                         width={12}
                         height={12}
                         className="w-[10px] xl:w-[15px] 3xl:w-[20px] aspect-square object-contain filter-[brightness(0)_saturate(100%)] group-hover:filter-none"

@@ -161,7 +161,7 @@ export default function ModelSection({ data, locale, index }) {
                             <DropdownMenuTrigger className="w-[25px] sm:w-[30px] xl:w-[40px] 2xl:w-[52px] 3xl:w-[60px] h-auto block rounded-full hover:bg-base1/40 ring-0 focus:outline-none focus:ring-0 transition-background duration-300 data-[state=open]:bg-base1/40">
                               <Image
                                 src={colorVariantsItem?.thumb?.url}
-                                alt={colorVariantsItem?.thumb?.alt_text}
+                                alt={colorVariantsItem?.thumb?.alt_text || "thumb white color"}
                                 width={60}
                                 height={60}
                               />

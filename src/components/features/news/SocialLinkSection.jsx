@@ -38,7 +38,7 @@ export default function SocialLinkSection({ data }) {
                 >
                   <Image
                     src={item?.icon}
-                    alt={item?.icon_alt}
+                    alt={item?.icon_alt || "social link"}
                     width={20}
                     height={20}
                     className="w-[40%] h-[40%] object-contain"

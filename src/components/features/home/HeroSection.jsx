@@ -68,7 +68,7 @@ export default function HeroSection({ data, locale }) {
               {item.media.type === "image" ? (
                 <Image
                   src={item.media?.web_banner?.url}
-                  alt={item.media?.web_banner?.alt_text}
+                  alt={item.media?.web_banner?.alt_text || "Hero Banner"}
                   width={1920}
                   height={1080}
                   className="w-full h-full absolute -z-2 inset-0 object-cover"

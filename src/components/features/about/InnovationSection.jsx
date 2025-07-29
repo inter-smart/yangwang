@@ -49,7 +49,7 @@ export default function InovationSection({ locale, data }) {
               >
                 <Image
                   src={item.video_thumbnail}
-                  alt={item.alt}
+                  alt={item.alt || "inovation-video"}
                   width={550}
                   height={415}
                   className="object-cover group-hover:scale-105 transition-transform duration-300"

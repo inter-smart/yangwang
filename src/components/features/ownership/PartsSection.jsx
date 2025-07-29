@@ -114,7 +114,7 @@ export default function PartsSection({ data }) {
           <div className="w-full md:w-1/2 max-md:min-h-[300px] group overflow-hidden relative z-0">
             <Image
               src={web_banner}
-              alt={web_banner_alt}
+              alt={web_banner_alt || "Banner Image"}
               fill
               sizes="970px"
               className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"

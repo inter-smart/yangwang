@@ -140,7 +140,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                               <source media="(max-width: 768px)" srcSet={imgItem.url} />
                               <Image
                                 src={imgItem.url}
-                                alt={imgItem.alt_text}
+                                alt={imgItem.alt_text || "Exterior"}
                                 fill
                                 sizes="1920px"
                                 className="object-cover"
@@ -191,7 +191,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                               <source media="(max-width: 768px)" srcSet={imgItem?.url} />
                               <Image
                                 src={imgItem?.url}
-                                alt={imgItem?.alt_text}
+                                alt={imgItem?.alt_text || "Interior"}
                                 fill
                                 sizes="100vw"
                                 className="object-cover"
@@ -272,7 +272,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                               <Image
                                 title={item.color_name}
                                 src={item.color_thumb.url}
-                                alt={item.color_thumb.alt_text}
+                                alt={item.color_thumb.alt_text || "Exterior Thumb"}
                                 width={50}
                                 height={50}
                                 className="w-full h-full object-cover"
@@ -313,7 +313,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                             <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px] rounded aspect-square cursor-pointer relative z-0">
                               <Image
                                 src={item.color_thumb.url}
-                                alt={item.color_thumb.alt_text}
+                                alt={item.color_thumb.alt_text || "Interior Thumb"}
                                 fill
                                 sizes="50px"
                                 title={item.color_name}

@@ -28,7 +28,7 @@ export default function ExteriorInterior() {
                   <SwiperSlide key={`sub-slide-${imgIndex}`} className="bg-white">
                     <picture  className="absolute -z-1 inset-0">
                       <source media="(max-width: 768px)" srcSet="/images/models-u8-bodyFeatures-bg.jpg" />
-                      <Image src={imgItem.url} alt={imgItem.alt_text} fill sizes="100vw" className="object-cover" />
+                      <Image src={imgItem.url} alt={imgItem.alt_text || "Exterior Interior Image"} fill sizes="100vw" className="object-cover" />
                     </picture>
                   </SwiperSlide>
                 ))}
@@ -84,7 +84,7 @@ export default function ExteriorInterior() {
                       <div className="w-[50px] rounded aspect-square cursor-pointer relative z-0">
                         <Image
                           src={item.color_thumb.url}
-                          alt={item.color_thumb.alt_text}
+                          alt={item.color_thumb.alt_text || "Color Thumb"}
                           fill
                           sizes="50px"
                           title={item.color_name}

@@ -85,7 +85,7 @@ export default function HighlightSection({ interiorData, exteriorHighlights }) {
                     <source media="(max-width: 768px)" srcSet={activeItem?.media?.banner_mobile?.url} />
                     <Image
                       src={activeItem?.media?.banner_web?.url}
-                      alt={activeItem?.media?.banner_web?.alt_text}
+                      alt={activeItem?.media?.banner_web?.alt_text || "Banner Image"}
                       fill
                       sizes="100vw"
                       className="object-cover"

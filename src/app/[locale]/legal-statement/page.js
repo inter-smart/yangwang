@@ -58,7 +58,7 @@ export default async function page({ params }) {
       <InnerBanner
         title={legalStatementData?.banner_section?.title}
         banner_image={legalStatementData?.banner_section?.web_banner}
-        banner_alt={legalStatementData?.banner_section?.web_banner_alt}
+        banner_alt={legalStatementData?.banner_section?.web_banner_alt || "Banner Image"}
       />
       <LegalStatement data={legalStatementData?.["terms-and-conditions"]} />
     </>

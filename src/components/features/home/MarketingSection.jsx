@@ -31,7 +31,7 @@ export default function MarketingSection({ data }) {
             <Image
               // src="icon-btn-insta.svg"
               src={data?.header?.icon?.url}
-              alt={data?.header?.icon?.alt_text}
+              alt={data?.header?.icon?.alt_text || "Instagram"}
               width={12}
               height={12}
               className="w-[10px] xl:w-[12px] 2xl:w-[16px] 3xl:w-[20px] block filter-[brightness(0)_saturate(100%)]"
@@ -77,7 +77,7 @@ export default function MarketingSection({ data }) {
                     {item.media.type === "image" ? (
                       <Image
                         src={item?.media?.web_banner?.url}
-                        alt={item?.media?.web_banner?.alt_text}
+                        alt={item?.media?.web_banner?.alt_text || "Image"}
                         fill
                         sizes="420px"
                         className="transition-transform duration-300 hover:scale-105"

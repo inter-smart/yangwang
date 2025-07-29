@@ -12,7 +12,7 @@ export default function BrandSection({ data }) {
         <div className="w-full h-auto aspect-[1720/575] overflow-hidden block">
           <Image
             src={images?.web?.url}
-            alt={images?.web?.alt}
+            alt={images?.web?.alt || "Brand banner"}
             width={1920}
             height={1080}
             className="object-cover w-full h-full"

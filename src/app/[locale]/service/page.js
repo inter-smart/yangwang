@@ -63,7 +63,7 @@ export default async function Contact({ params }) {
       <InnerBanner
         title={serviceData?.banner_section?.title}
         banner_image={serviceData?.banner_section?.web_banner}
-        banner_alt={serviceData?.banner_section?.web_banner_alt}
+        banner_alt={serviceData?.banner_section?.web_banner_alt || "Banner Image"}
       />
       <GlobalSection data={serviceData?.first_section} />
       <WarrantySection data={serviceData?.service_section} featuresData={serviceData?.features} />

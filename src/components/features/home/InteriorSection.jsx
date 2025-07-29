@@ -34,7 +34,7 @@ export default function InteriorSection({ data }) {
           <div className="w-full h-auto flex-grow block overflow-hidden relative z-0">
             <Image
               src={data?.image_one}
-              alt={data?.image_one_alt_text}
+              alt={data?.image_one_alt_text || "Interior banner"}
               fill
               sizes="1080px"
               className="-z-2 object-cover transition-transform duration-300 hover:scale-110"
@@ -46,7 +46,7 @@ export default function InteriorSection({ data }) {
           <div className="w-full h-auto max-md:aspect-[4/2] md:h-full block overflow-hidden relative z-0">
             <Image
               src={data?.image_two}
-              alt={data?.image_two_alt_text}
+              alt={data?.image_two_alt_text || "Interior banner"}
               fill
               sizes="820px"
               className="-z-2 object-cover transition-transform duration-300 hover:scale-110"

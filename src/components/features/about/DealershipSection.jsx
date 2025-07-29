@@ -14,7 +14,7 @@ export default function DealershipSection({ data, showVideo }) {
         <source media="(max-width: 768px)" srcSet={mobileImageSrc} />
         <Image
           src={deskImageSrc}
-          alt={imageAlt}
+          alt={imageAlt || "Dealership banner"}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="-z-1 object-cover"

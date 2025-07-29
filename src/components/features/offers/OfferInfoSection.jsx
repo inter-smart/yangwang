@@ -28,7 +28,7 @@ export default function OfferInfoSection({ data, offersInfo }) {
             <div className="w-full h-auto sm:h-full overflow-hidden relative z-0 max-sm:aspect-video">
               <Image
                 src={item?.image}
-                alt={item?.image_alt}
+                alt={item?.image_alt || "Offer image"}
                 fill
                 sizes="900px"
                 className="object-cover -z-1 transition-transform duration-300 hover:scale-105"

@@ -26,7 +26,7 @@ export default function ServiceSection({ data, partsData }) {
         <div className="w-full md:w-1/2 max-md:min-h-[300px] group overflow-hidden relative z-0">
           <Image
             src={web_banner}
-            alt={web_banner_alt}
+            alt={web_banner_alt || "Banner Image"}
             fill
             sizes="970px"
             className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -89,7 +89,7 @@ function ServiceBx({ item }) {
         <div className="group 2xl:w-[50px] xl:w-[30px] w-[20px] 2xl:h-[50px] xl:h-[30px] h-[20px] 2xl:aspect-50/50 aspect-30/30">
           <Image
             src={item?.image}
-            alt={item?.image_alt}
+            alt={item?.image_alt || "service"}
             width={50}
             height={50}
             className="w-full h-full object-contain transition-transform duration-600 group-hover:scale-[1.05]"

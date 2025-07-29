@@ -21,7 +21,7 @@ export default function GlobalSection({ data, featuresData }) {
     <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative z-0 after:content-[''] after:absolute after:-z-1 after:top-0 after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,0.5)]  ">
       <Image
         src={web_banner}
-        alt={web_banner_alt}
+        alt={web_banner_alt || "Banner Image"}
         fill
         sizes="(max-width: 1920px) 100vw, 1050px"
         className="-z-2 object-cover transition-transform duration-300 pointer-events-none"

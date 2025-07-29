@@ -60,7 +60,7 @@ export default function PerformanceSection({ performanceData }) {
               />
               <Image
                 src={activeItem?.media?.web_banner?.url}
-                alt={activeItem?.media?.web_banner?.alt_text}
+                alt={activeItem?.media?.web_banner?.alt_text || "Banner"}
                 fill
                 sizes="100vw"
                 className="object-cover"

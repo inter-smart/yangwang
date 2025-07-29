@@ -38,7 +38,7 @@ export default function PlatformSection({ data }) {
             <div key={index} className="w-1/2 lg:w-1/4">
               <Image
                 src={features?.icon?.url}
-                alt={features?.icon?.alt_text}
+                alt={features?.icon?.alt_text || "Icon"}
                 width={40}
                 height={40}
                 className="w-[40px] xl:w-[60px] 3xl:w-[60px] aspect-[4/3] mx-auto mb-[10px] xl:mb-[15px] 3xl:mb-[20px] object-contain"

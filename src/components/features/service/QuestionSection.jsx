@@ -20,7 +20,7 @@ export default function FollowusSection({ data, offerData, locationData }) {
             <div className="relative w-full max-w-[700px] aspect-[740/375] mb-[15px]">
               <Image
                 src={data?.enquiry_image}
-                alt={data?.enquiry_image_alt}
+                alt={data?.enquiry_image_alt || "Offer Enquiry Image"}
                 fill
                 sizes="(max-width: 700px) 100vw, 1050px"
                 className="object-cover transition-transform duration-300 pointer-events-none"

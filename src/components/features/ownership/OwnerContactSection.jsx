@@ -22,7 +22,7 @@ export default function OwnerContactSection({ data }) {
         <div className="w-full h-full min-h-[280px] md:min-h-[335px] xl:min-h-[365px] 2xl:min-h-[468px] 3xl:min-h-[535px] bg-black flex items-center relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-gradient-to-t before:from-black/60 before:to-black/60 before:pointer-events-none">
           <Image
             src={web_banner}
-            alt={web_banner_alt}
+            alt={web_banner_alt || "Banner Image"}
             fill
             sizes="1722px"
             className="object-cover -z-2"

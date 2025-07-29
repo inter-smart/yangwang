@@ -69,7 +69,7 @@ export default async function page({ params }) {
       <InnerBanner
         title={newsData?.banner_section?.title}
         banner_image={newsData?.banner_section?.web_banner}
-        banner_alt={newsData?.banner_section?.web_banner_alt}
+        banner_alt={newsData?.banner_section?.web_banner_alt || "Banner Image"}
       />
       <NewSection
         newsData={newsData?.news_list}

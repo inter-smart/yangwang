@@ -14,7 +14,7 @@ export default function InnerBanner({
       {banner_image && (
         <Image
           src={banner_image}
-          alt={banner_alt}
+          alt={banner_alt || "Banner Image"}
           fill
           sizes="100vw"
           className="-z-2 object-cover"

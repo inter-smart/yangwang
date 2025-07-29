@@ -62,7 +62,7 @@ export default async function page({ params }) {
       <InnerBanner
         title={ownerShipData?.banner_section?.title}
         banner_image={ownerShipData?.banner_section?.web_banner}
-        banner_alt={ownerShipData?.banner_section?.web_banner_alt}
+        banner_alt={ownerShipData?.banner_section?.web_banner_alt || "Banner Image"}
       />
       <OwnershipSection data={ownerShipData?.section_two} />
       <ServiceSection data={ownerShipData?.section_three} />

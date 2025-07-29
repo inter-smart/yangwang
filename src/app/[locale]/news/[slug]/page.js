@@ -68,7 +68,7 @@ export default async function page({ params }) {
       <InnerBanner
         title={newsData?.banners?.banner_title}
         banner_image={newsData?.banners?.web_banner}
-        banner_alt={newsData?.banners?.web_banner_alt}
+        banner_alt={newsData?.banners?.web_banner_alt || "Banner Image"}
       />
       <NewsDetailSection data={newsData} locale={locale} />
       {newsData?.related_list?.length > 0 && <RelatedPostSection data={newsData?.related_list} locale={locale} />}

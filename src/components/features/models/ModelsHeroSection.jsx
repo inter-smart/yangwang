@@ -11,7 +11,7 @@ export default function ModelsHeroSection({ data, model }) {
         <source media="(max-width: 768px)" srcSet={media?.banner_mobile?.url} />
         <Image
           src={media?.banner_web?.url}
-          alt={media?.banner_web?.alt_text}
+          alt={media?.banner_web?.alt_text || "Hero Background"}
           fill
           sizes="100vw"
           className="-z-2 object-cover"

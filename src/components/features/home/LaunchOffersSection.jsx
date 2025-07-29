@@ -16,7 +16,7 @@ export default function LaunchOffersSection({ data }) {
         />
         <Image
           src={data?.web_banner}
-          alt={data?.web_banner_alt_text}
+          alt={data?.web_banner_alt_text || "Launch Offers banner"}
           fill
           sizes="100vw"
           className="-z-1 object-cover"

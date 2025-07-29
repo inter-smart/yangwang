@@ -9,7 +9,7 @@ export default function NewsCard({ item }) {
       <div className="w-full h-auto aspect-[540/400] block 2xl:mb-[30px] md:mb-[20px] mb-[15px] overflow-hidden">
         <Image
           src={item?.thumbnail?.url}
-          alt={item?.thumbnail?.alt}
+          alt={item?.thumbnail?.alt || "news"}
           width={640}
           height={920}
           className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"

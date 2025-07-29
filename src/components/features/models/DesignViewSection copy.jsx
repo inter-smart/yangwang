@@ -100,7 +100,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                               <source media="(max-width: 768px)" srcSet={imgItem.url} />
                               <Image
                                 src={imgItem.url}
-                                alt={imgItem.alt_text}
+                                alt={imgItem.alt_text || "Exterior Image"}
                                 fill
                                 sizes="1920px"
                                 className="object-cover"
@@ -150,7 +150,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                               <source media="(max-width: 768px)" srcSet={imgItem?.url} />
                               <Image
                                 src={imgItem?.url}
-                                alt={imgItem?.alt_text}
+                                alt={imgItem?.alt_text || "Interior Image"}
                                 fill
                                 sizes="100vw"
                                 className="object-cover"
@@ -225,7 +225,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                             <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  rounded aspect-square cursor-pointer relative z-0">
                               <Image
                                 src={item.color_thumb.url}
-                                alt={item.color_thumb.alt_text}
+                                alt={item.color_thumb.alt_text || "Color Thumb"}
                                 fill
                                 sizes="50px"
                                 title={item.color_name}
@@ -265,7 +265,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                             <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px] rounded aspect-square cursor-pointer relative z-0">
                               <Image
                                 src={item.color_thumb.url}
-                                alt={item.color_thumb.alt_text}
+                                alt={item.color_thumb.alt_text || "Color Thumb"}
                                 fill
                                 sizes="50px"
                                 title={item.color_name}
@@ -357,7 +357,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                       <source media="(max-width: 768px)" srcSet={item?.mobile_banner?.url} />
                       <Image
                         src={item?.web_banner?.url}
-                        alt={item?.web_banner?.alt_text}
+                        alt={item?.web_banner?.alt_text || "Alloy Wheels Background"}
                         fill
                         sizes="100vw"
                         className="object-cover"
@@ -401,7 +401,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                     <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  aspect-square rounded relative z-0 mb-[4px] xl:mb-[6px] 3xl:mb-[10px] mx-auto">
                       <Image
                         src={item?.color_thumb?.url}
-                        alt={item?.color_thumb?.alt_text}
+                        alt={item?.color_thumb?.alt_text || "Alloy Wheels Thumb"}
                         fill
                         sizes="50px"
                         title={item?.color_name}

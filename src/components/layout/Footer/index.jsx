@@ -95,7 +95,7 @@ export default function Footer({ data, locale }) {
                         >
                           <Image
                             src={item?.icon}
-                            alt={item.icon_alt}
+                            alt={item.icon_alt || "social media"}
                             width={38}
                             height={38}
                             className="w-full h-full block object-contain"

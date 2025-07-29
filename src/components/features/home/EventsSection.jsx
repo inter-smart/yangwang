@@ -54,7 +54,7 @@ export default function EventsSection({ data }) {
                       >
                         <Image
                           src={item.thumbnail}
-                          alt={item.thumbnail_alt}
+                          alt={item.thumbnail_alt || "Thumbnail"}
                           fill
                           sizes="460px"
                           className="object-cover transition-transform duration-300 hover:scale-105"

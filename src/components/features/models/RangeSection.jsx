@@ -20,7 +20,7 @@ export default function RangeSection({ data }) {
       <div className="container">
         <div className="flex flex-wrap gap-y-[20px] items-center justify-between [&>*]:px-[20px] xl:[&>*]:px-[60px] 3xl:[&>*]:px-[80px]">
           <div className="max-w-[40%]">
-            <Image src={data?.distance_map_image?.url} alt={data?.distance_map_image?.alt_text} width={590} height={590} />
+            <Image src={data?.distance_map_image?.url} alt={data?.distance_map_image?.alt_text || "Distance map image"} width={590} height={590} />
           </div>
           <div className="max-w-[60%]">
             <div className="relative z-0 inline-block lg:translate-y-2/5">
@@ -47,7 +47,7 @@ export default function RangeSection({ data }) {
             </Heading>
             <Image
               src={data?.distance_right_image?.url}
-              alt={data?.distance_right_image?.alt_text}
+              alt={data?.distance_right_image?.alt_text || "Distance right image"}
               width={608}
               height={305}
               className="3xl:w-[370px] 2xl:w-[340px] xl:w-[260px] sm:w-[240px] w-[200px] mx-auto"
