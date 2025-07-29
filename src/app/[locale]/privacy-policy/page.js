@@ -47,7 +47,7 @@ export default async function page({ params }) {
     const result = await response.json();
     if (result.success && result.status === 200) {
       privacyPolicyData = result.data;
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched ownership  data for ${locale}`, privacyPolicyData);
+      //console.log(`[2025-05-29T14:37:00.000Z] Fetched ownership  data for ${locale}`, privacyPolicyData);
     } else {
       console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
     }

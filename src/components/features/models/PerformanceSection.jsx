@@ -15,8 +15,8 @@ export default function PerformanceSection({ performanceData }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = performanceData[activeIndex];
 
-  console.log("performanceData", performanceData);
-  console.log("activeItem", activeItem);
+  //console.log("performanceData", performanceData);
+  //console.log("activeItem", activeItem);
 
   const handleItemClick = (index) => {
     setActiveIndex(index);

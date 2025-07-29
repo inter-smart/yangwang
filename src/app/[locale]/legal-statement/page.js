@@ -5,13 +5,10 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition/${encodeURIComponent(locale)}`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 60 },
-      }
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition/${encodeURIComponent(locale)}`, {
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
     const result = await response.json();
 
     if (result.success && result.status === 200) {
@@ -42,18 +39,14 @@ export default async function page({ params }) {
   let legalStatementData = {};
 
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition/${encodeURIComponent(locale)}`,
-      {
-        cache: "no-store",
-        // next: { revalidate: 60 },
-      }
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/terms-and-condition/${encodeURIComponent(locale)}`, {
+      cache: "no-store",
+      // next: { revalidate: 60 },
+    });
 
     const result = await response.json();
     if (result.success && result.status === 200) {
       legalStatementData = result.data;
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched legal data for ${locale}`, legalStatementData);
     } else {
       console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
     }

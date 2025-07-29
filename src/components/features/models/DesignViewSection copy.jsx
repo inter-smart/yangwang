@@ -27,8 +27,8 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
   const subSwiperRef = useRef(null);
 
 
-  console.log("exteriorData====>", exteriorData);
-  console.log("interiorData====>", interiorData);
+  //console.log("exteriorData====>", exteriorData);
+  //console.log("interiorData====>", interiorData);
   
 
   useEffect(() => {

@@ -51,7 +51,7 @@ export default async function Contact({ params }) {
     const result = await response.json();
     if (result.success && result.status === 200) {
       serviceData = result.data;
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched service  data for ${locale}`, serviceData);
+      //console.log(`[2025-05-29T14:37:00.000Z] Fetched service  data for ${locale}`, serviceData);
     } else {
       console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
     }

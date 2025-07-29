@@ -16,11 +16,11 @@ export default function EnquirySection({ data }) {
 
   const searchParams = useSearchParams();
   const tabParam = searchParams.get("tab");
-  console.log("searchParams", searchParams.get("tab"));
+  //console.log("searchParams", searchParams.get("tab"));
 
   const defaultTab = tabParam ? tabParam : "enquire";
 
-  console.log("defaultTab", defaultTab);
+  //console.log("defaultTab", defaultTab);
 
   return (
     <section className="w-full pt-[40px] lg:pt-[60px] xl:pt-[110px] 3xl:pt-[130px] lg:pb-[40px] pb-[60px] relative min-h-[400px] md:min-h-[600px]">

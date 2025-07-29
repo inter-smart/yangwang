@@ -131,7 +131,7 @@ export default function EnquiryForm() {
   // Log form errors for debugging
   const errors = form.formState.errors;
   if (Object.keys(errors).length > 0) {
-    console.log("Form validation errors:", errors);
+    //console.log("Form validation errors:", errors);
   }
   const errorStyle = "text-red-500";
 

@@ -115,7 +115,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
       }
 
       const data = await response.json();
-      console.log("API response:", data);
+      //console.log("API response:", data);
       setFeedback({ type: "success", message: data?.message || "Enquiry sent successfully!" });
       form.reset(); // Reset form on success
     } catch (error) {
@@ -132,7 +132,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
   // Log form errors for debugging
   const errors = form.formState.errors;
   if (Object.keys(errors).length > 0) {
-    console.log("Form validation errors:", errors);
+    //console.log("Form validation errors:", errors);
   }
 
   const handleBlur = (fieldName, value) => {
@@ -146,7 +146,7 @@ export default function OfferEnquiryForm({ offerData, serviceTitle }) {
     <Form {...form}>
       <form
         onSubmit={(e) => {
-          console.log("Form submit event triggered");
+          //console.log("Form submit event triggered");
           form.handleSubmit(onSubmit)(e);
         }}
         className="flex flex-wrap -mx-[15px] lg:-mx-[25px]"

@@ -497,7 +497,7 @@ PlaceholdersAndVanishInput.propTypes = {
 //         body: JSON.stringify({ email }),
 //       });
 
-//       console.log("response from api", response);
+//       //console.log("response from api", response);
 
 //       if (!response.ok) {
 //         throw new Error("Failed to subscribe to newsletter");

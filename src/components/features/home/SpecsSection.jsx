@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 
 export default function SpecsSection({ data, locale }) {
-  console.log("data spec", data);
+  //console.log("data spec", data);
 
   const TabsTriggerStyle =
     "text-[16px] lg:text-[20px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] font-medium leading-none uppercase h-auto data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:border-black rounded-none focus-visible:outline-0 focus-visible:ring-0 focus-visible:border-0 px-[4px] pt-0 pb-[2px] sm:pb-[4px] xl:pb-[6px] 3xl:pb-[10px] border-0 border-b border-transparent text-[#b2b2b2] cursor-pointer";

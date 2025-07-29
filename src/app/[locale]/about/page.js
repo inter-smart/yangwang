@@ -65,7 +65,6 @@ export default async function AboutPage({ params }) {
         futureSection: result.data.future_section,
         innovationSection: result.data.innovation_section,
       };
-      console.log(`[${timestamp}] Fetched about data for ${locale}`, aboutData);
     } else {
       console.error(`[${timestamp}] API error: ${result.message || "Unknown error"}`);
     }

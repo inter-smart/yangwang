@@ -37,7 +37,7 @@ export default function LocationSection({
     },
   ];
 
-  console.log(
+  //console.log(
     "showRooms?.header?.showroom_image",
     showRooms?.header?.showroom_image
   );

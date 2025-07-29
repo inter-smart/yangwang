@@ -63,7 +63,7 @@ const CustomPopup = ({ branch }) => {
 function MapController({ selectedBranch, data }) {
   const map = useMap();
   const markerRefs = useRef({});
-  console.log("selectedBranch  ===>", selectedBranch);
+  //console.log("selectedBranch  ===>", selectedBranch);
 
   useEffect(() => {
     // Pan to the selected branch LocationMap

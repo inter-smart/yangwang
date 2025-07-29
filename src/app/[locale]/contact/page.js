@@ -48,8 +48,6 @@ export default async function Contact({ params }) {
     const result = await response.json();
     if (result.success && result.status === 200) {
       contactData = result.data;
-
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched contact  data for ${locale}`, contactData);
     } else {
       console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
     }

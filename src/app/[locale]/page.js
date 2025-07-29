@@ -52,7 +52,6 @@ export default async function Home({ params }) {
     const result = await response.json();
     if (result.success && result.status === 200) {
       homeData = result.data;
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched home data for ${locale}`, homeData);
     } else {
       console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
     }
@@ -64,7 +63,11 @@ export default async function Home({ params }) {
     <>
       <HeroSection data={homeData?.home_banner || []} locale={locale} />
       <AboutSection data={homeData?.about_company || {}} locale={locale} />
-      <ModelSection data={homeData?.vehicle_spec} locale={locale} />
+      <section className="w-full h-auto block relative overflow-hidden">
+        {homeData?.vehicle_spec?.map((item, index) => (
+          <ModelSection data={item} index={index} key={item?.slug} locale={locale} />
+        ))}
+      </section>
       <SpecsSection data={homeData?.platform_section} locale={locale} />
       <LaunchOffersSection data={homeData?.offer || {}} locale={locale} />
       <InteriorSection data={homeData?.feel_the_drive || {}} locale={locale} />

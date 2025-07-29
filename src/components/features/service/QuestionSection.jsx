@@ -4,7 +4,7 @@ import Image from "next/image";
 import OffersEnquiryForm from "./EnquiryForm";
 
 export default function FollowusSection({ data, offerData, locationData }) {
-  console.log("offerData, locationData", offerData, locationData);
+  //console.log("offerData, locationData", offerData, locationData);
 
   return (
     <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative" id='service-form'>

@@ -117,7 +117,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
       }
 
       const data = await response.json();
-      console.log("API response:", data);
+      //console.log("API response:", data);
       setSubmitStatus({ type: "success", message: data?.message });
       form.reset(); // Reset form on success
     } catch (error) {
@@ -157,7 +157,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
     <Form {...form}>
       <form
         onSubmit={(e) => {
-          console.log("Form submit event triggered");
+          //console.log("Form submit event triggered");
           form.handleSubmit(onSubmit)(e);
         }}
         className="flex flex-wrap -mx-[15px] 2xl:-mx-[25px]"

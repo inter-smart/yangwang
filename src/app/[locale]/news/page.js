@@ -55,8 +55,8 @@ export default async function page({ params }) {
     if (result.success && result.status === 200) {
       newsData = result.data || [];
       pagination = result.data.meta || { total: 0, currentPage: initialPage, limit };
-      console.log(`[2025-06-05T12:55:00.000Z] Fetched news data for ${locale}`, result.data);
-      console.log(`[2025-06-05T12:55:00.000Z] Category list:`, result.data.category_list);
+      //console.log(`[2025-06-05T12:55:00.000Z] Fetched news data for ${locale}`, result.data);
+      //console.log(`[2025-06-05T12:55:00.000Z] Category list:`, result.data.category_list);
     } else {
       console.error(`[2025-06-05T12:55:00.000Z] API error: ${result.message || "Unknown error"}`);
     }
@@ -105,7 +105,7 @@ export default async function page({ params }) {
 //     const result = await response.json();
 //     if (result.success && result.status === 200) {
 //       newsData = result.data;
-//       console.log(`[2025-05-29T14:37:00.000Z] Fetched news  data for ${locale}`, newsData);
+//       //console.log(`[2025-05-29T14:37:00.000Z] Fetched news  data for ${locale}`, newsData);
 //     } else {
 //       console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
 //     }

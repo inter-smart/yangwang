@@ -49,7 +49,7 @@ export default async function page({ params }) {
     const result = await response.json();
     if (result.success && result.status === 200) {
       offersData = result.data;
-      console.log(`[2025-05-29T14:37:00.000Z] Fetched offers  data for ${locale}`, offersData);
+      //console.log(`[2025-05-29T14:37:00.000Z] Fetched offers  data for ${locale}`, offersData);
     } else {
       console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
     }
