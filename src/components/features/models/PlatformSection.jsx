@@ -41,7 +41,7 @@ export default function PlatformSection({ data }) {
                 alt={features?.icon?.alt_text || "Icon"}
                 width={40}
                 height={40}
-                className="w-[40px] xl:w-[60px] 3xl:w-[60px] aspect-[4/3] mx-auto mb-[10px] xl:mb-[15px] 3xl:mb-[20px] object-contain"
+                className="w-[40px] xl:w-[60px] 3xl:w-[60px] aspect-[4/3] mx-auto mb-[10px] xl:mb-[15px] 3xl:mb-[20px] object-contain filter-[brightness(0)_saturate(100%)_invert(100%)_sepia(0%)_saturate(3907%)_hue-rotate(74deg)_brightness(117%)_contrast(92%)]"
               />
               <Heading size="heading6" as="h6" className="leading-tight text-center text-white">
                 {features.title}
