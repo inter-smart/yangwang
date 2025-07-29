@@ -14,8 +14,20 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import Image from "next/image";
 import { LinkButton } from "../Button";
 
@@ -153,7 +165,11 @@ export default function Header({ locale, data }) {
               ))}
             </NavigationMenuList>
           </NavigationMenu> */}
-          <NavigationMenu viewport={false} dir={locale === "ar" ? "rtl" : "ltr"} className="max-sm:hidden">
+          <NavigationMenu
+            viewport={false}
+            dir={locale === "ar" ? "rtl" : "ltr"}
+            className="max-sm:hidden"
+          >
             <NavigationMenuList className="gap-0">
               {menuItems.map(
                 (item, index) =>
@@ -164,7 +180,7 @@ export default function Header({ locale, data }) {
                           <NavigationMenuTrigger className="data-[active=true]:focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:bg-transparent hover:bg-transparent focus:bg-transparent [&>svg]:stroke-white [&>svg]:ml-[2px] p-[5px] xl:p-[10px_15px] 3xl:p-[15px_20px] focus:outline-none focus:ring-0">
                             <span
                               className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
-                                isActive(item) ? "text-base1" : "text-black"
+                                isActive(item) ? "text-base1" : "text-white"
                               }`}
                             >
                               {item.title}
@@ -181,7 +197,9 @@ export default function Header({ locale, data }) {
                                     <Link
                                       href={subItem.href}
                                       className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
-                                        pathname === subItem.href ? "text-base1" : "text-white"
+                                        pathname === subItem.href
+                                          ? "text-base1"
+                                          : "text-white"
                                       }`}
                                     >
                                       {subItem.title}
@@ -200,7 +218,9 @@ export default function Header({ locale, data }) {
                           <Link
                             href={item.href}
                             className={`3xl:text-[16px] 2xl:text-[14px] xl:text-[12px] lg:text-[10px] text-[10px] font-normal capitalize transition-colors duration-300 hover:text-base1 focus:text-base1 ${
-                              pathname === item.href ? "text-base1" : "text-white"
+                              pathname === item.href
+                                ? "text-base1"
+                                : "text-white"
                             }`}
                           >
                             {item.title}
@@ -221,15 +241,25 @@ export default function Header({ locale, data }) {
             >
               {t("book_test_drive")}
             </LinkButton>
-            <Select onValueChange={handleLocaleChange} value={locale} defaultValue={locale}>
+            <Select
+              onValueChange={handleLocaleChange}
+              value={locale}
+              defaultValue={locale}
+            >
               <SelectTrigger className="3xl:text-[15px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal uppercase leading-none text-white [&_svg]:stroke-white p-0 focus-visible:ring-0 shadow-none border-none gap-[2px] [&>svg]:size-3 2xl:[&>svg]:mt-[1px] 3xl:[&>svg]:mt-[2px]">
                 <SelectValue placeholder={locale.toUpperCase()} />
               </SelectTrigger>
               <SelectContent className="bg-white max-w-[40px] border-base1/10">
-                <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="en">
+                <SelectItem
+                  className={`${triggerNavStyle} uppercase text-black`}
+                  value="en"
+                >
                   En
                 </SelectItem>
-                <SelectItem className={`${triggerNavStyle} uppercase text-black`} value="ar">
+                <SelectItem
+                  className={`${triggerNavStyle} uppercase text-black`}
+                  value="ar"
+                >
                   Ar
                 </SelectItem>
               </SelectContent>
@@ -246,9 +276,18 @@ export default function Header({ locale, data }) {
             <div className="sm:hidden">
               <Sheet open={open} onOpenChange={setOpen} className="sm:hidden">
                 <SheetTrigger className="w-[20px] flex">
-                  <Image src="/images/icon-humburger.svg" alt="humburger" width={25} height={25} className="block" />
+                  <Image
+                    src="/images/icon-humburger.svg"
+                    alt="humburger"
+                    width={25}
+                    height={25}
+                    className="block"
+                  />
                 </SheetTrigger>
-                <SheetContent className="bg-white backdrop-blur-[30px]" side={locale === "ar" ? "right" : "left"}>
+                <SheetContent
+                  className="bg-white backdrop-blur-[30px]"
+                  side={locale === "ar" ? "right" : "left"}
+                >
                   <SheetHeader>
                     <SheetTitle className="sr-only">Site navigation</SheetTitle>
                     <ul className="flex flex-col [&>li]:max-sm:m-[15px] my-[15px]">
@@ -257,10 +296,15 @@ export default function Header({ locale, data }) {
                           <Heading
                             as="h6"
                             className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
-                              pathname === item.href ? "text-base1" : "text-black"
+                              pathname === item.href
+                                ? "text-base1"
+                                : "text-black"
                             }`}
                           >
-                            <Link href={item.href} onClick={() => setOpen(false)}>
+                            <Link
+                              href={item.href}
+                              onClick={() => setOpen(false)}
+                            >
                               {item.title}
                             </Link>
                           </Heading>
@@ -271,10 +315,15 @@ export default function Header({ locale, data }) {
                                   <Heading
                                     as="h6"
                                     className={`text-[14px] font-medium tracking-[1px] capitalize hover:text-base1 transition-all duration-300 ${
-                                      pathname === subItem.href ? "text-base1" : "text-black"
+                                      pathname === subItem.href
+                                        ? "text-base1"
+                                        : "text-black"
                                     }`}
                                   >
-                                    <Link href={subItem.href} onClick={() => setOpen(false)}>
+                                    <Link
+                                      href={subItem.href}
+                                      onClick={() => setOpen(false)}
+                                    >
                                       {subItem.title}
                                     </Link>
                                   </Heading>
