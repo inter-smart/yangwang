@@ -1,40 +1,83 @@
-'use client';
+"use client";
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#232526] to-[#414345] animate-fadeIn">
-      <div className="relative flex flex-col items-center px-8 py-10 rounded-3xl shadow-2xl bg-white/10 backdrop-blur-md border border-white/20">
-        <div className="mb-6">
-          <div className="w-20 h-20 rounded-full border-4 border-white/30 border-t-transparent animate-spin bg-gradient-to-tr from-pink-400 via-purple-400 to-blue-400" />
-        </div>
-        <div className="mb-2 text-xl font-semibold text-white/90 tracking-wide animate-pulse">Loading your experience...</div>
-        <div className="w-48 h-2 rounded-full bg-white/10 overflow-hidden mt-4">
-          <div className="h-full w-1/2 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 animate-progressBar" />
-        </div>
-      </div>
+    <div className="loader">
       <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+        .loader {
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-in;
+        .car__body {
+          animation: shake 0.2s ease-in-out infinite alternate;
         }
-        @keyframes progressBar {
+        .car__line {
+          transform-origin: center right;
+          stroke-dasharray: 22;
+          animation: line 0.8s ease-in-out infinite;
+          animation-fill-mode: both;
+        }
+        .car__line--top {
+          animation-delay: 0s;
+        }
+        .car__line--middle {
+          animation-delay: 0.2s;
+        }
+        .car__line--bottom {
+          animation-delay: 0.4s;
+        }
+        @keyframes shake {
           0% {
-            transform: translateX(-100%);
+            transform: translateY(-1%);
           }
           100% {
-            transform: translateX(100%);
+            transform: translateY(3%);
           }
         }
-        .animate-progressBar {
-          animation: progressBar 1.2s infinite linear;
+        @keyframes line {
+          0% {
+            stroke-dashoffset: 22;
+          }
+          25% {
+            stroke-dashoffset: 22;
+          }
+          50% {
+            stroke-dashoffset: 0;
+          }
+          51% {
+            stroke-dashoffset: 0;
+          }
+          80% {
+            stroke-dashoffset: -22;
+          }
+          100% {
+            stroke-dashoffset: -22;
+          }
         }
       `}</style>
+
+      <svg className="car" width="102" height="40" xmlns="http://www.w3.org/2000/svg">
+        <g
+          transform="translate(2 1)"
+          stroke="#002742"
+          fill="none"
+          fillRule="evenodd"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path
+            className="car__body"
+            d="M47.293 2.375C52.927.792 54.017.805 54.017.805c2.613-.445 6.838-.337 9.42.237l8.381 1.863c2.59.576 6.164 2.606 7.98 4.531l6.348 6.732 6.245 1.877c3.098.508 5.609 3.431 5.609 6.507v4.206c0 .29-2.536 4.189-5.687 4.189H36.808c-2.655 0-4.34-2.1-3.688-4.67 0 0 3.71-19.944 14.173-23.902zM36.5 15.5h54.01"
+            strokeWidth="3"
+          />
+          <ellipse className="car__wheel--left" strokeWidth="3.2" fill="#FFF" cx="83.493" cy="30.25" rx="6.922" ry="6.808" />
+          <ellipse className="car__wheel--right" strokeWidth="3.2" fill="#FFF" cx="46.511" cy="30.25" rx="6.922" ry="6.808" />
+          <path className="car__line car__line--top" d="M22.5 16.5H2.475" strokeWidth="3" />
+          <path className="car__line car__line--middle" d="M20.5 23.5H.4755" strokeWidth="3" />
+          <path className="car__line car__line--bottom" d="M25.5 9.5h-19" strokeWidth="3" />
+        </g>
+      </svg>
     </div>
   );
 }
