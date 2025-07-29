@@ -52,8 +52,8 @@ export default async function page({ params, searchParams }) {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/product-detail/${encodeURIComponent(slug)}/${encodeURIComponent(locale)}`,
       {
-        cache: "no-store",
-        // next: { revalidate: 60 },
+        cache: "force-cache",
+        next: { revalidate: 60 },
       }
     );
     const result = await response.json();

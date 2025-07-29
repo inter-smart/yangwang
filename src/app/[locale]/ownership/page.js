@@ -43,8 +43,8 @@ export default async function page({ params }) {
 
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ownership/${encodeURIComponent(locale)}`, {
-      cache: "no-store",
-      // next: { revalidate: 60 },
+      cache: "force-cache",
+      next: { revalidate: 60 },
     });
 
     const result = await response.json();
