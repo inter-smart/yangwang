@@ -5,8 +5,6 @@ import Image from "next/image";
 export default function ModelsHeroSection({ data, model }) {
   const { media } = data;
 
-  console.log("data ====>", data);
-
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-end py-[40px] lg:py-[60px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/50 before:pointer-events-none">
       <picture className="absolute -z-2 inset-0">
@@ -23,9 +21,9 @@ export default function ModelsHeroSection({ data, model }) {
       <div className="container">
         <div className="flex flex-wrap items-end justify-between gap-[10px]">
           <div className="relative z-0">
-            <div className="3xl:text-[220px] 2xl:text-[200px] xl:text-[150px] lg:text-[130px] sm:text-[92px] text-[72px] leading-none uppercase font-medium bg-gradient-to-b from-white via-80% via-white/10 to-transparent bg-clip-text text-transparent absolute -z-1 bottom-[20%] ltr:right-[-5%] rtl:left-[-5%]">
+            <h1 className="3xl:text-[220px] 2xl:text-[200px] xl:text-[150px] lg:text-[130px] sm:text-[92px] text-[72px] leading-none uppercase font-medium bg-gradient-to-b from-white via-80% via-white/10 to-transparent bg-clip-text text-transparent absolute -z-1 bottom-[20%] ltr:right-[-5%] rtl:left-[-5%]">
               {model}
-            </div>
+            </h1>
             <Image
               src="/images/models-title-logo.svg"
               alt="models-logo"
