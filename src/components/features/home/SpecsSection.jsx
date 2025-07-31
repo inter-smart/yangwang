@@ -1,6 +1,7 @@
 import { Heading } from "@/components/layout/Heading";
 import { Text } from "@/components/layout/Text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import parse from "html-react-parser";
 import Image from "next/image";
 
 export default function SpecsSection({ data, locale }) {
@@ -51,7 +52,8 @@ export default function SpecsSection({ data, locale }) {
                     as="p"
                     className="text-[#262626] mb-[15px] xl:mb-[30px] 3xl:mb-[40px]"
                   >
-                    {item?.description?.replace(/^<p>|<\/p>$/g, "") || ""}
+                    {/* {item?.description?.replace(/^<p>|<\/p>$/g, "") || ""} */}
+                    {parse(item?.description)}
                   </Text>
                   <ul>
                     {item?.platform?.map((spec, index) => (
