@@ -4,7 +4,7 @@ import { Text } from "@/components/layout/Text";
 import Image from "next/image";
 import parse from "html-react-parser";
 
-export default function OwnerContactSection({ data }) { 
+export default function OwnerContactSection({ data }) {
   const {
     button_link = "#",
     button_text = "Default Button",
@@ -20,13 +20,16 @@ export default function OwnerContactSection({ data }) {
     <section className="w-full py-[30px_25px] lg:py-[60px_55px] xl:py-[80px_70px] 3xl:py-[100px_115px]">
       <div className="container">
         <div className="w-full h-full min-h-[280px] md:min-h-[335px] xl:min-h-[365px] 2xl:min-h-[468px] 3xl:min-h-[535px] bg-black flex items-center relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-gradient-to-t before:from-black/60 before:to-black/60 before:pointer-events-none">
-          <Image
-            src={web_banner}
-            alt={web_banner_alt || "Banner Image"}
-            fill
-            sizes="1722px"
-            className="object-cover -z-2"
-          />
+          <picture className="w-full h-full absolute -z-2 inset-0">
+            <source media="(max-width: 768px)" srcSet={mobile_banner} />
+            <Image
+              src={web_banner}
+              alt={web_banner_alt || "Banner Image"}
+              fill
+              sizes="1722px"
+              className="object-cover -z-2"
+            />
+          </picture>
           <div className="w-full h-full">
             <div className="flex items-center justify-center flex-col w-full h-full m-auto md:px-[0] px-[15px] md:max-w-[62%]">
               <Heading

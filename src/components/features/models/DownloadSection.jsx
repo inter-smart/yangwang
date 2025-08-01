@@ -4,16 +4,19 @@ import { Text } from "@/components/layout/Text";
 import Image from "next/image";
 import parse from "html-react-parser";
 
-export default function DownloadSection({data}) {
+export default function DownloadSection({ data }) {
   return (
     <section className="w-full h-auto block py-[40px] lg:py-[60px] xl:py-[100px] 2xl:py-[130px_140px] 3xl:py-[140px_160px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/50 before:pointer-events-none">
-      <Image
-        src="/images/follow-Banner.jpg"
-        alt="follow-Banner"
-        fill
-        sizes="100vw"
-        className="object-cover -z-2"
-      />
+      <picture className="absolute -z-2 inset-0">
+        <source media="(max-width: 768px)" srcSet={data?.mobile_banner?.url} />
+        <Image
+          src={data?.web_banner?.url || "/images/follow-Banner.jpg"}
+          alt={data?.web_banner?.alt_text || "Download Section"}
+          fill
+          sizes="100vw"
+          className="object-cover -z-2"
+        />
+      </picture>
       <div className="container">
         <div className="xl:max-w-[520px] 2xl:max-w-[676px] 3xl:max-w-[768px] mx-auto">
           <Heading
@@ -28,7 +31,8 @@ export default function DownloadSection({data}) {
             as="div"
             className="text-center text-white mb-[20px] xl:mb-[30px] 3xl:mb-[40px]"
           >
-            {parse(data?.footer_desc) || "All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to add new products, so stay tuned."}
+            {parse(data?.footer_desc) ||
+              "All the surprising goods are available in Yangwang Mall to enrich your car life. The Yangwang Mall will continue to add new products, so stay tuned."}
           </Text>
           <div className="flex justify-center">
             <LinkButton

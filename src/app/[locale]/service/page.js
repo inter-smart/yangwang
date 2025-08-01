@@ -9,10 +9,15 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/service/${encodeURIComponent(
+        locale
+      )}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
     const result = await response.json();
 
     if (result.success && result.status === 200) {
@@ -43,30 +48,50 @@ export default async function Contact({ params }) {
   let serviceData = {};
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/service/${encodeURIComponent(
+        locale
+      )}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
 
     const result = await response.json();
     if (result.success && result.status === 200) {
       serviceData = result.data;
       //console.log(`[2025-05-29T14:37:00.000Z] Fetched service  data for ${locale}`, serviceData);
     } else {
-      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+      console.error(
+        `[2025-05-29T14:37:00.000Z] API error: ${
+          result.message || "Unknown error"
+        }`
+      );
     }
   } catch (error) {
-    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch service data: ${error.message}`);
+    console.error(
+      `[2025-05-29T14:37:00.000Z] Failed to fetch service data: ${error.message}`
+    );
   }
+
+  console.log("page data fetched:", serviceData);
+
   return (
     <>
       <InnerBanner
         title={serviceData?.banner_section?.title}
+        mobile_image={serviceData?.banner_section?.mobile_banner}
         banner_image={serviceData?.banner_section?.web_banner}
-        banner_alt={serviceData?.banner_section?.web_banner_alt || "Banner Image"}
+        banner_alt={
+          serviceData?.banner_section?.web_banner_alt || "Banner Image"
+        }
       />
       <GlobalSection data={serviceData?.first_section} />
-      <WarrantySection data={serviceData?.service_section} featuresData={serviceData?.features} />
+      <WarrantySection
+        data={serviceData?.service_section}
+        featuresData={serviceData?.features}
+      />
       <QuestionSection
         data={serviceData?.enquiry_section}
         offerData={serviceData?.offer_types}

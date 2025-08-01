@@ -19,13 +19,16 @@ export default function GlobalSection({ data, featuresData }) {
   } = data;
   return (
     <section className="w-full 3xl:py-[130px_90px] 2xl:py-[80px_50px] xl:py-[50px] py-[40px] relative z-0 after:content-[''] after:absolute after:-z-1 after:top-0 after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,0.5)]  ">
-      <Image
-        src={web_banner}
-        alt={web_banner_alt || "Banner Image"}
-        fill
-        sizes="(max-width: 1920px) 100vw, 1050px"
-        className="-z-2 object-cover transition-transform duration-300 pointer-events-none"
-      />
+      <picture className="w-full h-full absolute -z-2 inset-0">
+        <source media="(max-width: 768px)" srcSet={mobile_banner} />
+        <Image
+          src={web_banner}
+          alt={web_banner_alt || "Banner Image"}
+          fill
+          sizes="(max-width: 1920px) 100vw, 1050px"
+          className="-z-2 object-cover transition-transform duration-300 pointer-events-none"
+        />
+      </picture>
       <div className="container h-full">
         <Heading
           size="heading3"
@@ -34,7 +37,11 @@ export default function GlobalSection({ data, featuresData }) {
         >
           {title}
         </Heading>
-        <Text size="text4" as="div" className="capitalize text-white text-center max-w-[1400px] mx-auto ">
+        <Text
+          size="text4"
+          as="div"
+          className="capitalize text-white text-center max-w-[1400px] mx-auto "
+        >
           {parse(description)}
         </Text>
         <div className="flex flex-wrap justify-center w-fit mx-auto 3xl:mb-[430px] lg:mb-[250px] md:mb-[100px] mb-[75px]">

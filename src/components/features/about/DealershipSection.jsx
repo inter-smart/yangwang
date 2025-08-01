@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 export default function DealershipSection({ data, showVideo }) {
   const { title, description, images } = data;
   const deskImageSrc = images?.web?.url;
-  const mobileImageSrc = images?.mob?.url;
+  const mobileImageSrc = images?.mobile?.url;
   const imageAlt = images?.web?.alt;
   return (
     <section className="w-full max-md:h-[420px] md:h-dvh md:min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] block relative z-0 before:content-[''] before:absolute before:z-1 before:inset-0 before:w-full before:h-full before:block before:bg-black/20 before:pointer-events-none">
@@ -22,7 +22,7 @@ export default function DealershipSection({ data, showVideo }) {
         />
       </picture>
       {showVideo && (
-        <div className="w-full h-full absolute z-1 inset-0 overflow-hidden opacity-20">
+        <div className="w-full h-full absolute z-1 inset-0 overflow-hidden opacity-20 pointer-events-none">
           <video
             autoPlay
             playsInline

@@ -23,19 +23,28 @@ export default function ServiceSection({ data, partsData }) {
   return (
     <section className="w-full h-auto block relative z-0">
       <div className="flex flex-wrap max-md:flex-col-reverse">
-        <div className="w-full md:w-1/2 max-md:min-h-[300px] group overflow-hidden relative z-0">
-          <Image
-            src={web_banner}
-            alt={web_banner_alt || "Banner Image"}
-            fill
-            sizes="970px"
-            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-          />
+        <div className="w-full md:w-1/2">
+          <div className="group w-full h-full max-md:min-h-[300px] overflow-hidden relative z-0">
+            <picture className="w-full h-full absolute z-0 inset-0">
+              <source media="(max-width: 768px)" srcSet={mobile_banner} />
+              <Image
+                src={web_banner}
+                alt={web_banner_alt || "Banner Image"}
+                fill
+                sizes="970px"
+                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+              />
+            </picture>
+          </div>
         </div>
-        <div className="w-full md:w-1/2 ltr:3xl:pl-[75px] ltr:2xl:pl-[65px] ltr:xl:pl-[45px] ltr:pl-[25px] ltr:pr-[15px] ltr:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:3xl:pl-[75px] rtl:2xl:pl-[65px] rtl:xl:pl-[45px] rtl:pl-[25px] rtl:pr-[15px] rtl:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] 3xl:py-[115px_120px] xl:py-[100px_90px] lg:py-[80px_70px] md:py-[65px_50px] py-[30px_35px]">
+        <div className="w-full md:w-1/2 ltr:3xl:pl-[75px] ltr:2xl:pl-[65px] ltr:xl:pl-[45px] ltr:pl-[25px] ltr:pr-[25px] ltr:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] ltr:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] ltr:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] ltr:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] ltr:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] rtl:3xl:pl-[75px] rtl:2xl:pl-[65px] rtl:xl:pl-[45px] rtl:pl-[25px] rtl:pr-[15px] rtl:md:pr-[calc(((100vw-var(--breakpoint-md))/2)+var(--breakpoint-gap))] rtl:lg:pr-[calc(((100vw-var(--breakpoint-lg))/2)+var(--breakpoint-gap-lg))] rtl:xl:pr-[calc(((100vw-var(--breakpoint-xl))/2)+var(--breakpoint-gap-xl))] rtl:2xl:pr-[calc(((100vw-var(--breakpoint-2xl))/2)+var(--breakpoint-gap-2xl))] rtl:3xl:pr-[calc(((100vw-var(--breakpoint-3xl))/2)+var(--breakpoint-gap-3xl))] 3xl:py-[115px_120px] xl:py-[100px_90px] lg:py-[80px_70px] md:py-[65px_50px] py-[30px_35px]">
           <div className="w-full h-full flex items-center">
             <div className="w-full">
-              <Heading size="heading3" as="h3" className="capitalize text-black 2xl:mb-[35px] mb-[20px]">
+              <Heading
+                size="heading3"
+                as="h3"
+                className="capitalize text-black 2xl:mb-[35px] mb-[20px]"
+              >
                 {title}
               </Heading>
               <Text size="text4" as="div" className="capitalize text-black">
@@ -46,7 +55,10 @@ export default function ServiceSection({ data, partsData }) {
               <div className="w-full 2xl:mt-[40px] mt-[24px]">
                 <div className="relative z-1 flex flex-wrap items-center -my-[5px] 2xl:-my-[8px] -mx-[10px] 3xl:-mx-[13px]">
                   {ownership_highlights?.map((item, index) => (
-                    <div key={index} className="w-full sm:w-1/2 xl:w-1/3 py-[5px] 2xl:py-[8px] px-[10px] 3xl:px-[13px]">
+                    <div
+                      key={index}
+                      className="w-full sm:w-1/2 xl:w-1/3 py-[5px] 2xl:py-[8px] px-[10px] 3xl:px-[13px]"
+                    >
                       <ServiceBx item={item} />
                     </div>
                   ))}
@@ -64,10 +76,14 @@ export default function ServiceSection({ data, partsData }) {
                     {button_text}
                   </LinkButton>
                 </div>
-                <Text size="text4" as="p" className="capitalize text-center text-black p-[5px]">
+                <Text
+                  size="text4"
+                  as="p"
+                  className="capitalize text-center text-black p-[5px]"
+                >
                   {contact_title}:
                   <a
-                    href="tel: 400-039-6666"
+                    href={`tel:${contact_number}`}
                     className="3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] text-[#5949A7] underline font-medium not-italic leading-none"
                   >
                     {contact_number}

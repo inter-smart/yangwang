@@ -18,14 +18,27 @@ export default function NewsDetailSection({ data, locale }) {
           </span>
         </div>
         <div className="w-full h-auto aspect-[1720/800] 3xl:mb-[90px] xl:mb-[60px] md:mb-[30px] mb-[20px] overflow-hidden block">
-          <Image src={data?.thumbnail?.url} alt={data?.thumbnail?.alt || "news"} width={1720} height={800} />
+          <Image
+            src={data?.thumbnail?.url}
+            alt={data?.thumbnail?.alt || "news"}
+            width={1720}
+            height={800}
+          />
         </div>
-        <div className="typography [&>*]:md:my-[10px] [&>*]:my-[4px] [&:has(img)]:grid [&:has(img)]:gap-4 [&:has(img)]:grid-cols-1 sm:[&:has(img+img)]:grid-cols-2 lg:[&:has(img+img+img)]:grid-cols-3 [&>p]:col-span-full [&>p]:grid-cols-1 [&>p]:text-[12px] [&>p]:xl:text-[13px] [&>p]:2xl:text-[16px] [&>img]:col-span-1 space-y-4">
-          <p>{parse(data?.description)}</p>
-          {Object.entries(data?.images).map(([key, image]) => (
-            <Image key={key} src={image?.url} alt={image?.alt || "news"} width={560} height={360} />
-          ))}
-          <p>{parse(data?.sub_description)}</p>
+        <div className="typography [&>*]:md:my-[10px] [&>*]:my-[4px] [&>p]:text-[12px] [&>p]:xl:text-[13px] [&>p]:2xl:text-[16px]">
+          <div className="w-full">{parse(data?.description)}</div>
+          <div className="[&:has(img)]:grid [&:has(img)]:gap-4 [&:has(img)]:grid-cols-1 sm:[&:has(img+img)]:grid-cols-2 lg:[&:has(img+img+img)]:grid-cols-3 [&>p]:col-span-full [&>p]:grid-cols-1 [&>img]:col-span-1 space-y-4">
+            {Object.entries(data?.images).map(([key, image]) => (
+              <Image
+                key={key}
+                src={image?.url}
+                alt={image?.alt || "news"}
+                width={560}
+                height={360}
+              />
+            ))}
+          </div>
+          <div>{parse(data?.sub_description)}</div>
         </div>
       </div>
     </section>

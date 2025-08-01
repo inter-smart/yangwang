@@ -12,7 +12,7 @@ export default function LaunchOffersSection({ data }) {
       <picture className="absolute -z-1 inset-0">
         <source
           media="(max-width: 768px)"
-          srcSet="/images/mob-launchOffers-bg-1.jpg"
+          srcSet={data?.mobile_banner}
         />
         <Image
           src={data?.web_banner}

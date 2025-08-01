@@ -53,9 +53,9 @@ export default function FaqSection({ faqData, socialData }) {
                   </AccordionTrigger>
 
                   <AccordionContent>
-                    <p className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-normal max-w-full text-[#2d2929]">
+                    <div className="3xl:text-[16px] 2xl:text-[14px] xl:text-[10px] lg:text-[10px] text-[10px] font-normal leading-normal max-w-full text-[#2d2929]">
                       {parse(item?.answer)}
-                    </p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}

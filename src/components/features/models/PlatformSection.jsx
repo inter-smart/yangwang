@@ -20,9 +20,43 @@ export default function PlatformSection({ data }) {
         <source src="/videos/models-platform-bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      {/* {data?.media?.type === "video" ? (
+        <video
+          autoPlay
+          preload="auto"
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          aria-label="Video player"
+          poster={data?.media?.banner_video?.thumbnail}
+        >
+          <source src={data?.media?.banner_video?.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <picture className="absolute z-0 inset-0">
+          <source
+            media="(max-width: 768px)"
+            srcSet={data?.media?.banner_mobile?.url}
+          />
+          <Image
+            src={data?.media?.banner_web?.url}
+            alt={data?.media?.banner_web?.alt_text || "Banner Image"}
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+        </picture>
+      )} */}
+
       <div className="container">
         <div className="max-w-[640px] xl:max-w-[768px] 2xl:max-w-[992px] 3xl:max-w-[1080px] mx-auto">
-          <Heading size="heading3" as="h3" className="text-center text-white mb-[20px] xl:mb-[40px] 3xl:mb-[60px]">
+          <Heading
+            size="heading3"
+            as="h3"
+            className="text-center text-white mb-[20px] xl:mb-[40px] 3xl:mb-[60px]"
+          >
             {data?.title || "Platform Section Title"}
           </Heading>
           <Heading
@@ -43,7 +77,11 @@ export default function PlatformSection({ data }) {
                 height={40}
                 className="w-[40px] xl:w-[60px] 3xl:w-[60px] aspect-[4/3] mx-auto mb-[10px] xl:mb-[15px] 3xl:mb-[20px] object-contain filter-[brightness(0)_saturate(100%)_invert(100%)_sepia(0%)_saturate(3907%)_hue-rotate(74deg)_brightness(117%)_contrast(92%)]"
               />
-              <Heading size="heading6" as="h6" className="leading-tight text-center text-white">
+              <Heading
+                size="heading6"
+                as="h6"
+                className="leading-tight text-center text-white"
+              >
                 {features.title}
               </Heading>
             </div>

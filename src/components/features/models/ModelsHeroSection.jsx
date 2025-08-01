@@ -7,17 +7,39 @@ export default function ModelsHeroSection({ data, model }) {
 
   return (
     <section className="w-full h-dvh min-h-[368px] xl:min-h-[460px] 3xl:min-h-[768px] flex items-end py-[40px] lg:py-[60px] xl:py-[60px] 2xl:py-[80px] 3xl:py-[90px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/50 before:pointer-events-none">
-      <picture className="absolute -z-2 inset-0">
-        <source media="(max-width: 768px)" srcSet={media?.banner_mobile?.url} />
-        <Image
-          src={media?.banner_web?.url}
-          alt={media?.banner_web?.alt_text || "Hero Background"}
-          fill
-          sizes="100vw"
-          className="-z-2 object-cover"
-          priority
-        />
-      </picture>
+      {media.type === "video" ? (
+        <video
+          autoPlay
+          preload="auto"
+          playsInline
+          width={1920}
+          height={1080}
+          muted
+          loop
+          className="w-full h-full absolute -z-2 inset-0 object-cover"
+          aria-label="Video player"
+          poster={media?.banner_web?.url}
+          // priority="true"
+        >
+          <source src={item.media.web_banner.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <picture className="absolute -z-2 inset-0">
+          <source
+            media="(max-width: 768px)"
+            srcSet={media?.banner_mobile?.url}
+          />
+          <Image
+            src={media?.banner_web?.url}
+            alt={media?.banner_web?.alt_text || "Hero Background"}
+            fill
+            sizes="100vw"
+            className="-z-2 object-cover"
+            priority
+          />
+        </picture>
+      )}
       <div className="container">
         <div className="flex flex-wrap items-end justify-between gap-[10px]">
           <div className="relative z-0">
@@ -29,9 +51,15 @@ export default function ModelsHeroSection({ data, model }) {
               alt="models-logo"
               width={246}
               height={26}
-              className={"w-[100px] sm:w-[120px] xl:w-[160px] 2xl:w-[215px] 3xl:w-[246px] mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]"}
+              className={
+                "w-[100px] sm:w-[120px] xl:w-[160px] 2xl:w-[215px] 3xl:w-[246px] mb-[15px] 2xl:mb-[20px] 3xl:mb-[25px]"
+              }
             />
-            <Heading size="heading3" as="h3" className="!font-normal text-white max-lg:mb-[15px]">
+            <Heading
+              size="heading3"
+              as="h3"
+              className="!font-normal text-white max-lg:mb-[15px]"
+            >
               {data?.banner_sub_title}
             </Heading>
           </div>

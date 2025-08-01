@@ -5,10 +5,15 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/privacy-policy/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/privacy-policy/${encodeURIComponent(locale)}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
     const result = await response.json();
 
     if (result.success && result.status === 200) {
@@ -39,30 +44,47 @@ export default async function page({ params }) {
   let privacyPolicyData = {};
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/privacy-policy/${encodeURIComponent(locale)}`, {
-      cache: "no-store",
-      // next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/privacy-policy/${encodeURIComponent(locale)}`,
+      {
+        cache: "no-store",
+        // next: { revalidate: 60 },
+      }
+    );
 
     const result = await response.json();
     if (result.success && result.status === 200) {
       privacyPolicyData = result.data;
       //console.log(`[2025-05-29T14:37:00.000Z] Fetched ownership  data for ${locale}`, privacyPolicyData);
     } else {
-      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+      console.error(
+        `[2025-05-29T14:37:00.000Z] API error: ${
+          result.message || "Unknown error"
+        }`
+      );
     }
   } catch (error) {
-    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch ownership data: ${error.message}`);
+    console.error(
+      `[2025-05-29T14:37:00.000Z] Failed to fetch ownership data: ${error.message}`
+    );
   }
   return (
     <>
       <InnerBanner
         title={privacyPolicyData?.banner_section?.title}
+        mobile_image={privacyPolicyData?.banner_section?.mobile_banner}
         banner_image={privacyPolicyData?.banner_section?.web_banner}
-        banner_alt={privacyPolicyData?.banner_section?.web_banner_alt || "Banner Image"}
+        banner_alt={
+          privacyPolicyData?.banner_section?.web_banner_alt || "Banner Image"
+        }
         className="!h-[220px] xl:!h-[400px] 2xl:!h-[576px] 3xl:!h-620px] "
       />
-      <PrivacyPolicy data={privacyPolicyData?.["privacy-policy"]} titles={privacyPolicyData?.title_listing} />
+      <PrivacyPolicy
+        data={privacyPolicyData?.["privacy-policy"]}
+        titles={privacyPolicyData?.title_listing}
+      />
     </>
   );
 }

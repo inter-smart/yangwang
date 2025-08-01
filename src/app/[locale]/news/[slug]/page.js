@@ -8,7 +8,9 @@ export async function generateMetadata({ params }) {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/news-and-event-details/${slug}/${encodeURIComponent(locale)}`,
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/news-and-event-details/${slug}/${encodeURIComponent(locale)}`,
       {
         cache: "force-cache",
         next: { revalidate: 60 },
@@ -45,7 +47,9 @@ export default async function page({ params }) {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/news-and-events-details/${slug}/${encodeURIComponent(locale)}`,
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/news-and-events-details/${slug}/${encodeURIComponent(locale)}`,
       {
         cache: "force-cache",
         next: { revalidate: 60 },
@@ -57,21 +61,30 @@ export default async function page({ params }) {
       newsData = result.data;
       //console.log(`[2025-05-29T14:37:00.000Z] Fetched news  data for ${locale}`, newsData);
     } else {
-      console.error(`[2025-05-29T14:37:00.000Z] API error: ${result.message || "Unknown error"}`);
+      console.error(
+        `[2025-05-29T14:37:00.000Z] API error: ${
+          result.message || "Unknown error"
+        }`
+      );
     }
   } catch (error) {
-    console.error(`[2025-05-29T14:37:00.000Z] Failed to fetch news data: ${error.message}`);
+    console.error(
+      `[2025-05-29T14:37:00.000Z] Failed to fetch news data: ${error.message}`
+    );
   }
-
+  
   return (
     <>
       <InnerBanner
         title={newsData?.banners?.banner_title}
+        mobile_image={newsData?.banners?.mobile_banner}
         banner_image={newsData?.banners?.web_banner}
         banner_alt={newsData?.banners?.web_banner_alt || "Banner Image"}
       />
       <NewsDetailSection data={newsData} locale={locale} />
-      {newsData?.related_list?.length > 0 && <RelatedPostSection data={newsData?.related_list} locale={locale} />}
+      {newsData?.related_list?.length > 0 && (
+        <RelatedPostSection data={newsData?.related_list} locale={locale} />
+      )}
       <SocialLinkSection data={newsData?.social_media_section} />
     </>
   );

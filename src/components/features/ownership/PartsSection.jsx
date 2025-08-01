@@ -83,26 +83,30 @@ export default function PartsSection({ data }) {
                           {parse(address) || "No address"}
                         </div>
                         <div className="flex flex-wrap -my-[4px] -mx-[8px]">
-                          <div className="flex text-[#1F1D1D] 2xl:text-[16px] text-[11px] font-medium leading-none px-[8px] py-[4px] relative after:content-[''] after:absolute after:right-0 after:top-0 after:m-auto after:w-[2px] after:h-full after:bg-[#F1D1A8]">
-                            Email:
-                            <a
-                              href="mailto:info@Yangwang.com"
-                              className="flex ml-[5px] duration-500 ease-in-out hover:text-[#5949A7]"
-                            >
-                              {" "}
-                              {email}
-                            </a>
-                          </div>
-                          <div className="flex text-[#1F1D1D] 2xl:text-[16px] text-[11px] font-medium leading-none px-[8px] py-[4px]">
-                            Phone:
-                            <a
-                              href="tel:+968 24578000"
-                              className="flex ml-[5px] duration-500 ease-in-out hover:text-[#5949A7]"
-                            >
-                              {" "}
-                              {phone}
-                            </a>
-                          </div>
+                          {email && (
+                            <div className="flex text-[#1F1D1D] 2xl:text-[16px] text-[11px] font-medium leading-none px-[8px] py-[4px] relative after:content-[''] after:absolute after:right-0 after:top-0 after:m-auto after:w-[2px] after:h-full after:bg-[#F1D1A8]">
+                              {email_text || "Email:"} :
+                              <a
+                                href={`mailto:${email}`}
+                                className="flex ml-[5px] duration-500 ease-in-out hover:text-[#5949A7]"
+                              >
+                                {" "}
+                                {email}
+                              </a>
+                            </div>
+                          )}
+                          {phone && (
+                            <div className="flex text-[#1F1D1D] 2xl:text-[16px] text-[11px] font-medium leading-none px-[8px] py-[4px]">
+                              {phone_text || "Phone"} :
+                              <a
+                                href={`tel:${phone}`}
+                                className="flex ml-[5px] duration-500 ease-in-out hover:text-[#5949A7]"
+                              >
+                                {" "}
+                                {phone}
+                              </a>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -111,14 +115,19 @@ export default function PartsSection({ data }) {
               </div>
             </div>
           </div>
-          <div className="w-full md:w-1/2 max-md:min-h-[300px] group overflow-hidden relative z-0">
-            <Image
-              src={web_banner}
-              alt={web_banner_alt || "Banner Image"}
-              fill
-              sizes="970px"
-              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-            />
+          <div className="w-full md:w-1/2">
+            <div className="group w-full h-full max-md:min-h-[300px] overflow-hidden relative z-0">
+              <picture className="w-full h-full absolute z-0 inset-0">
+                <source media="(max-width: 768px)" srcSet={mobile_banner} />
+                <Image
+                  src={web_banner}
+                  alt={web_banner_alt || "Banner Image"}
+                  fill
+                  sizes="970px"
+                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                />
+              </picture>
+            </div>
           </div>
         </div>
       </div>

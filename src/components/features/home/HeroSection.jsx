@@ -21,7 +21,12 @@ export default function HeroSection({ data, locale }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (swiperInstance && prevRef.current && nextRef.current && swiperInstance.params) {
+    if (
+      swiperInstance &&
+      prevRef.current &&
+      nextRef.current &&
+      swiperInstance.params
+    ) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
       swiperInstance.params.navigation.nextEl = nextRef.current;
       swiperInstance.navigation.init();
@@ -35,7 +40,8 @@ export default function HeroSection({ data, locale }) {
     }
   };
 
-  const nextSlideThumb = data[(activeIndex + 1) % data?.length]?.media?.thumbnail;
+  const nextSlideThumb =
+    data[(activeIndex + 1) % data?.length]?.media?.thumbnail;
   const nextSlideTitle = data[(activeIndex + 1) % data?.length]?.title;
 
   return (
@@ -65,17 +71,7 @@ export default function HeroSection({ data, locale }) {
               key={"slide" + index}
               className="!flex items-end py-[40px] lg:py-[60px] xl:py-[80px] 2xl:py-[100px] 3xl:py-[120px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/20 before:pointer-events-none"
             >
-              {item.media.type === "image" ? (
-                <Image
-                  src={item.media?.web_banner?.url}
-                  alt={item.media?.web_banner?.alt_text || "Hero Banner"}
-                  width={1920}
-                  height={1080}
-                  className="w-full h-full absolute -z-2 inset-0 object-cover"
-                  aria-label="Image"
-                  priority
-                />
-              ) : (
+              {item.media.type === "video" ? (
                 <video
                   autoPlay
                   preload="auto"
@@ -92,11 +88,30 @@ export default function HeroSection({ data, locale }) {
                   <source src={item.media.web_banner.url} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+              ) : (
+                <picture className="absolute -z-2 inset-0">
+                  <source
+                    media="(max-width: 768px)"
+                    srcSet={item.media?.mobile_banner?.url}
+                  />
+                  <Image
+                    src={item.media?.web_banner?.url}
+                    alt={item.media?.web_banner?.alt_text || "Hero Banner"}
+                    width={1920}
+                    height={1080}
+                    className="w-full h-full absolute -z-2 inset-0 object-cover"
+                    priority
+                  />
+                </picture>
               )}
 
               <div className="container">
                 <div className="w-full">
-                  <Heading size="heading1" as="h1" className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]">
+                  <Heading
+                    size="heading1"
+                    as="h1"
+                    className="uppercase text-white mb-[4px] xl:mb-[6px] 3xl:mb-[10px]"
+                  >
                     {item.title}
                   </Heading>
                   <Text
@@ -162,7 +177,12 @@ export default function HeroSection({ data, locale }) {
             type="button"
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img src="icon-arrow-left.svg" alt="icon-arrow-left" width={16} height={16} />
+            <Img
+              src="icon-arrow-left.svg"
+              alt="icon-arrow-left"
+              width={16}
+              height={16}
+            />
             <span className="sr-only">left</span>
           </button>
           <button
@@ -170,7 +190,12 @@ export default function HeroSection({ data, locale }) {
             ref={nextRef}
             className="w-[10px] xl:w-[12px] 3xl:w-[16px] cursor-pointer transition-transform duration-300 scale-110"
           >
-            <Img src="icon-arrow-right.svg" alt="icon-arrow-right" width={16} height={16} />
+            <Img
+              src="icon-arrow-right.svg"
+              alt="icon-arrow-right"
+              width={16}
+              height={16}
+            />
             <span className="sr-only">next</span>
           </button>
         </div>

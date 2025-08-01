@@ -4,22 +4,28 @@ import parse from "html-react-parser";
 
 export default function InnerBanner({
   title,
+  mobile_image,
   banner_image,
   banner_alt,
   description,
-  className
+  className="",
 }) {
   return (
-    <section className={`${className} w-full h-[355px] xl:h-[430px] 2xl:h-[600px] 3xl:h-700px] flex items-center py-[70px_15px] lg:py-[80px_25px] xl:py-[90px_35px] 3xl:py-[120px_60px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/50 before:pointer-events-none`}>
+    <section
+      className={`${className} w-full h-[355px] xl:h-[430px] 2xl:h-[600px] 3xl:h-700px] flex items-center py-[70px_15px] lg:py-[80px_25px] xl:py-[90px_35px] 3xl:py-[120px_60px] relative z-0 before:content-[''] before:block before:absolute before:-z-1 before:inset-0 before:w-full before:h-full before:bg-black/50 before:pointer-events-none`}
+    >
       {banner_image && (
-        <Image
-          src={banner_image}
-          alt={banner_alt || "Banner Image"}
-          fill
-          sizes="100vw"
-          className="-z-2 object-cover"
-          priority
-        />
+        <picture className="absolute -z-2 inset-0">
+          <source media="(max-width: 768px)" srcSet={mobile_image} />
+          <Image
+            src={banner_image}
+            alt={banner_alt || "Banner Image"}
+            fill
+            sizes="100vw"
+            className="-z-2 object-cover"
+            priority
+          />
+        </picture>
       )}
       <div className="container w-full h-full">
         <div className="flex items-center justify-center flex-col w-full h-full">

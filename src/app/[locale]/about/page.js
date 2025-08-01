@@ -9,10 +9,15 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/about/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/about/${encodeURIComponent(
+        locale
+      )}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
     const result = await response.json();
 
     if (result.success && result.status === 200) {
@@ -44,7 +49,9 @@ export default async function AboutPage({ params }) {
   let aboutData = {};
 
   try {
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/about/${encodeURIComponent(locale)}`;
+    const apiUrl = `${
+      process.env.NEXT_PUBLIC_API_BASE_URL
+    }/about/${encodeURIComponent(locale)}`;
     const response = await fetch(apiUrl, {
       cache: "force-cache",
       next: { revalidate: 60 },
@@ -66,21 +73,38 @@ export default async function AboutPage({ params }) {
         innovationSection: result.data.innovation_section,
       };
     } else {
-      console.error(`[${timestamp}] API error: ${result.message || "Unknown error"}`);
+      console.error(
+        `[${timestamp}] API error: ${result.message || "Unknown error"}`
+      );
     }
   } catch (error) {
-    console.error(`[${timestamp}] Failed to fetch about data: ${error instanceof Error ? error.message : "Unknown error"}`);
+    console.error(
+      `[${timestamp}] Failed to fetch about data: ${
+        error instanceof Error ? error.message : "Unknown error"
+      }`
+    );
   }
 
   return (
     <>
       <AboutSection data={aboutData?.banner ?? []} locale={locale} />
-      <DealershipSection data={aboutData?.aboutSection ?? {}} locale={locale} showVideo={true} />
+      <DealershipSection
+        data={aboutData?.aboutSection ?? {}}
+        locale={locale}
+        showVideo={true}
+      />
       <VisionSection data={aboutData?.lookUpSection ?? {}} locale={locale} />
-      <DealershipSection data={aboutData?.dealershipSection ?? {}} locale={locale} showVideo={false} />
+      <DealershipSection
+        data={aboutData?.dealershipSection ?? {}}
+        locale={locale}
+        showVideo={false}
+      />
       <BrandSection data={aboutData?.brandLogoSection ?? {}} locale={locale} />
       <FutureSection data={aboutData?.futureSection ?? {}} locale={locale} />
-      <InovationSection data={aboutData?.innovationSection ?? {}} locale={locale} />
+      <InovationSection
+        data={aboutData?.innovationSection ?? {}}
+        locale={locale}
+      />
     </>
   );
 }

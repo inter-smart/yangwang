@@ -6,10 +6,15 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/news-and-events/${encodeURIComponent(locale)}`, {
-      cache: "force-cache",
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/news-and-events/${encodeURIComponent(locale)}`,
+      {
+        cache: "force-cache",
+        next: { revalidate: 60 },
+      }
+    );
     const result = await response.json();
 
     if (result.success && result.status === 200) {
@@ -44,7 +49,11 @@ export default async function page({ params }) {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/news-and-events/${encodeURIComponent(locale)}&limit=${limit}&page=${initialPage}`,
+      `${
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      }/news-and-events/${encodeURIComponent(
+        locale
+      )}&limit=${limit}&page=${initialPage}`,
       {
         cache: "no-store",
         // next: { revalidate: 60 },
@@ -54,20 +63,31 @@ export default async function page({ params }) {
     const result = await response.json();
     if (result.success && result.status === 200) {
       newsData = result.data || [];
-      pagination = result.data.meta || { total: 0, currentPage: initialPage, limit };
+      pagination = result.data.meta || {
+        total: 0,
+        currentPage: initialPage,
+        limit,
+      };
       //console.log(`[2025-06-05T12:55:00.000Z] Fetched news data for ${locale}`, result.data);
       //console.log(`[2025-06-05T12:55:00.000Z] Category list:`, result.data.category_list);
     } else {
-      console.error(`[2025-06-05T12:55:00.000Z] API error: ${result.message || "Unknown error"}`);
+      console.error(
+        `[2025-06-05T12:55:00.000Z] API error: ${
+          result.message || "Unknown error"
+        }`
+      );
     }
   } catch (error) {
-    console.error(`[2025-06-05T12:55:00.000Z] Failed to fetch news data: ${error.message}`);
+    console.error(
+      `[2025-06-05T12:55:00.000Z] Failed to fetch news data: ${error.message}`
+    );
   }
 
   return (
     <>
       <InnerBanner
         title={newsData?.banner_section?.title}
+        mobile_image={newsData?.banner_section?.mobile_banner}
         banner_image={newsData?.banner_section?.web_banner}
         banner_alt={newsData?.banner_section?.web_banner_alt || "Banner Image"}
       />
@@ -76,7 +96,10 @@ export default async function page({ params }) {
         categoryList={newsData?.category_list || []}
         pagination={pagination}
         locale={locale}
-        title={newsData?.title || "Discover the latest innovations, launches & stories"}
+        title={
+          newsData?.title ||
+          "Discover the latest innovations, launches & stories"
+        }
       />
       <SocialLinkSection data={newsData?.social_media_section} />
     </>

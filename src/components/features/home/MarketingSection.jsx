@@ -11,16 +11,25 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Suspense } from "react";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Image from "next/image";
 
 export default function MarketingSection({ data }) {
-
   return (
     <section className="w-full h-auto block py-[30px] lg:py-[60px_50px] xl:py-[80px_100px] 3xl:py-[120px_140px]">
       <div className="container">
         <div className="flex justify-between mb-[10px] sm:mb-[15px] xl:mb-[20px] 3xl:mb-[30px]">
-          <Heading size="heading3" as="h3" className="capitalize text-black mb-[5px]">
+          <Heading
+            size="heading3"
+            as="h3"
+            className="capitalize text-black mb-[5px]"
+          >
             {data?.header?.title}
           </Heading>
           <Link
@@ -68,21 +77,13 @@ export default function MarketingSection({ data }) {
           <Suspense fallback={<div>Loading feed...</div>}>
             {data?.feeds?.map((item, index) => (
               <SwiperSlide key={"slide" + index}>
-                <Card className="w-full h-auto aspect-[420/520] lg:aspect-[420/580] block rounded-none border-[#ccc] overflow-hidden relative z-0">
-                  {/* <CardHeader className="sr-only">
+                <Card className="w-full h-auto aspect-[420/520] lg:aspect-[420/580] block rounded-none border-[#ccc] overflow-hidden p-0 relative z-0">
+                  <CardHeader className="sr-only">
                     <CardTitle>Card Title</CardTitle>
                     <CardDescription>Card Description</CardDescription>
-                  </CardHeader> */}
-                  <CardContent>
-                    {item.media.type === "image" ? (
-                      <Image
-                        src={item?.media?.web_banner?.url}
-                        alt={item?.media?.web_banner?.alt_text || "Image"}
-                        fill
-                        sizes="420px"
-                        className="transition-transform duration-300 hover:scale-105"
-                      />
-                    ) : (
+                  </CardHeader>
+                  <CardContent className="w-full h-full p-0">
+                    {item.media.type === "video" ? (
                       <video
                         preload="metadata"
                         width={420}
@@ -90,7 +91,7 @@ export default function MarketingSection({ data }) {
                         muted
                         loop
                         playsInline
-                        className="w-full h-full absolute -z-1 inset-0 object-cover"
+                        className="w-full h-full object-cover"
                         aria-label="Video player"
                         onMouseEnter={(e) => e.target.play()}
                         onMouseLeave={(e) => {
@@ -98,9 +99,26 @@ export default function MarketingSection({ data }) {
                           // e.target.currentTime = 0;
                         }}
                       >
-                        <source src={item?.media?.web_banner?.url} type="video/mp4" />
+                        <source
+                          src={item?.media?.web_banner?.url}
+                          type="video/mp4"
+                        />
                         Your browser does not support the video tag.
                       </video>
+                    ) : (
+                      <picture>
+                        <source
+                          media="(max-width: 768px)"
+                          srcSet={item?.media?.mobile_banner?.url}
+                        />
+                        <Image
+                          src={item?.media?.web_banner?.url}
+                          alt={item?.media?.web_banner?.alt_text || "feed"}
+                          width={420}
+                          height={520}
+                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                      </picture>
                     )}
                   </CardContent>
                 </Card>
