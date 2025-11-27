@@ -33,7 +33,7 @@ export default function LocationSection({ variant, showRooms, serviceCentres, cu
       <div className="container">
         {/* <LocationMap /> */}
         <Tabs defaultValue="showroom" className="w-full">
-          <TabsList className="md:w-[calc(100%-300px)] xl:w-[calc(100%-350px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-580px)] flex justify-between items-center ml-auto border-b border-gray-200 relative w-full p-0 rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[30px]">
+          <TabsList className="md:w-[calc(100%-300px)] xl:w-[calc(100%-350px)] 2xl:w-[calc(100%-500px)] 3xl:w-[calc(100%-580px)] flex justify-between items-center ml-auto border-b border-gray-200 relative w-full p-0 rounded-0 2xl:mb-[60px] xl:mb-[40px] mb-[20px]">
             {tabs?.map(
               (tab) =>
                 tab.show && (

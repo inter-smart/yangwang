@@ -40,7 +40,7 @@ export default function EnquirySection({ data }) {
         <div className="w-full flex flex-wrap lg:flex-nowrap lg:px-[30px] 2xl:px-[60px] 3xl:px-[90px]">
           {/* Left Column */}
           <div className="w-full 3xl:w-[510px] 2xl:w-[410px] xl:w-[350px] lg:w-[250px] mb-8 lg:mb-0">
-            <h2 className="text-[20px] lg:text-[24px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] text-black font-medium 3xl:max-w-[310px] max-w-[250]">
+            <h2 className="text-[20px] lg:text-[24px] xl:text-[26px] 2xl:text-[32px] 3xl:text-[40px] text-black font-medium 3xl:max-w-[310px] lg:max-w-[250px]">
               {parse(header?.title)}
             </h2>
           </div>

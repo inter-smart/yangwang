@@ -29,7 +29,7 @@ export default function InnerBanner({
       )}
       <div className="container w-full h-full">
         <div className="flex items-center justify-center flex-col w-full h-full">
-          <h3 className="text-[14px] sm:text-[16px] lg:text-[20px] xl:text-[26px] 2xl:text-[35px] 3xl:text-[40px] font-medium leading-none capitalize text-center text-white">
+          <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[26px] 2xl:text-[35px] 3xl:text-[40px] font-medium leading-none capitalize text-center text-white">
             {title}
           </h3>
           {description && (

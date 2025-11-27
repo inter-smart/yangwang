@@ -28,10 +28,16 @@ const sizes = {
     "3xl:text-[18px] 2xl:text-[16px] xl:text-[12px] text-[12px] font-normal leading-normal",
 };
 
-const Text = ({ children, className = "", as, size, ...restProps }) => {
+const Text = ({
+  children,
+  className = "",
+  as,
+  animation = true,
+  size,
+  ...restProps
+}) => {
   const Component = as || "p";
-
-  return (
+  return animation ? (
     <motion.div
       variants={textVariants}
       initial="offscreen"
@@ -42,6 +48,10 @@ const Text = ({ children, className = "", as, size, ...restProps }) => {
         {children}
       </Component>
     </motion.div>
+  ) : (
+    <Component className={`${className} ${sizes[size]} `} {...restProps}>
+      {children}
+    </Component>
   );
 };
 

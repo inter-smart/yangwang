@@ -2,7 +2,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../layout/Button";
@@ -27,7 +33,9 @@ export default function EnquiryForm() {
       .max(255, { message: t("fName_max") })
       .regex(nameRegex, { message: t("fName_regex") })
       .refine((val) => !/\d/.test(val), { message: t("fName_no_numbers") })
-      .refine((val) => !unsafePattern.test(val), { message: t("fName_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("fName_unsafe"),
+      }),
 
     // Second Name
     sName: z
@@ -37,7 +45,9 @@ export default function EnquiryForm() {
       .max(255, { message: t("sName_max") })
       .regex(nameRegex, { message: t("sName_regex") })
       .refine((val) => !/\d/.test(val), { message: t("sName_no_numbers") })
-      .refine((val) => !unsafePattern.test(val), { message: t("sName_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("sName_unsafe"),
+      }),
 
     // Email
     email: z
@@ -45,23 +55,33 @@ export default function EnquiryForm() {
       .trim()
       .email({ message: t("email_invalid") })
       .max(255, { message: t("email_max") })
-      .refine((val) => !unsafePattern.test(val), { message: t("email_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("email_unsafe"),
+      }),
 
     // Phone Number (universal, E.164)
     phoneNumber: z
       .string()
       .trim()
       .regex(phoneRegex, { message: t("phoneNumber_regex") })
-      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: t("phoneNumber_zeros") })
-      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: t("phoneNumber_invalid_chars") }),
+      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), {
+        message: t("phoneNumber_zeros"),
+      })
+      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), {
+        message: t("phoneNumber_invalid_chars"),
+      }),
 
     message: z
       .string()
       .trim()
       .min(2, { message: t("message_min") })
       .max(5000, { message: t("message_max") })
-      .refine((val) => !specialCharsOnly.test(val), { message: t("message_special_chars") })
-      .refine((val) => !unsafePattern.test(val), { message: t("message_unsafe") })
+      .refine((val) => !specialCharsOnly.test(val), {
+        message: t("message_special_chars"),
+      })
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("message_unsafe"),
+      })
       .optional(),
   });
   // Define form
@@ -96,13 +116,16 @@ export default function EnquiryForm() {
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/enquiry-now`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/enquiry-now`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
@@ -153,7 +176,7 @@ export default function EnquiryForm() {
                   <Input
                     className="
                               w-full
-                              h-[50px]
+                              h-[35px] xl:h-[50px]
                               border-0
                               border-b
                               border-gray-300
@@ -192,7 +215,7 @@ export default function EnquiryForm() {
                   <Input
                     className="
                               w-full
-                              h-[50px]
+                              h-[35px] xl:h-[50px]
                               border-0
                               border-b
                               border-gray-300
@@ -231,7 +254,7 @@ export default function EnquiryForm() {
                   <Input
                     className="
                               w-full
-                              h-[50px]
+                              h-[35px] xl:h-[50px]
                               border-0
                               border-b
                               border-gray-300
@@ -269,7 +292,7 @@ export default function EnquiryForm() {
                   <Input
                     className="
                               w-full
-                              h-[50px]
+                              h-[35px] xl:h-[50px]
                               border-0
                               border-b
                               border-gray-300
@@ -293,7 +316,10 @@ export default function EnquiryForm() {
                     {...field}
                     onInput={(e) => {
                       // Only allow digits, spaces, parentheses, dashes, and plus
-                      e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
+                      e.target.value = e.target.value.replace(
+                        /[^0-9()+\-\s]/g,
+                        ""
+                      );
                     }}
                     onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
@@ -314,7 +340,7 @@ export default function EnquiryForm() {
                   <Textarea
                     className="
                               w-full
-                              h-[50px]
+                              h-[35px] xl:h-[50px]
                               border-0
                               border-b
                               border-gray-300
@@ -343,20 +369,24 @@ export default function EnquiryForm() {
         </div>
 
         {/* Feedback and Loading State */}
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
-          {feedback && (
-            <div className={`text-center ${feedback.type === "success" ? "text-green-600" : "text-red-500"}`}>
+        {feedback && (
+          <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+            <div
+              className={`text-center ${
+                feedback.type === "success" ? "text-green-600" : "text-red-500"
+              }`}
+            >
               {feedback.message}
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] flex justify-end">
           <Button
             color="black"
             type="submit"
             aria-label="Send Message"
-            className="max-w-[70px] sm:max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
+            className="max-w-[100px] sm:max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
             disabled={isLoading}
           >
             {isLoading ? t("submit_loading") : t("submit_button")}

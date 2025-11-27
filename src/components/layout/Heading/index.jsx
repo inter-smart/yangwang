@@ -8,8 +8,8 @@ const textVariants = {
     y: 60,
     opacity: 0,
   },
-  onscreen: { 
-    y: 0,  
+  onscreen: {
+    y: 0,
     opacity: 1,
     transition: {
       type: "easeOuteaseOut",
@@ -32,10 +32,17 @@ const sizes = {
     "text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-medium leading-none",
 };
 
-const Heading = ({ children, className = "", size, as, ...restProps }) => {
+const Heading = ({
+  children,
+  className = "",
+  size,
+  as,
+  animation = true,
+  ...restProps
+}) => {
   const Component = as || "h6";
 
-  return (
+  return animation ? (
     <motion.div
       variants={textVariants}
       initial="offscreen"
@@ -46,6 +53,10 @@ const Heading = ({ children, className = "", size, as, ...restProps }) => {
         {children}
       </Component>
     </motion.div>
+  ) : (
+    <Component className={`${className} ${sizes[size]}`} {...restProps}>
+      {children}
+    </Component>
   );
 };
 

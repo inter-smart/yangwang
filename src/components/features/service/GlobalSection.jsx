@@ -9,7 +9,7 @@ export default function GlobalSection({ data }) {
         <Heading
           size="heading3"
           as="h3"
-          className="text-black font-medium 2xl:mb-[25px] lg:max-w-[750px] max-w-[450px] mx-auto mb-[20px] text-center"
+          className="leading-normal text-black font-medium 2xl:mb-[25px] lg:max-w-[750px] max-w-[450px] mx-auto mb-[20px] text-center"
         >
           {title}
         </Heading>
