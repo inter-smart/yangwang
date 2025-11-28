@@ -37,6 +37,14 @@ const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQ
 const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
 const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
 
+const inputSyle = cn(
+  "text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-normal text-black placeholder:text-black w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0  focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7] "
+);
+
+const selectInputSyle = cn(
+  "text-[12px] xl:text-[14px] 2xl:text-[16px] leading-tight font-medium text-black placeholder:text-[#b3b3b3] w-full max-w-full min-h-[35px] xl:min-h-[50px] px-3 xl:px-4 border border-[#CCCCCC] rounded-none bg-white outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative focus:ring-black/10"
+);
+
 export default function ServiceEnquiryForm({ locationData }) {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState();
@@ -200,7 +208,7 @@ export default function ServiceEnquiryForm({ locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="text"
                     placeholder={t("fName_placeholder")}
                     {...field}
@@ -221,7 +229,7 @@ export default function ServiceEnquiryForm({ locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="text"
                     placeholder={t("sName_placeholder")}
                     {...field}
@@ -242,7 +250,7 @@ export default function ServiceEnquiryForm({ locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="text"
                     placeholder={t("email_placeholder")}
                     {...field}
@@ -263,7 +271,7 @@ export default function ServiceEnquiryForm({ locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="tel"
                     inputMode="tel"
                     pattern="[\d\s()+-]*"
@@ -297,7 +305,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                     onValueChange={field.onChange}
                     value={field.value}
                   >
-                    <SelectTrigger className="!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full max-w-full min-h-[50px] px-6 border border-[#CCCCCC] rounded-none bg-white text-[#000000] font-medium outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative">
+                    <SelectTrigger className={selectInputSyle}>
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
                         <SelectValue
                           placeholder={t("location_placeholder")}
@@ -305,12 +313,12 @@ export default function ServiceEnquiryForm({ locationData }) {
                         />
                       </div>
                     </SelectTrigger>
-                    <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
+                    <SelectContent className="max-h-[268px] bg-white border border-[#CCCCCC] rounded-md shadow-md">
                       {locationData?.map((item, index) => (
                         <SelectItem
                           key={index}
                           value={item?.id?.toString()}
-                          className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                          className="text-[10px] xl:text-[12px] font-medium text-[#1D0A44] py-1 px-2 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
                         >
                           {item?.name}
                         </SelectItem>
@@ -337,7 +345,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                         variant="outline"
                         type="button"
                         className={cn(
-                          "!text-[12px] 2xl:!text-[16px] 3xl:!text-[18px] w-full h-[50px] min-h-[50px] max-w-full border border-gray-300 rounded-none px-4 flex items-center justify-between font-medium text-black hover:bg-gray-50",
+                          "text-[10px] xl:text-[12px] 2xl:text-[14px] leading-tight font-medium text-start text-black placeholder:text-[#b3b3b3] w-full min-h-[35px] xl:min-h-[50px] max-w-full border border-gray-300 rounded-none px-3 xl:px-4 py-2 flex items-center justify-between hover:bg-gray-50 focus:ring-black/10",
                           !date && "text-muted-foreground"
                         )}
                       >
@@ -346,7 +354,7 @@ export default function ServiceEnquiryForm({ locationData }) {
                         ) : (
                           <span>{t("date_placeholder")}</span>
                         )}
-                        <CalendarIcon className="h-6 w-6 text-[#5949A7]" />
+                        <CalendarIcon className="size-3 xl:size-4 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
                     <PopoverContent
@@ -384,7 +392,7 @@ export default function ServiceEnquiryForm({ locationData }) {
               <FormItem>
                 <FormControl>
                   <Textarea
-                    className="w-full h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     placeholder={t("message_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
@@ -396,12 +404,12 @@ export default function ServiceEnquiryForm({ locationData }) {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] flex justify-end">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px] flex justify-end">
           <Button
             color="black"
             type="submit"
             aria-label="Send Message"
-            className="max-w-[70px] sm:max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
+            className="max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
             disabled={isLoading}
           >
             {isLoading ? t("submit_loading") : t("submit_button")}
@@ -409,7 +417,7 @@ export default function ServiceEnquiryForm({ locationData }) {
         </div>
 
         {submitStatus && (
-          <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] text-center">
+          <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px] text-center">
             <p
               className={
                 submitStatus.type === "success"

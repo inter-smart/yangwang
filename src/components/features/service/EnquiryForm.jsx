@@ -2,14 +2,31 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/layout/Button";
@@ -20,6 +37,14 @@ const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, s
 const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
 const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
 const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
+
+const inputSyle = cn(
+  "text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-normal text-black placeholder:text-black w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0  focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7] "
+);
+
+const selectInputSyle = cn(
+  "text-[12px] xl:text-[14px] 2xl:text-[16px] leading-tight font-medium text-black placeholder:text-[#b3b3b3] w-full max-w-full min-h-[35px] xl:min-h-[50px] px-3 xl:px-4 border border-[#CCCCCC] rounded-none bg-white outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative focus:ring-black/10"
+);
 
 export default function ServiceEnquiryForm({ offerData, locationData }) {
   const t = useTranslations("form");
@@ -39,7 +64,9 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
       .max(255, { message: t("fName_max") })
       .regex(nameRegex, { message: t("fName_regex") })
       .refine((val) => !/\d/.test(val), { message: t("fName_no_numbers") })
-      .refine((val) => !unsafePattern.test(val), { message: t("fName_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("fName_unsafe"),
+      }),
 
     // Second Name
     sName: z
@@ -49,7 +76,9 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
       .max(255, { message: t("sName_max") })
       .regex(nameRegex, { message: t("sName_regex") })
       .refine((val) => !/\d/.test(val), { message: t("sName_no_numbers") })
-      .refine((val) => !unsafePattern.test(val), { message: t("sName_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("sName_unsafe"),
+      }),
 
     // Email
     email: z
@@ -57,15 +86,21 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
       .trim()
       .email({ message: t("email_invalid") })
       .max(255, { message: t("email_max") })
-      .refine((val) => !unsafePattern.test(val), { message: t("email_unsafe") }),
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("email_unsafe"),
+      }),
 
     // Phone Number (universal, E.164)
     phoneNumber: z
       .string()
       .trim()
       .regex(phoneRegex, { message: t("phoneNumber_regex") })
-      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), { message: t("phoneNumber_zeros") })
-      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), { message: t("phoneNumber_invalid_chars") }),
+      .refine((val) => !/^0+$/.test(val.replace(/\D/g, "")), {
+        message: t("phoneNumber_zeros"),
+      })
+      .refine((val) => !/[a-zA-Z@!#<>'";]/.test(val), {
+        message: t("phoneNumber_invalid_chars"),
+      }),
 
     // Location
     location: z
@@ -82,8 +117,12 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
       .trim()
       .min(2, { message: t("message_min") })
       .max(5000, { message: t("message_max") })
-      .refine((val) => !specialCharsOnly.test(val), { message: t("message_special_chars") })
-      .refine((val) => !unsafePattern.test(val), { message: t("message_unsafe") })
+      .refine((val) => !specialCharsOnly.test(val), {
+        message: t("message_special_chars"),
+      })
+      .refine((val) => !unsafePattern.test(val), {
+        message: t("message_unsafe"),
+      })
       .optional(),
     offerId: z.string().min(1, { message: t("offerId_required") }),
   });
@@ -104,13 +143,16 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/service-enquiry`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/service-enquiry`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
@@ -168,20 +210,29 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
             name="offerId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-black">{t("offerId_placeholder")}</FormLabel>
+                <FormLabel className="font-semibold text-black">
+                  {t("offerId_placeholder")}
+                </FormLabel>
                 <FormControl>
-                  <Select dir={locale === "ar" ? "rtl" : "ltr"} onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger className="text-[12px] xl:text-[14px] 2xl:text-[16px] leading-tight font-medium text-black placeholder:text-[#b3b3b3] w-full min-h-[30px] xl:min-h-[40px] 3xl:min-h-[60px] px-3 xl:px-4 border border-[#CCCCCC] rounded-none bg-white outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative focus-visible:ring-black/10">
+                  <Select
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                  >
+                    <SelectTrigger className={selectInputSyle}>
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder={t("offerId_placeholder")} className="truncate text-[#999999] font-normal" />
+                        <SelectValue
+                          placeholder={t("offerId_placeholder")}
+                          className="truncate text-[#999999] font-normal"
+                        />
                       </div>
                     </SelectTrigger>
-                    <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[16px] font-medium text-[#1D0A44]">
+                    <SelectContent className="max-h-[268px] bg-white border border-[#CCCCCC] rounded-md shadow-md">
                       {offerData?.map((item, index) => (
                         <SelectItem
                           key={index}
                           value={item?.id?.toString()}
-                          className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                          className="text-[10px] xl:text-[12px] font-medium text-[#1D0A44] py-1 px-2 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
                         >
                           {item?.title}
                         </SelectItem>
@@ -203,7 +254,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="text"
                     placeholder={t("fName_placeholder")}
                     {...field}
@@ -224,7 +275,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="text"
                     placeholder={t("sName_placeholder")}
                     {...field}
@@ -245,7 +296,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="text"
                     placeholder={t("email_placeholder")}
                     {...field}
@@ -266,14 +317,17 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="tel"
                     inputMode="tel"
                     pattern="[\d\s()+-]*"
                     placeholder={t("phoneNumber_placeholder")}
                     {...field}
                     onInput={(e) => {
-                      e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
+                      e.target.value = e.target.value.replace(
+                        /[^0-9()+\-\s]/g,
+                        ""
+                      );
                     }}
                     onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
@@ -284,25 +338,32 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
           />
         </div>
 
-        <div className="w-full md:w-1/2 xl:w-1/4 p-[15px_10px] 2xl:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full md:w-1/2 xl:w-1/4 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="location"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select dir={locale === "ar" ? "rtl" : "ltr"} onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger className="text-[12px] xl:text-[14px] 2xl:text-[16px] leading-tight font-medium text-black placeholder:text-[#b3b3b3] w-full max-w-full min-h-[35px] xl:min-h-[50px] px-3 xl:px-4 border border-[#CCCCCC] rounded-none bg-white outline-none shadow-none transition-all cursor-pointer flex items-center justify-between relative focus:ring-black/10">
+                  <Select
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                  >
+                    <SelectTrigger className={selectInputSyle}>
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue placeholder={t("location_placeholder")} className="truncate text-[#999999] font-semibold" />
+                        <SelectValue
+                          placeholder={t("location_placeholder")}
+                          className="truncate text-[#999999] font-semibold"
+                        />
                       </div>
                     </SelectTrigger>
-                    <SelectContent className="bg-white border border-[#CCCCCC] rounded-md shadow-md text-[18px] font-medium text-[#1D0A44]">
+                    <SelectContent className="max-h-[268px] bg-white border border-[#CCCCCC] rounded-md shadow-md">
                       {locationData?.map((item, index) => (
                         <SelectItem
                           key={index}
                           value={item?.id?.toString()}
-                          className="py-[10px] px-4 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
+                          className="text-[10px] xl:text-[12px] font-medium text-[#1D0A44] py-1 px-2 hover:bg-[#F5F4FD] focus:bg-[#1D0A44] focus:text-white cursor-pointer"
                         >
                           {item?.name}
                         </SelectItem>
@@ -316,7 +377,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
           />
         </div>
 
-        <div className="w-full md:w-1/2 xl:w-1/4 p-[15px_10px] 2xl:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full md:w-1/2 xl:w-1/4 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="date"
@@ -337,7 +398,10 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                         <CalendarIcon className="size-3 xl:size-4 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-full p-0 bg-black text-white" align="start">
+                    <PopoverContent
+                      className="w-full p-0 bg-black text-white"
+                      align="start"
+                    >
                       <Calendar
                         mode="single"
                         selected={date}
@@ -348,7 +412,9 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
                         }}
                         initialFocus
                         className="rounded-md border"
-                        disabled={(date) => date < new Date().setHours(0, 0, 0, 0)}
+                        disabled={(date) =>
+                          date < new Date().setHours(0, 0, 0, 0)
+                        }
                       />
                     </PopoverContent>
                   </Popover>
@@ -367,7 +433,7 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
               <FormItem>
                 <FormControl>
                   <Textarea
-                    className="w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0 text-black font-normal text-[14px] 2xl:text-[16px] 3xl:text-[18px] placeholder:text-black placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px] focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     placeholder={t("message_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("message", e.target.value)}
@@ -379,12 +445,12 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] flex justify-end">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px] flex justify-end">
           <Button
             color="black"
             type="submit"
             aria-label="Send Message"
-            className="max-w-[80px] sm:max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
+            className="max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
             disabled={isLoading}
           >
             {isLoading ? t("submit_loading") : t("submit_button")}
@@ -392,8 +458,16 @@ export default function ServiceEnquiryForm({ offerData, locationData }) {
         </div>
 
         {submitStatus && (
-          <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] text-center">
-            <p className={submitStatus.type === "success" ? "text-green-500" : "text-red-500"}>{submitStatus.message}</p>
+          <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px] text-center">
+            <p
+              className={
+                submitStatus.type === "success"
+                  ? "text-green-500"
+                  : "text-red-500"
+              }
+            >
+              {submitStatus.message}
+            </p>
           </div>
         )}
       </form>

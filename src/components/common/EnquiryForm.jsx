@@ -14,12 +14,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../layout/Button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
 const unsafePattern = /(<|>|script|alert|onerror|javascript:|['";])/i; // XSS/SQL patterns
 const phoneRegex = /^\+?[1-9]\d{9,14}$/; // E.164: + and 10–15 digits, first digit not zero
 const specialCharsOnly = /^[@#!$%^&*()]+$/; // Only special characters
+
+const inputSyle = cn(
+  "text-[14px] 2xl:text-[16px] 3xl:text-[18px] font-normal text-black placeholder:text-black w-full h-[35px] xl:h-[50px] border-0 border-b border-gray-300 rounded-none px-0  focus:outline-none focus:ring-0 focus:shadow-none focus-visible:ring-0 focus-visible:shadow-none focus:border-b-[#5949A7] "
+);
 
 export default function EnquiryForm() {
   const t = useTranslations("form");
@@ -164,9 +169,9 @@ export default function EnquiryForm() {
         onSubmit={(e) => {
           form.handleSubmit(onSubmit)(e);
         }}
-        className="flex flex-wrap -mx-[15px] lg:-mx-[25px]"
+        className="flex flex-wrap -mx-[15px] 2xl:-mx-[25px]"
       >
-        <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full lg:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="fName"
@@ -174,25 +179,7 @@ export default function EnquiryForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="
-                              w-full
-                              h-[35px] xl:h-[50px]
-                              border-0
-                              border-b
-                              border-gray-300
-                              rounded-none
-                              px-0
-                              text-black font-normal
-                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                              placeholder:text-black
-                              placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                              focus:outline-none
-                              focus:ring-0
-                              focus:shadow-none
-                              focus-visible:ring-0
-                              focus-visible:shadow-none
-                              focus:border-b-[#5949A7]
-                    "
+                    className={inputSyle}
                     type="text"
                     placeholder={t("fName_placeholder")}
                     {...field}
@@ -205,7 +192,7 @@ export default function EnquiryForm() {
           />
         </div>
 
-        <div className="w-full lg:w-1/2 p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full lg:w-1/2 p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="sName"
@@ -213,25 +200,7 @@ export default function EnquiryForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="
-                              w-full
-                              h-[35px] xl:h-[50px]
-                              border-0
-                              border-b
-                              border-gray-300
-                              rounded-none
-                              px-0
-                              text-black font-normal
-                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                              placeholder:text-black
-                              placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                              focus:outline-none
-                              focus:ring-0
-                              focus:shadow-none
-                              focus-visible:ring-0
-                              focus-visible:shadow-none
-                              focus:border-b-[#5949A7]
-                    "
+                    className={inputSyle}
                     type="text"
                     placeholder={t("sName_placeholder")}
                     {...field}
@@ -244,7 +213,7 @@ export default function EnquiryForm() {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="email"
@@ -252,24 +221,7 @@ export default function EnquiryForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="
-                              w-full
-                              h-[35px] xl:h-[50px]
-                              border-0
-                              border-b
-                              border-gray-300
-                              rounded-none
-                              px-0
-                              text-black font-normal
-                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                              placeholder:text-black
-                              placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                              focus:outline-none
-                              focus:ring-0
-                              focus:shadow-none
-                              focus-visible:ring-0
-                              focus-visible:shadow-none
-                              focus:border-b-[#5949A7]"
+                    className={inputSyle}
                     type="text"
                     placeholder={t("email_placeholder")}
                     {...field}
@@ -282,7 +234,7 @@ export default function EnquiryForm() {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="phoneNumber"
@@ -290,25 +242,7 @@ export default function EnquiryForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="
-                              w-full
-                              h-[35px] xl:h-[50px]
-                              border-0
-                              border-b
-                              border-gray-300
-                              rounded-none
-                              px-0
-                              text-black font-normal
-                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                              placeholder:text-black
-                              placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                              focus:outline-none
-                              focus:ring-0
-                              focus:shadow-none
-                              focus-visible:ring-0
-                              focus-visible:shadow-none
-                              focus:border-b-[#5949A7]
-                    "
+                    className={inputSyle}
                     type="tel"
                     inputMode="tel"
                     pattern="[\d\s()+-]*"
@@ -330,7 +264,7 @@ export default function EnquiryForm() {
           />
         </div>
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
           <FormField
             control={form.control}
             name="message"
@@ -338,25 +272,7 @@ export default function EnquiryForm() {
               <FormItem>
                 <FormControl>
                   <Textarea
-                    className="
-                              w-full
-                              h-[35px] xl:h-[50px]
-                              border-0
-                              border-b
-                              border-gray-300
-                              rounded-none
-                              px-0
-                              text-black font-normal
-                              text-[14px] 2xl:text-[16px] 3xl:text-[18px]
-                              placeholder:text-black
-                              placeholder:text-[12px] lg:placeholder:text-[14px] 2xl:placeholder:text-[16px] 3xl:placeholder:text-[18px]
-                              focus:outline-none
-                              focus:ring-0
-                              focus:shadow-none
-                              focus-visible:ring-0
-                              focus-visible:shadow-none
-                              focus:border-b-[#5949A7]
-                    "
+                    className={inputSyle}
                     placeholder={t("message_placeholder")}
                     {...field}
                     onBlur={(e) => handleBlur("message", e.target.value)}
@@ -370,7 +286,7 @@ export default function EnquiryForm() {
 
         {/* Feedback and Loading State */}
         {feedback && (
-          <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px]">
+          <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
             <div
               className={`text-center ${
                 feedback.type === "success" ? "text-green-600" : "text-red-500"
@@ -381,12 +297,12 @@ export default function EnquiryForm() {
           </div>
         )}
 
-        <div className="w-full p-[15px] lg:px-[25px] md:py-[20px] py-[10px] flex justify-end">
+        <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px] flex justify-end">
           <Button
             color="black"
             type="submit"
             aria-label="Send Message"
-            className="max-w-[100px] sm:max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
+            className="max-w-[80px] lg:max-w-[97px] xl:max-w-[130px] 2xl:min-w-[150px] 3xl:min-w-[180px]"
             disabled={isLoading}
           >
             {isLoading ? t("submit_loading") : t("submit_button")}

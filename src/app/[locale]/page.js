@@ -1,11 +1,34 @@
+// import AboutSection from "@/components/features/home/AboutSection";
+// import ModelSection from "@/components/features/home/ModelSection";
+// import SpecsSection from "@/components/features/home/SpecsSection";
+// import LaunchOffersSection from "@/components/features/home/LaunchOffersSection";
+// import InteriorSection from "@/components/features/home/InteriorSection";
+// import MarketingSection from "@/components/features/home/MarketingSection";
+// import EventsSection from "@/components/features/home/EventsSection";
+
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/features/home/HeroSection";
-import AboutSection from "@/components/features/home/AboutSection";
-import ModelSection from "@/components/features/home/ModelSection";
-import SpecsSection from "@/components/features/home/SpecsSection";
-import LaunchOffersSection from "@/components/features/home/LaunchOffersSection";
-import InteriorSection from "@/components/features/home/InteriorSection";
-import MarketingSection from "@/components/features/home/MarketingSection";
-import EventsSection from "@/components/features/home/EventsSection";
+const AboutSection = dynamic(() =>
+  import("@/components/features/home/AboutSection")
+);
+const ModelSection = dynamic(() =>
+  import("@/components/features/home/ModelSection")
+);
+const SpecsSection = dynamic(() =>
+  import("@/components/features/home/SpecsSection")
+);
+const LaunchOffersSection = dynamic(() =>
+  import("@/components/features/home/LaunchOffersSection")
+);
+const InteriorSection = dynamic(() =>
+  import("@/components/features/home/InteriorSection")
+);
+const MarketingSection = dynamic(() =>
+  import("@/components/features/home/MarketingSection")
+);
+const EventsSection = dynamic(() =>
+  import("@/components/features/home/EventsSection")
+);
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;

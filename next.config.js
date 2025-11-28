@@ -1,3 +1,5 @@
+const { withNextVideo } = require('next-video/process')
+
 const createNextIntlPlugin = require("next-intl/plugin");
 const withNextIntl = createNextIntlPlugin();
 

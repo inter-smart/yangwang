@@ -1,6 +1,5 @@
 "use client";
 import { Heading } from "@/components/layout/Heading";
-import { Img } from "@/components/layout/Img";
 import Link from "next/link";
 
 import { A11y } from "swiper/modules";
@@ -77,7 +76,50 @@ export default function MarketingSection({ data }) {
           <Suspense fallback={<div>Loading feed...</div>}>
             {data?.feeds?.map((item, index) => (
               <SwiperSlide key={"slide" + index}>
-                <Card className="w-full h-auto aspect-[420/520] lg:aspect-[420/580] block rounded-none border-[#ccc] overflow-hidden p-0 relative z-0">
+                <div className="w-full h-auto aspect-[420/520] lg:aspect-[420/580] block rounded-none border-[#ccc] overflow-hidden p-0 relative z-0">
+                  {item.media.type === "video" ? (
+                    <>
+                      <video
+                        preload="metadata"
+                        width={420}
+                        height={590}
+                        muted
+                        loop
+                        playsInline
+                        autoPlay
+                        className="w-full h-full object-cover"
+                        aria-label="Video player"
+                        onMouseEnter={(e) => e.target.play()}
+                        onMouseLeave={(e) => {
+                          e.target.pause();
+                          // e.target.currentTime = 0;
+                        }}
+                        poster="/images/placeholder.jpg"
+                      >
+                        <source
+                          src={item?.media?.web_banner?.url}
+                          type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    </>
+                  ) : (
+                    <picture>
+                      <source
+                        media="(max-width: 768px)"
+                        srcSet={item?.media?.mobile_banner?.url}
+                      />
+                      <Image
+                        src={item?.media?.web_banner?.url}
+                        alt={item?.media?.web_banner?.alt_text || "feed"}
+                        width={420}
+                        height={520}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </picture>
+                  )}
+                </div>
+                {/* <Card className="w-full h-auto aspect-[420/520] lg:aspect-[420/580] block rounded-none border-[#ccc] overflow-hidden p-0 relative z-0">
                   <CardHeader className="sr-only">
                     <CardTitle>Card Title</CardTitle>
                     <CardDescription>Card Description</CardDescription>
@@ -98,6 +140,7 @@ export default function MarketingSection({ data }) {
                           e.target.pause();
                           // e.target.currentTime = 0;
                         }}
+                        poster="/images/placeholder.jpg"
                       >
                         <source
                           src={item?.media?.web_banner?.url}
@@ -121,7 +164,7 @@ export default function MarketingSection({ data }) {
                       </picture>
                     )}
                   </CardContent>
-                </Card>
+                </Card> */}
               </SwiperSlide>
             ))}
           </Suspense>

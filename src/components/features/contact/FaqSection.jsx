@@ -89,7 +89,7 @@ export default function FaqSection({ faqData, socialData }) {
                       title={name}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group 3xl:w-[77px] 2xl:w-[65px] xl:w-[55px] w-[40px] 3xl:h-[77px] 2xl:h-[65px] xl:h-[55px] h-[40px] rounded-full flex items-center justify-center border border-[#dadada] transition-all duration-300 hover:bg-[#5949A7] cursor-pointer"
+                      className="group 2xl:w-[60px] lg:w-[50px] w-[40px] aspect-square rounded-full flex items-center justify-center border border-[#dadada] transition-all duration-300 hover:bg-[#5949A7] cursor-pointer"
                     >
                       {/* <div className="w-[12px] xl:w-[21px] h-[12px] xl:h-[18px] [&>icon]:w-full [&>svg]:h-full [&>svg]:fill-current"> */}
                       <Image
@@ -97,7 +97,7 @@ export default function FaqSection({ faqData, socialData }) {
                         alt={icon_alt || "social-icon"}
                         width={12}
                         height={12}
-                        className="w-[10px] xl:w-[15px] 3xl:w-[20px] aspect-square object-contain filter-[brightness(0)_saturate(100%)] group-hover:filter-none"
+                        className="w-[10px] xl:w-[12px] 3xl:w-[16px] aspect-square object-contain filter-[brightness(0)_saturate(100%)] group-hover:filter-none"
                       />
                       {/* </div> */}
                     </a>

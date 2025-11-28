@@ -9,13 +9,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Suspense } from "react";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Image from "next/image";
 
 const slide = [
@@ -95,15 +88,15 @@ export default function BodyFeaturesSection({ locale, data }) {
           <Suspense fallback={<div>Loading feed...</div>}>
             {data?.body_feature?.map((item, index) => (
               <SwiperSlide key={"slide" + index}>
-                <Card className="w-full h-auto block rounded-none border-none">
-                  <CardHeader className="p-0 aspect-[476/576] relative z-0 overflow-hidden mb-[15px] xl:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
+                <div className="w-full h-auto block rounded-none border-none">
+                  <div className="p-0 aspect-[476/576] relative z-0 overflow-hidden mb-[15px] xl:mb-[20px] 2xl:mb-[30px] 3xl:mb-[40px]">
                     {item.media.type === "video" ? (
                       <video
                         autoPlay
                         preload="auto"
                         playsInline
-                        width={1920}
-                        height={1080}
+                        width={476}
+                        height={576}
                         muted
                         loop
                         className="w-full h-full object-cover"
@@ -117,7 +110,7 @@ export default function BodyFeaturesSection({ locale, data }) {
                         Your browser does not support the video tag.
                       </video>
                     ) : (
-                      <picture>
+                      <picture className="w-full h-full block">
                         <source
                           media="(max-width: 768px)"
                           srcSet={item.media?.mobile_banner?.url}
@@ -131,16 +124,13 @@ export default function BodyFeaturesSection({ locale, data }) {
                         />
                       </picture>
                     )}
-                  </CardHeader>
-                  <CardContent className="max-lg:px-2">
-                    <CardTitle className="text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-normal leading-tight text-center text-white lg:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[240px] mx-auto">
+                  </div>
+                  <div className="max-lg:px-2">
+                    <div className="text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-normal leading-tight text-center text-white lg:max-w-[160px] 2xl:max-w-[200px] 3xl:max-w-[240px] mx-auto">
                       {item?.title}
-                    </CardTitle>
-                    <CardDescription className="sr-only">
-                      {item.title}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
+                    </div>
+                  </div>
+                </div>
               </SwiperSlide>
             ))}
           </Suspense>

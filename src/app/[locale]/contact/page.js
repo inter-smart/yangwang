@@ -71,8 +71,6 @@ export default async function Contact({ params }) {
     );
   }
 
-  console.log("page data fetched:", contactData);
-
   return (
     <>
       <InnerBanner
