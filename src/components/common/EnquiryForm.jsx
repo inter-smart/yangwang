@@ -2,19 +2,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../layout/Button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
@@ -28,6 +23,7 @@ const inputSyle = cn(
 
 export default function EnquiryForm() {
   const t = useTranslations("form");
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const formSchema = z.object({
     // First Name
@@ -110,27 +106,29 @@ export default function EnquiryForm() {
   async function onSubmit(values) {
     setIsLoading(true);
     setFeedback(null); // Reset feedback
-
-    // Map form values to API expected keys
-    const payload = {
-      first_name: values.fName,
-      second_name: values.sName,
-      email: values.email,
-      phone_number: values.phoneNumber,
-      message: values.message || "", // Ensure message is sent, even if empty
-    };
-
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/enquiry-now`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      let captcha_token = null;
+      if (executeRecaptcha) {
+        captcha_token = await executeRecaptcha("enquirynow");
+      }
+
+      // Map form values to API expected keys
+      const payload = {
+        first_name: values.fName,
+        second_name: values.sName,
+        email: values.email,
+        phone_number: values.phoneNumber,
+        message: values.message || "", // Ensure message is sent, even if empty
+        captcha_token: captcha_token,
+      };
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/enquiry-now`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
@@ -250,10 +248,7 @@ export default function EnquiryForm() {
                     {...field}
                     onInput={(e) => {
                       // Only allow digits, spaces, parentheses, dashes, and plus
-                      e.target.value = e.target.value.replace(
-                        /[^0-9()+\-\s]/g,
-                        ""
-                      );
+                      e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
                     }}
                     onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
@@ -287,13 +282,7 @@ export default function EnquiryForm() {
         {/* Feedback and Loading State */}
         {feedback && (
           <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px]">
-            <div
-              className={`text-center ${
-                feedback.type === "success" ? "text-green-600" : "text-red-500"
-              }`}
-            >
-              {feedback.message}
-            </div>
+            <div className={`text-center ${feedback.type === "success" ? "text-green-600" : "text-red-500"}`}>{feedback.message}</div>
           </div>
         )}
 

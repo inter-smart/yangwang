@@ -9,6 +9,7 @@ import parse from "html-react-parser";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import RecaptchaProvider from "@/components/layout/CaptchaWrapper";
 
 export default function EnquirySection({ data }) {
   const t = useTranslations("form");
@@ -80,13 +81,19 @@ export default function EnquirySection({ data }) {
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="enquire" className="w-full">
-                <EnquiryForm />
+                <RecaptchaProvider>
+                  <EnquiryForm />
+                </RecaptchaProvider>
               </TabsContent>
               <TabsContent value="book">
-                <TestdriveBookingForm locationData={location} modelData={model} />
+                <RecaptchaProvider>
+                  <TestdriveBookingForm locationData={location} modelData={model} />
+                </RecaptchaProvider>
               </TabsContent>
               <TabsContent value="service">
-                <ServiceEnquiryForm locationData={location} />
+                <RecaptchaProvider>
+                  <ServiceEnquiryForm locationData={location} />
+                </RecaptchaProvider>
               </TabsContent>
             </Tabs>
           </div>

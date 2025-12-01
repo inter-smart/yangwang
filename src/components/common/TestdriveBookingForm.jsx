@@ -2,34 +2,19 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Button } from "../layout/Button";
 import { useTranslations, useLocale } from "next-intl";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 // Patterns for validation
 const nameRegex = /^[\p{L}'\- ]+$/u; // Unicode letters, apostrophes, hyphens, spaces
@@ -45,6 +30,7 @@ const selectInputSyle = cn(
 );
 
 export default function TestdriveBookingForm({ locationData, modelData }) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [open, setOpen] = useState(false);
   const t = useTranslations("form");
   const [date, setDate] = useState();
@@ -143,6 +129,11 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
     setIsLoading(true);
     setSubmitStatus(null);
 
+    let captcha_token = null;
+    if (executeRecaptcha) {
+      captcha_token = await executeRecaptcha("bookatestdrive");
+    }
+
     const payload = {
       first_name: values.fName,
       second_name: values.sName,
@@ -152,19 +143,17 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
       date: format(values.date, "yyyy-MM-dd"),
       phone_number: values.phoneNumber,
       message: values.message || "",
+      captcha_token: captcha_token,
     };
 
     try {
-      const response = await fetch(
-        "https://www.yangwang.dev20.intersmarthosting.in/api/book-test-drive",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch("https://www.yangwang.dev20.intersmarthosting.in/api/book-test-drive", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
@@ -270,17 +259,10 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select
-                    dir={locale === "ar" ? "rtl" : "ltr"}
-                    value={field.value}
-                    onValueChange={field.onChange}
-                  >
+                  <Select dir={locale === "ar" ? "rtl" : "ltr"} value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className={selectInputSyle}>
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue
-                          placeholder={t("model_placeholder")}
-                          className="truncate text-[#999999] font-semibold"
-                        />
+                        <SelectValue placeholder={t("model_placeholder")} className="truncate text-[#999999] font-semibold" />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="max-h-[268px] bg-white border border-[#CCCCCC] rounded-md shadow-md">
@@ -318,10 +300,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                     {...field}
                     onInput={(e) => {
                       // Only allow digits, spaces, parentheses, dashes, and plus
-                      e.target.value = e.target.value.replace(
-                        /[^0-9()+\-\s]/g,
-                        ""
-                      );
+                      e.target.value = e.target.value.replace(/[^0-9()+\-\s]/g, "");
                     }}
                     onBlur={(e) => handleBlur("phoneNumber", e.target.value)}
                   />
@@ -339,17 +318,10 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Select
-                    dir={locale === "ar" ? "rtl" : "ltr"}
-                    value={field.value}
-                    onValueChange={field.onChange}
-                  >
+                  <Select dir={locale === "ar" ? "rtl" : "ltr"} value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger className={selectInputSyle}>
                       <div className="flex items-center gap-2 flex-1 overflow-hidden">
-                        <SelectValue
-                          placeholder={t("location_placeholder")}
-                          className="truncate text-[#999999] font-semibold"
-                        />
+                        <SelectValue placeholder={t("location_placeholder")} className="truncate text-[#999999] font-semibold" />
                       </div>
                     </SelectTrigger>
                     <SelectContent className="max-h-[268px] bg-white border border-[#CCCCCC] rounded-md shadow-md">
@@ -387,18 +359,11 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                           !date && "text-muted-foreground"
                         )}
                       >
-                        {date ? (
-                          format(date, "PPP")
-                        ) : (
-                          <span>{t("date_placeholder")}</span>
-                        )}
+                        {date ? format(date, "PPP") : <span>{t("date_placeholder")}</span>}
                         <CalendarIcon className="size-3 xl:size-4 text-[#5949A7]" />
                       </button>
                     </PopoverTrigger>
-                    <PopoverContent
-                      className="w-full p-0 bg-black text-white"
-                      align="start"
-                    >
+                    <PopoverContent className="w-full p-0 bg-black text-white" align="start">
                       <Calendar
                         mode="single"
                         selected={date}
@@ -410,9 +375,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
                         }}
                         initialFocus
                         className="rounded-md border"
-                        disabled={(date) =>
-                          date < new Date().setHours(0, 0, 0, 0)
-                        }
+                        disabled={(date) => date < new Date().setHours(0, 0, 0, 0)}
                       />
                     </PopoverContent>
                   </Popover>
@@ -457,15 +420,7 @@ export default function TestdriveBookingForm({ locationData, modelData }) {
 
         {submitStatus && (
           <div className="w-full p-[15px] 2xl:px-[25px] md:py-[20px] py-[10px] text-center">
-            <p
-              className={
-                submitStatus.type === "success"
-                  ? "text-green-500"
-                  : "text-red-500"
-              }
-            >
-              {submitStatus.message}
-            </p>
+            <p className={submitStatus.type === "success" ? "text-green-500" : "text-red-500"}>{submitStatus.message}</p>
           </div>
         )}
       </form>

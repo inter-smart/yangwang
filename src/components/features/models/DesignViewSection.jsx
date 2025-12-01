@@ -220,20 +220,21 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                     {!interiorView ? exteriorData?.title : interiorData?.title}
                   </Heading>
                 </div>
-
-                <div>
-                  <button
-                    type="button"
-                    onClick={handleInteriorViewClick}
-                    className="3xl:w-[100px] 2xl:w-[88px] xl:w-[66px] sm:w-[60px] w-[40px] cursor-pointer relative z-0"
-                  >
-                    {interiorView ? (
-                      <Image src="/images/models-view-1.svg" alt="models-view-1" width={100} height={64} />
-                    ) : (
-                      <Image src="/images/models-view-2.svg" alt="models-view-2" width={100} height={64} />
-                    )}
-                  </button>
-                </div>
+                {interiorData?.colors?.length > 0 && (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={handleInteriorViewClick}
+                      className="3xl:w-[100px] 2xl:w-[88px] xl:w-[66px] sm:w-[60px] w-[40px] cursor-pointer relative z-0"
+                    >
+                      {interiorView ? (
+                        <Image src="/images/models-view-1.svg" alt="models-view-1" width={100} height={64} />
+                      ) : (
+                        <Image src="/images/models-view-2.svg" alt="models-view-2" width={100} height={64} />
+                      )}
+                    </button>
+                  </div>
+                )}
               </div>
               <div>
                 <div className="flex justify-between items-end gap-[20px] relative z-1">
@@ -336,9 +337,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                           alt="icon-arrow-left"
                           width={16}
                           height={16}
-                          className={`${
-                            !interiorView ? "filter-[brightness(0)_saturate(100%)]" : ""
-                          } ltr:scale-x-100 rtl:-scale-x-100 select-none`}
+                          className={`${!interiorView ? "filter-[brightness(0)_saturate(100%)]" : ""} ltr:scale-x-100 rtl:-scale-x-100 select-none`}
                         />
                         <span className="sr-only">left</span>
                       </button>
@@ -352,9 +351,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                           alt="icon-arrow-right"
                           width={16}
                           height={16}
-                          className={`${
-                            !interiorView ? "filter-[brightness(0)_saturate(100%)]" : ""
-                          } ltr:scale-x-100 rtl:-scale-x-100 select-none`}
+                          className={`${!interiorView ? "filter-[brightness(0)_saturate(100%)]" : ""} ltr:scale-x-100 rtl:-scale-x-100 select-none`}
                         />
                         <span className="sr-only">next</span>
                       </button>
@@ -452,13 +449,7 @@ export default function DesignViewSection({ locale, exteriorData, interiorData, 
                 {alloyWheelData?.colors?.map((item, index) => (
                   <SwiperSlide key={`wheels-thumb-${index}`} className="group cursor-pointer">
                     <div className="w-[20px] lg:w-[25px] xl:w-[30px] 2xl:w-[40px] 3xl:w-[50px]  aspect-square rounded relative z-0 mb-[4px] xl:mb-[6px] 3xl:mb-[10px] mx-auto">
-                      <Image
-                        src={item?.color_thumb?.url}
-                        alt={item?.color_thumb?.alt_text}
-                        fill
-                        sizes="50px"
-                        title={item?.color_name}
-                      />
+                      <Image src={item?.color_thumb?.url} alt={item?.color_thumb?.alt_text} fill sizes="50px" title={item?.color_name} />
                     </div>
                     <h6 className="text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px] font-medium leading-tight capitalize text-center text-black/50 transition-color group-hover:text-black group-[&.swiper-slide-thumb-active]:text-black">
                       {item?.color_name}
