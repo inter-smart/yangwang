@@ -28,7 +28,7 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.511.0",
     "motion": "^12.12.1",
-    "next": "15.3.2",
+    "next": "^15.5.9",
     "next-intl": "^4.1.0",
     "path-to-regexp": "^6.3.0",
     "react": "^19.0.0",
